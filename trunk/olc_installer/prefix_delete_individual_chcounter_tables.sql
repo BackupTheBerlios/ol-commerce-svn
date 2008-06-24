@@ -1,0 +1,15 @@
+DROP TABLE chc_access;
+DROP TABLE chc_config;
+DROP TABLE chc_counted_users;
+DROP TABLE chc_data;
+DROP TABLE chc_downloads_and_hyperlinks;
+DROP TABLE chc_downloads_and_hyperlinks_logs;
+DROP TABLE chc_ignored_users;
+DROP TABLE chc_locale_information;
+DROP TABLE chc_log_data;
+DROP TABLE chc_online_users;
+DROP TABLE chc_pages;
+DROP TABLE chc_referrers;
+DROP TABLE chc_screen_resolutions;
+DROP TABLE chc_search_engines;
+DROP TABLE chc_user_agents

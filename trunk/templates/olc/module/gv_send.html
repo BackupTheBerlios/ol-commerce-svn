@@ -1,0 +1,67 @@
+{olc_template_init title="#heading_gvsend#" section="gv_send"}
+<table>
+{if $action eq 'process'}
+	<tr>
+		<td><b><font face="Verdana">{#text_success#}</font></b><br/><br/><div align="right">{$LINK_DEFAULT}</div></td>
+	</tr>
+{elseif $action eq 'send'}
+	<tr>
+		<td>
+		{$FORM_ACTION}
+			<table border="0" width="100%" cellspacing="0" cellpadding="2">
+				<tr>
+					<td class="main">{$MAIN_MESSAGE}</td>
+				</tr>
+{if $POST_MESSAGE neq ''}
+				<tr>
+					<td class="main">{$PERSONAL_MESSAGE}</td>
+				</tr>
+				<tr>
+					<td class="main">{$POST_MESSAGE}</td>
+				</tr>
+{/if}
+{$HIDDEN_FIELDS}
+				<tr>
+					<td class="main">{$LINK_BACK}</td>
+					<td align="right"><br/>{$LINK_SUBMIT}</td>
+				</tr>
+			</table>
+		{$FORM_END}
+		</td>
+	</tr>
+{elseif $action eq ''}
+	<tr>
+		<td class="main">&nbsp;&nbsp;{#heading_text#}</td>
+	</tr>
+	<tr>
+		<td>
+		{$FORM_ACTION}
+			<table border="0" width="100%" cellspacing="0" cellpadding="2">
+				<tr>
+					<td class="main"><b>{#entry_name#}</b><br/>{$INPUT_TO_NAME}</td>
+				</tr>
+				<tr>
+					<td class="main"><b>{#entry_email#}</b><br/>{$INPUT_EMAIL} {if $ERROR_EMAIL 
+					<> ''}&nbsp;&nbsp;&nbsp;<font color="#FF0000"><b>{$ERROR_EMAIL}</b></font>{/if}</td>
+				</tr>
+				<tr>
+					<td class="main"><b>{#entry_amount#}</b><br/>{$INPUT_AMOUNT} {if $ERROR_AMOUNT 
+					<> ''}&nbsp;&nbsp;&nbsp;<font color="#FF0000"><b>{$ERROR_AMOUNT}</b></font>{/if}</td>
+				</tr>
+				<tr>
+					<td class="main"><b>{#entry_message#}</b><br/>{$TEXTAREA_MESSAGE}</td>
+				</tr>
+			</table>
+
+			<table border="0" width="100%" cellspacing="0" cellpadding="2">
+				<tr>
+					<td>&nbsp;
+					</td>
+					<td class="main" align="right">{$LINK_SUBMIT}</td>
+				</tr>
+			</table>
+		{$FORM_END}
+		</td>
+	</tr>
+{/if}
+</table>

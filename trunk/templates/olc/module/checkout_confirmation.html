@@ -1,0 +1,263 @@
+{olc_template_init title="#heading_confirmation#" section="checkout_confirmation"}
+{if $ORDER_STEPS}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>{$ORDER_STEPS}</td>
+	</tr>
+</table>
+{/if}
+{if $error!=''}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="headerError" align="center">{$error}</td>
+	</tr>
+	<tr>
+		<td height="5">&nbsp;</td>
+	</tr>
+</table>
+{/if}
+{if $IP_LOG}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    <td class="main">{#text_ip#}</td>
+	</tr>
+	<tr>
+    <td class="main"><font color="#FF0000"><b>{$CUSTOMERS_IP}</b></font></td>
+	</tr>
+	<tr>
+		<td><hr/></td>
+	</tr>
+</table>
+{/if}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td valign="top" class="main_border_top"><strong>{#text_shipping_address#}</strong> <a href="{$SHIPPING_ADDRESS_EDIT}"><font class="orderEdit">{#text_edit#}</font></a>
+		<br/>
+		{$DELIVERY_LABEL}</td>
+		<td valign="top" class="main_border_top" height="45" >{if $BILLING_LABEL}<strong>{#text_payment_address#}</strong> <a href="{$BILLING_ADDRESS_EDIT}"><font class="orderEdit">{#text_edit#}</font></a>
+		<br/>
+		{$BILLING_LABEL}{/if}</td>
+	</tr>
+	<tr>
+		<td colspan="2" height="16"><hr/></td>
+	</tr>
+</table>
+
+{if $SHIPPING_METHOD}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{#text_shipping_method#}<br/></td>
+	</tr>
+	<tr>
+		<td class="main_border">
+			{$SHIPPING_METHOD}
+			{if $SHIPPING_EDIT} <a href="{$SHIPPING_EDIT}"><font class="orderEdit">{#text_edit#}</font></a>{/if}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" height="16"><hr/></td>
+	</tr>
+</table>
+{/if}
+{if $PAYPAL_EC_PROCESS}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{#text_paypal_ec#}<br/></td>
+	</tr>
+	<tr>
+		<td class="main_border">
+			 <a href="{$PAYPAL_EC_PROCESS}"><font class="orderEdit">{#text_edit#}</font></a>
+		</td>
+	</tr>
+	<tr>
+		<td><hr/></td>
+	</tr>
+</table>
+{/if}
+{if $PAYMENT_METHOD!=''}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{#text_payment_method#}<br/></td>
+	</tr>
+	<tr>
+		<td class="main_border">{$PAYMENT_METHOD} <a href="{$PAYMENT_EDIT}"><font class="orderEdit">{#text_edit#}</font></a></td>
+	</tr>
+	<tr>
+		<td>
+			{if $PAYMENT_INFORMATION==''}
+			<hr/>
+			{else}
+			&nbsp;
+			{/if}
+		</td>
+	</tr>
+</table>
+{/if}
+{if $PAYMENT_INFORMATION!=''}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    	<td class="subcategory">
+    		{#text_payment_info#}&nbsp;
+    	</td>
+	</tr>
+	<tr>
+		<td class="main_border">{$PAYMENT_INFORMATION}</td>
+	</tr>
+	<tr>
+		<td><hr/></td>
+	</tr>
+</table>
+{/if}
+
+{$CHECKOUT_FORM}
+{if $ORDER_COMMENTS!=''}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{#text_comments#}</td>
+	</tr>
+	<tr>
+		<td class="main_border">{$ORDER_COMMENTS} <a href="{$PAYMENT_EDIT}"><font class="orderEdit">{#text_edit#}</font></a></td>
+	</tr>
+	<tr>
+		<td><hr/></td>
+	</tr>
+</table>
+{/if}
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    	<td class="category">{#text_products#} <a href="{$PRODUCTS_EDIT}"><font class="orderEdit">{#text_edit#}</font></a></td>
+	</tr>
+	<tr>
+		<td class="main_border">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="main">{$PRODUCTS_BLOCK}</td>
+				</tr>
+				<tr>
+					<td class="main_border_top" align="right">{$TOTAL_BLOCK}</td>
+				</tr>
+				{if $GENERAL_DISCLAIMER!=''}
+				<tr>
+					<td class="main" align="center">
+						{$GENERAL_DISCLAIMER}<br/>
+					</td>
+				</tr>
+				{/if}
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td><hr/></td>
+	</tr>
+</table>
+
+{if $CUSTOMERS_REFERENCE!=''}
+<table width="100%" border="0" cellspacing="3" cellpadding="3">
+	<tr>
+		<td class="main" nowrap="nowrap" valign="top"><b>{#text_customers_reference#}</b> {$CUSTOMERS_REFERENCE}</td>
+		<td class="main" valign="top"> {#text_customers_reference_info#}</td>
+	</tr>
+	<tr>
+		<td colspan="2"><hr/></td>
+	</tr>
+</table>
+{/if}
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    	<td class="subcategory">{#title_comments#} </td>
+	</tr>
+	<tr>
+		<td class="main_border_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="100%" valign="top" class="main_border_right">
+					<br/>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>{$COMMENTS}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    <td class="main">
+			<hr/>
+			{#title_ec_checkout_info#}
+			<br/>
+		</td>
+	</tr>
+	{if $AGB}
+	<tr>
+   	<td class="subcategory"><br/>
+			{#title_agb#}
+		</td>
+	</tr>
+	{/if}
+	<tr>
+		<td class="main_border_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="100%" valign="top" class="main_border_right">
+						<br/>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							{if $AGB}
+							<tr>
+								<td class="main" colspan="2">{$AGB}</td>
+							</tr>
+							<tr>
+								<td class="main" colspan="2">&nbsp;</td>
+							</tr>
+							{/if}
+							<tr>
+								<td class="main" width="3%" valign="top" align="left">{$AGB_checkbox} </td>
+								<td class="main" width="87%" valign="top" align="left">
+									<strong>{$ACCEPT_AGB}</strong>
+								</td>
+							</tr>
+<!-- W. Kaiser-->
+							<tr>
+								<td class="main" width="90%" valign="top" align="left" colspan="2">&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="main" width="3%" valign="top" align="left">{$FERNAG_checkbox} </td>
+								<td class="main" width="87%" valign="top" align="left">
+									<strong>{$ACCEPT_FERNAG}</strong>
+								</td>
+							</tr>
+<!-- W. Kaiser-->
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td height="5">&nbsp;</td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr><td colspan="2"><hr/></td></tr>
+	<tr>
+		<td valign="top" width="350" class="main">
+			<strong>{#title_continue#}</strong><br/>
+			{#text_continue#}
+		</td>
+		<td  valign="top">&nbsp;
+			{if $MODULE_BUTTONS!=''}
+			{$MODULE_BUTTONS}
+			<br/>
+			{/if}
+			{$CHECKOUT_BUTTON}
+		</td>
+	</tr>
+</table>
+{$FORM_END}

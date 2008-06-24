@@ -1,0 +1,39 @@
+{olc_template_init use_template_language="true" section="boxes"}
+<table width="100%" class="{$box_navigation_area} box_CART" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top"><h3>{#heading_cart#}</h3></td>
+	</tr>
+	<tr>
+		<td class="infoBox" valign="top">
+			<table width="100%" class="{$box_navigation_area} box_CART" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td align="left" class="boxText_border" valign="top">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						{foreach name=aussen item=products_data from=$products}
+							<tr>
+								<td nowrap="nowrap" class="infoBox" width="25">
+									<font size="1">{$products_data.QTY}&nbsp;x&nbsp;</font>
+								</td>
+								<td class="infoBox"><font size="1">{$products_data.NAME|truncate:25:"...":true}</font></td>
+							</tr>
+						{/foreach}
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="1">
+							{if $DISCOUNT}
+								<font color="#FF0000">{#text_discount#}&nbsp;{$DISCOUNT}</font>&nbsp;&nbsp;<br/>
+							{/if}
+							{#text_total#}&nbsp;{$TOTAL}&nbsp;&nbsp;
+						</font>
+					</td>
+				</tr>
+			</table>	
+		</td>
+	</tr>
+	<tr>
+		<td class="infoBoxFooter">&nbsp;</td>
+	</tr>
+</table>

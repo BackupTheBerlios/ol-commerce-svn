@@ -1,0 +1,1 @@
+h:/apache group/apache/htdocs/seifenparadies/olcommerce_1_2_2A_AJAX_Test/olcommerce/includes/classes/smarty/

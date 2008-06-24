@@ -1,0 +1,42 @@
+#
+#	Achtung:
+#
+#	"AllowOverride FileInfo" oder "AllowOverride All" muss in der APACHE Konfigurationsdatei "httpd.conf" gesetzt sein,
+#	damit die folgenden Anweisungen zulässig sind!!!!
+#
+
+#
+#Eigenen Fehler-Handler für "Fehler 404 (Datei nicht gefunden)" definieren
+#
+ErrorDocument 404 /404.php
+#
+
+#
+#	Wenn Sie mit "suchmaschinenenfreundlichen" URLs arbeiten, und Ihr Server "mod_rewrite" unterstützt,
+#	können Sie die "#"-Zeichen am Beginn jeder der folgenden Zeilen löschen, um diese Funktion zu aktivieren.
+#
+#	Einige Server generieren jedoch damit einen "Fehler 403 (Kein Zugrifssrecht)",
+# so dass das zunächst deaktiviert ist!
+#
+#	"Suchmaschinenenfreundlichen" URLs können aber auch dann verwendet werden, weil das "Rewriting"
+#	der URLs dann über den "Umweg" über das Skript "404.php" erfolgt, das oben als Fehler-Handler für
+#	nicht vorhandene Seiten definiert wurde.
+#
+#	Sie sollten aber, wenn immer möglich, mit "mod_rewrite" arbeiten, weil sonst bei jedem Zugriff über
+#	eine "suchmaschinenenfreundliche" URL ein Eintrag im APACHE "Error-Log" erfolgt!
+#
+#	Also einfach mal ausprobieren!!!!
+#
+#<IfModule mod_rewrite.c>
+#	# Rewrite URLs
+	RewriteEngine On
+
+	RewriteBase /
+	RewriteCond %{QUERY_STRING} ^(.*)$
+	RewriteRule ^seo-(.+)\.html?$ seo.php [L]
+
+	RewriteCond %{QUERY_STRING} ^(.*)$
+	RewriteRule ^index\.html?$ index.php?%1 [L]
+#</IfModule>
+
+

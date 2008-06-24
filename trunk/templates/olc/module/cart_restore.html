@@ -1,0 +1,98 @@
+{olc_template_init title="#text_restore_title#" section="shopping_cart"}
+<!-- W. Kaiser - AJAX-->
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+{$FORM_ACTION}
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="category">
+				{#heading_restore_carts#}
+			</td>
+		</tr>
+	</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		{if $ERROR_MESSAGE}
+		<tr>
+			<td colspan="5" class="category">
+				<br/><p align="center">{$ERROR_MESSAGE}
+			</td>
+		</tr>
+		{else}
+		<tr>
+			<td colspan="5"><br/><hr/></td>
+		</tr>
+		<tr>
+			<td class="category" colspan="5">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="category" width="26" valign="top">
+							<INPUT NAME="add_cart" TYPE="checkbox" VALUE="ON"><br/>
+						</td>
+						<td class="main_grey" colspan="4" valign="top">
+							{#text_restore_add_cart#}
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5"><hr/><br/></td>
+		</tr>
+		<tr>
+			<td class="main" width="25">&nbsp;<strong>{#text_lfd#}</strong>&nbsp;</td>
+			<td class="main" width="60">&nbsp;<strong>{#text_select#}</strong>&nbsp;</td>
+			<td class="main" align="center" ><strong>&nbsp;{#text_name#}&nbsp;</strong></td>
+			<td class="main" align="center" width="100"><strong>{#text_date#}</strong></td>
+			<td class="main" align="center" width="60"><strong>&nbsp;{#text_remove#}&nbsp;</strong></td>
+		</tr>
+		<tr>
+			<td colspan="5" height="16"><hr/></td>
+		</tr>
+		{assign var="lfd" value=0} {foreach name=aussen item=module_data from=$module_content} 
+		{assign var="lfd" value=$lfd+1}
+		<tr>
+			<td valign="top" class="main" align="right"><b>{$lfd}.</b>&nbsp;&nbsp;</td>
+			<td valign="top" class="main" align="center">&nbsp;{$module_data.BOX_SELECT}&nbsp;</td>
+			<td valign="top" class="main_grey" ><b>{$module_data.NAME}</b></td>
+			<td valign="top" class="main_grey" align="center">{$module_data.DATE}</td>
+			<td valign="top" align="center">{$module_data.BOX_DELETE}</td>
+		</tr>
+		<tr>
+			<td colspan="2"></td>
+			<td colspan="3" class="main">
+				<A href="{$module_data.LINK}">{if $module_data.show_order_details}{#text_cart_hide#}{else}{#text_cart_show#}{/if}</A>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		{if $module_data.show_order_details}
+		<tr>
+			<td colspan="2"></td>
+			<td colspan="3" class="main">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr> 
+						<td>{$MODULE_order_details}</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5"><hr/></td>
+		</tr>
+		{/if} 
+		{/foreach} 
+		{/if}
+		<tr>
+			<!--
+			<td class="main" align="left" valign="bottom">
+				{$BUTTON_BACK}
+			</td>
+			-->
+			<td colspan="5" align="middle" valign="bottom">
+				<br/>{$BUTTON_CONTINUE}
+			</td>
+		</tr>
+	</table>
+{$FORM_END}
+<!-- W. Kaiser - AJAX-->

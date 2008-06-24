@@ -1,0 +1,27 @@
+Sehr geehrter Kunde,
+
+Sie erhalten diese eMail, weil Sie sich zum Empfang unserer Informations-eMails angemeldet haben.
+
+Bitte klicken Sie auf den Aktivierungslink, damit Ihre eMail-Adresse für den Empfang der Informations-eMails freigeschaltet wird.
+
+Ihr Aktivierungslink:
+
+{$LINK}
+
+Sollten Sie sich nicht für den Empfang unserer Informations-eMails angemeldet haben, bzw. den Empfang der Informations-eMails doch nicht wünschen, brauchen Sie gar nichts zu tun:
+
+Ihre Adresse wird dann aus unserer Datenbank automatisch gelöscht.
+
+Seifenparadies Gerta M. Kaiser
+Schleswiger Str. 22a
+D-24975 Husby
+Fon: 04634-9313186
+Fax: 04634-1517
+eMail: vertrieb@seifenparadies.de
+
+{if $MAIL_IMPRESSUM}
+
+================================================================================
+
+{$MAIL_IMPRESSUM}
+{/if}

@@ -1,0 +1,66 @@
+{olc_template_init title="#heading_title#" section="newsletter"}
+<!-- W. Kaiser - AJAX-->
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+<table width="100%">
+  <tr>
+    <td class="main"><b>{$info_message}</b></td>
+  </tr>
+	<tr>
+	  <td>
+			{$FORM_ACTION}
+        <table width="100%" border="0"  cellpadding="0" cellspacing="0">
+          <tr> 
+            <td width="100%" colspan="3">
+			        <table width="100%" border="0" cellpadding="0" cellspacing="4">
+		            {if !$FORCE}
+			          <tr> 
+			            <td class="main" align="center" valign="top"><b>{$text_newsletter}</b>
+				            <p>
+										<b>{#text_email#}<br/></b>{$INPUT_EMAIL}</p>
+										<p>
+										<b>{#heading_title#}</b><table border="0" ID="table1">
+											<tr>
+												<td class="main"><b>{#text_in#}&nbsp;</b></td>
+												<td class="main">&nbsp;{$CHECK_INP}</td>
+											</tr>
+											<tr>
+												<td class="main"><b>{#text_out#}&nbsp;</b></td>
+												<td class="main">&nbsp;{$CHECK_DEL}</td>
+											</tr>
+										</table>
+										<p>
+										Aus rechtlichen Gründen (und um einen automatisierten Eintrag zu 
+										verhindern) ist es erforderlich, dass wir den Nachweis erbringen 
+										können, dass die Zusendung des Newsletters von Ihnen ausdrücklich 
+										gewünscht wurde.</p>
+										<p>Bitte geben Sie daher noch den folgenden <font color="#FF0000">
+										<B>Sicherheitscode</B></font> in das darunter liegende Feld ein.</p>
+										<p><font color="#FF0000"><b>{#text_sec_code#}</b></font><br/>{$VVIMG}<br/><br/>
+									<b><font color="#0000FF">{#text_inp_code#}</font></b><br/>{$INPUT_CODE}</p>
+										<p>
+										Zusätzlich ist es auch erforderlich, dass wir überprüfen, ob diese 
+										Newsletter-Anmeldung auch <B>wirklich von Ihnen </B>ausgeführt wurde.<p>
+										Nach erfolgreichem Absenden dieser Daten, erhalten Sie daher eine <b>
+										eMail</B>, die einen <B>Bestätigungslink</B> für diese Anmeldung 
+										erhält.<p>
+										Bitte Klicken Sie diesen <B>Bestätigungslink</B> dann einfach an, 
+										damit Ihre eMail-Adresse für den Empfang des Newsletters 
+										freigeschaltet werden kann.
+										</p>
+									</td>
+		          	</tr>
+								{/if}
+			          <tr> 
+			            <td class="main" align="center">{$BUTTON_SEND}</td>
+			          </tr>
+					 	  </table>
+						</td>
+				  </tr>
+				</table>
+			{$FORM_END}
+		</td>
+  </tr>
+</table>

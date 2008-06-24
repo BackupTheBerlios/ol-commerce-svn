@@ -1,0 +1,423 @@
+/*
+
+OL-Commerce Version 5.x/AJAX
+http://www.ol-commerce.com, http://www.seifenparadies.de
+
+Copyright (c) 2004 OL-Commerce, 2006 Dipl.-Ing.(TH) Winfried Kaiser (w.kaiser@fortune.de, info@seifenparadies.de)
+--------------------------------------------------------------
+based on:
+(c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+(c) 2002-2003 osCommerce(customers.php,v 1.76 2003/05/04); www.oscommerce.com
+(c) 2003	     nextcommerce (customers.php,v 1.22 2003/08/24); www.nextcommerce.org
+(c) 2004      XT - Commerce; www.xt-commerce.com
+
+Released under the GNU General Public License
+---------------------------------------------------------------------------------------
+*/
+/* links */
+/*W. Kaiser - AJAX*/
+
+a {
+	font: normal 10px;
+	text-decoration: none;
+	font-color:black;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a.headerLink {
+	color: Black;
+	font: bold 10px;
+	text-decoration: none;
+}
+
+a.headerLink:hover {
+	text-decoration: underline;
+}
+
+a.menuBoxContentLink {
+	color:black;
+	font: normal 10px;
+	text-decoration: none;
+}
+
+a.menuBoxContentLink:hover {
+	text-decoration: underline;
+}
+
+a.menuBoxHeadingLink {
+	color: Black;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.splitPageLink:link {
+	color: Blue;
+	font: normal 10px;
+	text-decoration: none;
+}
+
+a.splitPageLink:visited {
+	color: Blue;
+	font: normal 10px;
+	text-decoration: none;
+}
+
+a.splitPageLink:hover {
+	background: #FFFF33;
+	color: Blue;
+	font: normal 10px;
+	text-decoration: underline;
+}
+
+a.splitPageLink:active {
+	color: Blue;
+	font: normal 10px;
+	text-decoration: none;
+}
+
+/* auction.Lister*/
+a.dataTableHeadingContentLink:visited {
+	 font-size: 10px;
+	 color: #ffffff;
+	 font-weight: bold;
+	 text-decoration: none;
+}
+
+a.dataTableHeadingContentLink:active {
+	 font-size: 10px;
+	 color: #ffffff;
+	 font-weight: bold;
+	 text-decoration: none;
+}
+a.dataTableHeadingContentLink:hover {
+	 font-size: 10px;
+	 color: #ffffff;
+	 font-weight: bold;
+	 text-decoration: underline;
+}
+/* auction.Lister*/
+
+/* page */
+body {
+	background: White;
+	font: normal 10px Verdana, Arial, sans-serif;
+	color: Black;
+	margin: 0px;
+	padding:0px;
+}
+
+/* forms */
+input
+{
+  /*Note: "expression" is IE proprietary! */
+  border: expression(this.type=="text" || this.type=="password" || this.type=="file" || this.type=="button" || this.type=="submit" ? "1px solid Black" : "");
+  background-color: expression(this.type=="text"  || this.type=="password" || this.type=="file" || this.type=="button" || this.type=="submit"? "#F5F5F5" : "");
+  font-size: 12px;
+  color: Black;
+}
+
+/*Note: the following is not accepted by IE! */
+input[type=text], input[type=password], input[type=button], input[type=file], input[type=submit]
+{
+	color: Black;
+	font-size: 12px;
+	border: 1px solid Black;
+	background: #F5F5F5;
+}
+
+select, option, textarea
+{
+	color: Brown;
+	font-size: 12px;
+	border: 1px solid #A52A2A;
+	background: #FFEFD5;
+}
+
+/*W. Kaiser - AJAX*/
+td.navleft {
+	border-color: #C2C3D4;
+	border-right: 1px solid;
+	width: 200px;
+}
+
+td.navright {
+	border-color: #C2C3D4;
+	border-left: 1px solid;
+	width: 200px;
+}
+
+.attributes-even {
+	background: White;
+}
+
+/* attributes */
+.attributes-odd {
+	background: #f4f7fd;
+}
+
+.columnLeft {
+	/*border-color: #cccccc;
+	border: 1px solid; */
+	background: #D6D6D6;
+	color:black;
+	vertical-align: top;
+	width: 180px;
+	font-size:10px;
+}
+
+.pseudo_columnLeft {
+	/*border: 1px solid; */
+	background: white;
+	color:black;
+	vertical-align: top;
+	width: 180px;
+	font-size:10px;
+}
+
+.columnRight {
+	/*border-color: #cccccc;
+	border: 1px solid; */
+	background: #D6D6D6;
+	color:black;
+	vertical-align: top;
+	width: 180px;
+	font-size:10px;
+}
+
+.admin_info {
+	border:1px solid #FF8400;
+}
+
+.dataTableContent {
+	color: Black;
+	font: 10px;
+	vertical-align: middle;
+}
+
+.dataTableContentSelected {
+	color: Black;
+	font: 10px;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.dataTableContent_products {
+	background: #FFF2F2;
+	color: Black;
+	font: 10px;
+	vertical-align: middle;
+}
+
+.dataTableContentRowSelected {
+	color: Black;
+	font: 10px;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.dataTableContentRow {
+	border-bottom: 1px solid;
+	border-color: #cccccc;
+	color: Black;
+	font: 10px;
+	vertical-align: middle;
+}
+
+.dataTableHeadingContent {
+	border-bottom: 1px solid;
+	border-color: Black;
+	font-size: 10px;
+	font-color: Black;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* data table */
+.dataTableHeadingRow {
+	background: #FFF0B4;
+	border-bottom: 1px solid;
+	border-color: Black;
+	font: 10px;
+	font-color: Black;
+	font-weight: bold;
+}
+
+.dataTableRow {
+	background: #FFFFE8;
+}
+
+/* auction.Lister*/
+.dataTableRow_1 {
+ 	font-size: 10px;
+ 	background-color: #E6E7E7;
+}
+/* auction.Lister*/
+
+.dataTableRowOver {
+	background: #FFE9CC;
+}
+
+.dataTableRowSelected {
+	background: #FFC87F;
+	font-weight: bold;
+}
+
+.errorText {
+	color: Red;
+	font: 10px;
+}
+
+.fieldRequired {
+	color: Red;
+	font: 10px;
+}
+
+/* account */
+.formArea {
+	background: #f1f1f1;
+	border-color: #cccccc;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.formAreaTitle {
+	font: bold 12px Tahoma,;
+}
+
+.headerBar {
+	background: #cccccc;
+	border-bottom: 1px solid;
+	border-color: Black;
+}
+
+.headerBarContent {
+	color: Black;
+	font: bold 10px;
+	padding: 2px;
+}
+
+.infoBoxContent {
+	background: #FFE9CC;
+	color: Black;
+	font: 10px;
+}
+
+/* info box */
+.infoBoxHeading {
+	background: #FFB24C;
+	border-bottom: 1px solid;
+	border-color: Black;
+	font: 10px;
+	font-color: Black;
+	font-weight: bold;
+	text-align: center;
+}
+
+.longDescription {
+	display: none;
+	visibility: hidden;
+}
+
+.security_check {
+ 	border: 1px solid #FF8400;
+ 	bgcolor:#FDAC00;
+ 	font-size:10px;
+}
+
+.main {
+	font: 12px;
+}
+
+.menuBoxContent {
+	color: Black;
+	font: 10px;
+}
+
+/* menu box */
+.menuBoxHeading {
+	background: #FF8400;
+	/*border: 1px solid #cccccc;*/
+	color: white;
+	font-size: 12px;
+	font-weight: bold;
+	padding:2px;
+	margin-top:4px;
+}
+
+/* message box */
+.messageBox {
+	font: 10px;
+}
+
+.messageStackError, .messageStackWarning {
+	background-color: red;
+	color:yellow;
+	font-weight:bold;
+	font-size: 10px;
+}
+
+.messageStackSuccess {
+	background: #99ff00;
+	font: 10px;
+}
+
+.oldPrice {
+	text-decoration: line-through;
+}
+
+.pageHeading {
+	font-size: 18px;
+	color: #FF8400;
+	font-weight: bold;
+	text-align:left;
+}
+
+.pageSubHeading {
+	font-size: 14px;
+	font-color: #D6D6D6;
+	font-weight: bold;
+	text-align:left;
+}
+
+.smallText {
+	font: 10px;
+}
+
+/* miscellaneous */
+.specialPrice {
+	color: Red;
+}
+
+.VisitorNew {
+	background:Green;
+	color:White;
+	font-size:12px;
+	font-weight:bold
+}
+
+.VisitorLost {
+	background:Red;
+	color:Yellow;
+	font-size:12px;
+	font-weight:bold
+}
+
+.frame_left {
+  background-image: url('img/bg_image.gif');
+  background-repeat: repeat-x;
+  text-align: left;
+}
+
+.frame_right {
+  background-image: url('img/bg_image.gif');
+  background-repeat: repeat-x;
+  text-align: right;
+}
+.image {
+  border:0;
+}
+

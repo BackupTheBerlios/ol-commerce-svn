@@ -1,0 +1,339 @@
+<html>
+<!-- order_mail -->{config_load file="$language/lang_$language.conf" section="print_order"}
+{assign var="VERSAND" value="<p class="standard">Ihre Bestellung wird nach Zahlungseingang versandt.</p>"}
+{php}
+$this->_tpl_vars['MY_BANK']='
+<table border="0" cellspacing="6" cellpadding="0">
+  <tr>
+    <td class="td_style_bold">'.STORE_BANK_OWNER_TEXT.COLON_BLANK.'</td>
+    <td class="td_style_bold">'.HTML_NBSP.STORE_NAME.'</td>
+  </tr>
+  <tr>
+    <td class="td_style_bold">'.STORE_BANK_NAME_TEXT.COLON_BLANK.'</td>
+    <td class="td_style">'.HTML_NBSP.STORE_BANK_NAME.'</td>
+  </tr>
+  <tr>
+    <td class="td_style_bold">'.STORE_BANK_BLZ_TEXT.COLON_BLANK.'</td>
+    <td class="td_style">'.HTML_NBSP.STORE_BANK_BLZ.'</td>
+  </tr>
+  <tr>
+    <td class="td_style_bold">'.STORE_BANK_ACCOUNT_TEXT.COLON_BLANK.'</td>
+    <td class="td_style">'.HTML_NBSP.STORE_BANK_ACCOUNT.'</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="td_style">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="td_style_bold">'.STORE_BANK_BIC_TEXT.COLON_BLANK.'</td>
+    <td class="td_style">'.HTML_NBSP.STORE_BANK_BIC.'</td>
+  </tr>
+  <tr>
+    <td class="td_style_bold">'.STORE_BANK_IBAN_TEXT.COLON_BLANK.'</td>
+    <td class="td_style">'.HTML_NBSP.STORE_BANK_IBAN.'</td>
+  </tr>
+</table>
+';
+{/php}
+<head>
+<title>{#title#} {$oID}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+{if $STYLE_BODY}
+{$STYLE_BODY}
+{/if}
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="{$tpl_path}stylesheet.css">
+{/if}
+<style type="text/css">
+{literal}
+@media screen
+{
+	.standard {
+	  font-size: 14px;
+	}
+	.td_style {
+	  padding: .75pt .75pt .75pt .75pt;
+	  font-size: 14px;
+	}
+	.td_style_bold {
+	  padding: .75pt .75pt .75pt .75pt;
+	  font-size: 14px;
+	  font-weight: bold;
+	}
+	.td_style_header {
+	  border: 1px solid;
+	  font-size: 14px;
+	}
+	.td_style_header_bold {
+	  border: 1px solid;
+	  font-size: 14px;
+	  font-weight: bold;
+	  text-align: center;;
+	}
+	.payment {
+	  font-size: 14px;
+	  font-weight: bold;
+	  color: Red;
+	}
+}
+td.main, p.main {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.main {
+  font-size: 14px;
+  line-height: 1.5;
+}
+@media print
+{
+	.standard {
+	  font-size: 14px;
+	}
+	.td_style {
+	  font-size: 14px;
+	  padding-right: 0.75pt;
+	  padding-left: 0.75pt;
+	  padding-bottom: 0.75pt;
+	  padding-top: 0.75pt;
+	}
+	.td_style_bold {
+	  font-weight: bold;
+	  font-size: 14px;
+	  padding: .75pt .75pt .75pt .75pt;
+	}
+	.td_style_header {
+	  font-size: 14px;
+	  border: 1px solid;
+	}
+	.td_style_header_bold {
+	  font-weight: bold;
+	  font-size: 14px;
+	  text-align: center;
+	  border: 1px solid;
+	}
+	td.main, p.main {
+	  font-size: 13px;
+	  line-height: 1.5;
+	}
+	.main {
+	  font-size: 14px;
+	  line-height: 1.5;
+	}
+}
+{/literal}
+</style>
+<title>{#title#} {$oID}</title>
+</head>
+
+<body>
+
+<table width="100%" border="0">
+  <tr>
+    <td>
+	    <table class="standard" width="100%" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td valign="top">{$address_label_customer}</td>
+	        <td width="315" valign="top">
+		        <font face="Verdana" size="2">
+			        <p align="center">
+			        	<a target="_blank" title="{$STORE_NAME}"
+			        		alt="{$STORE_NAME}" href="{$HOME_LINK}"><img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}"></a>
+			        </p>
+			        <p>{$STORE_NAME_ADDRESS}</p>
+			        <p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		        </font>
+		       </td>
+	      </tr>
+	    </table>
+	    <br />
+	    <table class="standard" width="100%" border="0">
+	      <tr>
+	        <td width="50%">
+	        <p><b>Lieferadresse</b><br />
+	        </p>
+	        </td>
+	        <td>{if $address_label_payment}
+	        <p><b>Rechnungsadresse</b><br />
+	        </p>
+	        {/if} </td>
+	      </tr>
+	      <tr>
+	        <td>{$address_label_shipping} </td>
+	        <td>{if $address_label_payment}{$address_label_payment}{/if} </td>
+	      </tr>
+	      <tr>
+	        <td colspan="2"><br />
+	        <hr />{if $FON}<p><b>Ihre Telefonnummer: </b>{$FON}{/if} {if $FAX}</p>
+	        <p><b>Ihre Telefaxnummer: </b>{$FAX}{/if} {if $EMAIL}</p>
+	        <p><b>Ihre eMail-Adresse: </b>{$EMAIL}{/if} {if $CUSTOMERS_IP}</p>
+	        <p><b>Ihre Internet-Adresse: </b>{$CUSTOMERS_IP}</p>
+	        {/if} <br />
+	        <br />
+	        </td>
+	      </tr>
+	    </table>
+    </td>
+  </tr>
+</table>
+<hr />
+<p class="standard">Hallo {$NAME},<br />
+<br />
+vielen Dank für Ihre Bestellung bei <a target="_blank" title="{$STORE_NAME}"
+href="{$HOME_LINK}"><img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}" title="{$STORE_NAME}"></a> <br />
+<br />
+{if $AUCTION_MESSAGE} <img src="{$tpl_path}images/ebay.gif" border="0" align="middle">
+{$AUCTION_MESSAGE} {else} Anbei erhalten Sie eine Zusammenfassung Ihrer Bestellung. {/if} <br />
+<br />
+{if $INVOICE_ATTACHED} Ihre Bestellbestätigung finden Sie im PDF-Format auch als Anhang zu dieser
+eMail! (<b>{$INVOICE_ATTACHED}</b>)<br />
+<br />
+{/if} Sollten Sie Fragen zu Ihrer Bestellung haben, zögern Sie nicht, uns zu kontaktieren.<br />
+<br />
+Mit freundlichen Grüssen,<br />
+<br />
+Ihr <a target="_blank" title="{$STORE_NAME}" href="{$HOME_LINK}">
+<img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}" title="{$STORE_NAME}"></a> Team </p>
+<hr />
+<table class="td_style" style="page-break-before: always" width="100%" border="0" cellpadding="0"
+cellspacing="0">
+  <tr>
+    <td>
+    <p align="center"><b><font size="4">Ihre Bestellung<br />
+    </font>&nbsp;</b> </p>
+    </td>
+  </tr>
+  <tr>
+    <td><b>{#order#}</b> {$oID}<br />
+    <b>{#orderdate#}</b> {$DATE}<br />
+    {if $PAYMENT_METHOD}<b>{#payment#}</b> {$PAYMENT_METHOD}<br />
+    {/if} <br />
+    <br />
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <table width="100%" border="0" cellpadding="3" cellspacing="0">
+      <tr>
+        <td class="td_style_header_bold">{#head_units#} </td>
+        <td class="td_style_header_bold">{#head_products#} </td>
+        <td class="td_style_header_bold">{#head_artnr#} </td>
+        <td class="td_style_header_bold" width="150">{#head_single_price#}</td>
+        <td class="td_style_header_bold" width="150">{#head_price#} </td>
+      </tr>
+      {foreach name=aussen item=order_values from=$order_data}
+      <tr>
+        <td width="40" class="td_style_header" valign="top" align="center">
+        {$order_values.PRODUCTS_QTY}
+        </td>
+        <td class="td_style_header" valign="top" align="left"><b>{$order_values.PRODUCTS_NAME}</b>
+        {if $order_values.PRODUCTS_ATTRIBUTES} <br />
+        <i>{$order_values.PRODUCTS_ATTRIBUTES}</i> {/if} </td>
+        <td class="td_style_header" valign="top" align="left">{$order_values.PRODUCTS_MODEL}
+        <!--<br/><em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em>--></td>
+        <td class="td_style_header" valign="top" width="150" align="right">
+        {$order_values.PRODUCTS_SINGLE_PRICE}
+        </td>
+        <td class="td_style_header" valign="top" width="150" align="right"><b>
+        {$order_values.PRODUCTS_PRICE}</b>
+        </td>
+      </tr>
+      {/foreach}
+    </table>
+    </td>
+  </tr>
+</table>
+{assign var="first_line" value="true"}
+<div class="td_style" align="right">
+  <br />
+  {foreach name=aussen item=order_total_values from=$order_total} {if $first_line=="true"}<b>{/if}
+  {$order_total_values.TITLE}{$order_total_values.TEXT} {if $first_line=="true"}</b>{/if} <br />
+  {assign var="first_line" value="false"}
+  {/foreach}
+</div>
+<div class="td_style">
+  <hr />
+  <p>{$TAX_INFORMATION} </p>
+  {if $COMMENTS} <hr />
+  <p><b>Ihre Mitteilung an uns:</b> </p>
+  <p>{$COMMENTS} </p>
+  {/if} <hr />
+  {if $PAYMENT_METHOD == 'Direktüberweisung'}
+  {elseif $PAYMENT_METHOD == 'Vorkasse'}
+  <p class="payment">Bitte senden Sie uns einen Scheck über den Rechnungsbetrag, oder überweisen Sie
+  ihn auf unsere folgende Bankverbindung: </p>
+  {$MY_BANK} {$VERSAND}
+  {elseif $PAYMENT_METHOD == 'Überweisung'}
+  <p class="payment">Bitte überweisen Sie den Rechnungsbetrag auf unsere folgende Bankverbindung:
+  </p>
+  {$MY_BANK} {$VERSAND}
+  {elseif $PAYMENT_METHOD == 'Lastschriftverfahren'}
+  <p class="payment">Den Rechnungsbetrag werden wir wunschgemäß von Ihrem folgenden Bankkonto
+  abbuchen.
+  </p>
+  <table class="standard" border="0" cellspacing="6" cellpadding="0">
+    <tr>
+      <td class="td_style_bold">{$STORE_BANK_OWNER_TEXT}:&nbsp;</td>
+      <td class="td_style">&nbsp;{$INHABER} </td>
+    </tr>
+    <tr>
+      <td class="td_style_bold">{$STORE_BANK_NAME_TEXT}:&nbsp;</td>
+      <td class="td_style">&nbsp;{$BANK} </td>
+    </tr>
+    <tr>
+      <td class="td_style_bold">{$STORE_BANK_BLZ_TEXT}:&nbsp;</td>
+      <td class="td_style">&nbsp;{$BLZ} </td>
+    </tr>
+    <tr>
+      <td class="td_style_bold">$STORE_BANK_ACCOUNT_TEXT:&nbsp;</td>
+      <td class="td_style">&nbsp;{$KONTO} </td>
+    </tr>
+  </table>
+  {$VERSAND}
+  {elseif $PAYMENT_METHOD == 'Kreditkarte'}
+  <p class="payment">Den Rechnungsbetrag werden wir wunschgemäß Ihrer folgenden Kreditkarte belasten.
+  </p>
+  <table border="0" cellspacing="6" cellpadding="0" id="table16">
+    <tr>
+      <td class="td_style_bold">Kreditkarte:&nbsp;</td>
+      <td class="td_style">&nbsp;{$CC_TYPE} </td>
+    </tr>
+    <tr>
+      <td class="td_style_bold">Kreditkartennummer:&nbsp;</td>
+      <td class="td_style">&nbsp;{$CC_NUMBER} </td>
+    </tr>
+    <tr>
+      <td class="td_style_bold">Kontrollnummer:&nbsp;</td>
+      <td class="td_style">&nbsp;{$CC_CVN} </td>
+    </tr>
+    <tr>
+      <td class="td_style_bold">Kreditkarteninhaber:&nbsp;</td>
+      <td class="td_style">&nbsp;{$CC_OWNER} </td>
+    </tr>
+    <tr>
+      <td class="td_style_bold">Gültig bis:&nbsp;</td>
+      <td class="td_style">&nbsp;{$CC_EXPIRE} </td>
+    </tr>
+  </table>
+  {elseif $PAYMENT_METHOD == 'Nachnahme'}
+  <p class="payment">Der Rechnungsbetrag wird von Ihnen per Nachnahme beglichen.</p>
+  {elseif $PAYMENT_METHOD == 'PayPal'}
+  <p class="payment">Den Rechnungsbetrag werden Sie per <a target="_blank"
+  href="http://www.paypal.de/">PayPal</a> begleichen. </p>
+  {$VERSAND}
+  {/if}
+</div>
+{if $FERNAG_INFO} <br />
+<hr />
+<p>{#order_mail_fernag_info#}</p>
+{$FERNAG_INFO} {/if} {if $AGB_INFO} <br />
+<hr />
+<p>{#order_mail_agb_info#}</p>
+{/if}
+
+</body>
+
+</html>
+{if $MAIL_IMPRESSUM} <br/>
+<hr>{$MAIL_IMPRESSUM} {/if}

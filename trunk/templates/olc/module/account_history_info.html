@@ -1,0 +1,165 @@
+{olc_template_init title="#heading_history_info#" section="account_history_info"} 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="98">
+	<tr>
+		<td class="main">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+			    	<td class="main">
+			    		{#text_oid#}&nbsp;
+			    	</td>
+			    	<td class="main">
+			    		&nbsp;{$ORDER_NUMBER} ({$ORDER_STATUS})
+			    	</td>
+				</tr>
+				<tr>
+			    	<td class="main">
+			    		{#text_date#}&nbsp;
+			    	</td>
+			    	<td class="main">
+			    		&nbsp;{$ORDER_DATE}
+			    	</td>
+				</tr>
+				<tr>
+			    	<td class="main">
+			    		{#text_ip#}&nbsp;
+			    	</td>
+			    	<td class="main">
+			    		&nbsp;{$ORDER_IP}
+			    	</td>
+				</tr>
+			</table>
+		</td>
+	<tr>
+		<td colspan="2"><hr/></td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr> 
+		<td width="50%" class="main_border_top"><strong>{#text_shipping_address#}</strong><br/>
+		{$DELIVERY_LABEL}</td>
+		<td class="main_border_top" width="50%">{if $BILLING_LABEL}<strong>{#text_payment_address#}</strong><br/>
+		{$BILLING_LABEL}{/if}</td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="10" alt="" style="display: block;"></td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{#text_shipping_method#}</td>
+	</tr>
+	<tr>
+		<td class="main_border">{$SHIPPING_METHOD}</td>
+	</tr>
+	<tr>
+		<td><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="10" alt="" style="display: block;"></td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{if $PAYMENT_METHOD}{#text_payment_method#}</td>
+	</tr>
+	<tr>
+		<td class="main_border">{$PAYMENT_METHOD}</td>
+	</tr>
+	<tr>
+		<td><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="10" alt="" style="display: block;"></td>
+	</tr>
+</table>
+
+{/if} 
+
+{if $ORDER_COMMENTS!=''}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{#text_comments#}</td>
+	</tr>
+	<tr> 
+		<td class="main_border">{$ORDER_COMMENTS}</td>
+	</tr>
+	<tr>
+		<td><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="10" alt="" style="display: block;"></td>
+	</tr>
+</table>
+
+{/if} {if $PAYMENT_INFORMATION!=''}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{#text_payment_info#}</td>
+	</tr>
+	<tr> 
+		<td class="main_border">{$PAYMENT_INFORMATION}</td>
+	</tr>
+	<tr>
+		<td><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="10" alt="" style="display: block;"></td>
+	</tr>
+</table>
+
+{/if}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{#title_history#}</td>
+	</tr>
+	<tr> 
+		<td class="main_border">{$HISTORY_BLOCK}</td>
+	</tr>
+	<tr>
+		<td><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="10" alt="" style="display: block;"></td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">{#text_products#}</td>
+	</tr>
+	<tr> 
+		<td class="main_border"> 
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="main">{$PRODUCTS_BLOCK}</td>
+				</tr>
+				<tr>
+					<td class="main_border_top"><div align="right">{$TOTAL_BLOCK}</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="10" alt="" style="display: block;"></td>
+	</tr>
+</table>
+
+
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+	{if $ORDER_TRACKING}
+	<tr>
+	    <td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+	    <td valign="top" class="main" colspan="2">{$ORDER_TRACKING}</td>
+	</tr>
+	<tr>
+	    <td colspan="2">&nbsp;</td>
+	</tr>
+	{/if}
+	<tr>
+	    <td colspan="2"><hr/></td>
+	</tr>
+	<tr>
+	    <td valign="bottom" class="main">{$BUTTON_BACK}</td>
+	    <td align="right" valign="top" class="main">
+		    <b>{#title_print_order#}{$PDF_FORMAT}</b><br/>{#text_print_order#} <br/>{$BUTTON_PRINT_ORDER}
+		    {if $BUTTON_PRINT_INVOICE}
+			<br/><br/><b>{#title_print_invoice#}{$PDF_FORMAT}</b><br/>{#text_print_invoice#} <br/>{$BUTTON_PRINT_INVOICE}
+			{/if}   
+		    {if $BUTTON_PRINT_PACKINGSLIP}
+			<br/><br/><b>{#title_print_packingslip#}{$PDF_FORMAT}</b><br/>{#text_print_packingslip#} <br/>{$BUTTON_PRINT_PACKINGSLIP}
+			{/if}   
+		</td>
+	</tr>
+</table>
+
+

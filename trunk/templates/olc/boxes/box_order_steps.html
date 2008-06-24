@@ -1,0 +1,68 @@
+
+<!-- The following code is Copyright (c) 2006 Dipl.-Ing.(TH) Winfried Kaiser (w.kaiser@fortune.de, info@seifenparadies.de)-->
+{olc_template_init use_template_language="true" section="order_steps"}
+{if $use_five_steps}
+{assign var="width" value="20"}
+{else}
+{assign var="width" value="25"}
+{/if}
+<table border="0" width="100%" cellspacing="5" cellpadding="5">
+	<tr>
+		<td colspan="7" valign="top" class="orders_steps_header">{#you_are_here_text#}</td>
+	</tr>
+	<tr>
+		{if $use_five_steps}
+		<td width="{$width}%" >
+			<div class="orders_steps_container_{$class_0}">
+				<span class="orders_steps_text_big_{$class_0}">1.</span>
+				<span class="orders_steps_text_{$class_0}">{#login_text#}</span>
+				<table><tr><td class="orders_steps_text_xplain_{$class_0}">{#login_xplain_text#}</td></tr></table>
+			</div>
+		</td>
+		{assign var="step" value=2}
+		{else}
+		{assign var="step" value=1}
+		<td class="orders_steps_separator">&nbsp;</td>
+		{/if}
+		<td width="{$width}%" >
+			<div class="orders_steps_container_{$class_1}">
+				{$LINK_START_1}
+				<span class="orders_steps_text_big_{$class_1}">{$step}.</span>
+				<span class="orders_steps_text_{$class_1}">{#ship_text#}</span>
+				<table><tr><td class="orders_steps_text_xplain_{$class_1}">{#ship_xplain_text#}</td></tr></table>
+				{$LINK_END_1}
+			</div>
+		</td>
+		{assign var="step" value=$step+1}
+		<td class="orders_steps_separator">&nbsp;</td>
+		<td width="{$width}%" >
+			<div class="orders_steps_container_{$class_2}">
+				{$LINK_START_2}
+				<span class="orders_steps_text_big_{$class_2}">{$step}.</span>
+				<span class="orders_steps_text_{$class_2}">{#payment_text#}</span>
+				<table><tr><td class="orders_steps_text_xplain_{$class_2}">{#payment_xplain_text#}</td></tr></table>
+				{$LINK_END_2}
+			</div>
+		</td>
+		{assign var="step" value=$step+1}
+		<td class="orders_steps_separator">&nbsp;</td>
+		<td width="{$width}%" >
+			<div class="orders_steps_container_{$class_3}">
+				<span class="orders_steps_text_big_{$class_3}">{$step}.</span>
+				<span class="orders_steps_text_{$class_3}">{#order_text#}</span>
+				<table><tr><td class="orders_steps_text_xplain_{$class_3}">{#order_xplain_text#}</td></tr></table>
+			</div>
+		</td>
+		{assign var="step" value=$step+1}
+		<td class="orders_steps_separator">&nbsp;</td>
+		<td width="{$width}%" >
+			<div class="orders_steps_container_{$class_4}">
+				<span class="orders_steps_text_big_{$class_4}">{$step}.</span>
+				<span class="orders_steps_text_{$class_4}">{#success_text#}</span>
+				<table><tr><td class="orders_steps_text_xplain_{$class_4}">{#success_xplain_text#}</td></tr></table>
+			</div>
+		</td>
+	</tr>
+</table>
+<hr/><br/>
+<!-- The precedding code is Copyright (c) 2006 Dipl.-Ing.(TH) Winfried Kaiser (w.kaiser@fortune.de, info@seifenparadies.de)-->

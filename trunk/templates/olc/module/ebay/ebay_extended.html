@@ -1,0 +1,56 @@
+<link rel="stylesheet" type="text/css" href="{$catalog_url}{$tpl_path}stylesheet.css">
+<BASE TARGET="_blank">
+<table border="0" width="100%" background= "{$catalog_url}{$tpl_path}img/bg_green.png">
+  <tr>
+    <td class="main">
+      <p style="font-size=14pt;font-weight:bold">
+        {$prod_name}
+      </p>
+      <p style="font-size=12pt;font-weight:bold">
+        {$prod_short}
+      </p>
+      <p>
+        {$prod_description}
+      </p>
+      <hr/>
+      {$prod_attributes}
+      {$price_disclaimer}
+      <p>Bitte verwenden Sie <font color="red"><b>nicht(!)</b></font> die <b>eBay-Zahlungsabwicklung</b>, auch wenn Sie angeboten wird!</p>
+		<p>Sie erhalten nach Abschluss des Vorgangs eine eMail zur weiteren Abwicklung Ihrer Bestellung in unserem Online-Shop. </p>
+		<p>Das hat für Sie den großen Vorteil, dass Sie, auch bei Bestellung mehrerer Artikel, immer nur die
+		<font color="#FF0000"> <b>günstigen Gesamt-Versandkosten</b></font> aus unserem Online-Shop berechnet bekommen!</p>
+		<p>
+      <p>
+        Unser <b>
+		<A TARGET="_blank" href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}">
+		Impressum</A> </B>finden Sie <b>
+		<A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}">
+		hier</A></b>. Einen Hinweis auf Ihr <b>
+		<A TARGET="_blank" href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Widerruf">
+		Widerrufsrecht</A></b> finden Sie <b>
+		<A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Widerruf">hier</A></b>.
+		Unsere <b>
+		<A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Agb">
+		Allgemeinen Geschäftsbedingungen</A></b> finden Sie <b>
+		<A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Agb">
+		hier</A></b>.
+		</p>
+		<p>
+        Bei der Bestellung <b>mehrerer Produkte am selben Tag</b> werden <b>alle</b> bestellten Produkte zu <b>einer</b> Lieferung zusammen gefasst, und es werden <b>nur die f&#252;r Sie g&#252;nstigsten Gesamt-Versandkosten</b> gemäß unserer <B>Versandkosten-Liste</B> berechnet. (<b><A TARGET="_blank" href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Versandkosten">Versandkosten-Liste
+		ansehen)</A></b>
+			</p>
+			<hr/>
+      <p>
+        <b><img src=
+        "{$catalog_url}{$tpl_path}img/bullet.gif"alt=""> <a href=
+        "http://cgi.ebay.de/ws/eBayISAPI.dll?ViewSellersOtherItems&amp;userid={$ebay_name}&amp;include=0&amp;since=-1&amp;sort=3&amp;rows=50&amp;sspageName=DB:OtherItems"
+        target="_blank">Andere Artikel von "{$store_name}" ansehen</a><br/>
+        <br/>
+        <img src=
+        "{$catalog_url}{$tpl_path}img/bullet.gif" alt=""> <a href=
+        "http://cgi.ebay.de/aw-cgi/eBayISAPI.dll?AcceptSavedSeller&amp;sellerid={$ebay_name}&amp;sspageName=DB:FavList"
+        target="_blank">"{$store_name}" als bevorzugten Verk&#228;ufer in "Mein eBay" speichern</a></b>
+      </p>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,16 @@
+Hallo {$NAME},
+
+vielen Dank für Ihr Interesse an unseren Produkten.
+
+Sie erhalten diese eMail, weil Sie unseren Newsletter empfangen möchten.
+
+Aus rechtlichen Gründen ist es erforderlich, dass Sie den Empfang des Newsletters noch einmal ausdrücklich bestätigen.
+
+Bitte klicken Sie dazu auf den folgenden Aktivierungslink, damit Ihre eMail-Adresse für den Empfang des Newsletters freigeschaltet wird.
+
+Ihr Aktivierungslink: {$LINK}
+
+Sollten Sie sich nicht für unseren Newsletter eingetragen haben, bzw. den Empfang des Newsletters doch nicht wünschen, bitten wir Sie, gar nichts zu tun. Ihre eMail-Adresse wird dann bei der nächsten Aktualisierung der Datenbank automatisch gelöscht.
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}

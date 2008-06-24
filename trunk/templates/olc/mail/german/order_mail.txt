@@ -1,0 +1,170 @@
+{php}
+$this->_tpl_vars['MY_BANK']='
+Kontoinhaber: '.STORE_NAME.'
+Geldinstitut: '.STORE_BANK_NAME.'
+Bankleitzahl: '.STORE_BANK_BLZ.'
+Kontonummer:  '.STORE_BANK_ACCOUNT.'
+
+BIC:          '.STORE_BANK_BIC.'
+IBAN:         '.STORE_BANK_IBAN;
+{/php}
+
+{config_load file="$language/lang_$language.conf" section="print_order"}
+
+{assign var="VERSAND" value="<p CLASS=standard>Ihre Bestellung wird nach Zahlungseingang versandt.</p>"}
+
+{$address_label_customer}
+
+----------------------------------------------------------------------
+{if $PAYMENT_METHOD}{#payment#}: {$PAYMENT_METHOD}
+{/if}
+{#order#}: {$oID}
+{#orderdate#}: {$DATE}
+----------------------------------------------------------------------
+
+{if $FON}
+Ihre Telefonnummer: {$FON}
+
+{/if}
+{if $FAX}
+
+Ihre Telefaxnummer: {$FAX}
+{/if}
+{if $EMAIL}
+
+Ihre eMail: {$EMAIL}
+{/if}
+{if $CUSTOMERS_IP}
+
+Ihre Internet-Adresse: {$CUSTOMERS_IP}
+{/if}
+
+----------------------------------------------------------------------
+
+Hallo {$NAME},
+
+Vielen Dank für Ihre Bestellung bei "{$STORE_NAME}".
+
+{if $AUCTION_MESSAGE}
+{$AUCTION_MESSAGE}
+{else}
+Anbei erhalten Sie eine Zusammenfassung Ihrer Bestellung.
+{/if}{if $INVOICE_ATTACHED}
+
+Ihre Bestellbestätigung finden Sie im PDF-Format auch als Anhang zu dieser eMail! ({$INVOICE_ATTACHED})
+
+{/if}
+Sollten Sie Fragen zu Ihrer Bestellung haben, zögern Sie nicht uns zu kontaktieren.
+
+Mit freundlichen Grüssen,
+
+Ihr "{$STORE_NAME}"-Team
+
+
+Ihre Bestellung
+----------------------------------------------------------------------
+{foreach name=aussen item=order_values from=$order_data}
+{$order_values.PRODUCTS_QTY} x {$order_values.PRODUCTS_NAME} ({$order_values.PRODUCTS_MODEL}) {$order_values.PRODUCTS_PRICE}
+{if $order_values.PRODUCTS_ATTRIBUTES !=''}{$order_values.PRODUCTS_ATTRIBUTES}{/if}
+{/foreach}
+
+{foreach name=aussen item=order_total_values from=$order_total}
+{$order_total_values.TITLE}{$order_total_values.TEXT}
+{/foreach}
+
+Gemäß §19 UStG wird keine Mehrwertsteuer erhoben und ausgewiesen.
+
+{if $address_label_payment}
+Rechnungsadresse
+----------------------------------------------------------------------
+
+{$address_label_payment}
+{/if}
+{if $address_label_payment}
+
+Lieferadresse
+{$address_label_shipping}
+{/if}
+
+----------------------------------------------------------------------
+{$TAX_INFORMATION}
+{if $COMMENTS}
+
+----------------------------------------------------------------------
+Ihre Mitteilung an uns:
+
+{$COMMENTS}
+{/if}
+{if $PAYMENT_METHOD == 'Vorkasse'}
+
+----------------------------------------------------------------------
+Bitte senden Sie uns einen Scheck über den Rechnungsbetrag, oder überweisen Sie ihn auf unser folgendes Bankkonto:
+
+{$MY_BANK}
+
+{$VERSAND}
+{/if}
+{if $PAYMENT_METHOD == 'Überweisung'}
+
+----------------------------------------------------------------------
+Bitte überweisen Sie den Rechnungsbetrag auf unser folgendes Bankkonto:
+
+{$MY_BANK}
+
+{$VERSAND}
+{/if}
+{if $PAYMENT_METHOD == 'Lastschriftverfahren'}
+
+----------------------------------------------------------------------
+Den Rechnungsbetrag werden wir von Ihrem folgenden Bankkonto einziehen.
+
+Kontoinhaber: {$Kontoinhaber}
+Geldinstitut: {$BANK}
+Bankleitzahl: {$BLZ}
+Kontonummer:  {$KONTO}
+
+{$VERSAND}
+{/if}
+{if $PAYMENT_METHOD == 'Kreditkarte'}
+
+----------------------------------------------------------------------
+Den Rechnungsbetrag werden wir Ihrer folgenden Kreditkarte belasten.
+
+Kreditkarte:         {$CC_TYPE}
+Kreditkartennummer:  {$CC_NUMBER}
+Kontrollnummer:      {$CC_CVN}
+Kreditkarteninhaber: {$CC_OWNER}
+Gültig bis:          {$CC_EXPIRE}
+{/if}
+{if $PAYMENT_METHOD == 'Nachnahme'}
+
+----------------------------------------------------------------------
+Der Rechnungsbetrag wird per Nachnahme beglichen.
+{/if}
+{if $PAYMENT_METHOD == 'PayPal'}
+----------------------------------------------------------------------
+Den Rechnungsbetrag werden Sie per PayPal begleichen.
+
+{$VERSAND}
+{/if}
+{if $FERNAG_INFO}
+
+======================================================================
+
+{#order_mail_fernag_info#}
+
+{$FERNAG_INFO}
+{/if}
+{if $AGB_INFO}
+
+======================================================================
+
+{#order_mail_agb_info#}
+{/if}
+
+{if $MAIL_IMPRESSUM_TEXT}
+
+================================================================================
+
+{$MAIL_IMPRESSUM_TEXT}
+{/if}

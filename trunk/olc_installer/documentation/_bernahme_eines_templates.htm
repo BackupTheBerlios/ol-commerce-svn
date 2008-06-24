@@ -1,0 +1,344 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Language" CONTENT="de">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 6.0">
+<meta NAME="ProgId" CONTENT="FrontPage.Editor.Document">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Übernahme eines Templates in OL-Commerce (v4/AJAX)</TITLE>
+<BASE TARGET="_blank">
+</HEAD>
+
+<body>
+
+<p align="center"><b><font size="5" color="#FF0000">Übernahme eines </font>
+<font size="5" color="#0000FF">xtCommerce vX</font><font size="5" color="#FF0000">-/</font><font size="5" color="#0000FF">OL-Commerce 
+v1.2</font><font size="5" color="#FF0000">-Templates in OL-Commerce v4</font></b></p>
+<p>Der <B>einfachste Weg</B>, 
+	irgendein Template in OL-Commerce v4 zu übernehmen, ist wie folgt:</p>
+	<OL>
+		<LI>Man kopiert das <B>Standard OL-Commerce</B> <font color="#0000FF">
+		<b>&quot;olc&quot;-Template</B></font> in einen <b>
+		<font color="#FF0000">neuen</font></b> Template-Ordner
+		(z.B.: '<font color="#FF0000"><B>olc_neu</B></font>')<br/>
+		&nbsp;</LI>
+		<LI>Man kopiert die <B>Grafiken</B> des <font color="#FF0000"><B>neuen</B></font> 
+		Templates (Verzeichnisse &quot;<B>buttons</B>&quot; und &quot;<B>img</B>&quot;) zu dem
+		<font color="#0000FF"><b>&quot;olc&quot;-Template</B></font><br/>
+&nbsp;</LI>
+		<LI>Man kopiert die &quot;<B>index.html</B>&quot; des <font color="#FF0000"><b>
+		neuen</B></font> Templates zu dem <font color="#0000FF"><b>&quot;olc&quot;-Template</B></font><br/>
+&nbsp;</LI>
+		<LI>Man kopiert die<B> </b>&quot;<B>stylesheet.css</B>&quot;<b> </B>des <font color="#FF0000"><B>neuen</B></font> 
+		Templates zu dem <font color="#0000FF"><b>&quot;olc&quot;-Template</B></font><br/>
+&nbsp;</LI>
+		<LI><b><font color="#0000FF">Nur</font><font color="#FF0000"> notwendig, 
+		wenn das </font><font color="#0000FF">neue</font><font color="#FF0000"> 
+		Template ein </font><font color="#0000FF">spezifisches Design</font><font color="#FF0000"> 
+		für den </font><font color="#0000FF">Admin-Bereich</font><font color="#FF0000"> 
+		enthält!<br/>
+		</font></b>(OL-Commerce erlaubt nämlich auch im <B>Admin</B>-Bereich ein
+		<B>Template</B>-orientiertes Vorgehen!) <br/>
+		<br/>
+		<font color="#0000FF"><B>Man kopiert ...</b><br/>
+		</font><br/>
+		&quot;<B>admin\includes\stylesheet.css</B>&quot; nach &quot;<B>olc\admin\stylesheet.css</B>&quot;<br/>
+		die Dateien aus &quot;<B>lang\german\admin\images\buttons</B>&quot; nach &quot;<B>olc\admin\buttons\german\</b>&quot;<br/>
+		die Dateien aus &quot;<B>lang\english\admin\images\buttons</B>&quot; nach &quot;<B>olc\admin\buttons\english\</b>&quot;<br/>
+		die Dateien aus &quot;<B>lang\xxxxxx\admin\images\buttons</B>&quot; nach &quot;<B>olc\admin\buttons\xxxxxx\</b>&quot;<br/>
+		<br/>
+		zu dem <font color="#0000FF"><b>&quot;olc&quot;-Template<br/>
+&nbsp;</b></font></LI>
+		<LI>Man lässt mit dem WINDOWS-Programm &quot;<B>olc_ajax_template_update.exe</B>&quot; 
+		(vorhanden im Verzeichnis &quot;<B>templates</B>&quot;) die &quot;<B>index.html</B>&quot; 
+		des <font color="#FF0000"><B>neuen</B></font> Templates um die <b>
+		<font color="#FF0000">formellen</font> AJAX-Voraussetzungen</B> 
+		erweitern.<br/>
+		<br/>
+		(Das Programm gibt auch Hinweise, wenn noch manuelle Nacharbeiten an der 
+		&quot;<B>index.html</B>&quot; notwendig sein sollten. Seine Hinweise gibt es in 
+		eine Log-Datei aus, die automatisch geöffnet wird. Seine Verwendung ist 
+		menügesteuert und selbsterklärend.)</LI>
+	</OL>
+	<p><font color="#FF0000"><B>Jetzt kommt der (etwas) schwierigere Teil:</b></font></p>
+	<p>Das <B>Stylesheet </B>des <font color="#FF0000"><B>neuen</B></font> 
+	Templates muss so angepasst werden, dass es auch die notwendige Information 
+	für die verbliebenen <font color="#0000FF"><b>&quot;olc&quot;-Template</B></font>-Teile 
+	enthält (falls noch nicht enthalten).</p>
+<p>Das betrifft im wesentlichen die <B>Boxen</B>:</p>
+<p>Die <font color="#0000FF">
+		<b>&quot;olc&quot;-Template</B></font>-Boxen von OL-Commerce v4 beginnen 
+mit</p>
+<pre>
+&lt;table width="100%" class="<font color="#FF0000"><B>captionbox</B></font>"&gt;
+  &lt;tr&gt;
+    &lt;td class="<b><font color="#FF0000">infoBoxHeading</font></b>"&gt;{#heading_xxxxxxx#}&lt;/td&gt;
+  &lt;/tr&gt;</pre>
+Wenn nun die Boxen des <font color="#FF0000"><B>neuen</B></font> Templates nun z.B. so beginnen:<pre>
+&lt;table class="<font color="#FF0000"><B>captionbox</B></font>" width="100%" border="0" cellpadding="2" cellspacing="0"&gt;
+  &lt;tr&gt;
+    &lt;td class="<b><font color="#FF0000">captionbar</font></b>"&gt;{#heading_xxxxxxx#}&lt;/td&gt;
+  &lt;/tr&gt;</pre>dann sieht man, dass hier statt der CSS-Style-Klasse &quot;<b><font color="#FF0000">infoBoxHeading</font></b>&quot; 
+die Klasse "<b><font color="#FF0000">captionbar</font></b>" verwendet wird.<p>Im <B>Stylesheet </B>des <font color="#FF0000"><B>neuen</B></font> 
+	Templates muss also die Klasse "<b><font color="#FF0000">captionbar</font></b>" 
+in die Klasse &quot;<b><font color="#FF0000">infoBoxHeading</font></b>&quot;
+<font color="#0000FF"><B>umbenannt </b></font>werden, damit die &quot;olc&quot;-Boxen das 
+Design des <font color="#FF0000"><B>neuen</B></font> 
+	Templates annehmen! (Oder man kopiert die Klasse "<b><font color="#FF0000">captionbar</font></b>" 
+und <font color="#0000FF"><B>benennt sie</B></font> in &quot;<b><font color="#FF0000">infoBoxHeading</font></b>&quot;
+<font color="#0000FF"><B>um</B></font>.)</p>
+<p>Was in den <font color="#FF0000"><B>neuen</B></font> 
+	Templates meist fehlt, ist die Klasse &quot;<font color="#FF0000"><B>navRight</B></font>&quot;.
+</p>
+<p>Diese kann man einfach dadurch erzeugen, dass man im <B>Stylesheet </B>des <font color="#FF0000"><B>neuen</B></font> 
+	Templates die Klasse &quot;<font color="#FF0000"><B>navLeft</B></font>&quot;
+<font color="#0000FF"><B>kopiert</B></font>, und in &quot;<font color="#FF0000"><B>navRight</B></font>&quot;
+<font color="#0000FF"><B>umbenennt</B></font>.</p>
+<p>(Und nach dem gleichen Prinzip sollte man auch gleich die Klasse &quot;<font color="#FF0000"><B>navMiddle</B></font>&quot; 
+erstellen, die für eine geplante Erweiterung notwendig werden wird...)</p>
+<hr/>
+	<p>Wenn mit dem Template das<font color="#FF0000"><b> </b></font>flexible<font color="#FF0000"><b> 
+	Bildschirm-Layout-Konzept </b></font>verwendet werden soll, dann </p>
+<UL>
+	<LI><font color="#FF0000"><B>muss</B></font> mit PHPMyAdmin folgender Befehl 
+	auf die Datenbank angewendet werden!<br/>
+	<br/>
+	(Vorher muss '<font color="#FF0000"><B>xxxxx</B></font>' ersetzt werden 
+	durch den Namen des <font color="#FF0000"><B>neuen </b></font>Templates 
+	(z.B.: '<font color="#FF0000"><B>olc_neu</B>'</font>))<br/>
+	<br/>
+	#Screen-Layout Konfiguration<br/>
+	INSERT INTO olc_box_configuration (box_id, template, box_key_name, 
+	box_visible, box_sort_order, box_forced_visible, box_real_name, 
+	box_position_name, last_modified, date_added) VALUES<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_ADMIN', 1, 1, 1, 'box_ADMIN', 
+	'box_r_03', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_CART', 1, 2, 1, 'box_CART', 
+	'box_r_01', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_CATEGORIES', 1, 3, 
+	1, 'box_CATEGORIES', 'box_l_01', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_CONTENT', 1, 4, 1, 
+	'box_CONTENT', 'box_l_05', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_INFOBOX', 1, 5, 1, 
+	'box_INFOBOX', 'box_r_05', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_LOGIN', 1, 6, 1, 'box_LOGIN', 
+	'box_r_02', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_MANUFACTURERS_INFO', 0, 7, 1, 'box_MANUFACTURERS_INFO', 
+	'box_l_03', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_MANUFACTURERS', 0, 8, 1, 'box_MANUFACTURERS', 
+	'box_l_02', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_SEARCH', 1, 9, 1, 'box_SEARCH', 'box_l_08', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_CHANGE_SKIN', 1, 10, 0, NULL, NULL, NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_ADD_A_QUICKIE', 1, 11, 0, 'box_ADD_A_QUICKIE', 
+	'box_l_04', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_AFFILIATE', 1, 12, 0, 'box_AFFILIATE', 'box_l_13', 
+	NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_BESTSELLERS', 1, 13, 0, 'box_BESTSELLERS', 'box_r_06', 
+	NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_CENTER', 1, 14, 0, NULL, NULL, NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_CURRENCIES', 0, 15, 0, 'box_CURRENCIES', 'box_r_07', 
+	NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_ORDER_HISTORY', 1, 16, 0, 'box_ORDER_HISTORY', 
+	'box_l_12', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_INFORMATION', 1, 17, 0, 'box_INFORMATION', 'box_l_06', 
+	NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_LANGUAGES', 0, 18, 0, 'box_LANGUAGES', 'box_r_08', 
+	NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_LIVEHELP', 0, 19, 0, 'box_LIVEHELP', 'box_r_04', NULL, 
+	now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_NEWSLETTER', 1, 20, 0, 'box_NEWSLETTER', 'box_r_10', 
+	NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_LAST_VIEWED', 1, 22, 0, 'box_LAST_VIEWED', 'box_r_11', 
+	NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_NOTIFICATIONS', 1, 23, 0, 'box_NOTIFICATIONS', 
+	'box_r_09', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_REVIEWS', 1, 24, 0, 'box_REVIEWS', 'box_l_07', NULL, 
+	now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_SPECIALS', 1, 25, 0, 'box_SPECIALS', 'box_l_09', NULL, 
+	now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_TELL_FRIEND', 1, 26, 0, 'box_TELL_FRIEND', 'box_l_11', 
+	NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_WHATSNEW', 1, 27, 0, 'box_WHATSNEW', 'box_l_10', NULL, 
+	now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_TAB_NAVIGATION', 0, 28, 0, 'box_TAB_NAVIGATION', 
+	'box_m_01', NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_PDF_CATALOG', 1, 29, 0, NULL, NULL, NULL, now()),<br/>
+	(NULL, '<font color="#FF0000"><B>xxxxx</B></font>', 'SHOW_GALLERY', 1, 30, 0, NULL, NULL, NULL, now());<br/>
+&nbsp;</LI>
+	<LI><font color="#FF0000"><B>müssen</B></font> in der &quot;<B>index.html</B>&quot; 
+	die Klarnamen der Boxen ersetzt werden durch die Positions-Boxen-Namen.</LI>
+</UL>
+<p>Genaueres dazu findet man unter Punkt <B>66.</b> (<B>Bildschirm-Layout)<font color="#0000FF"> </font></b>
+in &quot;<b><A href="OL-Commerce_v4_ajax.html#66">OL-Commerce_v4_ajax.html</A></b>&quot;
+</p>
+<hr/>
+<p><font color="#0000FF"><B>Und danach sollte das </b></font> <font color="#FF0000"><B>neue</B></font>
+<font color="#0000FF"><B>Template mit OL-Commerce v4/AJAX schon gar nicht mal so 
+schlecht aussehen....</b></font></p>
+<p>Es kann aber sicher auch Situationen geben, wo, vor allem im Stylesheet, noch 
+weitere Anpassungen erforderlich sind.</p>
+<p><b><font color="#FF0000">Lesen Sie unbedingt auch noch:</font></b></p>
+<p><A href="erweiterte_information_produktliste.htm">
+erweiterte_information_produktliste.htm</A></p>
+<p><A href="erweiterte_information_produktinfo.htm">
+erweiterte_information_produktinfo.htm</A></p>
+<hr/>
+<p><b><font color="#FF0000">Keinen Sinn </font> </B>macht es, das 
+	komplette <font color="#FF0000"><B>neue</B></font> 
+		Template zu übernehmen, weil es bei den &quot;<B>Smarty</B>&quot;-Vorlagen für die 
+	Boxen und Listen teilweise gravierende Unterschiede geben wird, da diese ja 
+	direkt die vom Programm errechneten Daten abbilden müssen! </p>
+<p>Und da gibt es bei den Templates für &quot;xtCommerce vX&quot; und &quot;OL-Commerce 
+v1&quot; doch an einigen Stellen eine erhebliche &quot;<B>funktionale Unterdeckung</B>&quot;, da 
+für OL-Commerce v4 doch wesentlich mehr mehr Informationen bearbeitet werden müssen (z.B. für 
+(per <B>Javascript</B>) die lokale &quot;Shopping-Cart&quot;-Modifikation, den &quot;Sticky-Cart&quot;, die lokale 
+Preisberechnung bei Attributänderungen, die (AJAX)Online-Validierung von 
+Vorname, PLZ, und Bankdaten (um nur ein paar zu nennen)). </p>
+<p>Und diese Funktionalität muss natürlich im HTML-Code der Vorlagen berücksichtigt werden, 
+was bei den existierenden &quot;xtCommerce vX&quot;- und &quot;OL-Commerce v1&quot;-Templates nicht der 
+Fall ist.</p>
+<p>Und das dafür Notwendige alles im <font color="#FF0000"><B>neuen </b></font>Template zu 
+ändern ist <font color="#FF0000"><B>wesentlich </b></font>schwieriger (wenn 
+für einen &quot;<B>Normalanwender</B>&quot; nicht <b><font color="#FF0000">fast aussichtslos</font></b>!), als die 
+zuvor beschriebenen geringen Änderungen bei der Zusammenführung des
+<font color="#FF0000"><B>neuen </b></font>Templates mit dem Standard-&quot;olc&quot;-Template!</p>
+<p>Es spielt dabei übrigens auch <font color="#FF0000"><B>keine große Rolle</B></font> 
+mehr, ob man eine Vorlage für &quot;<B>OL-Commerce v1</B>&quot;, &quot;<B>xtCommerce v4</B>&quot; 
+oder &quot;<B>xtCommerce v3</B>&quot; übernimmt, da man ja im Grunde nur den
+<font color="#0000FF"><B>Design</B></font>-Teil des <b> <font color="#FF0000">neuen</font></b> 
+Templates übernimmt!</p><hr/>
+	<p>&quot;<font color="#0000FF"><B>Unified 
+	Template</B></font>&quot;-<B>Konzept</B></p>
+<p>Das OL-Commerce &quot;<B>Template</B>&quot;-Handling wurde, konsequent im 
+Sinne der vorstehenden Erläuterungen, dahingehend 
+	geändert (und damit <font color="#FF0000"> <strong>wesentlich vereinfacht 
+	und verbessert</strong></font>),&nbsp; dass ein &quot;<font color="#0000FF"><B>Unified 
+	Template</B></font>&quot;-Konzept verwirklicht wurde.</p>
+<p>Bisher schleppt ja <font color="#FF0000"><B>jedes </b></font>Template immer 
+einen im Grunde <font color="#FF0000"><B>völlig
+überflüssigen Ballast </b></font>mit sich herum, der besser <b>
+<font color="#0000FF">zentralisiert für alle 
+Templates</font> </B>organisiert würde, da er sich nicht wirklich zwischen den 
+Templates unterscheidet. (Sie auch die vorstehenden Ausführungen zur Übernahme 
+eines Templates.)</p>
+<p>Kandidaten dafür sind der <B>HTML</B>- 
+	und <B>PHP</B>-Teil für die &quot;<B>Boxen</B>&quot;, und die <B>HTML</B>-Vorlagen für die 
+&quot;<B>Module</B>&quot;.</p>
+<p>Diese werden jetzt nur noch <font color="#FF0000"> <strong>einmal(!)</strong> 
+</font>für <font color="#FF0000">
+<B>alle</B></font> 
+	Templates (in einem neuen Template-Verzeichnis &quot;<B>common</B>&quot;), 
+gespeichert, und die Templates selbst müssen wirklich nur noch die &quot;<strong>index.html</strong>&quot;, 
+	das <strong>Stylesheet</strong> und 
+	die <strong>Grafiken</strong> (und die Vorlagen und Grafiken für den 
+&quot;Admin&quot;-Bereich) enthalten!</p>
+<p>
+	Der <font color="#FF0000"><B>große Vorteil </b></font>dabei ist der, dass die 
+	Templates bei neuen Software-Releases <b><font color="#FF0000">nicht</font></b> notwendigerweise auch immer geändert werden müssen, da 
+	die 
+	&quot;<B>Boxen</B>&quot;- und &quot;<B>Module</B>&quot;-Inhalte eben Bestandteil des Releases 
+	sind. Zudem ist der <font color="#0000FF"><B>Shop-Inhalt</B></font>, 
+	unabhängig vom eingesetzten Template, <font color="#FF0000"><B>konsistent</B></font>!</p>
+<p>
+	Wirkliche Template-Änderungen sind somit nur noch  
+	dann notwendig, wenn<B> neue Boxen </B>dazu kommen.</p>
+<p>
+	<b><font color="#FF0000">Das Template befasst sich jetzt wirklich </font>
+	<font color="#0000FF">nur</font><font color="#FF0000"> noch mit dem </font>
+	<font color="#0000FF">Design</font><font color="#FF0000"> des Shops, und
+	</font><font color="#0000FF">nicht</font><font color="#FF0000"> mehr mit 
+	seinem </font><font color="#0000FF">Inhalt</font><font color="#FF0000">!</font></b>
+	<br/>
+	(Was ja die eigentliche Bedeutung des Begriffes &quot;Template&quot; ist.)</p>
+<b><font color="#FF0000">Vorgehensweise beim </font></b>&quot;<font color="#0000FF"><B>Unified 
+	Template</B></font>&quot;-Konzept<p>Es gibt jetzt ein neues Verzeichnis "<B>common</B>" im "<B>templates</B>"-Verzeichnis, das alles enthält, was in den Templates bisher in den Verzeichnissen "<B>boxes</B>", "<B>javascript</B>", "<B>mail</B>", "<B>module</B>" und "<B>source</B>" vorhanden war, und die 
+allesamt Kandidaten für ein "<font color="#0000FF"><B>Unified 
+	Template</B></font>"-Konzept sind.</p>
+<p>Bei den &quot;<B>Box</B>&quot;-Skripten wird jetzt so verfahren, dass vor Aufruf 
+des &quot;<B>Box</B>&quot;-Skripts geprüft wird, 
+<font color="#FF0000"><B>ob</B></font> dieses Skript im <b>
+<font color="#0000FF">spezifischen</font> Verzeichnis des aktuellen Templates</B> 
+existiert. Wenn ja, wird das &quot;<B>Box</B>&quot;-Skript im <b>
+<font color="#0000FF">spezifischen</font></b>,<b>
+</B>sonst das im <b>
+"common&quot;-Template-Bereich</B> aktiviert.</p>
+<p>Bei den &quot;<B>Smarty</B>&quot;-Vorlagen wird jetzt so verfahren, dass in der "<B>Smarty</B>"-Klasse vor dem Rendering des HTML-Codes anhand einer Vorlage geprüft wird, 
+<font color="#FF0000"><B>ob</B></font> diese Vorlage im <b>
+<font color="#0000FF">spezifischen</font> Verzeichnis des aktuellen Templates</B> existiert. Wenn nicht, wird "<B>Smarty</B>" auf die entsprechende Vorlage im "<B>common</B>"-Template-Bereich verwiesen.</p>
+<p>Das Elegante an dieser Lösung ist, dass alle &quot;<B>Box</B>&quot;-Skripte und Vorlagen, die im <b>
+<font color="#0000FF">spezifischen</font> Template-Bereich </B>des aktuellen Designs vorhanden sind, 
+<font color="#FF0000"><B>weiterhin verwendet werden</B></font> wie bisher!</p>
+<p>Und nur beim <font color="#FF0000"><B>Fehlen einer Box/Vorlage</B></font> im <b>
+<font color="#0000FF">spezifischen</font> Template-Bereich</B> wird die 
+<font color="#FF0000"><B>Box/Vorlage</B></font> aus dem  
+<b>"common"-Template-Bereich</B> verwendet.</p>
+<p>Damit hat man <font color="#FF0000"> <b>alle Möglichkeiten</b></font>, die man vorstellbar brauchen könnte, 
+und ist in keinerlei Hinsicht eingeschränkt:</p>
+<p>Man verwendet</p>
+<UL>
+	<LI><font color="#FF0000"><B>nur</B></font> die Boxen/Vorlagen im "<B>common</B>"-Template-Bereich<br/>
+	(indem man in den <b><font color="#0000FF">spezifischen</font></b> Templates 
+	<font color="#FF0000"><B>alle</B></font> im "<B>common</B>"-Bereich vorhandenen Verzeichnisse 
+	<b><font color="#FF0000">löscht</font></b>)<br/>
+&nbsp;</LI>
+	<LI><b><font color="#FF0000">nur</font> </B>die Boxen/Vorlagen im <b>
+	<font color="#0000FF">spezifischen</font> Template-Bereich</B><br/>
+	(indem man in den <b><font color="#0000FF">spezifischen</font></b> 
+	<font color="#FF0000"><B>alle</B></font> schon bisher vorhandenen Verzeichnisse 
+	<font color="#FF0000"><B>belässt</B></font>)
+	<br/>
+&nbsp;</LI>
+	<LI><font color="#FF0000"><B>einige besondere </b></font>Boxen/Vorlagen im <b>
+	<font color="#0000FF">spezifischen</font> Template-Bereich<br/>
+	</b>(indem man in den <b><font color="#0000FF">spezifischen</font></b> Templates 
+	<font color="#FF0000"><B>nur</B></font> die Boxen/Vorlagen
+	<font color="#FF0000"><B>belässt</B></font>, die <font color="#0000FF"><b>
+	template-spezifisch</B></font> bleiben sollen)</LI>
+</UL>
+<hr/>
+<p>Das "<font color="#0000FF"><B>Unified 
+	Template</B></font>"-Konzept lässt sich auch komplett <font color="#FF0000">
+<B>deaktivieren</B></font>:</p>
+<UL>
+	<LI>- Man <font color="#FF0000"><B>löscht</B></font> das Verzeichnis "<B>common</B>" im Verzeichnis "<B>templates</B>"<br/>
+&nbsp;</LI>
+	<LI>- Man setzt folgende Anweisung in "<B>includes/configure.php</B>"<br/>
+	<br/>
+	define('USE_UNIFIED_TEMPLATES', 
+	<b><font color="#FF0000">false</font></b>);</LI>
+</UL>
+<p><font color="#FF0000"><B>Dann funktioniert alles so wie bisher!</b></font></p>	
+<hr/>
+<p>Bei <font color="#FF0000"><B>aktiviertem</B></font>&nbsp; "<font color="#0000FF"><B>Unified 
+	Template</B></font>"-Konzept lässt sich noch entscheiden, <b>
+<font color="#FF0000">ob</font></b> man auch die <font color="#FF0000"><b>
+Skripte für die Erstellung der &quot;Boxen&quot; </b></font>(Verzeichnis: &quot;<B>source/boxes</B>&quot;) 
+daraufhin überprüfen will, ob es in dem <b><font color="#0000FF">spezifischen</font></b> 
+Template auch eines gibt, um dann dieses zu verwenden. </p>
+<p>Man setzt dazu in &quot;<B>includes/configure.php</B>"</p>
+<p>folgende Anweisung, um <b><font color="#FF0000">diese Überprüfung vorzunehmen</font></b></p>
+<p>define('CHECK_UNIFIED_BOXES', <b><font color="#FF0000">USE_UNIFIED_TEMPLATES</font></b> 
+&amp;&amp;<b> <font color="#FF0000">true</font></b>);</p>
+<p>und</p>
+<p>define('CHECK_UNIFIED_BOXES', <b><font color="#FF0000">USE_UNIFIED_TEMPLATES</font></b> 
+&amp;&amp;<b> <font color="#FF0000">false</font></b>);</p>
+<p>um das <font color="#FF0000"><B>nicht</B></font> zu tun.</p><hr/>
+<p>Um unnötige Plattenzugriffe (zur Feststellung der Verfügbarkeit von 
+Box-Skripten/Vorlagen im <b><font color="#0000FF">spezifischen</font></b> 
+Template) zu vermeiden, wird diese Prüfung <font color="#FF0000"><B>nur bei der 
+ersten Verwendung </b></font>vorgenommen. Das Ergebnis wird dann in der &quot;<B>Session</B>&quot; 
+gespeichert, so dass danach diese Information sehr schnell verfügbar ist, und 
+keine Zeit mehr für diese Prüfung mehr notwendig ist!</p>
+<hr/>
+<p><font color="#FF0000"><B>Lesen Sie bitte dazu auch noch die folgende </font>
+<font color="#0000FF">wichtigen</font><font color="#FF0000"> Informationen:</font></b></p>
+<p><A TARGET="_blank" href="erweiterte_information_produktinfo.htm">
+erweiterte_information_produktinfo.htm</A></p>
+<p><A TARGET="_blank" href="erweiterte_information_produktliste.htm">
+erweiterte_information_produktliste.htm</A></p>
+<p><A TARGET="_blank" href="../erweiterungen_bestellmail.htm">
+erweiterte_bestellmail.htm</A></p>
+<p><A TARGET="_blank" href="erweiterte_shopping_carts.htm">
+erweiterte_shopping_carts.htm</A></p>
+	<p><A TARGET="_blank" href="ajax_aenderungen.html">ajax_aenderungen.html</A></p>
+	</body></HTML>

@@ -1,0 +1,196 @@
+.hand{cursor:pointer;}
+.help{cursor:help;}
+
+/* CSS Popout Menu */
+
+a.info {
+  position:relative; /*this is the key*/
+  z-index:24;
+  background-color:#ccc;
+  color:#000;
+  text-decoration:none}
+
+a.info:hover {
+	z-index:25;
+	background-color:#ff0
+}
+
+a.info span {
+	display: none
+}
+
+a.info:hover span {
+	/*the span will display just on :hover state*/
+  display:block;
+  position:absolute;
+  top:2em; left:2em;
+  max-width:500px;
+  padding:6px;
+  border:1px solid black;
+  background-color:#FFFFCC;
+  color:#000;
+  text-align: left;
+	white-space:normal;
+}
+
+.act_config_value_text {
+	font-weight:bold;
+	color:red;
+}
+
+.act_config_value {
+	font-weight:bold;
+	color:#006600;
+}
+
+.undefined_config_value {
+	font-weight:bold;
+	color:white;
+}
+
+#menu{
+	position:absolute;
+	top:147px;
+	left:0px;
+	padding:0px;
+	z-index:2;
+	background:#D6D6D6;
+	width:180px;
+	border:1px solid black;
+}
+
+#menu a, #menu h2{
+	display:block;
+	font-weight:bold;
+	white-space:nowrap;
+	text-indent:2px;
+	/*
+	border:1px solid black;
+	*/
+	/*width:180px;*/
+}
+
+#menu a
+{
+	text-decoration:none;
+	padding-right:30px;
+	font-size:11px;
+	min-height:15px;
+}
+
+#menu a, #menu a:visited{
+	font-weight:bold;
+	color:Black;
+	background:#D6D6D6;
+}
+
+#menu a:hover {
+	font-weight:bold;
+	color:#FF8400;
+	background:#D6D6D6;
+}
+
+#menu a:active{
+	font-weight:bold;
+	color:#FF8400;
+	background:#D6D6D6;
+}
+
+/* Styling for Expand */
+
+#menu a.x {
+	background:#D6D6D6 url('images/submenu_hint.gif') no-repeat;
+	background-position:right;
+}
+
+#menu a.x, #menu a.x:visited {
+	font-weight:bold;
+	text-indent:2px;
+	color:Black;
+}
+
+#menu a.x:hover {
+	font-weight:bold;
+	color:#FF8400;
+}
+
+#menu a.x:active {
+	font-weight:bold;
+	color:#FF8400;
+}
+
+#menu h2 {
+	font-weight:bold;
+	font-size:14px;
+	color:white;
+	background:#FF8400;
+	text-transform:uppercase;
+	margin:0px;
+	padding:0px;
+	width:180px;
+	/*border-top:1px solid black;*/
+}
+
+#menu li {
+	list-style-type:none;
+}
+
+#menu ul li {
+	position:relative;
+}
+
+#menu li ul {
+	position:absolute;
+	top:0;
+	left:180px;
+	display:none;
+}
+
+#menu li ul ul{
+	position:absolute;
+	top:0;
+	left:100%;
+	display:none;
+}
+
+/* Fix IE. Hide from IE Mac \*/
+* html #menu ul li{float:left;height:1%;}
+* html #menu ul li a{height:1%;}
+/* End */
+
+div#menu ul {
+	margin:0px;
+	padding:0px;
+	list-style-image:none;
+	/*min-width:180px;*/
+}
+
+div#menu ul ul {
+	margin:0px;
+	padding:0px;
+	list-style-image:none;
+	min-width:100px;
+	border:1px solid black;
+}
+
+div#menu ul ul ul {
+	margin:0px;
+	padding:0px;
+	list-style-image:none;
+	min-width:100px;
+	border:1px solid black;
+}
+
+div#menu ul ul ul a {
+	padding-right:4px;
+}
+
+div#menu ul ul, div#menu ul ul ul, div#menu ul li:hover ul ul, div#menu ul li:hover ul ul ul
+{
+	display:none;
+}
+
+div#menu ul li:hover ul, div#menu ul ul li:hover ul, div#menu ul ul ul li:hover ul {
+	display:block;
+}
+

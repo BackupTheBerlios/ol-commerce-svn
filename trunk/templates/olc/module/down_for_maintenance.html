@@ -1,0 +1,93 @@
+<head>
+<link rel="stylesheet" type="text/css" href="{$tpl_path}stylesheet.css">
+</head>
+{php}
+$img_path=$this->_tpl_vars['tpl_path'].'img/';
+$logo=$img_path.'logo.gif';
+if (!file_exists($logo))
+{
+	$logo=false;
+}
+$this->_tpl_vars['logo']=$logo;
+$ajax_logo=$img_path.'ajax_logo.gif';
+if (!file_exists($ajax_logo))
+{
+	$ajax_logo=false;
+}
+$this->_tpl_vars['ajax_logo']=$ajax_logo;
+if ($ajax_logo)
+{
+	$this->_tpl_vars['AJAX_LOGO_TITLE']=AJAX_LOGO_TITLE;
+	$this->_tpl_vars['AJAX_LOGO_LINK']=AJAX_LOGO_LINK;
+}
+{/php}
+{if $ajax_logo}
+<map id="ajax_logo" name="ajax_logo">
+<area shape="circle" alt="{$AJAX_LOGO_TITLE}" title="{$AJAX_LOGO_TITLE}" coords="55,53,51"
+href="{$AJAX_LOGO_LINK}" target="_blank" />
+</map>
+{/if}
+{if $logo}
+<map id="logo" name="logo">
+<area shape="circle" alt="OL-Commerce Homepage" title="OL-Commerce Homepage" coords="30,38,30"
+href="http://www.ol-commerce.de/v5" target="_blank" />
+<area shape="rect" alt="OL-Commerce Homepage" title="OL-Commerce Homepage" coords="73,16,291,69"
+href="http://www.ol-commerce.de/v5" target="_blank" />
+</map>
+{/if}
+<body>
+<table style="width: 100%;" align="center" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="frame_left">
+    	{if $logo}
+			<div align="left" style="position:relative">
+	    	<img usemap="#logo" title="" alt="" src="{$logo}" class="image" />
+			</div>
+    	{/if}
+    </td>
+    <td class="frame_right">
+    	{if $ajax_logo}
+			<div align="right" style="position:relative">
+		  	<img usemap="#ajax_logo" src="{$ajax_logo}" class="image" />
+			</div>
+    	{/if}
+    </td>
+  </tr>
+</table>
+<!-- HEADER END-->
+{olc_template_init section="index" title="#heading_down_for_maintenance#"}
+<!-- CONTENT BEGIN-->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="bg">
+	<tr>
+		<td class="errorBox" style="font-size:12px" align="center" valign="top">
+			<br/>{$main_content}<br/><br/>
+		</td>
+	</tr>
+</table>
+<!-- CONTENT END-->
+<div id="fixed_footer">
+	<table border="0" width="100%">
+		<!-- FOOTER BEGIN-->
+		<tr>
+			<td>
+				<hr>
+				<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+					{if $BANNER}
+					<tr>
+						<td class="main" align="center">
+							<div id="BANNER">{$BANNER}</div>
+						</td>
+					</tr>
+					{/if}
+					<tr>
+						<td align="center" class="poweredby" valign="top" >
+							<b>{$text_footer}</b>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<!-- FOOTER END-->
+	</table>
+</div>
+</body>

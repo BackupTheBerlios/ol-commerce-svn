@@ -1,0 +1,166 @@
+<html dir="LTR" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<!--
+	This OnlineStore is brought to you by XT-Commerce, Community made shopping
+	XTC is a free open source e-Commerce System
+	created by Mario Zanier & Guido Winger and licensed under GNU/GPL.
+	Information and contribution at http://www.ol-commerce.com
+-->
+<meta browser="generator" content="Microsoft FrontPage 6.0">
+<meta browser="robots" content="index,follow">
+<meta browser="language" content="german">
+<meta browser="distribution" content="global">
+<meta browser="revisit-after" content="14">
+
+<body onload="set_browser();">
+
+<title>Das Seifenparadies - Keine AJAX-Unterstüzung möglich</title>
+<link rel="stylesheet" type="text/css" href="{$tpl_path}stylesheet.css">
+{literal}
+<script language="javascript"><!--
+function set_browser()
+{
+	window.onError="window_onerror()";
+	
+	function window_onerror()
+	{
+		//Ignore errors
+		return true;
+	}
+	var undefined="undefined"; 
+	var browser0,browser,reconfigure=false;
+	var opera=window.opera;
+	var compatMode=document.compatMode;
+
+	//var tx=document.getElementsById("XX");		//Wrong statement to force debugger activation!!!!
+	with (document)
+	{
+		if(typeof(ids)!=undefined) browser0='nc4';
+		else if(typeof(all)!=undefined && !getElementById) browser0='ie4';
+		else if(opera && !createElement) browser0='op5';
+		else if(opera && compatMode) browser0='op7';
+		else if(opera && releaseEvents) browser0='op6';
+		else if(typeof(contains)!=undefined && !opera) browser0='kq3';
+		else if(opera && window.getComputedStyle)  {
+			if(createRange) browser0='op8';
+			else if(window.navigate) browser0='op7.5';
+			else browser0='op7.2';                   }
+		else if(window.pkcs11&&window.XML)  {
+			browser0='f15';
+			reconfigure=true;
+			}
+		else if(window.getSelection && window.atob) browser0='nn7';
+		else if(window.getSelection && !compatMode) {
+			browser0='nn6';
+			reconfigure=true;
+			}
+		else if(window.clipboardData && compatMode) browser0='ie6';
+		else if(window.clipboardData){browser0='ie5';
+		     if(!createDocumentFragment) browser0+='.5';
+		     if(doctype && !window.print) browser0+='m';}
+		else if(getElementById && !all) browser0='op4';
+		else if(images && !all) browser0='nn3';
+		else if(clientWidth&&!window.RegExp) browser0='kq2';
+		else browser0='(Unbekannter Browser)';
+
+		with (browser0)
+		{
+			if (indexOf("ie") != -1)
+			{
+				var ie_text="Microsoft Internet Explorer";
+				browser=replace(/m/," (Mac)");
+				browser=replace(/ie6/,ie_text);
+				browser=replace(/ie/,ie_text+" ");
+			}
+			else
+			{
+				if (indexOf("f15") != -1)
+				{
+					browser=replace(/f15/,"Firefox");
+				}
+				else if (indexOf("nn") != -1)
+				{
+					browser=replace(/nn/,"Netscape Navigator ");
+				}
+				else if (indexOf("op") != -1)
+				{
+					browser=replace(/nn/,"Opera ");
+				}
+				else if (indexOf("op") != -1)
+				{
+					browser=replace(/kq/,"Konqueror ");
+				}
+				else
+				{
+					browser=browser0;
+				}
+			}
+		}
+	}
+	document.getElementById("browser").innerHTML=browser;
+	if (reconfigure)
+	{
+		//document.getElementById("reconfigure").style.visibility="visible;";
+	}
+}
+//--></SCRIPT>
+{/literal}
+<font size="3">
+<div align="center">
+	<table border="0" ID="table1" width="800">
+		<tr>
+			<td>
+				<font size="3">
+				<p align="center"><img border="0" SRC="{$tpl_path}img/firmenlogo_(gross).gif"></p>
+				<p align="center">&nbsp;</p>
+				<p align="center">Sehr geehrter Besucher, sehr geehrte Besucherin,</p>
+				<p align="center">unser Internet-Shop verwendet die moderne <b>
+				<A TARGET="_blank" href="http://de.wikipedia.org/wiki/Ajax_(Programmierung)">
+				AJAX</A></b>-Technologie, um Ihnen ein ganz neues, <B>interaktiveres</B>, Einkaufserlebnis zu
+				ermöglichen.</p>
+				<p align="center">(Mehr Informationen zur <b>
+				<A TARGET="_blank" href="http://de.wikipedia.org/wiki/Ajax_(Programmierung)">
+				AJAX</A></b>-Technologie finden Sie <b>
+				<A TARGET="_blank" href="http://de.wikipedia.org/wiki/Ajax_(Programmierung)">
+				hier</A></b>.)</p>
+				<p align="center">&nbsp;</p>
+				<p align="center">Leider ist es aber so, dass der von Ihnen
+				verwendete Internet-Browser </p>
+				<p align="center"><b><span ID="browser">x</span></b></p>
+				<p align="center">es <font color="#FF0000"><B>nicht</B></font> erlaubt, 
+				dass wir für den Start des Internet-Shops ein neues Browser-Fenster öffnen,<br/>
+				was 
+				für den Betrieb des Shops im AJAX-Modus aber notwendig ist.</p>
+				</font>
+				<p>&nbsp;</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+
+			<font size="3">
+			<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF0000"> <B>Sie können daher entweder</B></font></p>
+			<UL>
+				<LI>
+				<p align="left">in Ihrem Browser/&quot;PopUp&quot;-Blocker zulassen, dass von unserer Seite neue Fenster 
+				geöffnet werden dürfen
+				(was wir <B>sehr(!) </B>empfehlen)<br/>&nbsp;</p></LI>
+				<LI>
+				<p align="left"><b><A href="{$cat_path}index.php?no_ajax=true">diesen Link</A></b>
+				anklicken, der unseren Internet-Shop im <b>
+				<A href="{$cat_path}index.php?no_ajax=true">konventionellen</A></b> Modus
+				ansteuert</p>
+				<span ID="reconfigure" style="visibility:hidden;">
+				</span>
+			</UL>
+			</font>
+			</td>
+		</tr>
+	</table>
+</div>
+</font>
+
+</body>
+
+</html>

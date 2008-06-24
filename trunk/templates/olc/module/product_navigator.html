@@ -1,0 +1,19 @@
+{if $PRODUCTS_COUNT}
+{olc_template_init section="product_navigator"}
+<table  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+   		<font size="1">
+				{if $FIRST}{$FIRST}{/if}
+				{if $PREVIOUS}{$PREVIOUS}{/if}
+				{if $NEXT}{$NEXT}{/if}
+				{if $LAST}{$LAST}{/if}
+				<strong>{$PRODUCTS_COUNT}</strong>{#total#}
+			</font>
+   	</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+{/if}

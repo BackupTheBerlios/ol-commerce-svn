@@ -1,0 +1,1 @@
+This is a dummy file, to make sure, that the directory is included into CVS

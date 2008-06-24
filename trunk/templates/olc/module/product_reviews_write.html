@@ -1,0 +1,23 @@
+{olc_template_init title="#heading_reviews_write#" section="reviews"}
+{if !$error}
+{$FORM_ACTION}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="subcategory">
+			{#text_product#} <font class="main">{$PRODUCTS_NAME}</font><br/>
+			{#text_author#} <font class="main">{$AUTHOR}</font><br/><br/>
+			{#text_input#}<br/><br/>
+			<font size="2">{$INPUT_TEXT}</font><br/>
+			<font size="1">{#text_note#}</font><br/>
+			<br/>
+			<strong>{#text_rating#}&nbsp;<font class="stockWarning">{#text_bad#}</font>{$INPUT_RATING}
+			<font class="stockWarning">{#text_good#}</font></strong>
+		</td>
+	</tr>
+	<tr>
+		<td><br/>{$BUTTON_BACK}</td>
+		<td align="right"><br/>{$BUTTON_SUBMIT}</td>
+	</tr>
+</table>
+{$FORM_END}
+{/if}

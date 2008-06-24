@@ -1,0 +1,451 @@
+<link rel="stylesheet" type="text/css" href="http://www.seifenparadies.de/templates/aqua/stylesheet.css">
+<BASE TARGET="_blank">
+<BASE TARGET="_blank">
+
+<P ALIGN="center"><B><FONT SIZE="5" COLOR="#FF0000">OL-Commerce v2/AJAX eBay-Konnektor</FONT></B></P>
+<P ALIGN="center"><FONT SIZE="2">Autor: Dipl.-Ing.(TH) Winfried Kaiser<BR>
+<BR>
+<A HREF="http://www.seifenparadies.de">http://www.seifenparadies.de</A><BR>
+</FONT>
+<A HREF="mailto:w.kaiser@fortune.de"><FONT SIZE="2">w.kaiser@fortune.de</FONT></A></P>
+<P ALIGN="center"><B><FONT SIZE="2">&copy; 2006 Dipl.-Ing.(TH) Winfried Kaiser, 24975 Husby</FONT></B></P>
+<HR>
+<P ALIGN="center"><B><FONT SIZE="2">Diese Software basiert auf der Software &quot;<A HREF="http://www.ol-commerce.de">OL-</A><A TARGET="_blank" HREF="http://www.ol-commerce.de">Commerce</A> 
+v1.2.2.a&quot;, <BR>
+sie wird veröffentlicht auf Basis der &quot;<A TARGET="_blank" HREF="http://www.gnu.de/gpl-ger.html">GNU 
+General Public License</A>&quot;.</FONT></B></P>
+<P ALIGN="center"><B><FONT SIZE="2">Es wird vom Autor <U><FONT COLOR="#FF0000">keinerlei 
+Gewährleistung</FONT></U> für die Software </FONT> 
+<FONT SIZE="2" COLOR="#0000FF">OL-Commerce 
+v2/AJAX</FONT></B><FONT SIZE="2"> </FONT>
+<B><FONT SIZE="2">übernommen!<BR>
+Eine Verpflichtung zur Behebung evtl. auftretender Fehler besteht nicht!</FONT></B></P>
+<P ALIGN="center"><U><B><FONT SIZE="2" COLOR="#FF0000">Der Einsatz dieser Software 
+erfolgt </FONT><FONT COLOR="#0000FF" SIZE="2">ausschließlich(!)</FONT><FONT SIZE="2" COLOR="#FF0000"> 
+auf eigene Gefahr und Risiko des Anwenders!</FONT></B></U></P>
+<P ALIGN="center"><B><FONT SIZE="2" COLOR="#0000FF">Der Anwender hat dafür Sorge zu 
+tragen, dass er seinen </FONT><FONT SIZE="2"><FONT COLOR="#FF0000"><U>aktuellen</U> Software- 
+und Datenbestand vor Einsatz dieser Software </FONT><U><FONT COLOR="#FF0000">
+sichert</FONT></U><FONT COLOR="#008000">, <BR>
+</FONT></FONT><FONT SIZE="2" COLOR="#0000FF">so dass er im Fehlerfall jederzeit diesen Stand 
+wieder rekonstruieren kann.</FONT></B></P>
+<HR>
+<P ALIGN="center"><B><FONT SIZE="2">Eine Testversion ist
+<A HREF="http://www.seifenparadies.de/ajax/olc_original/index.php">
+hier</A> online zu sehen</FONT></B></P>
+<P ALIGN="center"><FONT SIZE="2">Der Zugang als Administrator ist folgender:</FONT></P>
+<P ALIGN="center"><B><FONT SIZE="2">Benutzer:</FONT></B><FONT SIZE="2"> test@test.com<BR>
+<B>Passwort:</B> testtest</FONT></P>
+<P ALIGN="center"><FONT SIZE="2">(Diese Version ist noch im Pre-Release Stadium, deshalb kann es 
+passieren, dass nicht alles funktioniert.)</FONT></P>
+<HR>
+<P ALIGN="left"><B><FONT SIZE="2">Überblick</FONT></B><FONT SIZE="2">:
+</FONT>
+<A TARGET="_blank" HREF="../../../Kopie_von_olcommerce_1_2_2A_AJAX_Test/olcommerce/olc_installer/olCommerce_v2_ajax.html">
+<FONT SIZE="2">olCommerce_v2_ajax.html</FONT></A></P>
+<P ALIGN="left"><B><FONT SIZE="2">Installationshinweise</FONT></B><FONT SIZE="2">: 
+</FONT> 
+<A HREF="../../../Kopie_von_olcommerce_1_2_2A_AJAX_Test/olcommerce/olc_installer/readme.html">
+<FONT SIZE="2">readme.html</FONT></A></P>
+<P ALIGN="left"><B><FONT SIZE="2">Updatehinweise</FONT></B><FONT SIZE="2">:
+</FONT>
+<A TARGET="_blank" HREF="../../../Kopie_von_olcommerce_1_2_2A_AJAX_Test/olcommerce/olc_installer/ajax_aenderungen.html">
+<FONT SIZE="2">ajax_aenderungen.html</FONT></A></P>
+<P ALIGN="left"><B><FONT SIZE="2">Daten-Import</FONT></B><FONT SIZE="2">:
+</FONT>
+<A TARGET="_blank" HREF="../../../Kopie_von_olcommerce_1_2_2A_AJAX_Test/olcommerce/olc_installer/automatischer_daten_import.html">
+<FONT SIZE="2">automatischer_daten_import.html</FONT></A></P>
+<P ALIGN="left"><B><FONT SIZE="2">&quot;Multi-Shop&quot;/&quot;Multi-Datenbank&quot;:</FONT></B><FONT SIZE="2">
+</FONT>
+<A HREF="../../../Kopie_von_olcommerce_1_2_2A_AJAX_Test/olcommerce/olc_installer/readme_multishop.html">
+<FONT SIZE="2">readme_multishop.html</FONT></A></P>
+<HR>
+<P ALIGN="left"><FONT SIZE="2">Der <FONT COLOR="#FF0000"><B>eBay-Konnektor</B></FONT> von <B>
+OL-Commerce v2/AJAX</B> basiert auf 
+der osCommerce-Contribution &quot;<B>auction.Lister</B>&quot; (<A TARGET="_blank" HREF="http://www.lener.info/auctionlister.htm">http://www.lener.info/auctionlister.htm</A>).</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Diese osCommerce-Contribution musste, wie üblich, allerdings ziemlich 
+umgearbeitet werden, damit sie in OL-Commerce sinnvoll funktionsfähig ist, und 
+die intelligenteren Funktion von <B>OL-Commerce v2/AJAX</B> unterstützt. 
+(Tabellen-Namen dürfen nur über ihre Konstanten angesprochen werden, 
+Formular-Felder, Bilder und Links dürfen nur über die dafür vorhandenen 
+Funktionen erstellt, Datenbank-Zugriffe dürfen nur über die dafür vorhandenen 
+Funktionen Funktionen ausgeführt werden, uvm.). (Es mussten halt die üblichen 
+&quot;Todsünden&quot; der xxCommerce-Entwickler ausgemerzt werden, da 
+andernfalls die erweiterten Funktionen von OL-Commerce mit dem eBay-Konnektor 
+nicht mehr funktionieren würden...). </FONT> </P>
+<HR>
+<P ALIGN="left"><FONT SIZE="2">Aus Sicherheitsgründen wurden die diversen eBay-Passworte 
+und -Tokens, die 
+man für den Zugriff benötigt, aus einer Konfigurationsdatei in die Datenbank 
+verlagert, so dass diese jetzt gegen Mißbrauch sicher sind. </FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Es ist auch möglich, über den 
+Admin-Bereich vom <B>Test-Betrieb </B>in den echten <B>Produktions-Betrieb</B> zu wechseln.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Zusätzlich werden alle Eingaben von Texten 
+(Produktbeschreibungen und eMails) mit dem SPAW-Editor im <B>WYSIWIG</B>-Verfahren 
+ausgeführt (statt über normale Textboxen), der verwendete Kalender für 
+Datumseingaben wurde durch das OL-Commerce-Kalendermodul (&quot;spiffyCal&quot;) ersetzt.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Bei mit einem Aufpreis versehenen eBay-Optionen 
+werden diese Kosten bei der entsprechenden Option angegeben</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Die Besonderheiten von &quot;<B>eBay-Express</B>&quot; werden zusätzlich 
+berücksichtigt, &quot;<B>PayPal</B>&quot; wird als zusätzliche Zahlungsart unterstützt 
+(eine Voraussetzung für die Teilnahme bei &quot;<B>eBay-Express</B>&quot;).</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Es können <B>bis zu 12 Artikel-Bilder </B>
+definiert werden. Für die Bildauswahl wird jetzt das HTML &quot;file&quot;-Eingabefeld 
+verwendet, so dass die Bildauswahl wesentlich bequemer ist als im &quot;auction.Lister&quot;, 
+wo die URL manuell einzugeben ist.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Die <B>Artikelauswahl</B> für die Übernahme in eine Auktion wurde 
+wesentlich erweitert. Statt alle Produkte in <B>eine(!)</B> Auswahlbox zu packen (bei 
+20.000 Produkten ist das etwas schwierig!), wird jetzt über &quot;<B>Kategorie-&gt;Produkt</B>&quot; 
+ausgewählt. Zudem wurde eine <B>Suchfunktion </B>für die Artikelauswahl 
+realisiert.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Es werden auch mehr der für eBay benötigten Informationen aus der 
+Datenbank vorbelegt, statt sie fest vorzugeben (Standort, Land, Währung, 
+Artikel-Bezeichnung, Artikel-Kurzbezeichnung, Artikel-Beschreibung).</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Zudem werden die OL-Commerce-Erweiterungen <B>Sonderpreise</B>,
+<B>Verpackungseinheit</B>, <B>Grundpreis</B>, <B>Mindestabnahme</B> berücksichtigt.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Außerdem werden <B>Produkt-Optionen </B>berücksichtigt. 
+</FONT> </P>
+<P ALIGN="left"><FONT SIZE="2">Wenn solche Produkt-Optionen allerdings <B>mit einem Preis </B>
+versehen sind, kann dieses Produkt <FONT COLOR="#FF0000"><B>nicht</B></FONT> in 
+eBay eingestellt werden, da dort Produkt-Optionen nicht möglich sind! Wenn es 
+sich jedoch um <B>preisneutrale </B>Produkt-Optionen handelt (.z.B. Größen, 
+Farben, Duftrichtungen u.ä), werden diese Produkt-Optionen in der Beschreibung 
+aufgezählt, und es erfolgt zusätzlich die Aufforderung an den Besteller, beim 
+Kauf im &quot;Bemerkungen&quot;-Feld des eBay-Bestellformulars mitzuteilen, welche der möglichen Optionen er möchte.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Schließlich wurde der <FONT COLOR="#FF0000"><B>eBay-Konnektor</B></FONT> 
+noch <B><FONT COLOR="#0000FF">mehr-sprachfähig </FONT></B>gemacht, indem die 
+fest eingebetteten deutschen Texte durch Konstante ersetzt wurden, die 
+sprachabhängig gesetzt werden.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Die Speicherung der notwendigen</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Der <FONT COLOR="#FF0000"><B>eBay-Konnektor</B></FONT> ist nach 
+der Installation <FONT COLOR="#FF0000"><B>nicht(!) aktiviert</B></FONT>, dies kann unter &quot;<B>Admin/Konfiguration/Mein 
+Shop/eBay-Schnittstelle aktivieren</B>&quot; geschehen.</FONT></P>
+<HR>
+<P ALIGN="left"><FONT SIZE="2">Es war trotz allem beschriebenen Änderungsaufwand allerdings <B>sehr hilfreich</B>, 
+eine <B>konzeptionell</B> und <B>strukturell</B> fertige Lösung für die eBay-Anbindung im 
+xxCommerce-Umfeld vorzufinden, das hat die Lernkurve für die Verwendung der 
+eBay-API doch drastisch verkürzt, so dass man ein größeres Augenmerk auf 
+funktionelle Verbesserungen legen konnte. </FONT> </P>
+<P ALIGN="left"><FONT SIZE="2">Zu vermuten ist allerdings, dass die 
+osCommerce-Contribution im jetzigen Stand noch nie produktiv eingesetzt wurde, 
+da noch fest vorgegebene Links zur &quot;eBay-Sandbox&quot; (der eBay-Testumgebung) 
+vorhanden waren. Diese feste Definition wurde durch eine flexible ersetzt, so 
+dass man durch einen Konfigurationsparameter im Admin-Bereich zwischen Test- und 
+Produktions-Betrieb umschalten kann (<FONT COLOR="#800000">&quot;</FONT><FONT COLOR="#993333"><B>Admin/Konfiguration/eBay-Konnektor/eBay-Testbetrieb</B></FONT>&quot;). 
+Nach der Installation ist der <B>Testbetrieb </B>eingeschaltet!)</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Zur Einführung in das Konzept und die grundsätzliche 
+Vorgehensweise bei der Verwendung dieser Funktion ist die
+<A HREF="auctionlister_docu.pdf">Original-Dokumentation</A> von &quot;<B>auction.Lister</B>&quot; 
+zu empfehlen (&quot;<B><A HREF="auctionlister_docu.pdf">auctionlister_docu.pdf</A></B>&quot;).</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Änderungen und Erweiterungen dazu für <B>
+OL-Commerce v2/AJAX</B> werden in einer dieser Dokumentation 
+zusammengefasst.</FONT></P>
+<HR>
+<P ALIGN="left"><FONT SIZE="2" COLOR="#FF0000"><B>Konfiguration</B></FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Einige grundlegende Einstellungen für den 
+eBay-Konnektor werden im Admin-Bereich vorgenommen (&quot;<B>Admin/Konfiguration/eBay-Konnektor</B>&quot;).</FONT></P>
+<TABLE cellSpacing="2" cellPadding="2" WIDTH="100%" BORDER="0" ID="table6">
+	<TR>
+		<TD vAlign="top" WIDTH="100%">
+		<TABLE cellSpacing="0" cellPadding="2" WIDTH="100%" BORDER="0" ID="table7">
+			<TR>
+				<TD>
+				<TABLE cellSpacing="0" cellPadding="0" WIDTH="100%" BORDER="0" ID="table9">
+					<TR>
+						<TD vAlign="top">
+						<TABLE cellSpacing="0" cellPadding="2" WIDTH="100%" BORDER="0" ID="table10">
+							<TR CLASS="dataTableRowSelected" ONMOUSEOVER="this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1091&amp;action=edit'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">Die 
+								Internet-Adresse Ihres Online-Shops </FONT></TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								http://www.seifenparadies.de/ </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1104'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">Ihr 
+								eBay-Mitgliedes-Name </FONT></TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								seifenparadies </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1105'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">Die 
+								Versand-Methode für eBay-Bestellungen </FONT>
+								</TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								zones </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1106'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">Ihre 
+								eMail-Adresse für PayPal-Zahlungen </FONT></TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								paypal@seifenparadies.de </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1109'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								Produkte nur in eBay-Express einstellen </FONT>
+								</TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								false </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1112'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								eBay-Konnektor im Testmodus betreiben </FONT>
+								</TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">true
+								</FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1121'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								eBay-&quot;DEVID&quot; für den Test-Modus </FONT></TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								C91J1CI17AF6T97113BX56372S6N6Y </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1122'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								eBay-&quot;APPID&quot; für den Test-Modus </FONT></TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								WINFRIEDKAG93RZ9133939RB847JAC </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1123'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								eBay-&quot;CERTID&quot; für den Test-Modus </FONT></TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								F8WDFO1C864$Z34153EZG-T1Y3Z529 </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1124'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								eBay-&quot;TOKEN&quot; für den Test-Modus </FONT></TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								AgAAAA**AQAAAA**aAAAAA**EEFYRQ ... </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1125'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								eBay-&quot;DEVID&quot; für den Produktions-Modus </FONT>
+								</TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								C91J1CI17AF6T97113BX56372S6N6Y </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1126'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								eBay-&quot;APPID&quot; für den Produktions-Modus </FONT>
+								</TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								WINFRIEDKAS941L1863CSLO7ERG3VZ </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1127'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								eBay-&quot;CERTID&quot; für den Produktions-Modus </FONT>
+								</TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								Z8ROS126K3F$JBFFK82M9-33Y12ILB </FONT></TD>
+							</TR>
+							<TR CLASS="dataTableRow" ONMOUSEOVER="this.className='dataTableRowOver';this.style.cursor='hand'" STYLE="CURSOR: hand" ONCLICK="document.location.href='configuration.php?gID=790&amp;cID=1128'" ONMOUSEOUT="this.className='dataTableRow'">
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								eBay-&quot;TOKEN&quot; für den Produktions-Modus </FONT>
+								</TD>
+								<TD CLASS="dataTableContent"><FONT SIZE="2">
+								AgAAAA**AQAAAA**aAAAAA**8VeCRQ ... </FONT></TD>
+							</TR>
+						</TABLE>
+						</TD>
+					</TR>
+				</TABLE>
+				</TD>
+			</TR>
+		</TABLE>
+		</TD>
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+<HR>
+<P ALIGN="left"><FONT COLOR="#FF0000" SIZE="2"><B>Erweiterte 
+Produkt-/Auktionsbeschreibung</B></FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Als Produktbeschreibung für eBay-Auktion/-Express wird die 
+Produkt-Beschreibung aus der Datenbank verwendet, die dann bei Bedarf im 
+WYSIWYG-SPAW-Editor geändert werden kann.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Um bei der Erstellung von Auktionstexten weiter flexibel zu 
+sein, kann man <B>Templates</B> definieren, in die die Produktbeschreibung eingebaut wird.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Diese Templates liegen im Verzeichnis &quot;<B>templates/xxxx/module/ebay</B>&quot;.</FONT></P>
+<P ALIGN="left"><FONT SIZE="2">Standardmäßig sind dort die (identischen) Templates &quot;<B>ebay_standard.html</B>&quot; 
+und &quot;<B>ebay_basic.html</B>&quot; mit folgendem Inhalt vorhanden:</FONT></P>
+<pre>
+<FONT SIZE="2" FACE="Verdana, Arial, sans-serif">&lt;link rel="stylesheet" type="text/css" href="{$catalog_url}{$tpl_path}stylesheet.css"&gt;
+&lt;BASE TARGET="_blank"&gt;
+&lt;table border="0" width="100%" background= "{$catalog_url}{$tpl_path}img/bg_green.png"&gt;
+  &lt;tr&gt;
+    &lt;td class="main"&gt;
+      &lt;p style="font-size=14pt;font-weight:bold"&gt;
+        {$prod_name}
+      &lt;/p&gt;
+      &lt;p style="font-size=12pt;font-weight:bold"&gt;
+        {$prod_short}
+      &lt;/p&gt;
+      &lt;p&gt;
+        {$prod_description}
+      &lt;/p&gt;
+      &lt;hr&gt;
+      {$prod_attributes}
+      {$price_disclaimer}
+      &lt;hr&gt;
+      &lt;p&gt;
+        &lt;b&gt;&lt;img src=
+        "{$catalog_url}{$tpl_path}img/bullet.gif"alt=""&gt; &lt;a href=
+        "http://cgi.ebay.de/ws/eBayISAPI.dll?ViewSellersOtherItems&amp;userid={$ebay_name}&amp;include=0&amp;since=-1&amp;sort=3&amp;rows=50&amp;sspageName=DB:OtherItems"
+        target="_blank"&gt;Andere Artikel von "{$store_name}" ansehen&lt;/a&gt;&lt;br&gt;
+        &lt;br&gt;
+        &lt;img src=
+        "{$catalog_url}{$tpl_path}img/bullet.gif" alt=""&gt; &lt;a href=
+        "http://cgi.ebay.de/aw-cgi/eBayISAPI.dll?AcceptSavedSeller&amp;sellerid={$ebay_name}&amp;sspageName=DB:FavList"
+        target="_blank"&gt;"{$store_name}" als bevorzugten Verk&#228;ufer in "Mein eBay" speichern&lt;/a&gt;&lt;/b&gt;
+      &lt;/p&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</FONT></pre>
+<P ALIGN="left"><FONT SIZE="2">Weiterhin gibt es das Template &quot;<B>ebay_extended.html</B>&quot; 
+mit folgendem Inhalt:</FONT></P>
+<pre>
+<FONT SIZE="2" FACE="Verdana, Arial, sans-serif">&lt;link rel="stylesheet" type="text/css" href="{$catalog_url}{$tpl_path}stylesheet.css"&gt;
+&lt;BASE TARGET="_blank"&gt;
+&lt;table border="0" width="100%" background= "{$catalog_url}{$tpl_path}img/bg_green.png"&gt;
+  &lt;tr&gt;
+    &lt;td class="main"&gt;
+      &lt;p style="font-size=14pt;font-weight:bold"&gt;
+        {$prod_name}
+      &lt;/p&gt;
+      &lt;p style="font-size=12pt;font-weight:bold"&gt;
+        {$prod_short}
+      &lt;/p&gt;
+      &lt;p&gt;
+        {$prod_description}
+      &lt;/p&gt;
+      &lt;hr&gt;
+      {$prod_attributes}
+      {$price_disclaimer}
+<FONT COLOR="#FF0000">      &lt;p&gt;
+        Unser &lt;B&gt;&lt;A TARGET="_blank" HREF="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}"&gt;
+	Impressum&lt;/A&gt; &lt;/B&gt;finden Sie &lt;B&gt;
+	&lt;A HREF="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}"&gt;
+	hier&lt;/A&gt;&lt;/B&gt;. Einen Hinweis auf Ihr &lt;B&gt;
+	&lt;A TARGET="_blank" HREF="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Widerruf"&gt;
+	Widerrufsrecht&lt;/A&gt;&lt;/B&gt; finden Sie &lt;B&gt;
+	&lt;A HREF="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Widerruf"&gt;hier&lt;/A&gt;&lt;/B&gt;.
+	Unsere &lt;B&gt;
+	&lt;A HREF="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Agb"&gt;
+	Allgemeinen Geschäftsbedingungen&lt;/A&gt;&lt;/B&gt; finden Sie &lt;B&gt;
+	&lt;A HREF="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Agb"&gt;
+	hier&lt;/A&gt;&lt;/B&gt;.&lt;/p&gt;
+	&lt;p&gt;
+        Bei der Bestellung &lt;b&gt;mehrerer Produkte am selben Tag&lt;/b&gt; werden &lt;b&gt;alle&lt;/b&gt; bestellten Produkte zu 
+	&lt;b&gt;einer&lt;/b&gt; Lieferung zusammen gefasst, und es werden &lt;b&gt;nur die f&#252;r Sie g&#252;nstigsten 
+	Gesamt-Versandkosten&lt;/b&gt; gemäß unserer &lt;B&gt;Versandkosten-Liste&lt;/B&gt; berechnet.(&lt;B&gt;&lt;A TARGET="_blank" HREF="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid={$ebay_name}#Versandkosten"&gt;Versandkosten-Liste
+	ansehen)&lt;/A&gt;&lt;/B&gt;
+	&lt;/p&gt;
+</FONT>      &lt;hr&gt;
+      &lt;p&gt;
+        &lt;b&gt;&lt;img src=
+        "{$catalog_url}{$tpl_path}img/bullet.gif"alt=""&gt; &lt;a href=
+        "http://cgi.ebay.de/ws/eBayISAPI.dll?ViewSellersOtherItems&amp;userid={$ebay_name}&amp;include=0&amp;since=-1&amp;sort=3&amp;rows=50&amp;sspageName=DB:OtherItems"
+        target="_blank"&gt;Andere Artikel von "{$store_name}" ansehen&lt;/a&gt;&lt;br&gt;
+        &lt;br&gt;
+        &lt;img src=
+        "{$catalog_url}{$tpl_path}img/bullet.gif" alt=""&gt; &lt;a href=
+        "http://cgi.ebay.de/aw-cgi/eBayISAPI.dll?AcceptSavedSeller&amp;sellerid={$ebay_name}&amp;sspageName=DB:FavList"
+        target="_blank"&gt;"{$store_name}" als bevorzugten Verk&#228;ufer in "Mein eBay" speichern&lt;/a&gt;&lt;/b&gt;
+      &lt;/p&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</FONT></pre>
+<B><FONT SIZE="2">Der darin rot markierte Bereich hat folgenden Inhalt:</FONT></B><P>
+<FONT SIZE="2" COLOR="#FF0000">Unser </FONT><FONT SIZE="2"> <B>
+<FONT COLOR="#FF0000">Impressum </FONT> </B>
+<FONT COLOR="#FF0000">finden Sie </FONT> <B>
+<FONT COLOR="#FF0000">hier</FONT></B><FONT COLOR="#FF0000">. Einen Hinweis 
+auf Ihr </FONT> <B>
+<FONT COLOR="#FF0000">Widerrufsrecht</FONT></B><FONT COLOR="#FF0000"> finden Sie 
+</FONT> <B>
+<FONT COLOR="#FF0000">hier</FONT></B><FONT COLOR="#FF0000">.
+Unsere </FONT> <B>
+<FONT COLOR="#FF0000">Allgemeinen Geschäftsbedingungen</FONT></B><FONT COLOR="#FF0000"> finden Sie 
+</FONT> <B>
+<FONT COLOR="#FF0000">hier</FONT></B></FONT><FONT SIZE="2" COLOR="#FF0000">.</FONT></P>
+		<p>
+          <FONT SIZE="2" COLOR="#FF0000">Bei der Bestellung <b>mehrerer Produkte am selben
+          Tag</b> werden <b>alle</b> bestellten Produkte zu
+          <b>einer</b> Lieferung zusammen gefasst, und es
+          werden <b>nur die f&#252;r Sie g&#252;nstigsten
+          Gesamt-Versandkosten</b> gemäß unserer <B>Versandkosten-Liste</B>
+			berechnet. (</FONT><B><FONT SIZE="2" COLOR="#FF0000">Versandkosten-Liste
+			ansehen)</FONT></B></p>
+        <P><B><FONT SIZE="2">Er verweist also auf <FONT COLOR="#0000FF">Impressum</FONT>, <FONT COLOR="#0000FF">Widerrufsrecht</FONT>, die <FONT COLOR="#0000FF">Allgemeinen Geschäftsbedingungen</FONT></FONT></B><FONT SIZE="2"><FONT COLOR="#000000"> 
+		</FONT>
+		<FONT COLOR="#800000"> 
+		und eine </FONT>
+		<FONT COLOR="#0000FF"> 
+		<B>Versandkosten-Information</B></FONT><FONT COLOR="#000000"> 
+		</FONT>
+		<FONT COLOR="#FF0000"> 
+		<B>in der eigenen eBay-&quot;Mich-Seite&quot;</B></FONT><FONT COLOR="#000000">.</FONT>
+		</FONT>
+</P>
+<P><U><FONT COLOR="#FF0000" SIZE="2"><B>Das setzt natürlich voraus, dass diese Informationen 
+auch in der &quot;Mich-Seite&quot; enthalten sind!</B></FONT></U></P>
+<P><FONT SIZE="2">Ziel dieses Templates ist die weitgehende Eliminierung von evtl.
+<FONT COLOR="#FF0000"><B>Abmahngefahren</B></FONT>, da die Standard-Angabe in 
+eBay in einigen Punkten <B>nicht</B> den aktuellen Bedingungen an Online-Shops 
+entsprechen. (<B>Aktuelle Abmahnwellen </B>dazu belegen das eindrucksvoll!)</FONT></P>
+<P><B><FONT SIZE="2">Die bei eBay fehlende Information wird damit in den Angebotstext eingearbeitet!</FONT></B></P>
+<P><FONT SIZE="2">Das Beispiel einer entsprechend erweiterten <B>&quot;Mich-Seite&quot;</B> finden Sie</FONT><B><FONT SIZE="2">
+<FONT COLOR="#FF0000">
+<A HREF="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&userid=seifenparadies">
+hier</A></FONT>.</FONT></B></P>
+<HR>
+<P><FONT SIZE="2">Die Platzhalter &quot;<B>{$xxxxxxx}</B>&quot; werden vom Programm mit den aktuellen Werten 
+ersetzt.</FONT></P>
+<P><FONT SIZE="2">Erweiterungen und/oder Änderungen des Templates können beliebig vorgenommen 
+werden, es ist dabei aber zu beachten, dass das immer <B>gültiges HTML </B>bleibt!</FONT></P>
+<FONT SIZE="2">Es können auch weitere Templates in dem Verzeichnis gespeichert werden, bei der 
+Erstellung einer Auktion kann das Template ausgewählt werden.</FONT><P><FONT SIZE="2">Mit diesem Konzept kann man die Auktionsseite &quot;<B>aufpeppen</B>&quot;, sein &quot;<B>Stylesheet</B>&quot; einbinden 
+(um das Shop-Design auch im eBay-Angebot wieder zu finden) und/oder 
+<B>Standard-Texte</B> einbauen. Der Kreativität sind da keine Grenzen gesetzt.</FONT></P><HR>
+<P><FONT SIZE="2">Eine mit dem &quot;<B>ebay_extended.html</B>&quot;-Template automatisch generierte 
+Auktionsbeschreibung hat folgendes Aussehen:<BR>
+(Sie kann natürlich mit dem WYSIWYG-SPAW-Editor noch geändert werden.)</FONT></P>
+<HR>
+<P><FONT COLOR="#FF0000" SIZE="2"><B>Begin der Auktionsbeschreibung</B></FONT></P>
+<HR>
+<TABLE width="100%" background=http://www.seifenparadies.de/templates/aqua/img/bg_green.png border=0>
+<TBODY>
+<TR>
+<TD class=main>
+<P style="FONT-WEIGHT: bold; "><FONT SIZE="2">Badezusaetze: Creme-Badeherzen
+</FONT> </P>
+<P style="FONT-WEIGHT: bold; "><FONT SIZE="2">Die Bodylotion zum Baden </FONT> </P>
+<STRONG><FONT SIZE="2">Charakteristik:</FONT></STRONG><FONT SIZE="2"> </FONT> 
+<P><FONT SIZE="2">Die Bodylotion zum Baden. Aus der Wanne steigen und sich in seiner gepflegten und zarten Haut wohl fühlen....&nbsp;</FONT></P>
+<P><FONT SIZE="2">(Ein Badeherz reicht normalerweise für 2 Bäder)</FONT></P>
+<P><B><FONT SIZE="2">Bestandteile:</FONT></B></P>
+<P><FONT SIZE="2">Kakaobutter (Theobroma cacao), Palmöl (Elaesis guineensis), Olivenöl (Olea europaea), Soja-Lecithin (Soy Lecithin), Meersalz (Maris sal), Parfüm (Parfum)</FONT></P>
+<FONT SIZE="2">Verpackungseinheit: 5 Stück,&nbsp;Gewicht: 150 gr</FONT><SPAN style="FONT-WEIGHT: normal; "><FONT SIZE="2">. Preis pro 100&nbsp;gr: 2,50 EUR</FONT></SPAN><FONT SIZE="2"> (bezogen auf den Startpreis).<BR><BR><B>Produkt-Optionen:</B><BR><BR><B>Duftrichtung</B>: Melone, Rose, Zimt-Orange. 
+</FONT> 
+<P></P>
+<HR>
+
+<P><FONT color=red><B><FONT SIZE="2">Das Produkt hat Optionen für "Duftrichtung"!</FONT></B></FONT><FONT SIZE="2"> Bitte teilen Sie uns bei der Bestellung <B>im Bemerkungsfeld</B> mit, <B>welche dieser Optionen</B> Sie möchten! Falls Sie keine Auswahl treffen, werden wir eine Option für Sie auswählen.</FONT></P>
+<FONT SIZE="2"><BR>Gemäß §19 UStG wird keine MwSt. erhoben. Preis zzgl. <A title="Detaillierte Informationen zu den Versandkosten erhalten Sie mit einem Klick hier" href="http://www.seifenparadies.de/shop_content.php?coID=1"><U>Versandkosten (ab 3,&ndash; EUR)</U> (Für genauere Information anklicken!)</A>. 
+</FONT> 
+<P><FONT SIZE="2">Unser <B><A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&amp;userid=seifenparadies" target=_blank>Impressum</A> </B>finden Sie <B><A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&amp;userid=seifenparadies">hier</A></B>. Einen Hinweis auf Ihr <B><A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&amp;userid=seifenparadies#Widerruf" target=_blank>Widerrufsrecht</A></B> finden Sie <B><A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&amp;userid=seifenparadies#Widerruf">hier</A></B>. Unsere <B><A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&amp;userid=seifenparadies#Agb">Allgemeinen Geschäftsbedingungen</A></B> finden Sie <B><A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&amp;userid=seifenparadies#Agb">hier</A></B>.</FONT></P>
+<P><FONT SIZE="2">Bei der Bestellung <B>mehrerer Produkte am selben Tag</B> werden <B>alle</B> bestellten Produkte zu <B>einer</B> Lieferung zusammen gefasst, und es werden <B>nur die für Sie günstigsten Gesamt-Versandkosten</B> gemäß unserer <B>Versandkosten-Liste</B> berechnet. (</FONT><B><A href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&amp;userid=seifenparadies#Versandkosten" target=_blank><FONT SIZE="2">Versandkosten-Liste ansehen)</FONT></A></B></P>
+<HR>
+
+<P><FONT SIZE="2">Informieren Sie sich <B><FONT color=red>vor</FONT> dem Kauf</B> von Kosmetika <FONT color=#ff0000><B>unbedingt(!)</B></FONT> <B><U>detailliert</U></B> über die <B>Inhaltsstoffe</B> der Produkte, wie wir sie bei allen unseren Produkten unter "<B>Bestandteile</B>" nach den '<B>INCI</B>'-Definitionen immer aufführen! Es gibt eine so große Bandbreite bezüglich der Qualität von Naturkosmetika (bis hin zu betrügerischen Angeboten), dass Sie sich zuerst genau informieren sollten</FONT></P>
+<P><FONT SIZE="2">Mehr zu diesem <B>wichtigen</B> Thema finden Sie auf unserer <B><A style="TEXT-DECORATION: none" href="http://members.ebay.de/ws/eBayISAPI.dll?ViewUserPage&amp;userid=seifenparadies#Naturkosmetik">eBay-"Mich"-Seite</A></B>.</FONT></P>
+<HR>
+
+<P><B><FONT SIZE="2"><IMG alt="" src="http://www.seifenparadies.de/templates/aqua/img/bullet.gif"> <A href="http://cgi.ebay.de/ws/eBayISAPI.dll?ViewSellersOtherItems&amp;userid=seifenparadies&amp;include=0&amp;since=-1&amp;sort=3&amp;rows=50&amp;sspageName=DB:OtherItems" target=_blank>Andere Artikel von "Das Seifenparadies" ansehen</A><BR><BR><IMG alt="" src="http://www.seifenparadies.de/templates/aqua/img/bullet.gif"> <A href="http://cgi.ebay.de/aw-cgi/eBayISAPI.dll?AcceptSavedSeller&amp;sellerid=seifenparadies&amp;sspageName=DB:FavList" target=_blank>"Das Seifenparadies" als bevorzugten Verkäufer in "Mein eBay" speichern</A></FONT></B><FONT SIZE="2">
+</FONT> </P></TD></TR></TBODY></TABLE></P>
+<HR>
+<P><FONT COLOR="#FF0000" SIZE="2"><B>Ende der Auktionsbeschreibung</B></FONT></P>
+<HR>
+<P>&nbsp;</P>
+<HR>
+<P ALIGN="left">&nbsp;</P>

@@ -1,0 +1,362 @@
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 6.0">
+<meta NAME="ProgId" CONTENT="FrontPage.Editor.Document">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Produkt-Listen</TITLE>
+</HEAD>
+
+<body>
+
+<p align="center">
+
+<font color="#FF0000" size="5"><b>&nbsp;Produkt-Listen</B></font></p>
+<p align="center">
+
+Standardmäßig werden <font color="#FF0000"><B>alle(!)</b></font> Produkt-Listen 
+mit <font color="#FF0000"><B>demselben</B></font> Template &quot;<font color="#0000FF"><B>module/product_listing/product_listing_v1.html</B></font>&quot; 
+erstellt,<br/>
+(und auch mit <font color="#FF0000"><B>demselben</B></font> Programm-Code!) so 
+dass eine <font color="#FF0000"><B>systemweite Konsistenz </b></font>
+<font color="#0000FF"><B>aller(!)</b></font> Produkt-Listen gewährleistet ist.</p>
+<p align="center">
+
+OL-Commerce v4/AJAX stellt <font color="#FF0000"><B>eine Menge </font>
+<font color="#0000FF">mehr</font><font color="#FF0000"> Informationen </font>
+</B>in der Produkt-Liste 
+bereit, <br/>
+als dies z.B. in OL-Commerce v1.2 oder xtCommerce der Fall ist.</p>
+<p align="center">
+
+Zum einen dient dies <font color="#FF0000"><B>zusätzlicher Information (*)</b></font>, 
+zum anderen sind diese <br/>
+Informationen <b><font color="#0000FF">notwendig</font></b>, um den Shop
+<font color="#0000FF"><B>abmahnungssicherer 
+(*)</b></font> zu machen.</p>
+<p align="center">
+
+Wenn man <b><font color="#FF0000">nicht</font></b> die Standard OL-Commerce &quot;<font color="#0000FF"><B>product_listing_v1.html</B></font>&quot; 
+verwenden kann/will, <br/>
+dann <font color="#FF0000"><B>sollte </b></font><b><font color="#FF0000">
+unbedingt </font>diese Information in ein bestehendes 
+Formular eingearbeitet </B>werden!</p><hr/>
+<p align="center">
+
+<b><font size="4" color="#FF0000">Folgende &quot;</font><font size="4" color="#0000FF">Smarty</font><font size="4" color="#FF0000">&quot;-Variable sind 
+im Template </font>
+<font color="#0000FF" size="4">zusätzlich</font><font size="4" color="#FF0000"> vorhanden:</font></b></p>
+<table border="0" ID="table1">
+	<tr>
+		<td valign="top"><B>PRODUCTS_MODEL </b><font color="#FF0000"><b>*</b></font></td>
+		<td valign="top" colspan="2" height="25">Artikel-Nummer</td>
+	</tr>
+	<tr>
+		<td valign="top"><B>PRODUCTS_VPE </b><font color="#FF0000"><b>*</b></font></td>
+		<td valign="top" colspan="2" height="25">Verpackungseinheit (z.B.: &quot;<B>Gewicht: 
+		100 gr</B>&quot;)</td>
+	</tr>
+	<tr>
+		<td valign="top"><B>PRODUCTS_MIN_ORDER_QTY </b><font color="#FF0000"><b>
+		* </b></font><font color="#0000FF"><b>*</b></font></td>
+		<td valign="top" colspan="2" height="84">Mindestbestellmenge
+		<span style="color: red;" align="center"><font style="font-size: 6pt;">
+		<br/>
+		</font>
+				</span>z.B.: <span style="color: red;" align="center">
+		<font size="2"><br/>
+		<B>Mindestabnahme:&nbsp;<br/>
+		</b></font>
+				</span><b><font size="2">
+		<span style="color: red;" align="center">5 Stück (7,50 EUR)</span></font></b></td>
+	</tr>
+	<tr>
+		<td valign="top"><B>SHOW_NEW_MARKER </b><font color="#FF0000"><b>*</b></font></td>
+		<td valign="top" colspan="2" height="123">
+		Damit kann eine <b>&quot;Neu&quot;-Grafik </B>für neue Produkte eingeblendet werden
+		
+		<pRE>
+{if $module_data.SHOW_NEW_MARKER}<br/>&lt;BR&gt;&lt;img src=&quot;{$tpl_path}buttons/{$language}/new.gif&quot; border=&quot;0&quot;&gt;
+{/if}</pRE></td>
+	</tr>
+	<tr>
+		<td valign="top"><B>PRODUCTS_DATE_AVAILABLE</B><font color="#FF0000"><b>*</b></font></td>
+		<td valign="top" colspan="2" height="25">Produktverfügbarkeits-Datum</td>
+	</tr>
+	<tr>
+		<td valign="top"><B>PRODUCTS_PRICE_RAW </b> </td>
+		<td valign="top" colspan="2" height="25">
+		Interner <font color="#FF0000"><B>unformatierter </b></font>Preis (für 
+		Berechnungen im Template)</td>
+	</tr>
+	<tr>
+		<td valign="top"><B>PRODUCTS_PRICE</B></td>
+		<td valign="top" colspan="2" height="25">Anzeigepreis (<font color="#FF0000"><B>formatierter</B></font> 
+		Preis)</td>
+	</tr>
+	<tr>
+		<td valign="top"><B>PRODUCTS_BASEPRICE </b><font color="#FF0000"><b>*</b></font><font color="#0000FF"><b> 
+		*</b></font></td>
+		<td valign="top" colspan="2" height="25">Grundpreis (z.B.: &quot;1<B>00 gr: 
+		5,-- EUR</B>&quot;)</td>
+	</tr>
+	<tr>
+		<td valign="top"><B>PRODUCTS_SPECIALPRICE </b><font color="#FF0000"><b>*</b></font></td>
+		<td valign="top" colspan="2" height="25">Sonderpreis</td>
+	</tr>
+	<tr>
+		<td valign="top"><B>PICTURE_DISCLAIMER </b><font color="#FF0000"><b>*
+		</b></font><font color="#0000FF"><b>*</b></font></td>
+		<td valign="top" colspan="2" height="25">Bild-Disclaimer (z.B.: &quot;<B>Abb. ähnlich</B>&quot;)</td>
+	</tr>
+	<tr>
+		<td valign="top" ROWSPAN="3"><B>PRICE_DISCLAIMER</B><font color="#0000FF"><b> 
+		*</b></font></td>
+		<td valign="top" colspan="2" height="88">Preis-Disclaimer <br/>
+		<br/>
+		Beispiele:</td>
+	</tr>
+	<tr>
+		<td valign="top" width="307"><font size="1">Gemäß §19 UStG wird keine MwSt. erhoben.
+		<br/>
+		Preis zzgl.
+		<A TITLE="Detaillierte Informationen zu den Versandkosten erhalten Sie mit einem Klick hier" href="javascript:ShowInfo('shop_content.php?coID=1&pop_up=true','')">
+		<U>Versandkosten (ab 3,– EUR)</U><br/>
+		(Für genauere Information anklicken!)</A>.<br/>
+		<br/>
+		(Für einen &quot;<font color="#FF0000"><B>Kleinunternehmer</B></font>&quot;-Shop)</font></td>
+		<td valign="top" height="77" width="580"><font size="1">Preis 
+						inkl. <b><font color="#FF0000">X</font></b>%&nbsp; MwSt. 
+		und<br/>
+						zzgl.
+						<A TITLE="Detaillierte Informationen zu den Versandkosten erhalten Sie mit einem Klick hier" href="javascript:ShowInfo('shop_content.php?coID=1&pop_up=true','')">
+						<U>Versandkosten (ab 3,– EUR)</U><br/>
+						(Für genauere Information anklicken!)</A><br/>
+						<br/>
+		(&quot;<b><font color="#FF0000">X</font></b>&quot; wird Produktabhängig angezeigt: 
+		<font color="#FF0000">v</font><b><font color="#FF0000">oller/reduzierter</font></b> MwSt.-Satz oder
+		<font color="#FF0000"><B>keine</B></font> MwSt.)</font></td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2" height="72"><b><font size="2" color="#FF0000"><br/>
+		</font><font color="#FF0000" style="font-size: 9pt">Der Minimale 
+		Versandkosten-Betrag (hier z.B. 3,-- EUR) wird aus </font>
+		<font style="font-size: 9pt" color="#0000FF">allen</font><font color="#FF0000" style="font-size: 9pt"> 
+		konfigurierten Versandarten </font>
+		<font color="#0000FF" style="font-size: 9pt">automatisch</font><font color="#FF0000" style="font-size: 9pt"> 
+		ermittelt! <br/>
+		<br/>
+		</font></b><font style="font-size: 9pt">Der &quot;Versandkosten&quot;-Link führt 
+		auf die &quot;Versandkosten&quot;-Information des Shops, angezeigt in einem &quot;Pop-Up&quot;-Fenster.</font></td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="3">&nbsp;<p align="center">
+		<font color="#FF0000"><B>OL-Commerce v4 hat folgende 
+		weitere Besonderheiten</B></font></p>
+		<p><B>PRODUCTS_PRICE_RAW </b> ist der <font color="#FF0000"><B>unformatierte</B></font> 
+		Preis, er entspricht dem in der Produktseite eingegebenen Preis.</p>
+		<p>OL-Commerce v4/AJAX erlaub für den Preis Werte <font color="#FF0000">
+		<B>kleiner</B></font>, <font color="#FF0000"><B>gleich</B></font> und 
+		<font color="#FF0000"><B>größer</B></font> als <b><font color="#0000FF">Null</font></b>!</p>
+		<p align="left">Diese Preis-Zuordnung dient dazu, <font color="#0000FF">
+		<B>ein Produkt zwar aus dem Verkauf zu nehmen</B></font>, es aber 
+		trotzdem <b><font color="#0000FF">in der Produktliste zu belassen</font></b>, 
+		mit einem evtl. Hinweis auf ein Verfügbarkeitsdatum!<p>Damit kann über den <B>PRODUCTS_PRICE_RAW </b>(Produktpreis) das 
+		Anzeige-Verhalten wie folgt weiter gesteuert werden:</p>
+		<table border="0" ID="table11" cellspacing="5" cellpadding="5">
+			<tr>
+				<td nowrap="nowrap" valign="top"><B>PRODUCTS_PRICE_RAW </b> &nbsp;= 0</td>
+				<td>Es wird <font color="#FF0000"><B>kein</B></font> Preis und
+				<font color="#FF0000"><B>kein</B></font> Bestell-Button angezeigt</td>
+			</tr>
+			<tr>
+				<td nowrap="nowrap" valign="top"><B>PRODUCTS_PRICE_RAW </b> &nbsp;&lt; 0</td>
+				<td><B>Produkt ist <font color="#FF0000">nicht</font> verfügbar, wird aber 
+				<font color="#FF0000">angezeigt</font>!</b><br/>
+				<br/>
+				Es wird <b><font color="#FF0000">ein</font></b> (absoluter) Preis und
+				<b><font color="#FF0000">kein</font></b> Bestell-Button angezeigt<p>
+				Es erfolgt ein Hinweis, dass das Produkt aktuell nicht verfügbar 
+				ist.</p>
+				<p>Hat gleichzeitig die Variable <b><font color="#FF0000">PRODUCTS_DATE_AVAILABLE</font>
+				</B>einen Inhalt, wird dieser Datumswert als das erwartete 
+				Verfügbarkeitsdatum angegeben.<p>Hier werden die Felder &quot;Preis&quot; 
+				und &quot;Verfügbarkeitsdatum&quot; aus der Produktdefinition ausgewertet. 
+				Ist das aktuelle Datum größer als das definierte 
+				Verfügbarkeitsdatum, dann wird das Produkt <B>automatisch </b>
+				wieder bestellbar und normal angezeigt. 
+				<p>(Das muss <font color="#FF0000"><B>nicht </b></font>extra 
+				zurückgenommen werden.)</td>
+			</tr>
+			<tr>
+				<td nowrap="nowrap" valign="top"><B>PRODUCTS_PRICE_RAW </b> &nbsp;&gt; 0</td>
+				<td>Normale Anzeige</td>
+			</tr>
+			</table>
+		<p align="center">
+		<b><font color="#FF0000" size="4">Dieses Verhalten kann wie folgt in ein 
+		Template eingebunden werden:<br/>
+&nbsp;</font></b></td>
+	</tr>
+	<tr>
+		<td valign="top">&nbsp;</td>
+		<td valign="top" colspan="2"><pRE>{if $module_data.<font color="#FF0000">PRODUCTS_PRICE_RAW</font> &gt; 0 &amp;&amp; $module_data.<font color="#FF0000">PRODUCTS_DATE_AVAILABLE</font> == ''}<br/>&lt;td valign=&quot;middle&quot; align=&quot;right&quot;&gt;<br/>	{$module_data.<font color="#0000FF">PRODUCTS_BUTTON_BUY_NOW</font>}<br/>&lt;/td&gt;<br/>{elseif $module_data.<font color="#FF0000">PRODUCTS_PRICE_RAW</font> &lt;&gt; 0}<br/>&lt;td valign=&quot;top&quot;&gt;<br/>	&lt;br&gt;<br/>	&lt;font color=&quot;#FF0000&quot; size=&quot;1&quot;&gt;&lt;b&gt;<br/>	{if $module_data.<font color="#FF0000">PRODUCTS_PRICE_RAW</font> &lt; 0 }<br/>	{<font color="#0000FF">#product_not_in_stock#</font>}&lt;br&gt;&lt;/b&gt;<br/>	{/if}<br/>	{if $module_data.<font color="#FF0000">PRODUCTS_DATE_AVAILABLE</font>}<br/>	&lt;font color=&quot;#008000&quot;&gt;({$module_data.<font color="#0000FF">PRODUCTS_DATE_AVAILABLE</font>})&lt;/font&gt;<br/>	{/if}<br/>	&lt;/font&gt;<br/>&lt;/td&gt;<br/>
+{/if}</td>
+	</tr>
+	</table>
+<table border="0" width="1237" ID="table25">
+	<tr>
+		<td valign="top">
+		<p align="center"><font color="#FF0000" size="5"><b><br/>
+		Beispiel<br/>
+		</b></font>(Mit Zuordnung der Variablen-Namen zu den angezeigten Daten)</td>
+	</tr>
+</table>
+
+<table border="0" width="100%" ID="table26">
+	<tr>
+		<td valign="top" colspan="2"><br/>
+&nbsp;<table class="main" align="center" border="0" cellpadding="2" cellspacing="2" width="100%" ID="table27">
+			<tr>
+				<td ROWSPAN="2" class="border" nowrap="nowrap"="nowrap" valign="top">
+				<font style="font-size: 6pt;">
+				<A href="https://www.seifenparadies.de/ajax/seo-p-creme_badeherz;100.htm">
+				<img SRC="https://www.seifenparadies.de/ajax/images/product_images/thumbnail_images/badeherzen.jpg" ALT="Creme-Badeherz -- Die Bodylotion zum Baden -- Für weitere Informationen anklicken" TITLE="Creme-Badeherz -- Die Bodylotion zum Baden -- Für weitere Informationen anklicken" align="middle" border="0" height="63" width="120"></A>
+				<br/>
+				Abb. ähnlich&nbsp; </font><font color="#FF0000"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PICTURE_DISCLAIMER</B></font><font style="font-size: 6pt;"><br/>
+				Gewicht: 150 gr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</font><font color="#FF0000"><b>&nbsp;PRODUCTS_VPE</B></font><font style="font-size: 6pt;"><br/>
+				<span style="color: red;" align="center">Mindestabnahme:&nbsp;
+				</span></font><b><font color="#0000FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>
+				<font color="#FF0000">PRODUCTS_MIN_ORDER_QTY</font></b><font style="font-size: 6pt;"><span style="color: red;" align="center"><br/>
+				5 Stück (7,50 EUR)</span><br/>
+				Artikel-Nr: 1226&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</font><font color="#FF0000"><B>PRODUCTS_MODEL<br/>
+				</b></font>
+				<span style="font-size: 6pt">
+<br/></span><img src="https://www.seifenparadies.de/ajax/templates/aqua/buttons/german/new.gif" border="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<font color="#FF0000"><B>SHOW_NEW_MARKER</B></font><p>
+				<A href="https://www.seifenparadies.de/ajax/seo-p-creme_badeherz;100.htm">
+				<img SRC="https://www.seifenparadies.de/ajax/templates/olc/buttons/german/button_detail.gif" ALT="Creme-Badeherz -- Die Bodylotion zum Baden -- Für weitere Informationen anklicken" TITLE="Creme-Badeherz -- Die Bodylotion zum Baden -- Für weitere Informationen anklicken" align="middle" border="0">
+				</A></td>
+				<td class="main" valign="top"><font size="4"><strong>
+				<A href="https://www.seifenparadies.de/ajax/seo-p-creme_badeherz;100.htm">
+				Creme-Badeherz</A></strong> </font></td>
+			</tr>
+			<tr>
+				<td class="fieldValue" valign="top">Die Bodylotion zum Baden <br/>
+				<br/>
+&nbsp;<table class="main" border="0" width="100%" ID="table28">
+					<tr>
+						<td nowrap="nowrap"="nowrap" valign="top"><b><font size="4">1,50 
+						EUR</font></b><font size="4"> </font>
+						<font color="#FF0000"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRODUCTS_PRICE</B></font><font STYLE><br/>
+						<span STYLE>(100&nbsp;gr: 1,– EUR)</span> </font>
+						<font color="#FF0000"><b>&nbsp;&nbsp; PRODUCTS_BASEPRICE</B></font></td>
+						<td align="right" valign="top"><font size="1">Preis 
+						inkl. 16%&nbsp; MwSt. und. <br/>
+						zzgl.
+						<A TITLE="Detaillierte Informationen zu den Versandkosten erhalten Sie mit einem Klick hier" href="javascript:ShowInfo('shop_content.php?coID=1&pop_up=true','')">
+						<U>Versandkosten (ab 3,– EUR)</U><br/>
+						(Für genauere Information anklicken!)</A><br/>
+						</font><font color="#FF0000"><B>PRICE_DISCLAIMER</B></font><font size="1">.</font><br/>
+						&nbsp;
+								</td>
+					</tr>
+				</table>
+				<table class="main" border="0" cellpadding="0" cellspacing="0" width="100%" ID="table29">
+					<tr>
+						<td>
+						<table class="main" border="0" cellpadding="0" cellspacing="0" ID="table30">
+							<tr valign="middle">
+								<td class="main" align="left" valign="top" width="50">
+								<B>Lieferzeit: </b></td>
+								<td class="main" align="left" nowrap="nowrap"="nowrap" valign="top">
+								&nbsp;1 Woche
+											</td>
+							</tr>
+						</table>
+						</td>
+						<td align="right" valign="middle">
+						<A href="https://www.seifenparadies.de/ajax/seo-b-creme_badeherz;100.htm?cPath=2&">
+						<img SRC="https://www.seifenparadies.de/ajax/templates/olc/buttons/german/button_in_cart.gif" ALT="5 x 'Creme-Badeherz' in den Warenkorb legen" TITLE="5 x 'Creme-Badeherz' in den Warenkorb legen" align="top" border="0"></A>
+								</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr/></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2">&nbsp;<p align="center"><font color="#FF0000" size="5"><B>Beispiel<br/>
+		</b></font>(<font color="#FF0000"><B>Ohne</B></font> Bestell-Button, mit 
+		&quot;<font color="#0000FF"><B>out-of-stock</B></font>&quot;-Hinweis und 
+		<font color="#008000"><B>Verfügbarkeitsdatum</B></font>.<br/>
+		Sonstige Variable wie im vorigen Bild)</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top"><font style="font-size: 6pt;">
+		<A href="https://www.seifenparadies.de/product_info.php?products_id=23">
+		<img SRC="http://www.seifenparadies.de/images/product_images/thumbnail_images/englischergarten.jpg" TITLE="Englischer Garten -- Der Duft sommerlicher Landhausgärten und viel Mandelöl - 10 % überfettet -- Für weitere Informationen anklicken" align="middle" border="0" height="80" width="82"></A>
+		<br/>
+		Abb. ähnlich <br/>
+		<br/>
+		Gewicht: 100 gr<br/>
+		<br/>
+		Artikel-Nr: 1099 </font>
+		<p>
+		<A href="https://www.seifenparadies.de/product_info.php?products_id=23">
+		<img SRC="http://www.seifenparadies.de/templates/aqua/buttons/german/button_detail.gif" border="0"></A>
+		</p>
+		<p>&nbsp;</td>
+		<td valign="top">
+		<p align="left"><font size="4"><strong>
+		<A href="https://www.seifenparadies.de/product_info.php?products_id=23">
+		Englischer Garten</A></strong> </font></p>
+		<font size="1">Der Duft sommerlicher Landhausgärten und viel Mandelöl - 
+		10 % überfettet <br/>
+		<br/>
+		&nbsp;<table class="main" ID="table31" border="0" width="100%">
+			<tr>
+				<td nowrap="nowrap"="nowrap" valign="top"><font size="2"><B>4,– EUR</B></font>
+									</td>
+				<td align="right" valign="top"><font size="1">Gemäß §19 UStG 
+				wird keine MwSt. erhoben. <br/>
+				Preis zzgl.
+				<A TITLE="Informationen zu den Versandkosten erhalten Sie mit einem Klick hier" shop_content.php?coID="1&amp;pop_up=true&quot;,&quot;&quot;)&quot;" href="javascript:ShowInfo(">
+				<U>Versandkosten (ab 3,– EUR)</U><br/>
+				(Für genauere Info anklicken!)</A>.</font><br/>
+				&nbsp;
+									</td>
+			</tr>
+		</table>
+		<br/>
+		&nbsp;<table class="main" border="0" cellpadding="0" cellspacing="0" width="100%" ID="table32">
+			<tr>
+				<td>&nbsp;</td>
+				<td valign="top"><font color="#ff0000" size="1"><B>Zur Zeit 
+				leider (noch) nicht verfügbar!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</b></font><font color="#0000FF"><b>#product_not_in_stock#</b></font><font color="#ff0000" size="1"><b><br/>
+				</b><font color="#008000">(Wird voraussichtlich <B>ab dem 
+				20.01.2007</B> bestellbar sein.)&nbsp;&nbsp; </font></font><b><font color="#FF0000">PRODUCTS_DATE_AVAILABLE</font></b><font color="#ff0000" size="1">
+				</font></td>
+			</tr>
+		</table>
+		</font>
+		</td>
+	</tr>
+</table>
+
+<table border="0" width="1237" ID="table1" height="1876">
+	</table>
+
+</body>
+
+</HTML>

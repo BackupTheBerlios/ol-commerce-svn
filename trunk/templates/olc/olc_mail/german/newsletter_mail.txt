@@ -1,0 +1,16 @@
+Sehr geehrter Kunde,
+
+Sie erhalten diese eMail, weil Sie sich zum Empfang unserer Informations-eMails angemeldet haben.
+
+Bitte klicken Sie auf den Aktivierungslink, damit Ihre eMail-Adresse für den Empfang der Informations-eMails freigeschaltet wird.
+
+Ihr Aktivierungslink:
+
+{$LINK}
+
+Sollten Sie sich nicht für den Empfang unserer Informations-eMails angemeldet haben, bzw. den Empfang der Informations-eMails doch nicht wünschen, brauchen Sie gar nichts zu tun:
+
+Ihre Adresse wird dann aus unserer Datenbank automatisch gelöscht.
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}

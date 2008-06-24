@@ -1,0 +1,560 @@
+<head>
+<meta HTTP-EQUIV="Content-Language" CONTENT="de">
+</HEAD>
+
+<p align="center"><b><font size="5" color="#FF0000">OL-Commerce v4.0a/AJAX</font></b> 
+(Beta)</p>
+<p align="center">Autor: Dipl.-Ing.(TH) Winfried Kaiser<br/>
+<br/>
+<A href="http://www.seifenparadies.de">http://www.seifenparadies.de</A><br/>
+<A href="mailto:w.kaiser@fortune.de">w.kaiser@fortune.de</A></p>
+<p align="center"><b>&copy; 2006 Dipl.-Ing.(TH) Winfried Kaiser, 24975 Husby</B></p>
+<hr/>
+<p align="center"><B>Diese Software basiert auf der Software &quot;<A TARGET="_blank" href="http://www.ol-commerce.de">OL-Commerce </A> 
+v1.2.2.a&quot;, sie wird veröffentlicht auf Basis der &quot;<A TARGET="_blank" href="http://www.gnu.de/gpl-ger.html">GNU 
+General Public License</A>&quot;.</b></p>
+<p align="center"><B>Es wird vom Autor <U><font color="#FF0000">keinerlei 
+Gewährleistung</font></U> für die Software <font size="3" color="#0000FF">OL-Commerce v4.0a/AJAX</font></b>
+<B>übernommen!<br/>
+Eine Verpflichtung zur Behebung evtl. auftretender Fehler besteht nicht!</b></p>
+<p align="center"><U><b><font color="#FF0000">Der Einsatz dieser Software 
+erfolgt </font><font color="#0000FF">ausschließlich(!)</font><font color="#FF0000"> 
+auf eigene Gefahr und Risiko des Anwenders!</font></b></U></p>
+<p align="center"><b><font color="#0000FF">Der Anwender hat dafür Sorge zu 
+tragen, dass er seinen </font><font color="#FF0000"><U>aktuellen</U> Software- 
+und Datenbestand vor Einsatz dieser Software </font><U><font color="#FF0000">
+sichert</font></U><font color="#008000">, <br/>
+</font><font color="#0000FF">so dass er im Fehlerfall jederzeit diesen Stand 
+wieder rekonstruieren kann.</font></b></p>
+<hr/>
+<p align="center"><B>Eine Testversion ist
+<A href="http://www.seifenparadies.de/ajax/olc_original/index.php">
+hier</A> online zu sehen</B></p>
+<p align="center">Der Zugang als Administrator ist folgender:</p>
+<p align="center"><B>Benutzer:</b> test@test.com<br/>
+<B>Passwort:</b> testtest</p>
+<p align="center">(Diese Version ist noch im Teststadium, deshalb kann es 
+passieren, dass nicht alles funktioniert.)</p>
+<hr/>
+<p align="left"><B>Überblick</B>:
+<A TARGET="_blank" href="documentation/OL-Commerce_v4_ajax.html">OL-Commerce _v4_ajax.html</A></p>
+<p align="left"><B>Updatehinweise</B>:
+<A TARGET="_blank" href="documentation/ajax_aenderungen.html">ajax_aenderungen.html</A></p>
+<p align="left"><b>&quot;Multi-Shop&quot;/&quot;Multi-Datenbank&quot;:</b>
+<A href="documentation/readme_multishop.html">readme_multishop.html</A></p>
+<p align="left"><B>Daten-Import</B>:
+<A TARGET="_blank" href="documentation/automatischer_daten_import.html">
+automatischer_daten_import.html</A></p>
+<p align="left"><B>eBay_Konnektor</B>:
+<A TARGET="_blank" href="documentation/eBay-Konnektor.html">eBay-Konnektor.html</A></p>
+<hr/>
+<p align="left">Diese Version von OL-Commerce ist genau so zu installieren und zu 
+betreiben, wie die Vorgängerversionen auch.</p>
+<p align="left">Es gibt jedoch ein paar Dinge, die zu beachten sind.</p>
+<p align="left">Allgemeine Informationen über die Version 2/AJAX finden Sie <b>
+<A TARGET="_blank" href="documentation/OL-Commerce_v4_ajax.html">hier</A></b>.</p>
+<p align="left">Informationen über die bei einem Update von früheren Versionen 
+zur Version 2/AJAX finden Sie <b>
+<A TARGET="_blank" href="documentation/ajax_aenderungen.html">hier</A></b>.</p>
+<p align="left"><font color="#0000FF"><B>Es folgen Hinweise, die bei der 
+Neu-Installation bzw. einem Update zu berücksichtigen sind.</b></font></p>
+<p align="left"><font color="#FF0000">(Wenn immer möglich, sollte eine <b>
+Neuinstallation</B> der Software durchgeführt werden, da ein Software-Update 
+wegen dem Umfang und der Komplexität der für die Version 2/AJAX notwendigen 
+Änderungen ein komplexes Unterfangen ist. </font><font color="#0000FF">Eine 
+bestehende Datenbank lässt sich mit den beigefügten Hilfsmitteln an den neuen 
+Bedarf anpassen.</font><font color="#FF0000">)</font></p>
+<hr/>
+<br/>
+<b><font color="#FF0000">Wenn Sie die AJAX-Technologie von OL-Commerce 2.0/AJAX
+<U>nicht</U> verwenden wollen......</font></b><p><font color="#0000FF"><B>Ändern</B></font> 
+Sie in &quot;<B>includes/ajax.php</B>&quot;</p>
+<p>/Use AJAX (if possible, i.e. if the client computer supports Javascript)<br/>
+define(&quot;USE_AJAX_LOCAL&quot;, true);<br/>
+//Do n o t&nbsp; use AJAX <br/>
+<b><font color="#FF0000">//</font></B>define(&quot;USE_AJAX_LOCAL&quot;, false);</p>
+<p><B>zu</B></p>
+<p>/Use AJAX (if possible, i.e. if the client computer supports Javascript)<br/>
+<b><font color="#FF0000">//</font></B>define(&quot;USE_AJAX_LOCAL&quot;, true);<br/>
+//Do n o t use AJAX <br/>
+define(&quot;USE_AJAX_LOCAL&quot;, false);</p>
+<p><B>olOmmerce wird dann ganz normal im üblichen Modus ablaufen!</b></p>
+<hr/>
+<b><br/>
+&quot;</b><font color="#FF0000"><B>Smarty&quot;-Installation</B></font><p>Im Hinblick auf 
+ein einfacheres Update der &quot;Smarty&quot;-Module wurde das &quot;Smarty&quot;-Installations-Verzeichnis 
+geändert von &quot;<B>smarty_2.6.2</B>&quot; zu &quot;<B>smarty</B>&quot; (dann kann man nämlich den 
+Inhalt der neuen &quot;Smarty&quot;-Distribution einfach in das Verzeichnis kopieren.</p>
+<p>Bei einer <B>Neu-Installation </B>braucht man nichts zu beachten, das das 
+automatisch angelegt wird.</p>
+<p>Bei einer <B>Update-Installation</B> muss man den Ordner &quot;<B>smarty</B>&quot; der 
+Distribution in das Shop-Verzeichnis kopieren. Der Ordner &quot;<B>smarty_2.6.2</B>&quot;&nbsp; 
+kann dann gelöscht werden-</p>
+<table border="0" ID="table3" >
+	<tr>
+		<td valign="top"><b><font color="#FF0000">WICHTIG:&nbsp;</font></b> </td>
+		<td width="1115">Da für die zentrale Unterstützung der AJAX-Technologie die <b>&quot;Smarty&quot;-&quot;<font color="#FF0000">fetch</font>&quot;- 
+		und -&quot;<font color="#FF0000">assign</font>&quot;-Routinen
+		</B>modifiziert wurde, <b><font color="#FF0000">müssen</font> </B>diese Änderung 
+		<b><font color="#0000FF">bei neuen &quot;Smarty&quot;-Versionen </font><font color="#FF0000">immer</font></b> analog modifiziert werden!</td>
+	</tr>
+</table>
+&nbsp;
+<hr/>
+<b><br/>
+<font color="#FF0000">Präfix für die Datenbank-Tabellen</font></b><p>Mit dieser Version von OL-Commerce ist es möglich, die Datenbank-Tabellen 
+bei der Installation <B>mit einem "Präfix" versehen zu lassen (z.B. "olc_")</b>. 
+Die Tabellennamen heißen dann z.B. &quot;<B>olc_products</B>&quot;<br/>
+<br/>
+Der Vorteil davon ist, dass man in  <font color="#FF0000">  <B>einer</B></font> MySQL-Datenbank
+<font color="#FF0000"><B>mehrere</B></font> OL-Commerce -Shops betreiben kann, oder auch nur die OL-Commerce -Tabellen 
+in Datenbanken, in der sich auch die Daten anderer Anwendungen befinden, besser identifizieren kann.<br/>
+<br/>
+Bei einer Neu-Installation kann man den gewünschten Präfix gleich angeben, und es wird alles automatisch konfiguriert.<br/>
+<br/>
+Technisch ist das so gelöst, dass im Modul "<B>includes/database_tables.php</B>" die Definition der Tabellennamen-Konstanten um den definierten Präfix erweitert werden. <br/>
+<br/>
+Dazu ist es dann  aber  <b><font color="#FF0000">zwingend</font></b>  erforderlich, dass Datenbank-Tabellen in den Programmen  
+<font color="#FF0000"><B>nur noch</B></font>  über diese definierten Konstanten angesprochen werden! (Leider war das bei den Programmen 
+früherer Versionen nicht immer der Fall, so dass diesbezüglich einige Änderungen notwendig waren.)</p>
+<p>Wenn man die neue Software mit einer bestehenden Datenbank verwenden will, muss man folgendes tun:</p>
+<table border="0" ID="table4">
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>1.&nbsp;&nbsp;</b></font></td>
+		<td valign="top" width="1193">Der Inhalt der Datei "<font color="#0000FF"><B>prefix_rename_tables.sql</B></font>" ist mit <B>PHPmyAdmin</B> auf die bestehende Datenbank anzuwenden.<br/>
+<br/>
+		<font color="#FF0000">
+<B>Zuvor</B></font>  ist der dort eingetragene Präfix "<B>prf_</B>" 
+<font color="#FF0000"><B>unbedingt</B></font> zu dem gewünschten zu ändern (er kann natürlich auch beibehalten werden).<br/>
+&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>2.</b></font></td>
+		<td valign="top" width="1193">In den Dateien<br/>
+<br/>
+<B>includes\configure.php<br/>
+admin\includes\configure.php</B><br/>
+<br/>
+ist der folgende Befehl einzutragen:<br/>
+<br/>
+<B>define('TABLE_PREFIX','prf_');</b><br/>
+<br/>
+(wobei für "<B>prf_</B>" der in 1. gewählte Präfix zu verwenden ist).<p>In "<B>rename_with_prefix.sql</B>" sind alle Tabellen enthalten, die standardmäßig mit dieser OL-Commerce -Version installiert werden.<br/>
+<br/>
+Wenn Sie weitere Tabellen in Ihrer Datenbank haben, müssen diese <B>natürlich analog umbenannt werden</B>!<br/>
+<br/>
+Zusätzlich müssen diese in:<br/>
+<br/>
+<B>includes/database_tables.php<br/>
+</b>
+<br/>
+analog eingetragen werden.<br/>
+<br/>
+Wenn Sie weitere Programme außer den mit dieser Version installierten verwenden, 
+		<U><b><font color="#FF0000">müssen</font></b></U> Sie überprüfen, ob diese die Datenbanktabellen 
+<font color="#FF0000"><b><U>nur</U> </b></font>über die in "<B>includes/database_tables.php</B>" definierten Namen ansprechen.<br/>
+<br/>
+Es sind dazu <font color="#0000FF"><B>alle</B></font> Vorkommen der SQL-Befehle<br/>
+<br/>
+<font color="#FF0000"><B>INSERT INTO<br/>
+SELECT FROM<br/>
+DELETE FROM<br/>
+UPDATE<br/>
+JOIN<br/>
+</b></font>
+<br/>
+in diesen Modulen daraufhin zu überprüfen.</p>
+<p>Wenn Sie die Datenbank einer Version 1.2a auf den Bedarf der Version 2.0a/AJAX aktualisieren müssen, dann können Sie "<font color="#0000FF"><B>prefix_olcommerce_update_1.2a_2.0a.sql</B></font>" mit
+<B>PHPmyAdmin</B> auf die bestehende Datenbank anwenden. </p>
+<p><B>Zuvor</B>  ist der dort standardmäßig eingetragene Präfix "<B>prf_</B>" 
+<font color="#FF0000"><B>unbedingt</B></font> zu dem gewünschten zu ändern.<br/>
+&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td valign="top">&nbsp;</td>
+		<td valign="top" width="1193">
+Wenn Sie die OL-Commerce -Tabellen aus der Datenbank löschen wollen, dann können Sie "<font color="#0000FF"><B>prefix_delete_tables.sql</B></font>" mit
+<B>PHPmyAdmin</B> auf die bestehende Datenbank anwenden.<p><B>Zuvor</B>  ist der dort standardmäßig eingetragene Präfix "<B>prf_</B>" 
+<font color="#FF0000"><B>unbedingt</B></font> zu dem gewünschten zu ändern.<br/>
+&nbsp;</p></td>
+	</tr>
+</table>
+<hr/>
+<p>
+		<A TARGET="_blank" href="http://transpatent.com/gesetze/pangv.html"><b>
+		<font color="#FF0000">Preisinformation bei jedem Preis (Forderung der
+</font></b> <font size="3"><span style="font-weight: 700"><font color="#FF0000">Preisangabenverordnung 
+		(PAngV)</font></span></font></A></p>
+<p>Im Shop wird <B>durchgängig</B> bei jedem Preis ein Preishinweis angezeigt, 
+der anzeigt, <B>ob/ob nicht </B>die <font color="#0000FF"><B>MwSt.</b></font> 
+enthalten ist, und <B>ob/ob nicht</B> die <font color="#0000FF"><B>Versandkosten</B></font> 
+enthalten sind. Als Sonderfall ist auch die &quot;<font color="#0000FF"><B>Kleinunternehmer-Regelung</B></font>&quot; 
+gemäß §19 UStG möglich.</p>
+<p>In dieser Preisinformation wird angezeigt, welche <B>minimalen</B> 
+Versandkosten anfallen, und es wird ein <b><font color="#0000FF">Link</font> zu 
+der Versandkosten-Information des Shops</B> für die Details dazu angeboten (weil 
+i.d.R. ja gewichtsabhängige Versandkosten anfallen werden).</p>
+<p>Das Verhalten kann in &quot;<B>lang/german/german.php</B>&quot; konfiguriert werden.</p>
+<p>Setzen sie in der Anweisung &quot;<font color="#FF0000">define('PRICE_DISCLAIMER_COMMON'....</font>&quot; 
+den <B>minimalen </B>Wert Ihrer Versandkosten ein.</p>
+<p>//Setzen Sie die &quot;<font color="#0000FF"><B>Versandkosten</B></font> (<font color="#FF0000">ab 
+xxx,-- EUR</font>)&quot;<br/>
+define('PRICE_DISCLAIMER_COMMON',' zzgl. &lt;a href=javascript:ShowInfo(&quot;shop_content.php?coID=1&amp;pop_up=true&quot;,&quot;&quot;) 
+title=&quot;Informationen zu den Versandkosten erhalten Sie mit einem Klick hier&quot;&gt;&lt;u&gt;<font color="#0000FF"><B>Versandkosten</B></font> 
+(<b><font color="#FF0000">ab 3,-- EUR</font></b>)&lt;/u&gt;&lt;br&gt;(Für genauere Info 
+anklicken!)&lt;/a&gt;.');</p>
+<p>Wenn Sie als <font color="#0000FF"><B>Kleinunternehmer</B></font> §19 UStG im 
+Shop <b><font color="#0000FF">keine MwSt.</font></b> erheben wollen,&nbsp; die 
+Zeichen &quot;<font color="#FF0000"><b>//</b></font>&quot; vor der <B>beiden nächsten </b>
+Anweisungen entfernen!!!</p>
+<p><font color="#FF0000"><b>//</b></font>define('BOX_LOGINBOX_NO_TAX','Gemäß §19 
+UStG wird keine MwSt. erhoben.');<br/>
+<font color="#FF0000"><b>//</b></font>define('PRICE_DISCLAIMER_NO_TAX',BOX_LOGINBOX_NO_TAX.'&lt;br&gt;Preis'.PRICE_DISCLAIMER_COMMON);</p>
+<hr/>
+<p><b><font color="#FF0000">Sendungscode für Versandtracking</font></b></p>
+<p>Es besteht die Möglichkeit, beim <B>Versand einer Sendung</B> (Admin-Bereich) den 
+sog. &quot;Tracking-Code&quot; 
+des Versenders mit einzugeben. (<B>Statusänderung</B> der Bestellung auf &quot;<B>Versendet</B>&quot;).</p>
+<p>Die komplette Tracking-URL (einschl. dem <B>Sendungscode</B>) wird in der <b>
+Statusänderungs-eMail</B> als <font color="#FF0000"><B>Link</B></font> 
+mitgesendet, so dass der Kunde sehr einfach eine Bestellverfolgung vornehmen kann.</p>
+<p>In &quot;<B>lang\german\admin\orders.php</B>&quot; muss dazu die <font color="#FF0000">
+<B>Tracking-URL </b></font>des Versenders definiert werden.</p>
+<p>// 'TRACKURL' -- Hier muss die Tracking-URL des Versenders stehen.</p>
+<p><b><font color="#0000FF">// Tracking Beispiel </font><font color="#FF0000">
+DHL (POST AG)</font><font color="#0000FF"><br/>
+<br/>
+</font></b>// An der Stelle, an der der <b><font color="#0000FF">Sendungscode</font></b> 
+steht, muss das Zeichen <b><font color="#0000FF">#</font></b> als Platzhalter 
+stehen!<br/>
+<br/>
+// An der Stelle, an der die <font color="#0000FF"><B>PLZ</B></font> steht, muss 
+das Zeichen <font color="#0000FF">@ </font>als Platzhalter stehen!<br/>
+<br/>
+define('<B>TRACKURL</B>', '<b><A href="http://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=de&zip=@&idc=#'">http://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=de&amp;zip=<font color="#FF0000">@</font>&amp;idc=<font color="#FF0000">#</font>'</A></b>);</p>
+<p>Diese &quot;<font color="#FF0000"><B>Tracking-URL</B></font>&quot; ist abhängig vom 
+Versender, und muss aus der Internet-Seite, über die man beim Versender die 
+Sendungsverfolgung vornehmen kann, ermittelt werden.</p>
+<p>Das ist nicht ganz einfach, und erfordert Erfahrung mit dem Aufbau von 
+HTML-Seiten.</p>
+<p>Aber über das Support-Forum kann da sicher geholfen werden.</p>
+<p><B>Infos dazu gibt es auch im
+<A href="http://www.ol-commerce.com/forums/index.php?showtopic=13041&hl=mailto">
+xtCommerce-Forum</A></b><font color="#0000FF">.</font></p>
+<hr/>
+<p><font color="#FF0000"><B>eMail-Format (HTML, TEXT) auf kundenebene definieren</B></font></p>
+Das eMail-Format, das der Kunde erhält (HTML, TEXT), wird auf <B>kundenebene </b>
+festgelegt, nicht mehr auf <B>systemebene</B>! 
+<p>Jeder Kunde kann so selbst entscheiden, welches Format er erhält.</p>
+<p>Dazu wird nun unter der eMail-Adresse des Datenformulars die Option &quot;<span class="main"><B>eMails 
+im HTML-Format senden&nbsp;(empfohlen)</b>&quot; angeboten.</span></p>
+<hr/>
+<p><font color="#FF0000"><B>Sichere &quot;Tell-a-friend&quot;-Funktion</B></font></p>
+<p>Als <B>Schutz vor Missbrauch </B>dieser Funktion zum <B>SPAM-Versand </B>wird 
+ein (graphischer) Sicherheits-Code angezeigt, den der Besucher mit eingeben 
+muss.</p>
+<hr/>
+<p><font color="#FF0000"><B>Überprüfung der 
+		Kunden-Adresse im Internet</B></font></p>
+Es können folgende Prüfungen <B>online über das Internet </B>durchgeführt 
+werden:<UL>
+	<LI><B>Validierung</B> von <b><font color="#0000FF">PLZ, ORT und STRASSE</font></b> 
+	über die <B>PLZ-Suche der Post</B></LI>
+	<LI><B>Validierung</B> von <b><font color="#0000FF">PLZ, ORT und STRASSE
+	</font></B>im <B>Telefonbuch der Telekom </b></LI>
+	<LI><B>Rückwärtssuche</B> der <font color="blue"><B>Fon- und/oder Fax-Nummer</B></font> 
+	im <B>Telefonbuch der Telekom </b></LI>
+</UL>
+<p>Dies kann im Admin-Bereich erfolgen bei</p>
+<p>den <B>Kunden-Daten</B></p>
+<p>den <B>Bestell-Daten </b></p>
+<p>(Button: &quot;<B>Adresse validieren</B>&quot;)</p>
+<p>Damit kann der Admin bei Bedarf prüfen, ob die Kundenadresse <B>plausibel</B> 
+ist.</p>
+<p>Wenn es <B>positive </B>Validierungen gibt, ist der Kunde vermutlich 
+existent. </p>
+<p><B>Negative</B> Validierungen können auch nur bedeuten, dass ein 
+existierender Besteller sich nicht in die zugrundeliegenden Datenbanken hat 
+eintragen lassen, was ja möglich ist.</p>
+<hr/>
+<p><font color="#FF0000"><B>Mehrere Templates für einen Shop </b></font></p>
+<p>Wenn Sie <B>mehrere Templates </B>für Ihren Shop haben, und Sie ihren Besuchern 
+anbieten wollen, sich eines dieser Templates auszuwählen, ist folgendes zu 
+beachten:</p>
+<p>Im linken Navigationsbereich oben gibt es den neuen Link &quot;<B>Shop-Design 
+ändern</B>&quot; (nur, wenn mehr als ein Template vorhanden ist!). Nach dessen Anwahl werden alle verfügbaren Templates (außer dem 
+aktuellen) zur Auswahl angeboten.<br/>
+<br/>
+Wenn im Verzeichnis &quot;<B>images</B>&quot; Bilder mit den Namen &quot;<B>template.gif</B>&quot; 
+(z.B. &quot;<B>olc.gif</B>&quot;) existieren, werden diese mit angezeigt. Damit kann man 
+eine verkleinerte Darstellung des Designs anzeigen lassen (&quot;<B>Preview</B>&quot;). (Das sind 
+verkleinerte Screenshots der Eingangsseite. Eine Bildbreite von 300 Pixel ist 
+ausreichend.)<br/>
+<br/>
+Das gewählte Template wird in einem &quot;<B>Cookie</B>&quot; gespeichert, so dass der 
+Besucher beim nächsten Besuch gleich mit seinem <B>Lieblingsdesign</B> arbeiten 
+kann.<br/>
+(Das im Admin-Bereich eingestellte Standard-Template wird <B>nicht </b>
+verändert, so dass ohne Templateauswahl durch den Anwender immer dieses 
+Standard-Template angezeigt wird.)</p>
+<p><B>Wenn Sie <U><font color="#FF0000">keine</font></U> Template-Auswahl 
+anbieten wollen</B>, können Sie die &quot;Smarty&quot;-Variable &quot;<b>{$CHANGE_SKIN}</b>&quot; 
+aus der &quot;<B>index.html</B>&quot; des Templates entfernen.</p>
+<p><B>Wenn Sie <U><font color="#FF0000">eine</font></U> Template-Auswahl 
+anbieten wollen</B>, dann <font color="#FF0000"><b><U>müssen</U> alle Templates für die Belange von AJAX 
+angepasst werden</B>!</font>&nbsp; (Siehe dazu &quot;<b><A TARGET="_blank" href="documentation/ajax_aenderungen.html">ajax_aenderungen.html</A></b>&quot;.) </p>
+<p>Zusätzlich sollte im Verzeichnis &quot;<B>templates/xxxxxxx/buttons/german</B>&quot; die 
+Datei &quot;<B>button_admin.gif</B>&quot; vorhanden sein, in der eine Variante des &quot;admin&quot;-Buttons
+<B>im jeweiligen Design</B> enthalten ist. (Ist diese Datei nicht vorhanden, wird der Standard-Admin-Button verwendet.)</p>
+<hr/>
+<p><font color="#FF0000"><B>PDF-Versionen der AGBn und Wiederrufsbelehrung</B></font></p>
+<p>Bei der Bestellung erzwingt diese OL-Commerce -Version das
+<font color="#0000FF"><b><U>aktive</U> Akzeptieren </b></font>der <B>AGBn </b>
+und der <B>Wiederrufsbelehrung</B>.</p>
+<p>In der entsprechenden Information wird auch der <B>Link zu den
+<font color="#0000FF">PDF-Versionen</font> dieser Dokumente </B>angeboten (die 
+Rechtsprechung verlangt, dass der Kunde sich eine <B>nicht modifizierbare 
+Version</B> dieser Informationen herunterladen kann!).</p>
+<p>Diese PDF-Dokumente müssen im <B>Shop-Verzeichnis</B> (wo auch die &quot;<B>index.php</B>&quot; 
+liegt) verfügbar sein, und die Namen &quot;<B>agb.pdf</B>&quot; bzw. &quot;<B>fernag.pdf</B>&quot; 
+tragen.</p>
+<p>Die Erstellung dieser PDF-Dokumente ist auch mit <B>kostenlosen Tools</B> 
+recht einfach möglich, indem man die normalen (HTML- oder WORD-Versionen) mit 
+Hilfe eines PDF-Druckertreibers in die o.g. Dateien ausgeben lässt. (Ein solches 
+Tool ist z.B. <b><A TARGET="_blank" href="http://www.shbox.de/freepdf.htm">
+<font color="#FF0000">hier</font></A></b> (<A href="http://www.shbox.de/freepdf.htm">http://www.shbox.de/freepdf.htm</A>) 
+zu bekommen (sogar in Deutsch!)).</p>
+<hr/>
+<p>
+		<b><font color="#FF0000">Elm@r - Der elektronische Markt</font></b></p>
+<p>Die Distribution von OL-Commerce 2.0/AJAX enthält (im Verzeichnis &quot;<B>elmar_olcommerce</B>&quot;) 
+auch die Installtionsdateien von <b>
+<A TARGET="_blank" href="http://elektronischer-markt.de/">Elm@r</A></b>.</p>
+<p>Wenn Sie <b><A TARGET="_blank" href="http://elektronischer-markt.de/">Elm@r</A></b> verwenden wollen, muss 
+dieses nach Installation des Shops <B>zusätzlich installiert </B>werden.</p>
+<p><b><A TARGET="_blank" href="http://elektronischer-markt.de/">Elm@r</A></b><font color="#0000FF"><b> </b></font>ist 
+primär dazu konzipiert, das &quot;<B>shopinfo.xml</B>&quot;-Format zu erstellen, das 
+mittlerweile von einer ganzen Reihe von Preisvergleichsanbietern verwendet 
+werden kann (inkl. einem <font color="#FF0000"><B>automatischen periodischen</B></font> Daten-Update durch diese 
+Preisvergleichsanbieter). Diese sind z.B. <b>
+<a href="http://www.rockbottom.de/static/ShopAnmelden.html" target="_blank">RockBottom</a>,
+<a href="http://www.shopwahl.com/shop/anmeldung.htm" target="_blank">Shopwahl</a>,
+<a href="http://www.antag.de/" target="_blank">Antag</a>,
+<a href="http://www.idealo.de/" target="_blank">Idealo</a>,
+<a href="http://www.preisroboter.de/" target="_blank">PreisRoboter</a>,
+<a href="http://www.mentasys.de/" target="_blank">mentasys</a>,
+<a href="http://www.wobestellen.de/" target="_blank">wobestellen</a>,
+<a href="http://www.preissuche.de/" target="_blank">Preissuche</a>,
+<a href="http://www.auspreiser.de/" target="_blank">Auspreiser</a>,
+<a href="http://www.pangora.com/" target="_blank">Pangora</a>
+</B>und<B>
+<a href="http://www.dsvz.de/" target="_blank">Deutsches Shopverzeichnis</a></b>.
+</p>
+<p>Es kann aber auch <B>Exportdaten</B> generieren für <b><font color="#0000FF">Froogle, 
+Hardwareschotte, Kelkoo, Pangora, Shopping.com, WEB.DE, Amazon</font>.</b></p>
+<p>Für die Preisvergleichsanbieter, die das &quot;<B>shopinfo.xml</B>&quot;-Format untersützten, bracht man gar 
+nichts zu tun, da das Update regelmäßig <font color="#FF0000"><B>automatisch(!)</b></font> durchgeführt wird.</p>
+<p>Für die anderen muss man bei <B>Bedarf</B> (<B>Änderung in den Produkten</B>) die 
+Exportdaten neu erstellen und übermitteln lassen.</p>
+<p><B>Näheres zu <A TARGET="_blank" href="http://elektronischer-markt.de/">Elm@r</A> findet man
+<A TARGET="_blank" href="http://elektronischer-markt.de/">hier</A>.</b></p>
+<hr/>
+<p><b><font color="#FF0000">chCounter - </font> </b><font color="#FF0000"><b>
+Shop-Statistik</B></font></p>
+<p>Die Distribution von OL-Commerce 2.0/AJAX enthält (im Verzeichnis &quot;<B>chCounter</B>&quot;) 
+auch die Installationsdateien von &quot;<B>chCounter</B>&quot;.</p>
+<p>Dieses Statistik-Package ist so intelligent eingebunden, dass man 
+<B>Zugriffsstatistiken bis hinunter auf die <font color="#FF0000">Produktebene</font> erhält</B>!</p>
+<p>Wenn Sie <B>chCounter</B> verwenden wollen, muss dieses nach Installation des 
+Shops <B>zusätzlich installiert </B>werden.</p>
+<p><B>Näheres zu
+<A TARGET="_blank" href="http://www.christoph-bachner.net/chcounter">chCounter</A> 
+findet man <A TARGET="_blank" href="http://www.christoph-bachner.net/chcounter">
+hier</A>.</b></p>
+<p><font color="#FF0000">Vor den Erfolg haben auch hier die Götter den Schweiß 
+gesetzt: Sie sollten sich <B>unbedingt</B> mit der Dokumentation des <b>
+chCounter</B> vertraut machen, damit Sie diesen auch sinnvoll nutzen können.</font></p>
+<p>Folgende Konfigurationsänderungen <font color="#FF0000"><B>müssen</B></font> 
+noch vorgenommen werden:</p>
+<p>Loggen Sie sich in den <B>Administrationsbereich </B>von chCounter ein.</p>
+<p>Im Bereich &quot;<B>Einstellungen/Counter/Einstellungen</B>&quot;<br/>
+<br/>
+die Option &quot;<B>Administrator mittels Cookie vom Zählen ausnehmen</B>&quot;
+<font color="#FF0000"><B>aktivieren</B></font>.<br/>
+<br/>
+Im Bereich &quot;<B>Einstellungen/Globale Einstellungen/Statistiken/Einstellungen</B>&quot;<br/>
+<br/>
+In das Feld &quot;<B>Query-String-Variablen</B>&quot; folgende Daten <font color="#FF0000">
+<B>anfügen</B></font>:<br/>
+<br/>
+<B>OLCsid; page; BUYproducts_id; language; ajax;</b></p>
+<hr/>
+<p><b><font color="#FF0000">BLZ-Aktualisierung anhand der </font>
+<font color="#0000FF">Bundesbank</font><font color="#FF0000">-Daten</font></b></p>
+<p>Im Bestellbereich kann OL-Commerce 2.0/AJAX Bankverbindungen <B>während der 
+Eingabe</B> direkt validieren!</p>
+<p>Dazu ist es allerdings erforderlich, dass die BLZ-Informationen in der 
+Datenbank enthalten sind.</p>
+<p>OL-Commerce 2.0/AJAX enthält dazu eine intelligente Funktion, die es erlaubt, 
+diese Datenbanktabelle <B>automatisch </B>an Hand der (vierteljährlich 
+aktualisierten) entsprechenden Daten der <B>Bundesbank</B> zu pflegen.</p>
+<p>Im <B>Admin-Bereich</B> gibt es dazu den Link &quot;<font color="#0000FF"><B>BLZ 
+Update</B></font>&quot;.</p>
+<p>Nach dessen Aktivierung wird der Ablauf genau erläutert.</p>
+<hr/>
+<p><font color="#FF0000"><B>Sonderbehandlung von Produkt-Preisen &lt;=0</B></font></p>
+<p>Ein Produktpreis von &quot;0&quot; bewirkt, dass das Produkt zwar angezeigt wird, aber 
+nicht bestellbar ist!</p>
+<p>Hat ein Produkt einen Preis &lt; 0, dann wird zusätzlich die Meldung angezeigt, 
+dass es derzeit ausverkauft ist. </p>
+<p>Wenn dann gleichzeitig im Produkt noch ein 
+<B>Erscheinungsdatum</B> angegeben ist, dann wird dieses zusätzlich als 
+voraussichtliches Verfügbarkeitsdatum angezeigt. Wenn dieses <b>
+Erscheinungsdatum</B> dann erreicht ist, wird das Produkt <font color="#FF0000">
+<B>automatisch </b></font>wieder bestellbar.</p>
+<hr/>
+<p><font color="#FF0000"><B>Wartungsarbeiten verwalten</B></font></p>
+<p>Im <B>Admin-Bereich</B> gibt es den Link &quot;<font color="#0000FF"><B>Wartungsarbeiten 
+verwalten</B></font>&quot;.</p>
+<p>Der Zweck dieser Funktion ist es, einen OL-Commerce -Shop in den &quot;<B>Wartungszustand</B>&quot; 
+zu versetzen, so dass in dieser Zeit niemand, außer bestimmten Anwendern, mehr Zugriff auf den Shop hat.</p>
+<p>Über diesen Menüpunkt werden die zugehörigen Optionen angewählt.</p>
+<p>Diese sind:</p>
+<table ID="table5" border="0" cellpadding="5" cellspacing="5" width="100%">
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>1. </b></font></td>
+		<td valign="top">Wartungsabschaltung: <B>AN/AUS</B></td>
+		<td valign="top" width="888">Damit wird der Wartungszustand AN- oder 
+		AUS-geschaltet.
+		<p>Im &quot;AN&quot;-Zustand dürfen dann nur Anwender mit den folgenden 
+		Eigenschaften den Shop bearbeiten:</p>
+		<UL>
+			<LI>ihre IP entspricht dem in <B>2. </B>definierten Wert<br/>
+			&nbsp;</LI>
+			<LI>ihre IP ist &quot;127.0.0.1&quot; (lokal auf dem &quot;Heimat-System&quot; darf 
+			weiter gearbeitet werden)<br/>
+			&nbsp;</LI>
+			<LI>sie haben beim Shop-Aufruf den Parameter &quot;<B>allowmaintenance=xxxxxxxxxx</B>&quot; 
+			angegeben (siehe <B>3.</b>)<br/>
+			(z.B. &quot;www.meinshop.de/olcommerce/index.php?<B>allowmaintenance=Mein 
+			Passwort</B>&quot;)</LI>
+		</UL>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>2.</b></font></td>
+		<td valign="top">Wartungsabschaltung: <B>Diese IP-Adresse zulassen</B></td>
+		<td valign="top" width="888">Diese IP-Adresse darf die Website während 
+		der Wartungsabschaltung bearbeiten (Administrator)</td>
+	</tr>
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>3.</b></font></td>
+		<td valign="top">Wartungsabschaltung: <B>Dieses Passwort zulassen</B></td>
+		<td valign="top" width="888">Wird der Shop mit dem Parameter &quot;<B>allowmaintenance=xxxxxxxxxx</B>&quot; 
+		(&quot;<B>xxxxxxxxxx</B>&quot; = Passwort) aufgerufen, dann darf der Benutzer die Website 
+		auch während der Wartungsabschaltung bearbeiten (Administrator).<br/>
+		<b>(Das ist eine Alternative für den Fall, dass Sie <font color="#ff0000">keine</font> 
+		feste IP-Adresse haben, und auf dem Online-Server arbeiten wollen.)</b></td>
+	</tr>
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>4.</b></font></td>
+		<td valign="top">Wartungsabschaltung: <B>Vor der Wartungsabschaltung 
+		eine WARNUNG anzeigen</B><br/>
+		&nbsp;</td>
+		<td valign="top" width="888">Wenn dieser Wert &quot;true&quot; ist, <B>und</B> der 
+		nächste Parameter einen Wert enthält, wird immer ein entsprechender Hinweis 
+		eingeblendet (auf den Kunden- und den Admin-Seiten).<br/>
+		(Wenn die Wartungsabschaltung auf&nbsp; &quot;<B>AN</B>&quot; gesetzt wird, wird dieser 
+		Wert automatisch zurückgesetzt.)</td>
+	</tr>
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>5.</b></font></td>
+		<td valign="top">Wartungsabschaltung:<b> Datum und Dauer der 
+		Wartungsabschaltung<br/>
+		&nbsp;</b></td>
+		<td valign="top" width="888"><B>Datum und Dauer der Wartungsabschaltung</B> 
+		(<font color="#FF0000">beliebiger <B>Text</B></font>, z.B.: <B>1. Mai 2006, 12:00 Uhr bis 15:00 Uhr</B>)<p>Dieser Hinweis wird 
+		<B>während</B> der &quot;Wartungsabschaltung&quot; angezeigt (und evtl. auch während der 
+		&quot;Vorwarnung&quot;, wenn <B>4.</b> auf &quot;true&quot; gesetzt wird). </td>
+	</tr>
+</table>
+<p><U><font color="#0000ff"><B>Ein typisches Szenario für die Verwendung dieser 
+Funktion sieht dann 
+wie folgt aus:</b></font></U></p>
+<p>Der <B>Admin</B> setzt in <font color="#ff0000"><B>5.</b></font> die Information, 
+wann der Shop nicht erreichbar ist.</p>
+<p>Wenn er (ab sofort!) eine <B>Vorwarnung </B>vor der eigentlichen Abschaltung 
+geben will, setzt er zusätzlich <font color="#ff0000"><B>4.</b></font> auf &quot;<B>true</B>&quot;.</p>
+<p>Wenn der Shop <B>abgeschaltet </B>werden soll, setzt er <font color="#ff0000">
+<B>1.</b></font> auf &quot;<B>true</B>&quot;.</p>
+<p>Wenn der Shop wieder angeschaltet werden soll, setzt er <font color="#ff0000">
+<B>1.</b></font> auf &quot;<B>false</B>&quot;.</p>
+<p><B>Während der &quot;Vorwarnzeit&quot;</b> werden die Vorwarn-Meldungen angezeigt.</p>
+<p><B>Während der Abschaltung</B> können nur noch Besucher, die die 
+Voraussetzungen gemäß 2. oder 3. erfüllen auf den Shop zugreifen, alle anderen 
+erhalten nur eine Meldung, dass kein Zugriff möglich ist.</p>
+<hr/>
+<p><b>
+		<A TARGET="_blank" href="https://www.google.de/webmasters/sitemaps/docs/de/about.html">
+		<font color="#FF0000">Google Sitemap</font></A></b></p>
+<p>Im <B>Admin-Bereich</B> gibt es den Link &quot;<b><A TARGET="_blank" href="http://www.google.com/webmasters/sitemaps/login">Google Sitemap</A></b>&quot;.</p>
+<p>Dieser dient zur Erstellung einer &quot;Sitemap&quot; für Google, so 
+		dass eine bessere Indizierung erfolgen kann.</p>
+<p>Darin werden alle Kategorien und Produkte in dem für die <b>
+		<A TARGET="_blank" href="http://www.google.com/webmasters/sitemaps/login">
+		Google Sitemap</A></b> definierten Format erstellt, und an die 
+entsprechende Google-Adresse übermittelt. Mit Hilfe dieser &quot;Sitemap&quot; kann Google 
+dann wirklich problemlos den Shop mit seinem dynamischen Inhalt <B>komplett</B> indizieren.</p>
+<p><font color="#FF0000"><B>Bei Bedarf (Änderung in den Produkten) muss die Funktion neu aufgerufen 
+werden.</b></font></p>
+
+<hr/>
+<p><A href="https://www.google.de/webmasters/sitemaps/docs/de/about.html">
+<font color="#FF0000"><B>Ausgabe von Test-Informationen</B></font></A></p>
+<p>Im AJAX-Modus ist es nicht mehr möglich, mit dem PHP &quot;echo&quot;-Befehl <b>
+Test-Informationen</B> auszugeben, weil das AJAX-Javascript nur noch Daten in 
+einem bestimmten Format ausgeben.</p>
+<p>Um dies dennoch zu ermöglichen, wurde vorgesehen, dass Daten, die in der &quot;<B>superglobalen</B>&quot; 
+PHP-Variablen &quot;<font color="#FF0000"><b>$_SESSION['debug_output']</b></font>&quot; 
+enthalten sind, am Anfang des Bildschirm-Mittelbereiches angezeigt werden.</p>
+<p>Wenn man also Testwerte ausgeben will, dann muss man das mit AJAX wie folgt 
+tun:</p>
+<p>statt&nbsp;&nbsp;&nbsp; </p>
+<p><font color="#0000FF"><B>echo &quot;testvariable='&quot;.$testvariable.&quot;'&lt;br&gt;&quot;;</b></font></p>
+<p>schreibt man</p>
+<p><font color="#FF0000"><b>$_SESSION['debug_output']</font><font color="#0000FF">.</font><font color="#FF0000">=&quot;testvariable='&quot;.$testvariable.&quot;'&lt;br&gt;&quot;;<br/>
+</font>
+</b>(Unbedingt &quot;<font color="#FF0000"><b>.</b></font>=&quot; verwenden, da 
+sonst immer nur die letzte Ausgabe angezeigt wird!)</p>
+<hr/>
+<p><font color="#FF0000"><B>Shop-Funktion bei deaktiviertem Javascript</B></font></p>
+<p>Es war von Anfang an das Ziel, mit <B>einer </B>Version sowohl den 
+konventionellen als auch den AJAX-Modus betreiben zu können.</p>
+<p><font color="#0000FF"><B>Wie wird das erreicht?</b></font></p>
+<p>Wenn das Programm aufgerufen wird, wird zunächst eine <B>Javascript-Erkennung
+</B>durchgeführt, indem eine kleine HTML-Seite an den Browser zurückgegeben 
+wird.</p>
+<p>Bei <B>aktiviertem </B>Javascript kann diese sich <B>aktiv </B>beim Server 
+zurückmelden, und der AJAX-Modus wird aktiviert.</p>
+<p>Bei <B>nicht aktiviertem </B>Javascript wird ein PHP-Fehlerskript aufgerufen 
+(mit Hilfe des HTML &quot;&lt;NOSCRIPT&gt;&quot;-Tags), das dem Besucher diese Tatsache 
+mitteilt, und ihm 2 Möglichkeiten anbietet:</p>
+<p>1. Er wird aufgefordert, seinen Browser für die Javascript-Verwendung zu 
+konfigurieren.</p>
+<p>2. Er kann das Programm im konventionellen Modus weiter betreiben.</p>
+<p>Im Fall 1. kann er sich dann eine genaue Anleitung anzeigen lassen, wie das 
+geht.</p>
+<p>Er kann dann nach der Konfiguration im AJAX-Modus oder doch konventionell 
+starten.</p>
+<p>Das Ganze funktioniert auch, wenn der Besucher über einen &quot;deep link&quot; auf der 
+Shop-Seite landet (z.B. wenn über Froogle &amp; Co. direkt eine Produktseite 
+aufgerufen wurde).</p>
+<p>Die &quot;deep link&quot;-Information bleibt auf den Informations-Seiten erhalten, so 
+dass der Besucher über die angebotenen Links im AJAX- oder konventionellen Modus 
+auf der angewählten Seite landet (was im AJAX-Modus gar nicht so einfach zu 
+realisieren war).</p>
+<p>Die o.g. Informations-Seiten (&quot;<B>templates/aktuelles template/module/ajax_.......html</B>&quot;) 
+sind so konzipiert, dass das CSS des Shop-Templates und das Shop-Logo (&quot;<B>templates/aktuelles 
+template/img/logo.gif</B>&quot;) verwendet werden.</p>
+
+

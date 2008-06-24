@@ -1,0 +1,14 @@
+{if $SLIDE_SHOW}
+{assign var="max_col" value="1"}
+{else}
+{assign var="max_col" value="2"}
+{/if}
+{php}
+$template=CURRENT_TEMPLATE_MODULE.'products_list'.HTML_EXT;
+if (!file_exists(TEMPLATE_PATH.$template))
+{
+	$template=str_replace(CURRENT_TEMPLATE.SLASH,COMMON_TEMPLATE,$template);
+}
+$this->_tpl_vars['template']=$template;
+{/php}
+{include file="$template"}

@@ -1,0 +1,16 @@
+{olc_template_init section="products_media" title="#title#"}
+<table border="0" width="100%" cellspacing="2" cellpadding="0">
+	<tr> 
+		<td colspan="2" align="center" class="footer">{#file#}</td>
+		<td colspan="2" align="center" class="footer">{#size#}</td>
+	</tr>	
+	{foreach name=aussen item=module_data from=$module_content}
+	<tr> 
+		<td width="1" valign="top" class="main_border_bottom">{$module_data.ICON}</td>
+		<td width="100%" class="main_border_bottom"><strong>{$module_data.FILENAME}</strong><br/>
+		{$module_data.DESCRIPTION}</td>
+		<td align="right" nowrap="nowrap" class="main_border_bottom">{$module_data.FILESIZE}</td>
+		<td width="1" align="right" class="main_border_bottom">{$module_data.BUTTON}</td>
+	</tr>
+	{/foreach}
+</table>

@@ -1,0 +1,40 @@
+{olc_template_init title="#heading_address#" section="address_book_process"}
+{if $language==''}
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+{$FORM_ACTION}
+{$MODULE_address_book_details} <br/>
+{if $delete=='1'} 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    <td class="category">{#title_delete#} </td>
+	</tr>
+	<tr>
+		<td class="main_border_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="main" width="100%" valign="top">{#text_delete#}<br/><br/></td>
+					<td class="main_border_right" valign="top">
+						<table width="100%" border="0" cellspacing="0" cellpadding="4">
+							<tr> 
+								<td width="1" align="center" valign="top" nowrap="nowrap" class="main"> 
+								<div align="center"><strong>{#text_address#}</strong><br/>
+								<img src="{$tpl_path}img/arrow_south_east.gif"> </div></td>
+								<td width="150" nowrap="nowrap" class="main_grey">
+								<div align="left">{$ADDRESS}</div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+{/if}
+<br/>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr> 
+		<td>{$BUTTON_BACK}</td>
+		<td><div align="right">{$BUTTON_UPDATE}{$BUTTON_DELETE}</div></td>
+	</tr>
+</table>

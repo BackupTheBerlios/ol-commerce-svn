@@ -1,0 +1,56 @@
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="{$style_path}">
+{/if}
+<table width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td valign="top" align="right">
+	    <table class="standard" align="right" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td valign="top" align="left">
+		        <font size="2">
+				      <p>
+			        	<a target="_blank" title="{$STORE_NAME}"
+					        alt="{$STORE_NAME}" href="{$HOME_LINK}"><img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}"></a>
+				      </p>
+			        <p>{$STORE_NAME_ADDRESS}</p>
+			        <p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		        </font>
+		       </td>
+	      </tr>
+	    </table>
+	    <br />
+		</td>
+  </tr>
+  <tr>
+    <td>
+	    <hr />
+	    <p>{if $NAME <>""}
+	    <p>Hallo {$NAME},</p>
+	    {/if}
+	    <b>Herzlichen Glückwunsch, Sie haben einen Gutschein über <font color="red">{$AMMOUNT}</font> erhalten! </b><br />
+	    <p></p>
+	    <hr />
+	    <p><font size="2">Dieser Gutschein wurde Ihnen geschenkt
+	    von <b>{$FROM_NAME}</b>.</font></p>
+	    {if $MESSAGE != ""} <font size="2"><br />
+	    Folgende Nachricht wird Ihnen dazu übermittelt:</font><hr />
+	    <p><font size="2">{$MESSAGE}</font></p>
+	    <hr />{/if}
+	    <p><font size="2">Ihr persönlicher <b>Gutscheincode</b>
+	    lautet <b>{$GIFT_ID}</b>.<br />
+	    <br />
+	    Um den Gutschein jetzt direkt zu verbuchen, klicken Sie bitte <a href="{$GIFT_LINK}"><b>hier</b></a>
+	    <br />
+	    <br />
+	    Sie können den Gutschein auch später während des Bestellvorganges in unserem 
+	    <a target="_blank" href="{$HOME_LINK}"><img src="{$logo_path}" align="middle" border="0"></a>Shop verbuchen.
+	    </p>
+    </td>
+  </tr>
+</table>
+{if $MAIL_IMPRESSUM}
+{$MAIL_IMPRESSUM}
+{/if}

@@ -1,0 +1,12 @@
+{php}
+$this->_tpl_vars['section']='top_products';
+$this->_tpl_vars['header']='header_top';
+$this->_tpl_vars['CATEGORIES_NAME']=TOP_PRODUCTS_TEXT;
+$template=CURRENT_TEMPLATE_MODULE.'products_list'.HTML_EXT;
+if (!file_exists(TEMPLATE_PATH.$template))
+{
+	$template=str_replace(CURRENT_TEMPLATE.SLASH,COMMON_TEMPLATE,$template);
+}
+$this->_tpl_vars['template']=$template;
+{/php}
+{include file="$template"}

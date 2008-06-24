@@ -1,0 +1,45 @@
+{olc_template_init section="index"}
+{$MODULE_error}
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td>{$title}</td>
+  </tr>
+  <tr> 
+    <td colspan="2" class="main">{$text}<br/> </td>
+  </tr>
+  {if $SLIDE_SHOWS<>EMPTY_STRING}
+	{math assign="col_width_p" equation="100 / x" x=$SLIDE_SHOWS}
+  <tr> 
+    <td colspan="2" class="main">
+			<table id="SLIDESHOW_" width="100%" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					{if $box_SLIDESHOW_0}
+					<td align="center" width="{$col_width_p}%" valign="top">
+						<div class="main" id="box_SLIDESHOW_0">
+							{$box_SLIDESHOW_0}
+						</div>
+					</td>
+					{/if}
+					{if $box_SLIDESHOW_1}
+					<td align="center" width="{$col_width_p}%" valign="top">
+						<div class="main" id="box_SLIDESHOW_1">
+							{$box_SLIDESHOW_1}
+						</div>
+					</td>
+					{/if}
+				</tr>
+			</table>
+    </td>
+  </tr>
+  {/if}
+  <tr> 
+    <td colspan="2" class="main">{$MODULE_top_products}</td>
+  </tr>
+  <tr> 
+    <td colspan="2" class="main">{$MODULE_new_products}</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="main">{$MODULE_upcoming_products}</td>
+  </tr>
+</table>
+

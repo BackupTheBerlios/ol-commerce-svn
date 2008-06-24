@@ -1,0 +1,65 @@
+{if $logo_path==''}
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+<body>
+{else}
+<body BACKGROUND="{$tpl_path}images/bg_green.png" BGCOLOR="#ECF4D1">
+{/if}
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td align="right">
+    	<a target="_blank" title="Seifenparadies" href="{$HOME_LINK}"><img src="{$logo_path}logo.gif"
+    	border="0" align="middle" title="Seifenparadies"></a>
+    </td>
+  </tr>
+  <tr>
+    <td height="485">
+    	<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+		    <p>
+		      Hallo {$to_name},</p>
+			<p>
+			<b>{$from_name}</b> hat Ihnen eine <font size="2">
+			E-Mail-</font>Information zu unserem Internet-Shop '<b>{$shop_name}</b>' gesendet.</p>{if $message <>''}<br/>
+&nbsp;<hr/>
+			<b><br/>
+			Hier ist die Nachricht:
+			</b>
+			<p>{$message}<br/>
+&nbsp;</p>
+			<hr/>
+			{/if}
+			{if $PRODUCTS_LINK != ''}
+			<p>
+			Um die Information über '<b>{$products_name}</b>' anzusehen,
+			klicken Sie bitte auf den folgenden <B>Link</B>, oder kopieren diesen, und fügen Sie ihn in der
+			Adress-Zeile Ihres Browsers ein:</p>
+			<p><b>{$PRODUCTS_LINK}</b></p>
+			{/if}
+			<p>
+			Mit besten Grüßen
+
+			Ihr <a target="_blank" title="Seifenparadies" href="{$HOME_LINK}"><img src="{$logo_path}logo.gif"
+	    	border="0" align="middle" title="Seifenparadies"></a>-Team
+		<font size="2">
+    	<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+		    <p>&nbsp;</p>
+			<hr/>
+			</font>
+		<p>Diese E-Mail wurde von
+    	<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+			<b>{$from_name}</b></font>
+    	<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+		    (<A href="mailto:{$from_email}?subject=Deine Empfehlung für '{$shop_name}'">{$from_email}</A></font>)
+		versendet, und durch
+    	<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+		    '<b>{$shop_name}</b>'
+	    lediglich
+	    </font>übermittelt.<p>Wenn Sie Fragen haben, senden Sie uns eine
+		Nachricht an: <b>
+		<A href="mailto:{$shop_email}?subject=Ich habe eine Frage">{$shop_email}</A></b></font></font></td>
+  </tr>
+</table>
+</body>
+{if $MAIL_IMPRESSUM}
+<br/><hr>
+{$MAIL_IMPRESSUM}
+{/if}

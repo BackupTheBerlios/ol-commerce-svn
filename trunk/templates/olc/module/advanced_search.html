@@ -1,0 +1,40 @@
+{olc_template_init title="#heading_search#" section="advanced_search"}
+{$FORM_ACTION}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr> 
+		<td class="main" colspan="2">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr> 
+					<td class="subcategory"><strong>{#title_keywords#}</strong></td>
+					<td class="main"><div align="right"><a href="{$HELP_LINK}">{#text_help#}</a></div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">{$INPUT_KEYWORDS}</td>
+	</tr>
+	<tr> 
+		<td>&nbsp;</td>
+		<td class="main"><div align="right">{$CHECKBOX_DESCRIPTION} {#text_description#}</div></td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><hr>&nbsp;</td>
+	</tr>
+	<tr>
+    	<td>{$OPTIONS_BOX}</td>
+	</tr>
+	<tr>
+		<td><hr></td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><div align="right">{$BUTTON_SUBMIT}</div></td>
+	</tr>
+</table>
+{$FORM_END}

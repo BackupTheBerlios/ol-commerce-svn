@@ -1,0 +1,25 @@
+{if $NAME <>""}
+Hallo {$NAME},
+
+{/if}
+Herzlichen Glückwunsch, Sie haben einen Gutschein über {$AMMOUNT} erhalten!
+
+Dieser Gutschein wurde Ihnen geschenkt von {$FROM_NAME}.
+
+{if $MESSAGE != ""}
+
+Folgende Nachricht wird Ihnen dazu übermittelt:
+
+=======================================================
+
+{$MESSAGE}
+
+=======================================================
+
+{/if}
+Ihr persönlicher Gutscheincode lautet {$GIFT_ID}.
+
+Sie können den Gutschein während des Bestellvorganges in unserem Shop verbuchen.
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}

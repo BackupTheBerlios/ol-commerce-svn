@@ -1,0 +1,49 @@
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="{$style_path}">
+{/if}
+<table width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td valign="top" align="right">
+	    <table class="standard" align="right" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td valign="top" align="left">
+		        <font size="2">
+				      <p>
+			        	<a target="_blank" title="{$STORE_NAME}"
+					        alt="{$STORE_NAME}" href="{$HOME_LINK}"><img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}"></a>
+				      </p>
+			        <p>{$STORE_NAME_ADDRESS}</p>
+			        <p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		        </font>
+		       </td>
+	      </tr>
+	    </table>
+	    <br />
+		</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p><b><font size="2">Sehr geehrter
+    Kunde,</font></b></p>
+    <font size="2">
+    <p><font>Sie erhalten diese eMail, weil Sie sich zum Empfang unserer Informations-eMails
+    angemeldet haben. </font></p>
+    <p><font>Bitte klicken Sie auf den Aktivierungslink, damit Ihre eMail-Adresse für
+    den Empfang der Informations-eMails freigeschaltet wird. </font></p>
+    <p><font><b><font size="2">Ihr Aktivierungslink:<br />
+    <br />
+    </font></b></font><font size="2"><a href="{$LINK}"><font>{$LINK}</font></a></font><br/>
+    </p>
+    <p><font>Sollten Sie sich nicht für den Empfang unserer Informations-eMails angemeldet
+    haben, bzw. den Empfang der Informations-eMails doch nicht wünschen, brauchen Sie gar nichts zu
+    tun:</font></p>
+    <p><font>Ihre Adresse wird dann aus unserer Datenbank automatisch gelöscht.</font></font></p>
+    </td>
+  </tr>
+</table>
+{if $MAIL_IMPRESSUM}
+{$MAIL_IMPRESSUM}
+{/if}

@@ -1,0 +1,38 @@
+{if $title}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr valign="top">
+    <td class="contentsTopics{$header_variation}_l">&nbsp;</td>
+    <td class="contentsTopicsListen{$header_variation}_m">{$title}</td>
+    <td class="contentsTopics{$header_variation}_r">&nbsp;</td>
+  </tr>
+  {if $sub_title}
+  <tr valign="top">
+    <td colspan="3" class="subcategory">{$sub_title}</td>
+  </tr>
+  {/if}
+</table>
+{/if}
+{if $error==''}
+{assign var="error" value=$error_message}
+{/if}
+{if $error!=''}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="headerError" align="center">{$error}</td>
+	</tr>
+	<tr>
+		<td height="5">&nbsp;</td>
+	</tr>
+</table>
+{else}
+{if $info_message!=''}
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+	<tr class="headerInfo">
+		<td align="center">{$info_message}</td>
+	</tr>
+	<tr>
+		<td height="5">&nbsp;</td>
+	</tr>
+</table>
+{/if}
+{/if}

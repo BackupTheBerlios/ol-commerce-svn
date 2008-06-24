@@ -1,0 +1,48 @@
+{if $options!=''}
+<!-- W. Kaiser - AJAX-->
+<table id="options_area" width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td nowrap="nowrap">
+			<b><font color="red" size="1">Bitte wählen Sie die gewünschte Produkt-Option</font></b>
+		</td>	
+	</tr>
+	{if $OPTIONS_HAVE_PRICE}
+	<tr>
+		<td valign="middle" nowrap="nowrap">
+			<font face="Verdana" size="1">
+				<span style"display:none" ID="options_have_price"></span>
+				<b>
+					<span ID="products_price_display_2">
+						(Basispreis: {$PRODUCTS_PRICE})
+					</span>
+				</b>
+			</font>&nbsp;
+		</td>
+	</tr>
+	{/if} 
+	{assign var="separator" value="<tr><td><font style='font-size:6pt;'>&nbsp;</font></td></tr>"}
+	{foreach name=outer item=options_data from=$options} 
+	{$separator}
+	<tr>
+		<td class="main" nowrap="nowrap">
+			<b>{$options_data.NAME}</b>
+		</td>
+	</tr>
+	{$separator}
+	{foreach key=key_data item=item_data from=$options_data.DATA}
+	<tr>
+		<td class="main" nowrap="nowrap">
+			<input type="radio" name="id[{$options_data.ID}]" value="{$item_data.ID}"
+			{if $USE_AJAX && !$IS_PRINT_VERSION} id="id[{$options_data.ID}]"
+			onclick="products_attribute_changed(this,true)"{/if}>
+			{$item_data.TEXT} {if $item_data.PRICE!=''}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+		</td>
+	</tr>
+	{/foreach}
+	{/foreach} 
+	<tr>
+		<td>&nbsp;</td>	
+	</tr>
+</table>
+<!-- W. 	Kaiser - AJAX-->
+{/if}

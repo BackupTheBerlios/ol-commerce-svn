@@ -1,0 +1,50 @@
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="{$style_path}">
+{/if}
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td valign="top" align="right">
+	    <table class="standard" align="right" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td valign="top" align="left">
+		        <font size="2">
+				      <p>
+			        	<a target="_blank" title="{$STORE_NAME}"
+					        alt="{$STORE_NAME}" href="{$HOME_LINK}"><img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}"></a>
+				      </p>
+			        <p>{$STORE_NAME_ADDRESS}</p>
+			        <p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		        </font>
+		       </td>
+	      </tr>
+	    </table>
+	    <br />
+		</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+			<p align="left">
+				<font size="2">
+		    	<strong>Sehr geehrter Kunde,</strong></font> 
+	    </p>
+			<p align="left">
+				<font size="2">Sie haben kürzlich in unserem Online-Shop einen 
+					<font color="#FF0000"><b>Gutschein</b></font> bestellt, welcher aus Sicherheitsgründen nicht sofort freigeschaltet wurde. 
+	    	</font>
+	    </p>
+			<p align="left"><font size="2">Dieses Guthaben steht Ihnen nun beim nächsten Einkauf zur Verfügung. </font></p>
+			<p align="left"><font size="2">Sie können Ihren Gutschein verbuchen und/oder per eMail an Freunde versenden.</font></p>
+			<p>
+				<font size="2" color="#FF0000">
+					Der von Ihnen bestellte Gutschein hat einen Wert von <b>{$AMMOUNT}</b>.
+				</font>
+			</p>
+		</td>
+  </tr>
+</table>
+{if $MAIL_IMPRESSUM}
+{$MAIL_IMPRESSUM}
+{/if}

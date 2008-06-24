@@ -1,0 +1,51 @@
+{olc_template_init section="print_product_info"}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>{$PRODUCTS_NAME} / {$PRODUCTS_MODEL}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body leftmargin="0" topmargin="0" onload="window.print()">
+<table border="0" width="640" cellpadding="10" cellspacing="0" bgcolor="#ffffff">
+	<tr>
+		<td>
+			<p>
+				<strong><font size="4" face="Arial, Helvetica, sans-serif">
+				{$PRODUCTS_NAME}
+				</font></strong>
+				<br/>
+				<font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#text_article_number#}{$PRODUCTS_MODEL}</font>
+			</p>
+			<table width="100%" border="0" cellpadding="5">
+				<tr>
+					<td width="100%" align="left" valign="top">
+						<font size="1" face="Verdana, Arial, Helvetica, sans-serif">
+						{if $PRODUCTS_IMAGE!=''}<img src="{$PRODUCTS_IMAGE}" border="0">{/if}</font></td>
+						<td valign="top"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
+						{$PRODUCTS_DESCRIPTION}<br/>
+						<br/>
+						<strong>{if $module_content !=''}{#options#}<br/>
+						</strong>
+						{foreach name=aussen item=module_data from=$module_content}
+						{$module_data.GROUP}: {$module_data.NAME}<br/>
+						{/foreach} <br/>
+						<br/>{/if}
+						<strong>{#price#} {$PRODUCTS_PRICE|replace:"-":""}</strong>
+						<p>
+							<font size="1" style="font-size:8pt;font-weight:normal;">
+								{#price_disclaimer#}
+							</font>
+						</p>
+						</font>
+					</td>
+				</tr>
+			</table>
+		<p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><br/>
+		<br/>
+		</font></p>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

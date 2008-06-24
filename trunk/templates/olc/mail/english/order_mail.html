@@ -1,0 +1,75 @@
+<table width="100%" border="0">
+  <tr> 
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{$address_label_customer}<br/>
+            <br/>
+            {if $PAYMENT_METHOD}<b>Paymentmethod:</b> {$PAYMENT_METHOD}<br/>{/if}
+            <b>Order Nr:</b> {$oID}<br/>
+            <b>Orderdate:</b> {$DATE}<br/>
+			{if $csID}<b>Customer ID:</b> {$csID}<br/>
+			{/if}
+            </td>
+          <td width="1"><img src="{$logo_path}logo.gif"></td>
+        </tr>
+      </table>
+      <br/> <table style="border-top:1px solid; border-bottom:1px solid;" width="100%" border="0">
+        <tr> 
+          <td width="50%">
+           <p><b>Shippingaddress</b><br/></p>
+          </td>{if $address_label_payment}
+          <td><p><b>Paymentaddress</b><br/></p>
+          </td>{/if}
+        </tr>
+        <tr> 
+          <td>{$address_label_shipping}
+          </td>
+           {if $address_label_payment}
+          <td>{$address_label_payment}
+          </td>{/if}
+        </tr>
+      </table>
+      <p> Dear {$NAME},<br/>
+        <br/>
+        Thank you for your order at "NAME OF YOUR ONLINESTORE".<br/>
+        Following you will find a summary of your order.<br/>
+        <br/>
+        If you have any questions about your order,<br/>
+        please do not hesitate to contact us.<br/>
+        <br/>
+        Best regards,<br/>
+        Your &quot;NAME OF YOUR ONLINESTORE&quot;-Team <br/>
+        <br/>
+      </p></td>
+  </tr>
+</table>
+<table style="border-bottom:1px solid;" width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><b>You ordered following products: </b>
+    </td>
+  </tr>
+  <tr> 
+    <td> <table width="100%" border="0" cellpadding="3" cellspacing="0">
+        <tr> 
+          <td colspan="2" style="border-right: 2px solid; border-bottom: 2px solid;"><div align="center"><b>pcs</b></div></td>
+          <td style="border-right: 2px solid; border-bottom: 2px solid;"><b>Product</b></td>
+          <td style="border-right: 2px solid; border-bottom: 2px solid;"><b>Product Nr.</b> </td>
+          <td style="border-right: 2px solid; border-bottom: 2px solid;" width="150"><div align="right"><b>Price</b></div></td>
+        </tr>
+        {foreach name=aussen item=order_values from=$order_data} 
+        <tr> 
+          <td width="20" style="border-right: 2px solid; border-bottom: 2px solid;">{$order_values.PRODUCTS_QTY}</div></td>
+          <td width="20" style="border-right: 2px solid; border-bottom: 2px solid;">x</div></td>
+          <td style="border-right: 2px solid; border-bottom: 2px solid;"><b>{$order_values.PRODUCTS_NAME}</b><em><br/>
+            {$order_values.PRODUCTS_ATTRIBUTES}</em></td>
+          <td style="border-right: 2px solid; border-bottom: 2px solid;">{$order_values.PRODUCTS_MODEL}<br/>
+            <em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em></td>
+          <td style="border-right: 2px solid; border-bottom: 2px solid;" width="150"><div align="right">{$order_values.PRODUCTS_PRICE}</div></td>
+        </tr>
+    {/foreach} </table></td>
+  </tr>
+</table>
+{foreach name=aussen item=order_total_values from=$order_total}
+<div align="right">{$order_total_values.TITLE}{$order_total_values.TEXT}</div><br/>
+</font>
+{/foreach}

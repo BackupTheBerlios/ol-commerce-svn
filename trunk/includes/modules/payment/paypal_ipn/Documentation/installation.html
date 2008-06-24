@@ -1,0 +1,482 @@
+<!--
+/*
+  $Id: installation.html,v 1.1.1.1.2.1 2007/04/08 07:18:09 gswkaiser Exp $
+
+  osCommerce, Open Source E-Commerce Solutions
+  http://www.oscommerce.com
+
+  DevosC, Developing open source Code
+  http://www.devosc.com
+
+  Copyright (c) 2003 osCommerce
+  Copyright (c) 2004 DevosC.com
+
+  Released under the GNU General Public License
+*/
+-->
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<title>osCommerce: PayPal_Shopping_Cart_IPN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="Gregory Baboolal (developer&#064;devosc.com)" />
+<meta name="copyright" content="2004" />
+<style type='text/css' media="all">
+@import url(css/general.css);
+@import url(css/stylesheet.css);
+@import url(css/ppscipn.css);
+</style>
+</head>
+<body>
+<table border="0" cellspacing="2" cellpadding="2" class="popupmain" align="center" style="background: #ffffff url('img/logo.gif') no-repeat top left;">
+  <tr class="ppheading"><td class="ppheading">&nbsp;Installation&nbsp;Guide&nbsp;</td></tr>
+  <tr><td><hr class="solid" /></td></tr>
+  <tr><td><div style="float: left"><span class="pplabelgrey" style="font-style: italic;">MileStone 2.2-2 Community Contribution</span></div><div style="float: right"><img src="img/contents.gif" alt="Contents" title=" Contents " align="middle" />&nbsp;<a href="../PayPal_Shopping_Cart_IPN.html" target="_self">Contents</a>&nbsp;</div></td></tr>
+</table>
+<table class="popupmain" cellspacing="2" cellpadding="2" border="0" align="center">
+  <tr>
+    <td class="pptext" valign="top">
+    <ul class="ul">
+      <li><span class="ppsubheading">Step 1 (Backup &amp; MySQL)</span>
+        <ul class="uli">
+          <li>Backup the following files
+            <ul class="ulii" style="line-height: 1;">
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/account_history_info.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/checkout_success.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/includes/application_top.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/includes/classes/order.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/includes/langauges/english/modules/payment/paypal.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/includes/modules/payment/paypal.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/admin/orders.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/admin/includes/filenames.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/admin/includes/boxes/customers.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/admin/includes/classes/order.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/admin/includes/functions/general.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/admin/includes/languages/english.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/admin/includes/languages/english/orders.php</li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" name="checkbox" value="checkbox" />
+            Backup the database</li>
+          <li>
+            <input type="checkbox" name="checkbox" value="checkbox" />
+            Uninstall the PayPal payment module in admin-&gt;modules-&gt;payment</li>
+          <li>
+            <input type="checkbox" name="checkbox" value="checkbox" />
+            Use phpMyAdmin and run the file <a href="../mysql/paypal.sql"><b>paypal.sql</b></a>. <b style="color:red;">(those already running v3.x do not need to perform this step)</b>
+            <br/><br class="h10" />This will create the following tables:
+            <ul class="ulii" style="line-height:1;">
+            <li class="code">orders_session_info</li>
+            <li class="code">paypal</li>
+            </ul>
+            And it will also perform the following alterations:
+            <ul class="ulii" style="line-height:1;">
+            <li class="code">ALTER TABLE orders ADD payment_id INT( 11 ) DEFAULT '0' NOT NULL;</li>
+            <li class="code">ALTER TABLE orders_products_attributes ADD products_options_id INT( 11 ) DEFAULT '0' NOT NULL;</li>
+            <li class="code">ALTER TABLE orders_products_attributes ADD products_options_values_id INT( 11 ) DEFAULT '0' NOT NULL;</li>
+            </ul>
+          </li>
+          <li>For those upgrading from an older version <b style="color:red;">(those already running v3.x do not need to perform this step)</b><br />you will need to comment out the above lines in paypal.sql by putting a '#' infront of the above respective lines.</li>
+        </ul>
+      </li>
+      <li><span class="ppsubheading">Step 2 (Copy Files)</span>
+        <ul class="uli">
+          <li>Copy the following 2 files from this contribution to their respective locations, this will <b>overwrite</b> the original osC PayPal module files.
+            <ul class="ulii" style="line-height:1;">
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/includes/languages/english/modules/payment/paypal.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/includes/modules/payment/paypal.php</li>
+            </ul>
+          </li>
+          <li>Copy the following files from this contribution to their respective locations (these are all new).
+            <ul class="ulii" style="line-height:1;">
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/popup_paypal.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/ipn.php</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/includes/languages/english/images/buttons/button_ppcheckout.gif</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/includes/modules/payment/paypal/<span class="pptext"><b style="color:red;">*</b> (e.g. the paypal subdirectory and all it's contents)</span></li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              catalog/admin/paypal.php</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><span class="ppsubheading">Step 3 (Edit Files)</span>
+        <ul class="uli" style="list-style-type: decimal; padding-left: 10px">
+<!-- edit -->
+          <li><b class="code">
+            catalog/account_history_info.php (line 238)</b>
+            <ul class="ulii">
+            <li>
+              Find:
+                <p class="osc">&lt;td&gt;&lt;?php echo '&lt;a href="' . tep_href_link(FILENAME_ACCOUNT_HISTORY, tep_get_all_get_params(array('order_id')), 'SSL') . '"&gt;' . tep_image_button('button_back.gif', IMAGE_BUTTON_BACK) . '&lt;/a&gt;'; ?&gt;&lt;/td&gt;</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with:<p class="ppscipn">&lt;?php /* begin PayPal_Shopping_Cart_IPN */ ?&gt;<br/>&nbsp;&nbsp;&nbsp;&lt;td&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="float:left;"&gt;&lt;?php echo '&lt;a href="' . tep_href_link(FILENAME_ACCOUNT_HISTORY, tep_get_all_get_params(array('order_id')), 'SSL') . '"&gt;' . tep_image_button('button_back.gif', IMAGE_BUTTON_BACK) . '&lt;/a&gt;'; ?&gt;&lt;/div&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php require(DIR_WS_MODULES . 'payment/paypal/catalog/order_send_money.inc.php'); ?&gt;<br/>&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br/>&lt;?php /* end PayPal_Shopping_Cart_IPN */ ?&gt;</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/checkout_success.php (line 29)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;tep_redirect(tep_href_link(FILENAME_DEFAULT, $notify_string));<br/>&nbsp;&nbsp;&nbsp;}</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tep_redirect(tep_href_link(FILENAME_DEFAULT, $notify_string));<br/>&nbsp;&nbsp;&nbsp;} else if ((isset($HTTP_GET_VARS['action']) &amp;&amp; $HTTP_GET_VARS['action'] == 'success')) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PayPal_osC::reset_checkout_cart_session();<br/>&nbsp;&nbsp;&nbsp;}<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/includes/application_top.php (line 40)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;require(DIR_WS_CLASSES . 'shopping_cart.php');</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">// begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;require(DIR_WS_MODULES . 'payment/paypal/classes/osC/osC.class.php');<br/>// end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/includes/application_top.php (line 253)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$cart = new shoppingCart;<br/>&nbsp;&nbsp;}</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">// begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;PayPal_osC::check_order_status(true);<br/>// end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/includes/classes/order.php (line 44)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$order_total_query = tep_db_query("select text from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . (int)$order_id . "' and class = 'ot_total'");</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with: (adds 'value')<p class="ppscipn">// begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;$order_total_query = tep_db_query("select text, value from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . (int)$order_id . "' and class = 'ot_total'");<br/>// end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/includes/classes/order.php (line 47)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$shipping_method_query = tep_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . (int)$order_id . "' and class = 'ot_shipping'");</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with: (adds 'value')<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;$shipping_method_query = tep_db_query("select title, value from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . (int)$order_id . "' and class = 'ot_shipping'");<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/includes/classes/order.php (line 60)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'date_purchased' =&gt; $order['date_purchased'],</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'orders_status_id' =&gt; $order['orders_status'],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'shipping_cost' =&gt; $shipping_method['value'],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'total_value' =&gt; $order_total['value'],<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/includes/classes/order.php (line 106)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;products[$index] = array('qty' =&gt; $orders_products['products_quantity'],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'id' =&gt; $orders_products['products_id'],</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'orders_products_id' =&gt; $orders_products['orders_products_id'],<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/includes/classes/order.php (line 115)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$attributes_query = tep_db_query("select products_options, products_options_values, options_values_price, price_prefix from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . (int)$order_id . "' and orders_products_id = '" . (int)$orders_products['orders_products_id'] . "'");</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with: (adds 'products_options_id' and 'products_options_values_id')<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;$attributes_query = tep_db_query("select products_options_id, products_options_values_id, products_options, products_options_values, options_values_price, price_prefix from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . (int)$order_id . "' and orders_products_id = '" . (int)$orders_products['orders_products_id'] . "'");<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/includes/classes/order.php (line 118)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;products[$index]['attributes'][$subindex] = array('option' =&gt; $attributes['products_options'],</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'option_id' =&gt; $attributes['products_options_id'],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'value_id' =&gt; $attributes['products_options_values_id'],<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/orders.php (line 30)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;switch ($action) {</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 'accept_order':<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include(DIR_FS_CATALOG_MODULES.'payment/paypal/admin/AcceptOrder.inc.php');<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/orders.php (line 127)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="pageHeading" align="right"&gt;&lt;?php echo '&lt;a href="' . tep_href_link(FILENAME_ORDERS, tep_get_all_get_params(array('action'))) . '"&gt;' . tep_image_button('button_back.gif', IMAGE_BACK) . '&lt;/a&gt;'; ?&gt;&lt;/td&gt;</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with:<p class="ppscipn">&lt;?php<br />//begin PayPal_Shopping_Cart_IPN<br />if (strtolower($order-&gt;info['payment_method']) == 'paypal' &amp;&amp; isset($HTTP_GET_VARS['referer']) &amp;&amp; $HTTP_GET_VARS['referer'] == 'ipn'){<br/>?&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="pageHeading" align="right"&gt;&lt;?php echo '&lt;a href="' . tep_href_link(FILENAME_PAYPAL, tep_get_all_get_params(array('action','oID','referer'))) . '"&gt;' . tep_image_button('button_back.gif', IMAGE_BACK) . '&lt;/a&gt;'; ?&gt;&lt;/td&gt;<br/>&lt;?php<br />} else {<br/>?&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="pageHeading" align="right"&gt;&lt;?php echo '&lt;a href="' . tep_href_link(FILENAME_ORDERS, tep_get_all_get_params(array('action','referer'))) . '"&gt;' . tep_image_button('button_back.gif', IMAGE_BACK) . '&lt;/a&gt;'; ?&gt;&lt;/td&gt;<br/>&lt;?php<br />}//else not paypal<br />//end PayPal_Shopping_Cart_IPN<br />?&gt;</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/orders.php (line 173)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;table border="0" cellspacing="0" cellpadding="2"&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="main"&gt;&lt;b&gt;&lt;?php echo ENTRY_PAYMENT_METHOD; ?&gt;&lt;/b&gt;&lt;/td&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="main"&gt;&lt;?php echo $order-&gt;info['payment_method']; ?&gt;&lt;/td&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>&lt;?php</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with:<p class="ppscipn">&lt;?php<br />//begin PayPal_Shopping_Cart_IPN<br />if (strtolower($order-&gt;info['payment_method']) == 'paypal') {<br/>&nbsp;&nbsp;&nbsp;&nbsp;include(DIR_FS_CATALOG_MODULES . 'payment/paypal/admin/TransactionSummaryLogs.inc.php');<br/>} else {<br/>?&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;table border="0" cellspacing="0" cellpadding="2"&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="main"&gt;&lt;b&gt;&lt;?php echo ENTRY_PAYMENT_METHOD; ?&gt;&lt;/b&gt;&lt;/td&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="main"&gt;&lt;?php echo $order-&gt;info['payment_method']; ?&gt;&lt;/td&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>&lt;?php<br />}//else not paypal<br />//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/orders.php (line 321)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;&lt;td colspan="2" align="right"&gt;&lt;?php echo '&lt;a href="' . tep_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $HTTP_GET_VARS['oID']) . '" TARGET="_blank"&gt;' . tep_image_button('button_invoice.gif', IMAGE_ORDERS_INVOICE) . '&lt;/a&gt; &lt;a href="' . tep_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $HTTP_GET_VARS['oID']) . '" TARGET="_blank"&gt;' . tep_image_button('button_packingslip.gif', IMAGE_ORDERS_PACKINGSLIP) . '&lt;/a&gt; &lt;a href="' . tep_href_link(FILENAME_ORDERS, tep_get_all_get_params(array('action'))) . '"&gt;' . tep_image_button('button_back.gif', IMAGE_BACK) . '&lt;/a&gt;'; ?&gt;&lt;/td&gt;</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with:<p class="ppscipn">&lt;?php<br />//begin PayPal_Shopping_Cart_IPN<br />if (strtolower($order-&gt;info['payment_method']) == 'paypal' &amp;&amp; isset($HTTP_GET_VARS['referer']) &amp;&amp; $HTTP_GET_VARS['referer'] == 'ipn'){<br/>?&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td colspan="2" align="right"&gt;&lt;?php echo '&lt;a href="' . tep_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $HTTP_GET_VARS['oID']) . '" TARGET="_blank"&gt;' . tep_image_button('button_invoice.gif', IMAGE_ORDERS_INVOICE) . '&lt;/a&gt; &lt;a href="' . tep_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $HTTP_GET_VARS['oID']) . '" TARGET="_blank"&gt;' . tep_image_button('button_packingslip.gif', IMAGE_ORDERS_PACKINGSLIP) . '&lt;/a&gt; &lt;a href="' . tep_href_link(FILENAME_PAYPAL, tep_get_all_get_params(array('action','oID','referer'))) . '"&gt;' . tep_image_button('button_back.gif', IMAGE_BACK) . '&lt;/a&gt;'; ?&gt;&lt;/td&gt;<br/>&lt;?php<br />} else {<br/>?&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td colspan="2" align="right"&gt;&lt;?php echo '&lt;a href="' . tep_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $HTTP_GET_VARS['oID']) . '" TARGET="_blank"&gt;' . tep_image_button('button_invoice.gif', IMAGE_ORDERS_INVOICE) . '&lt;/a&gt; &lt;a href="' . tep_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $HTTP_GET_VARS['oID']) . '" TARGET="_blank"&gt;' . tep_image_button('button_packingslip.gif', IMAGE_ORDERS_PACKINGSLIP) . '&lt;/a&gt; &lt;a href="' . tep_href_link(FILENAME_ORDERS, tep_get_all_get_params(array('action'))) . '"&gt;' . tep_image_button('button_back.gif', IMAGE_BACK) . '&lt;/a&gt;'; ?&gt;&lt;/td&gt;<br/>&lt;?php<br />}//else not paypal<br />//end PayPal_Shopping_Cart_IPN<br />?&gt;</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/orders.php (line 415)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$contents[] = array('text' =&gt; '&lt;br&gt;' . TEXT_INFO_PAYMENT_METHOD . ' '  . $oInfo-&gt;payment_method);</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;if (strtolower($oInfo-&gt;payment_method) == 'paypal') {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include_once(DIR_FS_CATALOG_MODULES . 'payment/paypal/functions/general.func.php');<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$contents[] = array('text' =&gt; TABLE_HEADING_PAYMENT_STATUS . ': ' . paypal_payment_status($oInfo-&gt;orders_id) );<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>//end PayPal_shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/filenames.php</b>
+            <ul class="ulii">
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Add:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;define('FILENAME_PAYPAL', 'paypal.php');<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/boxes/customers.php (line 25)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;a href="' . tep_href_link(FILENAME_ORDERS, '', 'NONSSL') . '" class="menuBoxContentLink"&gt;' . BOX_CUSTOMERS_ORDERS . '&lt;/a&gt;');</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with:<p class="ppscipn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;a href="' . tep_href_link(FILENAME_ORDERS, '', 'NONSSL') . '" class="menuBoxContentLink"&gt;' . BOX_CUSTOMERS_ORDERS . '&lt;/a&gt;&lt;br&gt;'.<br/>//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;a href="' . tep_href_link(FILENAME_PAYPAL, '', 'NONSSL') . '" class="menuBoxContentLink"&gt;'. BOX_CUSTOMERS_PAYPAL .'&lt;/a&gt;');<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/classes/order.php (line 27)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$order_query = tep_db_query("select customers_name, customers_company, customers_street_address, customers_suburb, customers_city, customers_postcode, customers_state, customers_country, customers_telephone, customers_email_address, customers_address_format_id, delivery_name, delivery_company, delivery_street_address, delivery_suburb, delivery_city, delivery_postcode, delivery_state, delivery_country, delivery_address_format_id, billing_name, billing_company, billing_street_address, billing_suburb, billing_city, billing_postcode, billing_state, billing_country, billing_address_format_id, payment_method, cc_type, cc_owner, cc_number, cc_expires, currency, currency_value, date_purchased, orders_status, last_modified from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with: (adds 'customers_id' and 'payment_id') for those upgrading <span class="code">payment_id</span> replaces <span class="code">paypal_ipn_id</span><p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;$order_query = tep_db_query("select customers_name, customers_company, customers_street_address, customers_suburb, customers_city, customers_postcode, customers_state, customers_country, customers_telephone, customers_email_address, customers_address_format_id, delivery_name, delivery_company, delivery_street_address, delivery_suburb, delivery_city, delivery_postcode, delivery_state, delivery_country, delivery_address_format_id, billing_name, billing_company, billing_street_address, billing_suburb, billing_city, billing_postcode, billing_state, billing_country, billing_address_format_id, payment_method, cc_type, cc_owner, cc_number, cc_expires, currency, currency_value, date_purchased, orders_status, last_modified, customers_id, payment_id from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/classes/order.php (line 45)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'date_purchased' =&gt; $order['date_purchased'],</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'payment_id' =&gt; $order['payment_id'],<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/classes/order.php (line 54)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;customer = array('name' =&gt; $order['customers_name'],</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'id' =&gt; $order['customers_id'],<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/classes/order.php (line 89)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$orders_products_query = tep_db_query("select orders_products_id, products_name, products_model, products_price, products_tax, products_quantity, final_price from " . TABLE_ORDERS_PRODUCTS . " where orders_id = '" . (int)$order_id . "'");</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with: (adds 'products_id')<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;$orders_products_query = tep_db_query("select orders_products_id, products_name, products_model, products_price, products_tax, products_quantity, final_price, products_id from " . TABLE_ORDERS_PRODUCTS . " where orders_id = '" . (int)$order_id . "'");<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/classes/order.php (line 92)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;products[$index] = array('qty' =&gt; $orders_products['products_quantity'],</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'id' =&gt; $orders_products['products_id'],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'orders_products_id' =&gt; $orders_products['orders_products_id'],<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/classes/order.php (line 107)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$attributes_query = tep_db_query("select products_options, products_options_values, options_values_price, price_prefix from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . (int)$order_id . "' and orders_products_id = '" . (int)$orders_products['orders_products_id'] . "'");</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Replace with: (adds 'products_options_id' and 'products_options_values_id')<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;$attributes_query = tep_db_query("select products_options, products_options_values, options_values_price, price_prefix, products_options_id, products_options_values_id from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . (int)$order_id . "' and orders_products_id = '" . (int)$orders_products['orders_products_id'] . "'");<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/classes/order.php (line 111)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;products[$index]['attributes'][$subindex] = array('option' =&gt; $attributes['products_options'],</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Underneath place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'option_id' =&gt; $attributes['products_options_id'],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'value_id' =&gt; $attributes['products_options_values_id'],<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/functions/general.php (line 919)</b>
+            <ul class="ulii">
+            <li>Find:<p class="osc">&nbsp;&nbsp;&nbsp;&nbsp;tep_db_query("delete from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");</p></li>
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Above place:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />&nbsp;&nbsp;&nbsp;&nbsp;include_once(DIR_FS_CATALOG_MODULES . 'payment/paypal/functions/general.func.php');<br/>&nbsp;&nbsp;&nbsp;&nbsp;paypal_remove_order($order_id);<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/languages/english.php</b>
+            <ul class="ulii">
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Add:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />define('BOX_CUSTOMERS_PAYPAL', 'PayPal IPN');<br/>//end PayPal_Shopping_Cart_IPN</p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+
+<!-- edit -->
+          <li><b class="code">catalog/admin/includes/languages/english/orders.php</b>
+            <ul class="ulii">
+            <li>
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Add:<p class="ppscipn">//begin PayPal_Shopping_Cart_IPN<br />define('TABLE_HEADING_PAYMENT_STATUS', 'Status');<br/>//end PayPal_Shopping_Cart_IPN<br /></p></li>
+            </ul>
+          </li>
+<!-- edit_eof -->
+        </ul>
+      </li><!-- eof edit files li -->
+
+      <li><span class="ppsubheading">Step 4 (Create New Orders Status)</span>
+        <ul class="uli">
+          <li>Create the following order statuses via osCommerce-&gt;Admin-&gt;Localization-&gt;Orders Status.
+            <ul class="ulii" style="line-height:1;">
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              On Hold</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Refunded</li>
+            <li class="code">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+              Canceled</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><span class="ppsubheading">Step 5 (Install PayPal Payment Module)</span>
+        <ul class="uli">
+          <li>
+            <input type="checkbox" name="checkbox" value="checkbox" />
+            Via osCommerce-&gt;Admin-&gt;Modules-&gt;Payment remove and then install the PayPal payment module.</li>
+          <li>See the <a href="configuration.html">Configuration Guide</a> for information.</li>
+        </ul>
+      </li>
+    </ul>
+    <!-- eof .ul -->
+    </td>
+  </tr>
+  <tr><td><br class="h10" /></td></tr>
+</table>
+<table border="0" cellspacing="2" cellpadding="2" class="popupmain" align="center" style="margin-top: 0px;">
+  <tr><td><hr class="solid" /></td></tr>
+  <tr><td class="buttontd"><div style="float: left;"><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" title="Valid XHTML 1.0!" height="31" width="88" /></a></div><div style="float: right"><form name="contents" action="../PayPal_Shopping_Cart_IPN.html"><input type="submit" value="Contents" class="ppbuttonsmall" /></form></div></td></tr>
+  <tr style="vertical-align: middle;"><td class="devosc" style="text-align: center;">&nbsp;All logos and trademarks are property of their respective owner.&nbsp;<br/>&nbsp;copyright&nbsp;&copy;&nbsp;2004&nbsp;<a class="devosc" href="http://www.devosc.com" target="_blank">www.devosc.com</a>&nbsp;</td></tr>
+</table>
+</body>
+</html>

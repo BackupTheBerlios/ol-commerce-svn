@@ -1,0 +1,85 @@
+<!--
+/*
+  $Id: introduction.html,v 1.1.1.1.2.1 2007/04/08 07:18:09 gswkaiser Exp $
+
+  osCommerce, Open Source E-Commerce Solutions
+  http://www.oscommerce.com
+
+  DevosC, Developing open source Code
+  http://www.devosc.com
+
+  Copyright (c) 2003 osCommerce
+  Copyright (c) 2004 DevosC.com
+
+  Released under the GNU General Public License
+*/
+-->
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<title>osCommerce: PayPal_Shopping_Cart_IPN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="Gregory Baboolal (developer&#064;devosc.com)" />
+<meta name="copyright" content="2004" />
+<style type='text/css' media="all">
+@import url(css/general.css);
+@import url(css/stylesheet.css);
+@import url(css/ppscipn.css);
+.uli li {line-height: 1.5;}
+</style>
+</head>
+<body>
+<table border="0" cellspacing="2" cellpadding="2" class="popupmain" align="center" style="background: #ffffff url('img/logo.gif') no-repeat top left;">
+  <tr class="ppheading"><td class="ppheading">&nbsp;Introduction&nbsp;</td></tr>
+  <tr><td><hr class="solid" /></td></tr>
+    <tr><td><div style="float: left"><span class="pplabelgrey" style="font-style: italic;">MileStone 2.2-2 Community Contribution</span></div><div style="float: right"><img src="img/contents.gif" alt="Contents" title=" Contents " align="middle" />&nbsp;<a href="../PayPal_Shopping_Cart_IPN.html" target="_self">Contents</a>&nbsp;</div></td></tr>
+</table>
+<table class="popupmain" cellspacing="2" cellpadding="2" border="0" align="center">
+  <tr>
+    <td class="pptext" valign="top">
+    <ul class="ul">
+      <li><span class="ppheading">Overview</span>
+        <ul class="uli" style="list-style: none;">
+          <li>Allows the store owner to choose between sending an aggregate cart total to PayPal or to upload the cart on an individual item basis which then enables the customer to view the contents of the cart while on the PayPal site.</li>
+          <li>Configure PayPal's payment page customization parameters.</li>
+          <li>Utilizes PayPal's Instant Payment Notification (IPN) to automatically update the store's database, regardless of whether they return to the site or not. IPN transactions can then be viewed in the osC admin section along with their corresponding order.</li>
+          <li>Downloadable media only available once PayPal verifies that the payment is Complete.</li>
+          <li style="padding-bottom: 5px;">eCheck and Pending payments compatible.</li>
+        </ul>
+      </li>
+      <li><span class="ppheading">Benefits</span>
+        <ul class="uli" style="list-style: none;">
+          <li>As well as knowing the status of a PayPal payment, IPNs can also allow you to compare your customers Name and Address registration details to what they themselves have registered (and verified where applicable) with PayPal.</li>
+          <li>Automatic verfication of the amounts paid to PayPal further ensure the integrity of the order. Should the totals not match then the order is placed on hold and the store owner can then decide whether to accept the order, e.g the total amounts may differ by an insignificant amount - this can be due to PayPal's own calculations for itemized shopping carts.</li>
+          <li>When an IPN is received notifying that a PayPal payment has been Refunded, Reversed, Denied or Failed, the associated order's status is then automatically updated to being canceled (or which ever status the store owner desires for these types of notfications).</li>
+          <li>There is still more potential available, and future considerations would be to re-introduce the <span class="code">paypal_payment_history</span> so as to to better replicate the transaction history in the IPN transaction details page so as to specify exactly when an order was updated from a Pending payment status (it was removed due to development of revising Refunded, Reversed and Canceled_Reversal IPN notfications).</li>
+          <li>Further future consideration may also arise in regard to putting products on hold etc...</li>
+          <li>Below are some screen shots of an order's IPN transaction logs and a view of the detailed transaction page.</li>
+        </ul>
+      </li>
+    </ul>
+    </td>
+  </tr>
+  <tr><td style="padding: 10px; text-align: center;"><div style="float: left;"><div><img src="img/orderTxnLog.png" alt="PayPal Order IPN Transaction Log" title="PayPal Order IPN Transaction Log" align="middle" /><p class="ppsmalltext" style="margin-top: 5px;">A Refunded Payment</p></div><div style="margin-top: 50px;"><img src="img/orderTxnLog1.png" alt="PayPal Order IPN Transaction Log" title="PayPal Order IPN Transaction Log" align="middle" /><p class="ppsmalltext" style="margin-top: 5px;">An IPN Awaiting Store Owner Confirmation For An Order On Hold</p></div></div><div style="float: right;"><img src="img/txnDetails.png" alt="PayPal Order IPN Transaction Details" title="PayPal Order IPN Transaction Details" align="middle" /><p class="ppsmalltext" style="margin-top: 5px;">IPN Transaction Details</p></div></td></tr>
+  <tr>
+    <td>
+      <ul class="ul">
+        <li><span class="ppheading">Further Comments</span>
+        <ul class="uli" style="list-style: none;">
+          <li>Utilizing IPN, however, requires the assumption that the store owner has not deleted or edited any product that is of an order which is in pending payment status.</li>
+          <li>PayPal does not recommend using the itemized shopping cart since the order details, in particular the order amount, already exists in the osCommerce shopping cart.</li>
+        </ul>
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<table border="0" cellspacing="2" cellpadding="2" class="popupmain" align="center" style="margin-top: 0px;">
+  <tr><td><hr class="solid" /></td></tr>
+  <tr><td class="buttontd"><form name="contents" action="../PayPal_Shopping_Cart_IPN.html"><input type="submit" value="Contents" class="ppbuttonsmall" /></form></td></tr>
+  <tr style="vertical-align: middle;"><td class="devosc" style="text-align: center;">&nbsp;All logos and trademarks are property of their respective owner.&nbsp;<br/>&nbsp;copyright&nbsp;&copy;&nbsp;2004&nbsp;<a class="devosc" href="http://www.devosc.com" target="_blank">www.devosc.com</a>&nbsp;</td></tr>
+</table>
+</body>
+</html>

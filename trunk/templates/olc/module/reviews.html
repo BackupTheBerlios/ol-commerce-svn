@@ -1,0 +1,44 @@
+{olc_template_init title="#heading_reviews#" section="reviews"}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	{foreach name=aussen item=module_data from=$module_content} 
+	<tr> 
+		<td class="main_border_bottom"  valign="top">
+			<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" border="0"></a>
+		</td>
+		<td class="main_border_bottom">
+			<img src="{$tpl_path}img/pixel_trans.gif" width="10" height="1" alt="" style="display: block;">
+		</td>
+		<td class="main_border_bottom">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="main"><strong>{#text_product#} </strong>
+					<a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a><br/>
+					</td>
+				</tr>
+				<tr>
+					<td class="main"><strong>{#text_author#}</strong> {$module_data.AUTHOR} <br/><br/>
+					</td>
+				</tr>
+				<tr>
+					<td class="main"><strong>{#text_text#}</strong><br/>
+					{$module_data.TEXT} <br/><br/>
+					</td>
+				</tr>
+				<tr>
+					<td class="main"><strong>{#text_rating#}</strong> {$module_data.RATING}
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan"3">&nbsp;</td>
+	</tr>
+	{/foreach} 
+</table>
+<br/>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>{$NAVBAR}</td>
+	</tr>
+</table>

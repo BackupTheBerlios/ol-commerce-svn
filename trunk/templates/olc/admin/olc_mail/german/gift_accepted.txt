@@ -1,0 +1,12 @@
+Sehr geehrter Kunde, 
+
+Sie haben kürzlich in unserem Online-Shop einen Gutschein bestellt, welcher aus Sicherheitsgründen nicht sofort freigeschaltet wurde. 
+
+Dieses Guthaben steht Ihnen nun beim nächsten Einkauf zur Verfügung. 
+
+Sie können Ihren Gutschein verbuchen und/oder per eMail an Freunde versenden.
+
+Der von Ihnen bestellte Gutschein hat einen Wert von {$AMMOUNT} 
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}

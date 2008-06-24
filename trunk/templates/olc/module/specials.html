@@ -1,0 +1,10 @@
+{olc_template_init section="specials" title="#heading_text#"}
+{php}
+$template=CURRENT_TEMPLATE_MODULE.'products_list'.HTML_EXT;
+if (!file_exists(TEMPLATE_PATH.$template))
+{
+	$template=str_replace(CURRENT_TEMPLATE.SLASH,COMMON_TEMPLATE,$template);
+}
+$this->_tpl_vars['template']=$template;
+{/php}
+{include file="$template"}

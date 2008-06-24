@@ -1,0 +1,59 @@
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="{$style_path}">
+{/if}
+<table width="100%" border="0" align="left" cellpadding="4" cellspacing="0" id="table1">
+  <tr>
+    <td valign="top" align="right">
+	    <table class="standard" align="right" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td valign="top" align="left">
+		        <font size="2">
+				      <p>
+			        	<a target="_blank" title="{$STORE_NAME}"
+					        alt="{$STORE_NAME}" href="{$HOME_LINK}"><img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}"></a>
+				      </p>
+			        <p>{$STORE_NAME_ADDRESS}</p>
+			        <p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		        </font>
+		       </td>
+	      </tr>
+	    </table>
+	    <br />
+		</td>
+  </tr>
+  <tr>
+    <td colspan="2"><font size="2">
+	Herzlichen Glückwunsch,</font><p>
+	<fontsize="2">dies ist ein 
+	<b>Gutschein</b> zum Einkauf bei
+	<a target="_blank" href="{$HOME_LINK}">
+			<img src="{$logo_path}" border="0" title="{$STORE_NAME}" alt="{$STORE_NAME}" align="middle"></a>!</font></p>
+      <p><font size="2">{if $MESSAGE}</font></p>
+	<hr/>
+	  <p><font size="2">{$MESSAGE}</font></p>
+      <hr/>
+      <p><font size="2">{/if}</font></p>
+      <p><font size="2">Der <b>Gutscheinwert</b> beträgt: {$AMMOUNT}.
+      </font></p>
+      <p><font size="2">Um den Gutschein zu verbuchen, bitte auf den folgenden Link klicken: 
+      </font></p>
+      <p><font size="2"><b>Gutschein verbuchen:</b> <a href="{$GIFT_LINK}">{$GIFT_LINK}</a>  
+      </font></p>
+	<p><u><b>
+	<font size="2" color="#FF0000">Bitte zur Sicherheit <u>unbedingt</u> den persönlichen Gutschein-Code notieren!</font></b></u></p>
+	<p><b><font size="2">Der Gutscheincode lautet:
+  <font color="#008000">{$GIFT_ID} </font></font></b>
+  </p>
+  <hr/>
+  <p><font size="2">Falls es wider Erwarten zu Problemen beim verbuchen kommen sollte:</font></p>
+	<p><font size="2">Webseite <a href="{$WEBSITE}">{$WEBSITE}</a> besuchen, und den Gutschein-Code bitte manuell eingeben. </font></p>
+	<p><b>Viel Spaß beim Einkaufen!</b></p>
+	</td>
+  </tr>
+</table>
+{if $MAIL_IMPRESSUM}
+{$MAIL_IMPRESSUM}
+{/if}

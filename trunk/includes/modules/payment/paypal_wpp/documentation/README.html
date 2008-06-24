@@ -1,0 +1,550 @@
+<html>
+  <head>
+    <title>Paypal Website Payments Pro for osCommerce</title>
+    <style>
+      body {
+        margin: 0px;
+      }
+      
+      table {
+        font: 11px verdana;
+      }
+      #text-header1 {
+        font: 18px arial;
+        font-weight: bold;
+      }
+      
+      .section-header {
+        font: 14px arial;
+        font-weight: bold;
+      }
+      
+      .section-body {
+        padding-left: 15px;
+      }
+      
+      #submit {
+        border: 3px double #999999;
+        border-top-color: #CCCCCC;
+        border-left-color: #CCCCCC;
+        padding: 0.25em;
+        background-color: #FFFFFF;
+        background-repeat: repeat-x;
+        color: #333333;
+        font-size: 100%;
+        width: 70px;
+        font-weight: bold;
+        font-family: Verdana, Helvetica, Arial, sans-serif;
+        cursor: pointer;
+        cursor: hand;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <table border=0 style="width:768px;height:100%" cellspacing=0 cellpadding=0>
+        <tr>
+          <td align="center" valign="middle" colspan=3 style="height: 50px; background-color: #EFEFEF"><font id="text-header1">Paypal Website Payments Pro for osCommerce 2.2 MS2</font><br/>by Brian Burton (dynamoeffects)</td>
+        </tr>
+        <tr>
+          <td style="height: 3px;background-color:#000000" colspan=3></td>
+        </tr>
+        <tr>
+          <td valign="top" style="width: 180px;padding-right: 5px; padding-top: 20px">
+            <table border=0 width="100%" cellspacing=0 cellpadding=0>
+              <tr>
+                <td align="center" class="section-header">Menu</td>
+              </tr>
+              <tr>
+                <td>
+                  <ul style="font-weight:bold">
+                    <li><a href="http://forums.oscommerce.com/index.php?showtopic=174981" target="_BLANK">Support Forum</a></li>
+                    <li><a href="http://www.oscommerce.com/community/contributions,3647" target="_BLANK">Latest Release</a></li>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#requirements">Requirements</a></li>
+                    <li><a href="#pear">Pear Modules?!</a></li>
+                    <br/><br/>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#updating">Upgrading</a></li>
+                    <li><a href="#testing">Testing</a></li>
+                    <br/><br/>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    <li><a href="#changelog">Changelog</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table border=0 cellspacing=0 cellpadding=5 style="border: 1px solid #000000; width: 170px; background-color: #EFEFEF">
+                    <tr>
+                      <td align="center"><b>Make a Donation!</b><br/>(with PayPal)</td>
+                    </tr>
+                    <tr>
+                      <td align="center">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target=_blank name=donate>
+                          <input type="hidden" name="cmd" value="_xclick">
+                          <input type="hidden" name="business" value="paypal@dynamoeffects.com">
+                          <input type="hidden" name="item_name" value="osCommerce Paypal Website Payments Pro Module - Donation">
+                          <input type="hidden" name="no_shipping" value="0">
+                          <input type="hidden" name="item_number" value="1">
+                          $
+                          <input type="text" name="amount" value="" size=6 style="width: 50px">
+                          <input type="submit" name="submit" value="Donate!" id="submit">
+                        </form>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" style="padding-top:0px;">Many hours have been spent writing and supporting this module.  If it helped you out (and is making you money), donations are a great way of saying "Thanks!"</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td style="width: 1px;background-color:#000000; font: 1px arial">&nbsp;</td>
+          <td style="width: 587px; padding-top: 20px" valign="top" align="right">
+            <table border=0 cellspacing=0 cellpadding=0 style="width: 577px">
+              <tr>
+                <td class="section-header"><a name="introduction">Introduction</a></td>
+              </tr>
+              <tr>
+                <td class="section-body">
+                  <br/>
+                  This payment module works with PayPal's Website Payments Pro credit card gateway and is FULLY COMPLIANT with their rules.  This was developed on a stock 2.2ms2 install.
+                  <br/><br/>
+                  <b>Please note:</b> Due to Paypal's rule about express checkout being integrated with direct payment, this contribution is not trivial to install.  I've made this as simple to install as possible, but it requires a minimal level of PHP scripting knowledge.
+                  <br/><br/>
+                  <center><b><u>This package will modify your store in the following ways</u></b></center>
+                  -If a logged in customer clicks on "Checkout," they're taken to the shipping page with a "Paypal Express Checkout" button at the top.  If they click on the "Express Checkout" button, they'll be taken to Paypal where they'll choose a shipping address and payment method, then be sent back to the checkout shipping page to choose a shipping method.  From there, depending on your settings, it'll either go to checkout payment hiding the other payment options but displaying other modules, like CCGV, or to checkout confirmation to complete the order.  
+                  <br/><br/>
+                  -If a visitor without an account, or someone who isn't logged in, clicks on "Checkout," they'll be taken to the login page where there are now three boxes.  They can either use express pay, create an account, or login.  If they use express pay, they'll be taken to Paypal where they'll choose a shipping address, then be sent back following the process above.  If they're not a current customer, based on the information returned from Paypal, an account will automatically be created for them and the account details emailed to their email address (notification is optional).  If they're an existing customer, they'll be logged in and their order will be added to their account.
+                  <br/><br/>
+                  -If they log in, or create an account, and go through the normal checkout process, then they can type in their credit card numbers and the direct payment API will charge their card transparently.
+                  <br/><br/>
+                  <b>!!WARNING!! IF YOU REMOVE THE EXPRESS CHECKOUT BUTTON FROM YOUR CART, YOU ARE VIOLATING PAYPAL'S TOS AND THEY HAVE THE RIGHT TO DISALLOW ACCESS TO DIRECT PAYMENT AND/OR CLOSE YOUR ACCOUNT.  THIS CONTRIBUTION, AS DOWNLOADED, IS FULLY COMPLIANT WITH THEIR RULES.</b>
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td style="height: 3px;background-color:#000000"></td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td class="section-header"><a name="requirements">Requirements</a></td>
+              </tr>
+              <tr>
+                <td class="section-body">
+                  <br/>
+                  <b>To use this, you need these things (ask your webhost if you don't know):</b><br/>
+                  - OSCommerce 2.2ms2<br/>
+                  - PHP 4.3.0+<br/>
+                  - cURL<br/>
+                  - An SSL certificate installed<br/>
+                  - You need a business account with Paypal<br/>
+                  - You must be approved for Website Payments Pro direct transactions<br/>
+                    (there's a request form on Paypal's site on your "Overview" page when you login)<br/>
+                  - The API certificate that you receive from PayPal after being approved for WPP
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td style="height: 3px;background-color:#000000"></td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td class="section-header"><a name="pear">Pear Modules</a></td>
+              </tr>
+              <tr>
+                <td class="section-body">
+                  <br/>
+                  I've uploaded the pear modules you'll need in two separate packages in case you don't want, or can't, install them on your server using pear.  
+                  <br/><br/>
+                  <center>
+                  <a href="http://www.oscommerce.com/community/contributions,3647/download,10671">Pear Modules - Part 1</a><br/>
+                  <a href="http://www.oscommerce.com/community/contributions,3647/download,10672">Pear Modules - Part 2</a>
+                  </center>
+                  <br/>
+                  
+                  
+                  For full disclosure, you should know that I have modified one file because the payment module would timeout otherwise.  In the file:<br/>
+                  /catalog/pear/Services/PayPal/SOAP/Transport/HTTP.php
+                  <br/><br/>
+                  I've modifed line 62 from:
+                  <br/><br/>
+                  var $timeout = 4;
+                  <br/><br/>
+                  to 
+                  <br/><br/>
+                  var $timeout = 300;
+                  <br/><br/>
+                  If you have a healthy paranoia and don't want to install the pear modules I've uploaded, you need to use pear to install the following packages (if they're not already installed):
+                  Net_URL
+                  Net_Socket
+                  HTTP_Request
+                  Log
+                  <br/><br/>
+                  You'll also need to download PayPal's Website Payments Pro 2.0 SDK and install the pear module contained within.  I suggest you change that timeout variable mentioned above, though.  A complex set of API calls over an encrypted connection needs more than 4 seconds to complete.  You should set this to at least 120.
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td style="height: 3px;background-color:#000000"></td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td class="section-header"><a name="installation">Installation Instructions</a></td>
+              </tr>
+              <tr>
+                <td class="section-body">
+                  <br/>
+                  0. BACKUP YOUR DATABASE AND ALL OF YOUR FILES!
+                  <br/><br/>
+                  1. You need an API certificate, API username, and API password.  Assuming you've already requested and been approved for Website Payments Pro direct payments, do this:
+                  <br/><br/>
+                  	&nbsp;&nbsp;&nbsp;&nbsp;a. Goto My Account -> Profile.<br/>
+                  	&nbsp;&nbsp;&nbsp;&nbsp;b. Click the API Access link.<br/>
+                  	&nbsp;&nbsp;&nbsp;&nbsp;c. Click the API Certificate Request link.<br/>
+                  	&nbsp;&nbsp;&nbsp;&nbsp;d. Complete the certificate request.<br/>
+                  	&nbsp;&nbsp;&nbsp;&nbsp;e. Click on download and save the file to your computer.<br/>
+                  <br/><br/>
+                  2. Copy the pear modules that you downloaded above into your /catalog/ directory so that they are located in /catalog/pear/
+                  <br/><br/><br/>
+                  3. Copy all of the files and directories from this zip file to your catalog directory keeping true to the directory structure.  For the files that already exist, you will need to either overwrite them, or manually update them by opening each one and copying the code between these tags:
+                  <br/><br/>
+                  //---PayPal WPP Modification START ---//<br/>
+                  //---PayPal WPP Modification END ---//
+                  <br/><br/><br/>
+                  4. Import the included SQL file called "paypal_wpp.sql" into your database.  (Using phpMyAdmin)
+                  <br/><br/><br/>
+                  5. Upload the API certificate you downloaded from Paypal to:
+                  /catalog/includes/modules/payment/wpp_cert/
+                  <br/><br/>
+                  For security, I have included a .htaccess file that denies access to any file put in there (DO NOT FORGET TO UPLOAD IT), so don't worry about anyone downloading it.  As of 0.3, you can store your certificate anywhere you want.  Simply type in the full path in the module's admin panel.
+                  <br/><br/><br/>
+                  6. Go into your Administration section -> Modules -> Payment and enable the "PayPal Direct Payment & Express Checkout" module.
+                  <br/><br/><br/>
+                  7. Fill in your API username, password, and the filename of your API certificate that you just uploaded and change the other settings.
+                  <br/><br/><br/>
+                  8. Click "Update" and you're done.  Assuming everything's installed properly, and the planets are aligned correctly, it should start processing your cards automagically.
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td style="height: 3px;background-color:#000000"></td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td class="section-header"><a name="updating">Updating Instructions</a></td>
+              </tr>
+              <tr>
+                <td class="section-body">
+                  <br/>
+                  <center><b>Follow these instructions to the letter or you might leave old values in your database!</b></center>
+                  <br/>
+                  1. Go into your administrative section -> Modules -> Payment and copy down all of the settings for this module.
+                  <br/><br/>
+                  2. Click on "Remove" and uninstall this module
+                  <br/><br/>
+                  3. Refer to the changelog at the bottom of this document and update the files listed as changed
+                  <br/><br/>
+                  4. Go into your administrative section -> Modules -> Payment and install the PayPal Direct Payments & Express Checkout module updating the settings with what you wrote down in step 1.
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td style="height: 3px;background-color:#000000"></td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td class="section-header"><a name="testing">Testing</a></td>
+              </tr>
+              <tr>
+                <td class="section-body">
+                  <br/>
+                  Paypal provides a fake credit card number that you can use to test your configuration:
+                  <br/><br/>
+                    <center><b>CC#: 4072 4972 0889 7267&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exp: 12/09&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CVS: 000</b></center>
+                    <br/>
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td style="height: 3px;background-color:#000000"></td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td class="section-header"><a name="troubleshooting">Troubleshooting</a></td>
+              </tr>
+              <tr>
+                <td class="section-body">
+                  <br/>
+                  <b>Q: When the visitor first clicks PayPal Express, it never goes to PayPal<br/><br/>
+                  <center>OR</center><br/>
+                  Q: When the visitor clicks on the PayPal Express button or tries to checkout using Direct Payment, it goes to a blank page.</b><br/>
+                  <b>A:</b> Either your API username or password are wrong, your certificate is FUBAR'd, or you didn't install the pear modules correctly.  You can also try increasing the timeout in pear/Services/PayPal/SOAP/Transport/HTTP.php
+                  <br/><br/>
+                  Change this line:<br/>
+                  var $timeout = 4;
+                  <br/><br/>
+                  to 
+                  <br/><br/>
+                  var $timeout = 300;<br/>
+                  <br/><br/>
+                  <b>Q: When the customer returns from PayPal after selecting "Express Checkout", only their name is returned.</b><br/>
+                  <b>A:</b> PayPal will not return a customer's personal information to a non-https URL.  Fix your OSC configuration and install an SSL certificate if necessary, then try again.
+                  <br/><br/>
+                  <b>Q: It's declining all of my transactions and giving a 105xx error!</b><br/>
+                  <b>A:</b> Only PayPal can help you there.  They're declining the cards probably because you don't have Direct Payment completely setup under your account.  Contact PayPal for assistance with this error.
+                  <br/><br/>
+                  <b>Q: It's declining transactions and giving a 10417 error!</b><br/>
+                  <b>A:</b> This means that the customer doesn't have enough money in their bank or on their credit card to pay for this purchase.  Most of the time, Paypal is incorrect so you need to contact PayPal and ask them about it.
+                  <br/><br/>
+                  <b>Q: PayPal's only accepting ~60% of all credit card transactions.  Is this a bug in your module?</b><br/>
+                  <b>A:</b> No, this this module submits information as the customer has entered it and their card getting declined is a combination of bad personal information and PayPal's servers.  It has been noted that PayPal has a low acceptance rate even when the information is correct, but YMMV.
+                  <br/><br/>
+                  <b>Q: Why do my international customers' cards get declined?</b><br/>
+                  <b>A:</b> PayPal is a US-only processor.  While I've made changes to the module so that it will accept some international cards, it's not perfect.  If you expect to have many international (non-US) customers, I suggest you go with a traditional merchant account/gateway.
+                  <br/><br/>
+                  <b>Q: When the customer returns from PayPal after selecting "Express Checkout", only their name is returned.</b><br/>
+                  <b>A:</b> PayPal will not return a customer's personal information to a non-https URL.  Fix your OSC configuration and install an SSL certificate if necessary, then try again.
+                  <br/><br/>
+                  <b>Q: I get a "(2030) Unable to find API certificate file" error!</b><br/>
+                  <b>A:</b> Make sure that you:<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;A) Download the certificate you receive from Paypal and put it inside of the<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/catalog/includes/modules/payment/wpp_cert/ directory<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;B) Ensure the path set to that directory is correct in the module's admin settings
+                  <br/><br/>
+                  <b>Q: The ec_process.php/checkout_confirmation.php/whatever.php comes up blank!</b><br/>
+                  <b>A:</b> 99% of the time either your certificate is not installed with the module set to it or all your pear modules aren't installed.  Check your error_log file for details.
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td style="height: 3px;background-color:#000000"></td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td class="section-header"><a name="changelog">Changelog</a></td>
+              </tr>
+              <tr>
+                <td class="section-body">
+                  <br/>
+                  ***** {0.1a} 2005-10-11 (Brian Burton) *****<br/>
+                  Initial Release<br/>
+                  <br/><br/>
+                  ***** {0.2} 2005-10-13 (Brian Burton) *****<br/>
+                  -README.txt<br/>
+                   ----------<br/>
+                    *Updated the README with new installation instructions<br/>
+                  <br/><br/>
+                  -paypal_wpp.sql<br/>
+                   --------------<br/>
+                    *Adds a new column to the customers table: customers_paypal_ec<br/>
+                  <br/><br/>
+                  -/catalog/includes/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------<br/>
+                    *When an account is automatically created (required), notifying the customer <br/>
+                     with login details, which makes the account permanent, is now optional.  Choosing not to<br/>
+                     do this will make the account temporary, meaning...<br/>
+                    *When the checkout is complete and the order is saved, the temporary account is deleted<br/>
+                     (This only happens if you choose not to notify the customer of their account)<br/>
+                    *Fixed some formatting ugliness that notepad++ put in<br/>
+                    *Fixed the truncated text in ec_step2()<br/>
+                    *Got rid of the other transaction currencies as PayPal's current API only supports USD<br/>
+                    *Error responses have been updated to include PayPal's LongMessage and ErrorCode<br/>
+                  <br/><br/>
+                  -/catalog/includes/languages/english/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------------------------<br/>
+                    *Updated the error messages to display PayPal's error messages correctly<br/>
+                  <br/><br/>
+                  -/catalog/includes/functions/general.php<br/>
+                   ---------------------------------------<br/>
+                    *Added a function to check if this module is enabled (very bottom of script)<br/>
+                  <br/><br/>
+                  -/catalog/login.php<br/>
+                   ------------------<br/>
+                    *If the user is logged into a temporary EC account, give them the option to login.  If they do login,<br/>
+                     delete the temporary account<br/>
+                    *Paypal modifications on this page will be disabled if this payment module is disabled or removed<br/>
+                    *Fixed the "undefined function array() on line 93" error<br/>
+                    *If the visitor doesn't have any items in their basket, don't show the EC option<br/>
+                  <br/><br/>
+                  -/catalog/includes/header.php<br/>
+                   ----------------------------<br/>
+                    *If the user has a temporary EC account, don't show account options<br/>
+                  <br/><br/>
+                  -/catalog/checkout_success.php<br/>
+                   ------------------------------<br/>
+                    *At the end of the checkout process, it deletes the temporary user and clears the<br/>
+                     paypal ec variables.<br/>
+                  <br/><br/>
+                  -/catalog/checkout_shipping.php<br/>
+                   ------------------------------<br/>
+                    *Paypal modifications on this page will be disabled if this payment module is disabled or removed<br/>
+                    *Fixed the "undefined function array()" error<br/>
+                  <br/><br/>
+                  -/catalog/checkout_payment.php<br/>
+                   ------------------------------<br/>
+                    *Paypal modifications on this page will be disabled if this payment module is disabled or removed<br/>
+                  <br/><br/>
+                  -/catalog/checkout_confirmation.php<br/>
+                   ------------------------------<br/>
+                    *Paypal modifications on this page will be disabled if this payment module is disabled or removed<br/>
+                  <br/><br/>
+                  -/catalog/create_account.php<br/>
+                   ------------------------------<br/>
+                    *Added a check to delete a temporary account if necessary<br/>
+                  <br/><br/>
+                  -/catalog/ec_process.php<br/>
+                   -----------------------<br/>
+                    *Updated what variables it unregisters<br/>
+                  <br/><br/>
+                  <br/><br/>
+                  ***** {0.3} 2005-10-26 (Brian Burton) *****<br/>
+                  -README.txt<br/>
+                   ----------<br/>
+                    *Modified the README with updated installation instructions<br/>
+                  <br/><br/>
+                  -/catalog/includes/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------<br/>
+                    *Added a conditional so that when PayPal starts accepting other forms of currency, it'll be easy to<br/>
+                     update the code.  I'm such a nice guy.<br/>
+                    *Fixed a typo in ec_step1() would've sent the visitor to a non-existing page if they hit cancel<br/>
+                    *The CVV2 box now allows 4 characters to accomodate AMEX cards.<br/>
+                    *Changed some code to allow you to display whatever text you want under "Payment Method" on checkout_confirmation.php<br/>
+                    *Displaying the Express Checkout button on the payment page is optional<br/>
+                  <br/><br/>
+                  -/catalog/includes/languages/english/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------------------------<br/>
+                    *Added some text defines containing the text that will display under "Payment Method" on checkout_confirmation.php<br/>
+                  <br/><br/>
+                  -/catalog/login.php<br/>
+                   ------------------<br/>
+                    *Updated the variables that it unregisters<br/>
+                  <br/><br/>
+                  -/catalog/checkout_shipping.php<br/>
+                   ------------------------------<br/>
+                    *If the user hits cancel in PayPal, it'll properly unregister the variables letting them use another form of payment<br/>
+                    *If a logged in user clicks "Express Checkout," then hits the back button, the shipping address won't show up as NULL<br/>
+                  <br/><br/>
+                  -/catalog/checkout_confirmation.php<br/>
+                   ----------------------------------<br/>
+                    *Updated the Payment Method box so that it'll display whatever text you want<br/>
+                  <br/><br/>
+                  -/catalog/languages/english/checkout_confirmation.php<br/>
+                   ------------------------------------------------<br/>
+                    *Two new defines for text that will display in the Payment Method box<br/>
+                  <br/><br/>
+                  <br/><br/>
+                  ***** {0.4} 2005-10-26 (Brian Burton) *****<br/>
+                  -/catalog/create_account.php<br/>
+                   ---------------------------<br/>
+                    *Fixed a MySQL query bug<br/>
+                  <br/><br/>
+                  <br/><br/>
+                  ***** {0.5} 2005-10-31 (Brian Burton) *****<br/>
+                  -/catalog/includes/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------<br/>
+                    *Fixed bug that would tell the customer the card's declined, but charge it anyway<br/>
+                    *TransactionIDs (EC & DP) and AVS/CVV2 (DP only) return codes are recorded properly<br/>
+                    *Fixed Javascript bug so that it'll properly check the fields<br/>
+                    *Returned errors now include the ShortMessage<br/>
+                    *Added debug variable that, when set to '1', will email the store owner a var_dump of paypal's return msg<br/>
+                    *Card holder's name and expiration date are properly recorded in the order (with DP)<br/>
+                  <br/><br/>
+                  <br/><br/>
+                  ***** {0.6b} 2006-2-10 (Brian Burton) *****<br/>
+                  -/catalog/includes/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------<br/>
+                    *Javascript string length check no longer always returns true.<br/>
+                    *Fixed text define typo that would cause the error message to display the variable name instead<br/>
+                    *Move all of the debug statements so they appear before the script exits.<br/>
+                    *var_dumps are now formatted for extra prettiness<br/>
+                    *Two additional options are now in admin menu<br/>
+                    *New feature to email card information to store owner on failed transactions.<br/>
+                    *When a DP transaction fails, it'll now do a transaction search to see if it charged the card<br/>
+                    *Proxy configuration has been moved to the admin menu<br/>
+                    *You can now set a page style for your EC customers
+                  <br/><br/>
+                  <br/><br/>
+                  ***** {0.7} 2006-2-22 (Brian Burton) *****<br/>
+                  -/catalog/includes/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------<br/>
+                    *Transaction search has been thoroughly tested so, God willing, the payment without order problem should be fixed<br/>
+                    *Error dumps that get emailed to the store admin are even more detailed.  How exciting.<br/>
+                    *If you have it setup in your PayPal account, Express Checkout will now return the customer's telephone number (Thanks to Glen aka Steve Dallas)<br/>
+                    *PayPal will sometimes return more than one error message.  Now they're ALL displayed to the customer<br/>
+                    *Shipping address is now sent to PayPal (Thanks to WillBrand)<br/>
+                    *I stripped out a lot of the contributed code because it was unnecessary and caused more problems than it solved.  (I appreciate it, though)<br/>
+                    *International support has been improved (Thanks to Glen aka SteveDallas)<br/>
+                    *Debugging variable bug fixed (heh)<br/>
+                    *And last, but not least, you can now override the shipping address sent back from PayPal (for Stew's gift address support) but it doesn't work right just yet.
+                  <br/><br/>
+                  ***** {0.7.1} 2006-2-22 (Brian Burton) *****<br/>
+                  -/catalog/includes/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------<br/>
+                   *If no shipping address is provided (e.g. for virtual sales), it won't be sent to PayPal<br/><br/>
+                  -/catalog/checkout_payment.php<br/>
+                   ------------------------------------------------<br/>
+                   *Fixed the logic error that popped up all the sudden
+                  <br/><br/>
+                  ***** {0.7.2} 2006-3-23 (Brian Burton) *****<br/>
+                  -/catalog/includes/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------<br/>
+                   *Fixed the total amount in the email sent to the store owner when an order got declined.<br/>
+                   *Implemented a shipping address bug fix by SteveDallas<br/>
+                   *EC should now work for those with register_globals off.
+                  <br/><br/>
+                  ***** {0.7.2} 2006-3-23 (Brian Burton) *****<br/>
+                  -/catalog/includes/modules/payment/paypal_wpp.php<br/>
+                   ------------------------------------------------<br/>
+                   *Fixed a small syntax error
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td style="height: 3px;background-color:#000000"></td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td align="center">THIS IS RELEASED WITH NO WARRANTY WHATSOEVER! It's not my fault if it crashes, fills your screen with errors, eats all the food in your fridge, kills your dog, steals your soul, sets the sky on fire, pees on the seat, causes rivers to run red with blood,  initiates the second coming, or just plain doesn't work.  This was written in my free time.  Use the forums for support.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>

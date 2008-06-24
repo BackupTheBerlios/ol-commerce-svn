@@ -1,0 +1,569 @@
+#SET SESSION sql_mode='';
+DROP TABLE IF EXISTS livehelp_paths_firsts;
+CREATE TABLE `livehelp_paths_firsts` (
+	`id` int(11) unsigned NOT NULL auto_increment,
+	`visit_recno` int(11) unsigned NOT NULL default '0',
+	`exit_recno` int(11) unsigned NOT NULL default '0',
+	`dateof` int(8) NOT NULL default '0',
+	`visits` int(11) unsigned NOT NULL default '0',
+	PRIMARY KEY  (`id`),
+	KEY `visit_recno` (`visit_recno`,`dateof`,`visits`)
+);
+
+DROP TABLE IF EXISTS livehelp_paths_monthly;
+CREATE TABLE `livehelp_paths_monthly` (
+	`id` int(11) unsigned NOT NULL auto_increment,
+	`visit_recno` int(11) unsigned NOT NULL default '0',
+	`exit_recno` int(11) unsigned NOT NULL default '0',
+	`dateof` int(8) NOT NULL default '0',
+	`visits` int(11) unsigned NOT NULL default '0',
+	PRIMARY KEY  (`id`),
+	KEY `visit_recno` (`visit_recno`,`dateof`,`visits`)
+);
+
+DROP TABLE IF EXISTS livehelp_leavemessage;
+CREATE TABLE `livehelp_leavemessage` (
+	`id` int(11) unsigned NOT NULL auto_increment,
+	`email` varchar(255) NOT NULL default '',
+	`subject` varchar(200) NOT NULL default '',
+	`department` int(11) unsigned NOT NULL default '0',
+	`dateof` bigint(14) NOT NULL default '0',
+	`sessiondata` text NOT NULL default '',
+	`deliminated` text NOT NULL default '',
+	PRIMARY KEY  (`id`),
+	KEY `department` (`department`)
+);
+
+DROP TABLE IF EXISTS livehelp_keywords_daily;
+CREATE TABLE `livehelp_keywords_daily` (
+	`recno` int(11) NOT NULL auto_increment,
+	`parentrec` int(11) unsigned NOT NULL default '0',
+	`referer` varchar(255) NOT NULL default '',
+	`pageurl` varchar(255) NOT NULL default '',
+	`keywords` varchar(255) NOT NULL default '',
+	`dateof` int(8) NOT NULL default '0',
+	`levelvisits` int(11) unsigned NOT NULL default '0',
+	`directvisits` int(11) unsigned NOT NULL default '0',
+	PRIMARY KEY  (`recno`),
+	KEY `levelvisits` (`levelvisits`),
+	KEY `dateof` (`dateof`),
+	KEY `referer` (`referer`)
+);
+
+DROP TABLE IF EXISTS livehelp_keywords_monthly;
+CREATE TABLE `livehelp_keywords_monthly` (
+	`recno` int(11) NOT NULL auto_increment,
+	`parentrec` int(11) unsigned NOT NULL default '0',
+	`referer` varchar(255) NOT NULL default '',
+	`pageurl` varchar(255) NOT NULL default '',
+	`keywords` varchar(255) NOT NULL default '',
+	`dateof` int(8) NOT NULL default '0',
+	`levelvisits` int(11) unsigned NOT NULL default '0',
+	`directvisits` int(11) unsigned NOT NULL default '0',
+	PRIMARY KEY  (`recno`),
+	KEY `levelvisits` (`levelvisits`),
+	KEY `dateof` (`dateof`),
+	KEY `referer` (`referer`)
+);
+
+DROP TABLE IF EXISTS livehelp_identity_daily;
+CREATE TABLE `livehelp_identity_daily` (
+	`id` int(11) unsigned NOT NULL auto_increment,
+	`isnamed` char(1) NOT NULL default 'N',
+	`groupidentity` int(11) NOT NULL default '0',
+	`groupusername` int(11) NOT NULL default '0',
+	`identity` varchar(100) NOT NULL default '',
+	`cookieid` varchar(40) NOT NULL default '',
+	`ipaddress` varchar(30) NOT NULL default '',
+	`username` varchar(100) NOT NULL default '',
+	`dateof` bigint(14) NOT NULL default '0',
+	`uservisits` int(10) NOT NULL default '0',
+	`seconds` int(10) NOT NULL default '0',
+	`useragent` varchar(255) NOT NULL default '',
+	PRIMARY KEY  (`id`),
+	KEY `isnamed` (`isnamed`),
+	KEY `groupidentity` (`groupidentity`),
+	KEY `groupusername` (`groupusername`),
+	KEY `identity` (`identity`),
+	KEY `cookieid` (`cookieid`),
+	KEY `username` (`username`),
+	KEY `dateof` (`dateof`)
+);
+
+DROP TABLE IF EXISTS livehelp_identity_monthly;
+CREATE TABLE `livehelp_identity_monthly` (
+	`id` int(11) unsigned NOT NULL auto_increment,
+	`isnamed` char(1) NOT NULL default 'N',
+	`groupidentity` int(11) NOT NULL default '0',
+	`groupusername` int(11) NOT NULL default '0',
+	`identity` varchar(100) NOT NULL default '',
+	`cookieid` varchar(40) NOT NULL default '',
+	`ipaddress` varchar(30) NOT NULL default '',
+	`username` varchar(100) NOT NULL default '',
+	`dateof` bigint(14) NOT NULL default '0',
+	`uservisits` int(10) NOT NULL default '0',
+	`seconds` int(10) NOT NULL default '0',
+	`useragent` varchar(255) NOT NULL default '',
+	PRIMARY KEY  (`id`),
+	KEY `isnamed` (`isnamed`),
+	KEY `groupidentity` (`groupidentity`),
+	KEY `groupusername` (`groupusername`),
+	KEY `identity` (`identity`),
+	KEY `cookieid` (`cookieid`),
+	KEY `username` (`username`),
+	KEY `dateof` (`dateof`)
+);
+
+DROP TABLE IF EXISTS livehelp_referers_monthly;
+CREATE TABLE `livehelp_referers_monthly` (
+	`recno` int(11) NOT NULL auto_increment,
+	`pageurl` varchar(255) NOT NULL default '0',
+	`dateof` int(8) NOT NULL default '0',
+	`levelvisits` int(11) unsigned NOT NULL default '0',
+	`directvisits` int(11) unsigned NOT NULL default '0',
+	`parentrec` int(11) unsigned NOT NULL default '0',
+	`level` int(10) NOT NULL default '0',
+	PRIMARY KEY  (`recno`),
+	KEY `pageurl` (`pageurl`),
+	KEY `parentrec` (`parentrec`),
+	KEY `levelvisits` (`levelvisits`),
+	KEY `directvisits` (`directvisits`),
+	KEY `dateof` (`dateof`)
+);
+
+DROP TABLE IF EXISTS livehelp_referers_daily;
+CREATE TABLE `livehelp_referers_daily` (
+	`recno` int(11) NOT NULL auto_increment,
+	`pageurl` varchar(255) NOT NULL default '0',
+	`dateof` int(8) NOT NULL default '0',
+	`levelvisits` int(11) unsigned NOT NULL default '0',
+	`directvisits` int(11) unsigned NOT NULL default '0',
+	`parentrec` int(11) unsigned NOT NULL default '0',
+	`level` int(10) NOT NULL default '0',
+	PRIMARY KEY  (`recno`),
+	KEY `pageurl` (`pageurl`),
+	KEY `parentrec` (`parentrec`),
+	KEY `levelvisits` (`levelvisits`),
+	KEY `directvisits` (`directvisits`),
+	KEY `dateof` (`dateof`)
+);
+
+DROP TABLE IF EXISTS livehelp_visits_monthly;
+CREATE TABLE `livehelp_visits_monthly` (
+	`recno` int(11) NOT NULL auto_increment,
+	`pageurl` varchar(255) NOT NULL default '0',
+	`dateof` int(8) NOT NULL default '0',
+	`levelvisits` int(11) unsigned NOT NULL default '0',
+	`directvisits` int(11) unsigned NOT NULL default '0',
+	`parentrec` int(11) unsigned NOT NULL default '0',
+	`level` int(10) NOT NULL default '0',
+	PRIMARY KEY  (`recno`),
+	KEY `pageurl` (`pageurl`),
+	KEY `parentrec` (`parentrec`),
+	KEY `levelvisits` (`levelvisits`),
+	KEY `directvisits` (`directvisits`),
+	KEY `dateof` (`dateof`)
+);
+
+DROP TABLE IF EXISTS livehelp_visits_daily;
+CREATE TABLE `livehelp_visits_daily` (
+	`recno` int(11) NOT NULL auto_increment,
+	`pageurl` varchar(255) NOT NULL default '0',
+	`dateof` int(8) NOT NULL default '0',
+	`levelvisits` int(11) unsigned NOT NULL default '0',
+	`directvisits` int(11) unsigned NOT NULL default '0',
+	`parentrec` int(11) unsigned NOT NULL default '0',
+	`level` int(10) NOT NULL default '0',
+	PRIMARY KEY  (`recno`),
+	KEY `pageurl` (`pageurl`),
+	KEY `parentrec` (`parentrec`),
+	KEY `levelvisits` (`levelvisits`),
+	KEY `directvisits` (`directvisits`),
+	KEY `dateof` (`dateof`)
+);
+
+DROP TABLE IF EXISTS livehelp_layerinvites;
+CREATE TABLE `livehelp_layerinvites` (
+	`layerid` int(10) NOT NULL default '0',
+	`name` varchar(60) NOT NULL default '',
+	`imagename` varchar(60) NOT NULL default '',
+	`imagemap` text NOT NULL default '',
+	`department` varchar(60) NOT NULL default '',
+	`user` int(10) NOT NULL default '0',
+	PRIMARY KEY  (`layerid`)
+);
+
+DROP TABLE IF EXISTS livehelp_operator_history;
+CREATE TABLE `livehelp_operator_history` (
+	`id` int(11) unsigned NOT NULL auto_increment,
+	`opid` int(11) unsigned NOT NULL default '0',
+	`action` varchar(60) NOT NULL default '',
+	`dateof` bigint(14) NOT NULL default '0',
+	`sessionid` varchar(40) NOT NULL default '',
+	`transcriptid` int(10) NOT NULL default '0',
+	`totaltime` int(10) NOT NULL default '0',
+	`channel` int(10) NOT NULL default '0',
+	PRIMARY KEY  (`id`),
+	INDEX ( `opid` ),
+	INDEX ( `dateof` )
+);
+
+DROP TABLE IF EXISTS livehelp_Ihre Frages;
+CREATE TABLE `livehelp_Ihre Frages` (
+	`id` INT( 10 ) NOT NULL AUTO_INCREMENT,
+	`department` INT( 10 ) NOT NULL default '0',
+	`ordering` INT( 8 ) NOT NULL default '0',
+	`headertext` TEXT NOT NULL default '',
+	`fieldtype` VARCHAR( 30 ) NOT NULL default '',
+	`options` TEXT NOT NULL default '',
+	`flags` VARCHAR( 60 ) NOT NULL default '',
+	`module` VARCHAR( 60 ) NOT NULL default '',
+	`required` CHAR( 1 ) DEFAULT 'N' NOT NULL,
+	PRIMARY KEY ( `id` ) ,
+	INDEX ( `department` )
+);
+
+DROP TABLE IF EXISTS livehelp_smilies;
+CREATE TABLE `livehelp_smilies` (
+	`smilies_id` smallint(5) unsigned NOT NULL auto_increment,
+	`code` varchar(50) default NULL,
+	`smile_url` varchar(100) default NULL,
+	`emoticon` varchar(75) default NULL,
+	PRIMARY KEY  (`smilies_id`)
+);
+
+DROP TABLE IF EXISTS livehelp_autoinvite;
+CREATE TABLE `livehelp_autoinvite` (
+	`idnum` int(10) NOT NULL auto_increment,
+	isactive char(1) NOT NULL default '',
+	`department` int(10) NOT NULL default '0',
+	`message` text NOT NULL default '',
+	`page` varchar(255) NOT NULL default '',
+	`visits` int(8) NOT NULL default '0',
+	`referer` varchar(255) NOT NULL default '',
+	`typeof` varchar(255) NOT NULL default '',
+	`seconds` int(11) unsigned NOT NULL default '0',
+	PRIMARY KEY  (idnum)
+);
+
+DROP TABLE IF EXISTS livehelp_modules_dep;
+CREATE TABLE livehelp_modules_dep (
+	rec int(10) NOT NULL auto_increment,
+	departmentid int(10) NOT NULL default '0',
+	modid int(10) NOT NULL default '0',
+	ordernum int(8) NOT NULL default '0',
+	defaultset char(1) NOT NULL default '',
+	PRIMARY KEY  (rec)
+);
+
+DROP TABLE IF EXISTS livehelp_modules;
+CREATE TABLE livehelp_modules (
+	id int(10) NOT NULL auto_increment,
+	name varchar(30) NOT NULL default '',
+	path varchar(255) NOT NULL default '',
+	adminpath varchar(255) NOT NULL default '',
+	query_string varchar(255) NOT NULL default '',
+	PRIMARY KEY  (id)
+);
+
+DROP TABLE IF EXISTS livehelp_channels;
+CREATE TABLE livehelp_channels (
+	id int(10) NOT NULL auto_increment,
+	user_id int(10) NOT NULL default '0',
+	statusof char(1) NOT NULL default '',
+	startdate bigint(8) NOT NULL default '0',
+	`sessionid` VARCHAR( 40 ) NOT NULL default '',
+	PRIMARY KEY  (id)
+);
+
+DROP TABLE IF EXISTS livehelp_config;
+CREATE TABLE `livehelp_config` (
+	`version` varchar(10) NOT NULL default '2.12.9',
+	`site_title` varchar(100) NOT NULL default '',
+	`use_flush` varchar(10) NOT NULL default 'YES',
+	`membernum` int(8) NOT NULL default '0',
+	`offset` int(5) NOT NULL default '0',
+	`show_typing` char(1) NOT NULL default '',
+	`webpath` varchar(255) NOT NULL default '',
+	`s_webpath` varchar(255) NOT NULL default '',
+	`speaklanguage` varchar(60) NOT NULL default 'English',
+	`scratch_space` text NOT NULL default '',
+	`admin_refresh` varchar(30) NOT NULL default 'auto',
+	`maxexe` int(5) default '90',
+	`refreshrate` int(5) NOT NULL default '1',
+	`chatmode` varchar(60) NOT NULL default '',
+	`adminsession` char(1) NOT NULL default 'Y',
+	`ignoreips` text NOT NULL default '',
+	`directoryid` varchar(32) NOT NULL default '',
+	`tracking` char(1) NOT NULL default 'N',
+	`colorscheme` varchar(30) NOT NULL default 'blue',
+	`matchip` char(1) NOT NULL default 'N',
+	`gethostnames` char(1) NOT NULL default 'N',
+	`maxrecords` int(10) NOT NULL default '75000',
+	`maxreferers` int(10) NOT NULL default '50',
+	`maxvisits` int(10) NOT NULL default '75',
+	`maxmonths` int(10) NOT NULL default '12',
+	`maxoldhits` int(10) NOT NULL default '1',
+	`showgames` char(1) NOT NULL default 'Y',
+	`showsearch` char(1) NOT NULL default 'Y',
+	`showdirectory` char(1) NOT NULL default 'Y',
+	`usertracking` char(1) NOT NULL default 'N',
+	`resetbutton` char(1) NOT NULL default 'N',
+	`keywordtrack` char(1) NOT NULL default 'N',
+	`reftracking` char(1) NOT NULL default 'N',
+	`topkeywords` int(10) NOT NULL default '50',
+	`everythingelse` text NOT NULL default '',
+	`rememberusers` char(1) NOT NULL default 'Y',
+	PRIMARY KEY  (`version`)
+);
+
+DROP TABLE IF EXISTS livehelp_departments;
+CREATE TABLE `livehelp_departments` (
+	`recno` int(5) NOT NULL auto_increment,
+	`nameof` varchar(30) NOT NULL default '',
+	`onlineimage` varchar(255) NOT NULL default '',
+	`offlineimage` varchar(255) NOT NULL default '',
+	`layerinvite` varchar(255) NOT NULL default '',
+	`requirename` char(1) NOT NULL default '',
+	`messageemail` varchar(60) NOT NULL default '',
+	`leaveamessage` varchar(10) NOT NULL default '',
+	`opening` text NOT NULL default '',
+	`offline` text NOT NULL default '',
+	`creditline` char(1) NOT NULL default 'L',
+	`imagemap` text NOT NULL default '',
+	`whilewait` text NOT NULL default '',
+	`timeout` int(5) NOT NULL default '150',
+	`leavetxt` text NOT NULL default '',
+	`topframeheight` int(10) NOT NULL default '35',
+	`topbackground` varchar(255) NOT NULL default '',
+	`colorscheme` varchar(255) NOT NULL default '',
+	`speaklanguage` varchar(60) NOT NULL default '',
+	`busymess` text NOT NULL default '',
+	`emailfun` char(1) NOT NULL default 'Y',
+	`dbfun` char(1) NOT NULL default 'Y',
+	`everythingelse` text NOT NULL default '',
+	`ordering` INT( 8 ) NOT NULL default '0',
+	`smiles` CHAR( 1 ) NOT NULL DEFAULT 'Y',
+	`visible` INT( 1 ) DEFAULT '1' NOT NULL,
+	PRIMARY KEY  (`recno`)
+);
+
+DROP TABLE IF EXISTS livehelp_messages;
+CREATE TABLE livehelp_messages (
+	id_num int(10) NOT NULL auto_increment,
+	message text NOT NULL default '',
+	channel int(10) NOT NULL default '0',
+	timeof bigint(14) NOT NULL default '0',
+	saidfrom int(10) NOT NULL default '0',
+	saidto int(10) NOT NULL default '0',
+	typeof varchar(30) NOT NULL default '',
+	PRIMARY KEY  (id_num),
+	KEY channel (channel),
+	KEY timeof (timeof)
+);
+
+DROP TABLE IF EXISTS livehelp_operator_channels;
+CREATE TABLE livehelp_operator_channels (
+	id int(10) NOT NULL auto_increment,
+	user_id int(10) NOT NULL default '0',
+	channel int(10) NOT NULL default '0',
+	userid int(10) NOT NULL default '0',
+	statusof char(1) NOT NULL default '',
+	startdate bigint(8) NOT NULL default '0',
+	bgcolor varchar(10) NOT NULL default '000000',
+	txtcolor varchar(10) NOT NULL default '000000',
+	channelcolor varchar(10) NOT NULL default 'F7FAFF',
+	txtcolor_alt varchar(10) NOT NULL default '000000',
+	PRIMARY KEY  (id),
+	KEY channel (channel),
+	KEY user_id (user_id)
+);
+
+DROP TABLE IF EXISTS livehelp_operator_departments;
+CREATE TABLE livehelp_operator_departments (
+	recno int(10) NOT NULL auto_increment,
+	user_id int(10) NOT NULL default '0',
+	department int(10) NOT NULL default '0',
+	extra varchar(100) NOT NULL default '',
+	PRIMARY KEY  (recno),
+	KEY user_id (user_id),
+	KEY department (department)
+);
+
+DROP TABLE IF EXISTS livehelp_qa;
+CREATE TABLE livehelp_qa (
+	recno int(10) NOT NULL auto_increment,
+	parent int(10) NOT NULL default '0',
+	Ihre Frage text NOT NULL default '',
+	typeof varchar(10) NOT NULL default '',
+	status VARCHAR(20) NOT NULL default '',
+	username varchar(60) NOT NULL default '',
+	ordernum int(10) NOT NULL default '0',
+	PRIMARY KEY  (recno)
+);
+
+DROP TABLE IF EXISTS livehelp_quick;
+CREATE TABLE livehelp_quick (
+	id int(10) NOT NULL auto_increment,
+	name varchar(50) NOT NULL default '',
+	typeof varchar(30) NOT NULL default '',
+	message text NOT NULL default '',
+	visiblity varchar(20) NOT NULL default '',
+	department varchar(60) NOT NULL default '0',
+	user int(10) NOT NULL default '0',
+	ishtml varchar(3) NOT NULL default '',
+	PRIMARY KEY  (id)
+);
+
+DROP TABLE IF EXISTS livehelp_transcripts;
+CREATE TABLE `livehelp_transcripts` (
+	`recno` int(10) NOT NULL auto_increment,
+	`who` varchar(100) NOT NULL default '',
+	`endtime` bigint(14) default NULL,
+	`transcript` text NOT NULL default '',
+	`sessionid` varchar(40) NOT NULL default '',
+	`sessiondata` text NOT NULL default '',
+	`department` int(10) NOT NULL default '0',
+	`email` varchar(100) NOT NULL default '',
+	`starttime` bigint(14) NOT NULL default '0',
+	`duration` int(11) unsigned NOT NULL default '0',
+	`operators` varchar(255) NOT NULL default '',
+	PRIMARY KEY  (`recno`)
+);
+
+DROP TABLE IF EXISTS livehelp_users;
+CREATE TABLE livehelp_users (
+	user_id int(10) NOT NULL auto_increment,
+	lastaction BIGINT(14) DEFAULT '0',
+	username varchar(30) NOT NULL default '',
+	password varchar(60) NOT NULL default '',
+	isonline char(1) NOT NULL default '',
+	isoperator char(1) NOT NULL default 'N',
+	onchannel int(10) NOT NULL default '0',
+	isadmin char(1) NOT NULL default 'N',
+	department int(5) NOT NULL default '0',
+	identity varchar(255) NOT NULL default '',
+	status varchar(30) NOT NULL default '',
+	isnamed char(1) NOT NULL default 'N',
+	showedup bigint(14) default NULL,
+	email varchar(60) NOT NULL default '',
+	camefrom varchar(255) NOT NULL default '',
+	show_arrival char(1) NOT NULL default 'N',
+	user_alert char(1) NOT NULL default '',
+	auto_invite CHAR( 1 ) NOT NULL default 'N',
+	istyping  CHAR( 1 ) NOT NULL default '1',
+	visits int(8) NOT NULL default '0',
+	jsrn int(5) NOT NULL default '0',
+	hostname varchar(255) NOT NULL default '',
+	useragent varchar(255) NOT NULL default '',
+	ipaddress varchar(255) NOT NULL default '',
+	`sessionid` varchar(40) NOT NULL default '',
+	`authenticated` char(1) NOT NULL default '',
+	`cookied` CHAR( 1 ) DEFAULT 'N' NOT NULL,
+	sessiondata TEXT NOT NULL default '',
+	expires bigint(14) NOT NULL default '0',
+	`greeting` TEXT NOT NULL default '',
+	photo varchar(255) NOT NULL default '',
+	chataction BIGINT(14) DEFAULT '0',
+	`new_session` CHAR( 1 ) NOT NULL DEFAULT 'Y',
+	`showtype` INT( 10 ) NOT NULL DEFAULT '1',
+	`chattype` CHAR( 1 ) NOT NULL DEFAULT 'Y',
+	`externalchats` VARCHAR( 255 ) NOT NULL DEFAULT '',
+	`layerinvite` INT( 10 ) DEFAULT '0' NOT NULL,
+	`askIhre Frages` CHAR( 1 ) DEFAULT 'Y' NOT NULL,
+	`showvisitors` CHAR( 1 ) DEFAULT 'N' NOT NULL,
+	`cookieid` VARCHAR( 40 ) NOT NULL default '',
+	PRIMARY KEY  (user_id)
+);
+
+DROP TABLE IF EXISTS livehelp_visit_track;
+CREATE TABLE livehelp_visit_track (
+	recno int(10) NOT NULL auto_increment,
+	sessionid varchar(40) NOT NULL default '0',
+	location varchar(255) NOT NULL default '',
+	page bigint(14) NOT NULL default '0',
+	title varchar(100) NOT NULL default '',
+	whendone BIGINT( 14 ) NOT NULL default '0',
+	referrer varchar(255) NOT NULL default '',
+	PRIMARY KEY  (recno),
+	KEY sessionid (sessionid),
+	KEY `location` (`location`),
+	KEY `page` (`page`),
+	KEY `whendone` (`whendone`)
+);
+
+UPDATE livehelp_config set scratch_space='
+<center>
+<h2 align=\"center\">Willkommen zu unserer Live Hilfe</h2>
+<p>
+Alle administrativen Funktionen befinden sich links von diesem Text.
+</p>
+<p>
+Sie können diesen Beeich verwenden, um Notizen für sich und andere Admins zu verwalten. </p>
+<p>
+Um den Text in diesem Feld zu &auml;ndern, klicken Sie auf den kleinen "&auml;ndern" Button an der echten oberen Ecke des Feldes.</p>
+<br/><br/>';
+
+INSERT INTO `livehelp_modules` (id,name,path) VALUES (1, 'Live Hilfe!', 'livehelp.php');
+INSERT INTO `livehelp_modules` (id,name,path) VALUES (2, 'Kontakt', 'leavemessage.php');
+INSERT INTO `livehelp_modules` (id,name,path,adminpath) VALUES (3, 'Fragen und Antworten', 'user_qa.php','qa.php');
+INSERT INTO `livehelp_modules_dep` VALUES (1, 1, 1, 1, '');
+INSERT INTO `livehelp_modules_dep` VALUES (2, 1, 2, 2, 'Y');
+
+INSERT INTO livehelp_config (version, site_title, use_flush, membernum, offset, show_typing,webpath,s_webpath,speaklanguage,maxexe,refreshrate,chatmode,adminsession,maxreferers,maxvisits,maxmonths,maxoldhits,maxrecords,admin_refresh) VALUES ('2.12.9', '#store_name# "Live Hilfe"', 'YES', 0, 0, 'Y','#homepage#','#s_homepage#','German',300,1,'xmlhttp-flush-refresh','Y',50,75,12,1,75000,'auto');
+INSERT INTO livehelp_users (username,password,isonline,isoperator,isadmin,isnamed,email,show_arrival,user_alert,auto_invite,greeting,photo) VALUES ('#user#','#pass#','N','Y','Y','Y','#user#','N','N','Y','Wie kann ich Ihnen helfen?','');
+INSERT INTO livehelp_departments (nameof, onlineimage, offlineimage, requirename, messageemail, leaveamessage, opening, offline, creditline, layerinvite, imagemap,whilewait,timeout,topframeheight,topbackground,colorscheme,busymess) VALUES ('default', 'online.gif', 'leavemessage.gif', 'Y', '#user#', 'YES', '<blockquote>Willkommen zu unserer Live Hilfe. Bitte geben Sie Ihren namen in das folgende Eingabefeld ein.</blockquote>', '<blockquote>Zur Zeit ist leider keine Live Hilfe möglich.</blockquote>', 'L','dhtmlimage.gif','<MAP NAME=myimagemap><AREA href=javascript:openLiveHelp() SHAPE=RECT COORDS=0,0,400,197><AREA href=javascript:openLiveHelp() SHAPE=RECT COORDS=0,157,213,257><AREA href=javascript:closeDHTML() SHAPE=RECT COORDS=237,157,400,257></MAP>','Please be patient while an operator is contacted... ','150','45','topclouds.gif','blue','<blockquote>Sorry all operators are currently helping other clients and are unable to provide Live support at this time.<br/>Would you like to continue to wait for an operator or leave a message?<br/><table width=450><tr><td width=40%><a href=livehelp.php?page=livehelp.php&department=[department]&tab=1 target=_top><font size=+1>Continue to wait</font></a></td><td width=20% align=center><b>or</b></td><td width=40%><a href=leavemessage.php?department=[department]><font size=+1>Leave A Message</a></td></tr></table><blockquote>');
+INSERT INTO livehelp_operator_departments (recno, user_id, department, extra) VALUES (1, 1, 1, '');
+
+INSERT INTO `livehelp_autoinvite` VALUES (1, 'Y', 0, '5', '', 0, '', 'layer','60');
+
+INSERT INTO `livehelp_Ihre Frages` VALUES (1, 1, 0, 'Ihre eMail-Adresse:', 'email', '', '', 'leavemessage', 'Y');
+INSERT INTO `livehelp_Ihre Frages` VALUES (2, 1, 0, 'Ihre Frage:', 'textarea', '', '', 'leavemessage', 'N');
+INSERT INTO `livehelp_Ihre Frages` VALUES (3, 1, 0, 'Name', 'username', '', '', 'livehelp', 'N');
+INSERT INTO `livehelp_Ihre Frages` VALUES (4, 1, 1, 'Ihre eMail-Adresse', 'email', '', '', 'livehelp', 'N');
+INSERT INTO `livehelp_Ihre Frages` VALUES (5, 1, 1, 'Ihre Frage', 'textarea', '', '', 'livehelp', 'N');
+UPDATE livehelp_departments set leavetxt='<h3><span CLASS=wh>Hinterlassen Sie eine Nachricht:</span></h3>Bitte geben Sie Ihre Frage(n) in das folgende Feld ein,<br/>und hinterlassen Sie eine eMail-Adresse, so dass wir Sie kontaktieren können';
+UPDATE livehelp_departments set topframeheight='45',topbackground='topclouds.gif',colorscheme='blue';
+
+INSERT INTO `livehelp_smilies` VALUES (1, ':D', 'icon_biggrin.gif', 'Very Happy');
+INSERT INTO `livehelp_smilies` VALUES (2, ':-D', 'icon_biggrin.gif', 'Very Happy');
+INSERT INTO `livehelp_smilies` VALUES (3, ':grin:', 'icon_biggrin.gif', 'Very Happy');
+INSERT INTO `livehelp_smilies` VALUES (4, ':)', 'icon_smile.gif', 'Smile');
+INSERT INTO `livehelp_smilies` VALUES (5, ':-)', 'icon_smile.gif', 'Smile');
+INSERT INTO `livehelp_smilies` VALUES (6, ':smile:', 'icon_smile.gif', 'Smile');
+INSERT INTO `livehelp_smilies` VALUES (7, ':(', 'icon_sad.gif', 'Sad');
+INSERT INTO `livehelp_smilies` VALUES (8, ':-(', 'icon_sad.gif', 'Sad');
+INSERT INTO `livehelp_smilies` VALUES (9, ':sad:', 'icon_sad.gif', 'Sad');
+INSERT INTO `livehelp_smilies` VALUES (10, ':o', 'icon_surprised.gif', 'Surprised');
+INSERT INTO `livehelp_smilies` VALUES (11, ':-o', 'icon_surprised.gif', 'Surprised');
+INSERT INTO `livehelp_smilies` VALUES (12, ':eek:', 'icon_surprised.gif', 'Surprised');
+INSERT INTO `livehelp_smilies` VALUES (13, ':shock:', 'icon_eek.gif', 'Shocked');
+INSERT INTO `livehelp_smilies` VALUES (14, ':?', 'icon_confused.gif', 'Confused');
+INSERT INTO `livehelp_smilies` VALUES (15, ':-?', 'icon_confused.gif', 'Confused');
+INSERT INTO `livehelp_smilies` VALUES (16, ':???:', 'icon_confused.gif', 'Confused');
+INSERT INTO `livehelp_smilies` VALUES (17, '8)', 'icon_cool.gif', 'Cool');
+INSERT INTO `livehelp_smilies` VALUES (18, '8-)', 'icon_cool.gif', 'Cool');
+INSERT INTO `livehelp_smilies` VALUES (19, ':cool:', 'icon_cool.gif', 'Cool');
+INSERT INTO `livehelp_smilies` VALUES (20, ':lol:', 'icon_lol.gif', 'Laughing');
+INSERT INTO `livehelp_smilies` VALUES (21, ':x', 'icon_mad.gif', 'Mad');
+INSERT INTO `livehelp_smilies` VALUES (22, ':-x', 'icon_mad.gif', 'Mad');
+INSERT INTO `livehelp_smilies` VALUES (23, ':mad:', 'icon_mad.gif', 'Mad');
+INSERT INTO `livehelp_smilies` VALUES (24, ':P', 'icon_razz.gif', 'Razz');
+INSERT INTO `livehelp_smilies` VALUES (25, ':-P', 'icon_razz.gif', 'Razz');
+INSERT INTO `livehelp_smilies` VALUES (26, ':razz:', 'icon_razz.gif', 'Razz');
+INSERT INTO `livehelp_smilies` VALUES (27, ':oops:', 'icon_redface.gif', 'Embarassed');
+INSERT INTO `livehelp_smilies` VALUES (28, ':cry:', 'icon_cry.gif', 'Crying or Very sad');
+INSERT INTO `livehelp_smilies` VALUES (29, ':evil:', 'icon_evil.gif', 'Evil or Very Mad');
+INSERT INTO `livehelp_smilies` VALUES (30, ':twisted:', 'icon_twisted.gif', 'Twisted Evil');
+INSERT INTO `livehelp_smilies` VALUES (31, ':roll:', 'icon_rolleyes.gif', 'Rolling Eyes');
+INSERT INTO `livehelp_smilies` VALUES (32, ':wink:', 'icon_wink.gif', 'Wink');
+INSERT INTO `livehelp_smilies` VALUES (33, ';)', 'icon_wink.gif', 'Wink');
+INSERT INTO `livehelp_smilies` VALUES (34, ';-)', 'icon_wink.gif', 'Wink');
+INSERT INTO `livehelp_smilies` VALUES (35, ':!:', 'icon_exclaim.gif', 'Exclamation');
+INSERT INTO `livehelp_smilies` VALUES (36, ':?:', 'icon_Ihre Frage.gif', 'Ihre Frage');
+INSERT INTO `livehelp_smilies` VALUES (37, ':idea:', 'icon_idea.gif', 'Idea');
+INSERT INTO `livehelp_smilies` VALUES (38, ':arrow:', 'icon_arrow.gif', 'Arrow');
+INSERT INTO `livehelp_smilies` VALUES (39, ':|', 'icon_neutral.gif', 'Neutral');
+INSERT INTO `livehelp_smilies` VALUES (40, ':-|', 'icon_neutral.gif', 'Neutral');
+INSERT INTO `livehelp_smilies` VALUES (41, ':neutral:', 'icon_neutral.gif', 'Neutral');
+INSERT INTO `livehelp_smilies` VALUES (42, ':mrgreen:', 'icon_mrgreen.gif', 'Mr. Green');

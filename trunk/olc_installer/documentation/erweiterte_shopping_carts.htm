@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- order_mail --><html><head>
+
+<TITLE>Erweiterte Shopping-Cart-Vorlagen</TITLE>
+<link rel="stylesheet" type="text/css" href="http://www.seifenparadies.de/ajax/templates/aqua/stylesheet.css">
+<STYLE type=text/css>
+@media Screen    
+{
+A {
+	COLOR: #a52a2a; TEXT-DECORATION: none
+}
+A:hover {
+	font-WEIGHT: bold
+}
+A.captionbar {
+	font-WEIGHT: normal; COLOR: #ffffff
+}
+A.captionbar:hover {
+	font-WEIGHT: bold; COLOR: #ffffff
+}
+A.headerNavigation {
+	font-SIZE: 13px; COLOR: #a52a2a
+}
+A.headerNavigation:hover {
+	font-WEIGHT: bold
+}
+A.pageResults {
+	COLOR: #843301
+}
+A.pageResults:hover {
+	COLOR: #843301
+}
+body {
+	font-SIZE: 12px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-IMAGE: url(http://www.seifenparadies.de/images/bg_green.png); MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #e3ebe2; SCROLLBAR-SHADOW-COLOR: #abd390; COLOR: #a52a2a; SCROLLBAR-3DLIGHT-COLOR: #aad79d; SCROLLBAR-ARROW-COLOR: #a52a2a; SCROLLBAR-TRACK-COLOR: #a52a2a; font-FAMILY: Verdana, Arial, sans-serif; SCROLLBAR-DARKSHADOW-COLOR: #7bba52; SCROLLBAR-BASE-COLOR: #f0f7da; BACKGROUND-COLOR: #f8fbee
+}
+HR {
+	COLOR: brown
+}
+.standard {
+	font-SIZE: 14px; COLOR: brown
+}
+.td_style {
+	PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: brown; PADDING-TOP: 0.75pt
+}
+.td_style_bold {
+	PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-WEIGHT: bold; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: brown; PADDING-TOP: 0.75pt
+}
+.td_style_header {
+	BORDER-RIGHT: brown 1px solid; BORDER-TOP: brown 1px solid; font-SIZE: 14px; BORDER-LEFT: brown 1px solid; COLOR: brown; BORDER-BOTTOM: brown 1px solid
+}
+.td_style_header_bold {
+	BORDER-RIGHT: brown 1px solid; BORDER-TOP: brown 1px solid; font-WEIGHT: bold; font-SIZE: 14px; BORDER-LEFT: brown 1px solid; COLOR: brown; BORDER-BOTTOM: brown 1px solid; TEXT-ALIGN: center
+}
+.payment {
+	font-WEIGHT: bold; font-SIZE: 14px; COLOR: red
+}
+    }
+TD.main {
+	font-SIZE: 13px; LINE-HEIGHT: 1.5
+}
+P.main {
+	font-SIZE: 13px; LINE-HEIGHT: 1.5
+}
+.main {
+	font-SIZE: 14px; COLOR: #a52a2a; LINE-HEIGHT: 1.5
+}
+
+@media Print    
+{
+HR {
+	COLOR: black
+}
+.standard {
+	font-SIZE: 14px; COLOR: black
+}
+.td_style {
+	PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: black; PADDING-TOP: 0.75pt
+}
+.td_style_bold {
+	PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-WEIGHT: bold; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: black; PADDING-TOP: 0.75pt
+}
+.td_style_header {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; font-SIZE: 14px; BORDER-LEFT: black 1px solid; COLOR: black; BORDER-BOTTOM: black 1px solid
+}
+.td_style_header_bold {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; font-WEIGHT: bold; font-SIZE: 14px; BORDER-LEFT: black 1px solid; COLOR: black; BORDER-BOTTOM: black 1px solid; TEXT-ALIGN: center
+}
+TD.main {
+	font-SIZE: 13px; LINE-HEIGHT: 1.5
+}
+P.main {
+	font-SIZE: 13px; LINE-HEIGHT: 1.5
+}
+.main {
+	font-SIZE: 14px; COLOR: #a52a2a; LINE-HEIGHT: 1.5
+}
+
+}
+</STYLE>
+
+<meta content="Microsoft FrontPage 6.0" name=GENERATOR>
+<BASE TARGET="_blank">
+</HEAD>
+<body>
+<p align="center"><font size="5" color="#FF0000"><B>Erweiterte Shopping-Cart-Vorlagen</B></font></p>
+<p><B>xxCommerce</B> hat zwei Vorlagen für den &quot;<B>Shopping-Cart</B>&quot;: einmal für die &quot;Shopping-Cart&quot;-<B>Box</B> 
+(&quot;<B>SC-Box</B>&quot;) im Verzeichnis &quot;<B>templates/common/boxes/box_cart.html</B>&quot;, und das 
+&quot;Shopping-Cart&quot;-<B>Modul</B> (&quot;<B>SC-Modul</B>&quot;) im Verzeichnis &quot;<B>templates/common/module/shopping_cart.html</B>&quot;.</p>
+<p>&quot;<B>SC-Box</B>&quot; ist der Platz in den Navigationsbereichen, in dem nach dem 
+Einkauf eines Artikels alle bisher angezeigten Artikel in <B>Kurzdarstellung</B> 
+angezeigt werden.</p>
+<p>&quot;<B>SC-Modul</B>&quot; wird angezeigt, wenn der &quot;<B>Warenkorb</B>&quot;-Button oder 
+-Link angeklickt wird, und zeigt eine<B> Detail-Übersicht des Warenkorbs</B>, 
+mit der Möglichkeit, die Menge von Artikeln zu verändern, bzw. Artikel ganz aus 
+dem Warenkorb zu entfernen.</p>
+<p><B>OL-Commerce v4/AJAX</B> hat, wie so oft, auch hier <b>
+<font color="#FF0000">wesentliche</font> Erweiterungen und Verbesserungen</B> gegenüber xxCommerce-kompatiblen Systemen 
+erhalten, die direkte Auswirkungen auf die entsprechenden Vorlagen haben.</p>
+<p>&quot;<B>SC-Box</B>&quot; sieht in <B>OL-Commerce v4/AJAX </B>wie folgt aus:</p>
+<hr/>
+<p><img border="0" SRC="cart_box.jpg" width="208" height="611"></p><hr/>
+<p>Nach Außen hin direkt sichtbar ist als Erweiterung die <B>laufende Numerierung</B> 
+und die <B>Anzahl</B> 
+der Artikel im Warenkorb, sowie der untere <B>Linkbereich</B> mit den Einträgen:
+<span ID="cart_save_link">
+<A TITLE="Den Inhalt des Warenkorbs löschen" href="http://localhost/seifenparadies/olcommerce_1_2_2A_AJAX_Test/olcommerce/cart_restore.php?action=delete">
+<B>Warenkorb löschen</B></A>,
+<A TITLE="Den Warenkorb sichern, um ihn (bei einem späteren Besuch) wieder verwenden zu können" href="http://localhost/seifenparadies/olcommerce_1_2_2A_AJAX_Test/olcommerce/cart_save.php">
+<B>Warenkorb sichern</B></A>, </span><b>
+<A TITLE="Den Warenkorb (von einem früheren Besuch) wieder herstellen" href="http://localhost/seifenparadies/olcommerce_1_2_2A_AJAX_Test/olcommerce/cart_restore.php">
+Warenkorb laden (6)</A></b> (der wieder eine sehr <b><font color="#FF0000">attraktive</font> Erweiterung
+</B>von <B>OL-Commerce v4/AJAX</B> 
+verfügbar machen).</p>
+<p>Mit <b>&quot;</b><span ID="cart_save_link0"><b><A TITLE="Den Inhalt des Warenkorbs löschen" href="http://localhost/seifenparadies/olcommerce_1_2_2A_AJAX_Test/olcommerce/cart_restore.php?action=delete">Warenkorb 
+löschen</A>&quot;</b> <font color="#FF0000"><B>löscht</B></font> man erwartungsgemäß den Warenkorb-Inhalt, mit &quot;</span><span ID="cart_save_link1"><A TITLE="Den Warenkorb sichern, um ihn (bei einem späteren Besuch) wieder verwenden zu können" href="http://localhost/seifenparadies/olcommerce_1_2_2A_AJAX_Test/olcommerce/cart_save.php"><B>Warenkorb 
+sichern</B></A></span><span ID="cart_save_link0">&quot; kann man die Inhalt seines 
+aktuellen Warenkorbs für eine <B>spätere Verwendung <font color="#FF0000">speichern</font></b>, und mit &quot;</span><b><A TITLE="Den Warenkorb (von einem früheren Besuch) wieder herstellen" href="http://localhost/seifenparadies/olcommerce_1_2_2A_AJAX_Test/olcommerce/cart_restore.php">Warenkorb 
+laden (6)</A></b><span ID="cart_save_link0">&quot; schließlich den <B>Inhalt von früher 
+gespeicherten Warenkörben</B> wieder <font color="#FF0000"><B>laden</B></font> 
+(entweder <font color="#FF0000"><B>exklusiv</B></font>, oder
+<font color="#FF0000"><B>zusätzlich</B></font> zum aktuellen Warenkorb-Inhalt). (Die Zahl in Klammern gibt die Anzahl der 
+für den aktuellen Besucher gespeicherten Warenkörbe an. Die gespeicherten 
+Warenkörbe können <B>aktiv</B> gelöscht werden, oder sie werden 6 Monate nach 
+der letzten Verwendung <B>automatisch</B> gelöscht.)</span></p>
+<p>Der untere <B>Warenkorb-Linkbereich</B> kann wie folgt <B>am Ende </B>der bestehenden Vorlage eingefügt 
+werden:</p><hr/>
+<pRE>{if $SHOW_CART_SAVE_RESTORE}
+&lt;table class="captionbox" width="100%"&gt;
+  &lt;tr&gt;
+    &lt;td class="main" align="center"&gt;
+      &lt;HR&gt;
+      {if $empty=='false'}
+      &lt;span ID="cart_save_link"&gt;
+      &lt;A href=&quot;cart_restore.php?action=delete" TITLE="{#text_delete_title#}"&gt;&lt;B&gt;{#text_delete#}&lt;/B&gt;&lt;/A&gt;&lt;BR&gt;
+      &lt;A href=&quot;cart_save.php" TITLE="{#text_save_title#}"&gt;&lt;B&gt;{#text_save#}&lt;/B&gt;&lt;/A&gt;&lt;BR&gt;
+      &lt;/span&gt;
+      {/if}
+      {if $SHOW_CART_RESTORE}
+      &lt;A href=&quot;cart_restore.php" TITLE="{#text_restore_title#}"&gt;&lt;B&gt;{#text_restore#} ({$CARTS_TO_RESTORE})&lt;/B&gt;&lt;/A&gt;&lt;BR&gt;
+      {/if}
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+{/if}</pRE><hr/>
+<p>Zudem wird beim &quot;<B>Überfahren</B>&quot; eines &quot;<B>SC-Box</B>&quot;-Eintrages mit der
+<B>Maus</B> in einem &quot;<B>Tool-Tip</B>&quot; die <B>Kurzbeschreibung</B>, evtl. <b>
+<font color="#FF0000">ausgewählte</font> Optionen</B> und die <b>
+Preiszusammensetzung</B> <font color="#FF0000"><B>angezeigt</B></font>!</p>
+<p>Ein <B>genaues aktuelles Abbild</B> des &quot;<B>SC-Box</B>&quot; wird im &quot;<B>Sticky-Cart</B>&quot; 
+gespeichert (ein weiteres <font color="#FF0000"><B>einmaliges</B></font> (und &quot;<font color="#FF0000"><B>cooles</B></font>&quot;) Feature von <B>OL-Commerce v4/AJAX</B>!)</p>
+<p>Der &quot;<B>Sticky-Cart</B>&quot; wird dann angezeigt, wenn der &quot;<B>SC-Box</B>&quot; 
+beim &quot;Downscrolling&quot; der Seite aus dem Blickfeld gerät, und bleibt dann so lange 
+sichtbar (vertikal mittig in dem Navigationsbereich (links/rechts) positioniert, 
+in dem sich auch der &quot;<B>SC-Box</B>&quot; befindet), bis der Bildschirm wieder so weit nach oben &quot;gesrcolled&quot; wurde, dass 
+der &quot;<B>SC-Box</B>&quot; wieder komplett sichtbar ist.</p>
+<p>Da im <B>AJAX-Betrieb </B>der 
+Bildschirm bei &quot;Klicks&quot; ja <font color="#FF0000"><B>nicht</B></font> mehr <B>gelöscht</B> 
+(und der Cursor <B>an den Anfang der aktuellen Seite </B>positioniert) wird, 
+kann der Besteller (von der aktuellen Position aus) <b><font color="#FF0000">
+sofort</font> weiter einkaufen</B>, und er hat <font color="#FF0000"><B>immer</B></font> den 
+<B>aktuellen Stand seines Warenkorbs </B>im Blick.</p>
+<hr/><hr/>
+<p>&quot;<B>SC-Modul</B>&quot; sieht in <B>OL-Commerce v4/AJAX </B>wie folgt aus:<br/>
+(Hier zusammen mit dem zugehörigen &quot;<B>Sticky-Cart</B>&quot; angezeigt, um das 
+Zusammenspiel zwischen &quot;<B>SC-Modul</B>&quot; und &quot;<B>SC-Box</B>&quot; zu 
+demonstrieren.</p><hr/>
+<p><img border="0" SRC="cart_modul.jpg" width="1025" height="805"></p><hr/>
+<p>Die <b><font color="#0000FF">einzigartigen(!)</font> <font color="#FF0000">
+lokalen</font> </B>Funktionen erfordern auch hier einige <B>Vorkehrungen</B> im 
+Template!</p>
+<p><B>Funktionen, die auf dem lokalen Computer des Kunden (per Javascript) 
+abgewickelt werden sind folgende:</b></p>
+<UL>
+	<LI>Wird das &quot;<B>Entfernen</B>&quot;-Feld für ein Produkt <font color="#FF0000">
+	<B>aktiviert</B></font>, dann wird im &quot;<B>SC-Modul</B>&quot; das &quot;<B>Mengen</B>&quot;-Feld
+	<font color="#FF0000"><B>ausgeblendet</B></font>, und der <b>
+	Shopping-Cart-Wert</B> wird <font color="#FF0000"><B>angepasst</B></font>.
+	<br/>
+	<br/>
+	Durch <font color="#FF0000"><B>deaktivieren</B></font> des &quot;<B>Entfernen</B>&quot;-Felds 
+	wird <font color="#FF0000"><B>der alte Zustand wieder her gestellt</B></font>!<br/>
+	Gleichzeitig wird auch &quot;<B>SC-Box</B>&quot; und sein Zwillingsbruder &quot;<B>Sticky-Cart</B>&quot; 
+	entsprechend <font color="#FF0000"><B>aktualisiert</B></font>!<br/>
+	Das <B>entfernte</B> Produkt wird <font color="#FF0000"><B>nicht mehr 
+	angezeigt</B></font>, die <B>laufende Numerierung</B> der Artikel und der&nbsp;
+	<B>Shopping-Cart-Wert</B> werden <font color="#FF0000"><B>angepasst</B></font>.<br/>
+&nbsp;</LI>
+	<LI>Bei<B> Änderung der Artikelanzahl </B>werden <B>Mindest-Bestellmenge</B> und
+	<B>Lagerverfügbarkeit</B> <font color="#FF0000"><B>überwacht</B></font>, und 
+	der <B>Shopping-Cart-Wert</B> wird <font color="#FF0000"><B>angepasst</B></font>.<br/>
+&nbsp;</LI>
+</UL>
+<p>Erst nachdem der Besteller den &quot;<B>Warenkorb aktualisieren</B>&quot;-Button 
+anklickt, werden die Änderungen zum Server übertragen.</p>
+<hr/>
+<p><U>Wenn <font color="#FF0000"><B>irgend möglich </b></font>sollten wegen der
+<B>Komplexität der Vorgänge</B> die <b><font color="#FF0000">Standard</font>-Vorlagen</B> 
+für &quot;<B>SC-Box</B>&quot; und &quot;<B>SC-Modul</B>&quot; verwendet werden!!!!!</U></p>
+<p>Dort sind nämlich einige <B>umfangreiche </B>Vorkehrungen getroffen, die für 
+die Einzelmodule selbst, und insbesondere auch für das beschriebene 
+Zusammenspiel von &quot;<B>SC-Box</B>&quot; und &quot;<B>SC-Modul</B>&quot;, notwendig sind.</p>
+<p>Ist dies, warum auch immer, <font color="#FF0000"><B>nicht</B></font> 
+möglich, muss man einfach untersuchen, welche <B>Unterschiede</B> zwischen den 
+jeweiligen <B>Standard</B>- und den <B>eigenen</B> <B>Vorlagen</B> vorhanden 
+sind, und diese dort entsprechend <B>einbauen</B>!</p>
+
+</body></HTML>

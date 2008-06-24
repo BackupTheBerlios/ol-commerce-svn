@@ -1,0 +1,50 @@
+{if $options!=''}
+<!-- W. Kaiser - AJAX-->
+<table id="options_area" width="100%" border="0" cellspacing="0" cellpadding="0">
+	{assign var="separator" value="<tr><td><font style='font-size:6pt;'>&nbsp;</font></td></tr>"}
+	<tr>
+		<td colspan="2" nowrap="nowrap">
+			<br/><b><font color="red" size="1">Bitte wählen Sie die gewünschte Produkt-Option</font></b><br/>
+		</td>	
+	</tr>
+	{$separator}
+	{if $OPTIONS_HAVE_PRICE}
+	<tr>
+		<td valign="middle" nowrap="nowrap">
+			<font face="Verdana" size="1">
+				<span style"display:none" ID="options_have_price"></span>
+				<b>
+					<span ID="products_price_display_2">
+						(Basispreis: {$PRODUCTS_PRICE})
+					</span>
+				</b>
+			</font>&nbsp;
+		</td>
+	</tr>
+	{/if}
+	{foreach name=outer item=options_data from=$options} 
+	{$separator}
+	<tr>
+		<td class="main">
+			<b>{$options_data.NAME}:&nbsp;</b>
+		</td>
+		<td align="left">
+			<!-- W. Kaiser - AJAX-->
+			<select name="id[{$options_data.ID}]" 
+				{if $USE_AJAX && !$IS_GALLERY} onchange="products_attribute_changed(this,true)"{/if}>
+				{foreach key=key_data item=item_data from=$options_data.DATA}
+				<option value="{$item_data.ID}"{if $USE_AJAX && !$IS_GALLERY} id="{$item_data.PREFIX}{$item_data.PRICE}"{/if}>
+					{$item_data.TEXT} {if $item_data.PRICE!=''}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+				</option>
+				{/foreach}
+			</select>
+			<!-- W. Kaiser - AJAX-->
+		</td>
+	</tr>
+	{/foreach} 
+	<tr>
+		<td colspan="2">&nbsp;</td>	
+	</tr>
+</table>
+<!-- W. Kaiser - AJAX-->
+{/if}

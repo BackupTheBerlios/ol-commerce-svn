@@ -1,0 +1,23 @@
+Seifenparadies Gerta M. Kaiser
+Schleswiger Str. 22a
+
+D-24975 Husby
+
+Fon: 04634-9313186
+Fax: 04634-1517
+
+eMail: vertrieb@seifenparadies.de
+
+
+Sehr geehrter Kunde, 
+
+Sie haben kürzlich in unserem Online-Shop einen Gutschein bestellt, welcher aus Sicherheitsgründen nicht sofort freigeschaltet wurde. 
+
+Dieses Guthaben steht Ihnen nun beim nächsten Einkauf zur Verfügung. 
+
+Sie können Ihren Gutschein verbuchen und per eMail versenden.
+
+Der von Ihnen bestellte Gutschein hat einen Wert von {$AMMOUNT} 
+
+
+Ihr Seifenparadies-Team

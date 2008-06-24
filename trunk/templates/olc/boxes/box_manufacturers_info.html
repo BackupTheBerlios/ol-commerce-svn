@@ -1,0 +1,33 @@
+{olc_template_init use_template_language="true" section="boxes"}
+<table class="{$box_navigation_area} box_MANUFACTURERS_INFO" width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><h3>
+      {#heading_manufacturers_info#}
+    </h3></td>
+  </tr>
+  <tr>
+    <td class="infoBox">
+      <table border="0" width="100%" cellspacing="0" cellpadding="0">
+        {if $MANUFACTURERS_IMAGE}
+        <tr>
+          <td align="center" class="boxText" colspan="2">{$MANUFACTURERS_IMAGE}</td>
+        </tr>
+        {/if}
+      	{if $MANUFACTURERS_URL}
+        <tr>
+          <td align="center" class="boxText" colspan="2">{$MANUFACTURERS_URL}</td>
+        </tr>
+        {/if}
+        {if $CONTENT}
+        <tr>
+          <td valign="top" class="boxText">{if $SHOW_BULLET}{$bullet}{/if}</td>
+          <td valign="top" class="boxText">{$BOX_CONTENT}</td>
+        </tr>
+        {/if}
+      </table>
+    </td>
+  </tr>
+	<tr>
+		<td class="infoBoxFooter">&nbsp;</td>
+	</tr>
+</table>

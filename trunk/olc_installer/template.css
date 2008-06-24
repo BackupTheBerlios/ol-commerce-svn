@@ -1,0 +1,191 @@
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+}
+
+a {
+  color: #B90603;
+}
+
+/* Middle screen area */
+
+.user_area {
+	width: 900px;
+}
+
+/* Left navigation area in user_area */
+
+.navigation_box {
+	background-color:#E7E7E7;
+	border: 1px solid #404040;
+	width:330px;
+}
+
+.main_content_box {
+	border-top: 1px solid #404040;
+	border-right: 1px solid #404040;
+	border-bottom: 1px solid #404040;
+}
+
+.button_box {
+	background-color:#E7E7E7;
+	border: 1px solid #404040;
+}
+
+.highlite_background {
+	background-color: #FE8400; 
+	text-align:left;
+}
+
+/* progress bar width, height, back-color border */
+.progressbar_frame {
+	/* 
+	width:400px; 
+	height:25px; 
+	"min-width" and "min-height"  m u s t  be set to the "width" and "height" values, 
+	in order to be able to control the progressbar completely from the sytelsheet!!!
+	*/
+	min-width:492px; 
+	min-height:25px; 
+	background-color:White;
+	border-color:#B90603; 
+	border-width:1px; 
+	border-style:solid; 
+	text-align:center;
+
+	font-size:1px;
+	visibility:visible; 
+	position:relative; 
+	overflow:hidden; 
+}
+
+/* progress bar blocks color */
+.progressbar_blocks {
+	background-color:#FE8400;
+
+	position:absolute; 
+	font-size:1px;
+}
+
+.frame_left {
+  background-image: url('images/bg_image.gif');
+  background-repeat: repeat-x;
+  text-align: left;
+}
+
+.frame_right {
+  background-image: url('images/bg_image.gif');
+  background-repeat: repeat-x;
+  text-align: right;
+}
+
+.footer {
+  text-align: center;
+  width: 100%;
+  font-size: 8pt;
+  font-weight: Bold;
+  color: #FE8400;
+}
+
+.image {
+  border:0;
+}
+
+.main_content_text {
+  font-size: x-small;
+  text-align: left;
+}
+
+.header_image {
+	background-image: url('images/icons/bullet.gif');
+	background-position:10px 7px;
+	background-repeat:no-repeat;
+  background-color: Black;
+  width: 30px;
+  padding:4px;
+}
+
+.header {
+  background-color: Black;
+  /*height: 20px;*/
+  color: white;
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: left;
+  padding-bottom:4px;
+}
+
+.title {
+  font-size: 14pt;
+  font-weight: bold;
+  color: #B90603;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.sub_title {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.main_content {
+  width: 95%;
+  text-align: center;
+  padding: 0px;
+}
+
+.main_content_outer {
+  width: 100%;
+  text-align: left;
+  padding: 0px;
+  /*
+  min-height:768px;
+  height:auto;
+  height:768px;
+  */
+}
+
+.error {
+  background-color: red;
+  color: yellow;
+  font-weight: bold;
+  font-size: 8pt;
+  text-align: left;
+}
+
+.error_small {
+  background-color: red;
+  color: yellow;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+.step {
+  font-size: 12pt;
+  font-weight: Bold;
+  color: #FE8400;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align:left;
+}
+
+.small_text {
+  font-size: 8pt;
+  font-weight: Bold;
+  color: #FE8400;
+}
+
+.big_text {
+  font-size: 12pt;
+  font-weight: Bold;
+  color: #FE8400;
+}
+
+.text {
+  font-weight: Bold;
+  color: #FE8400;
+}

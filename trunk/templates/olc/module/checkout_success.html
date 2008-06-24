@@ -1,0 +1,57 @@
+{olc_template_init title="#heading_success#" section="checkout_success"}
+{if $ORDER_STEPS}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>{$ORDER_STEPS}</td>
+	</tr>
+</table>
+{/if}
+{$FORM_ACTION}
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+	<tr>
+		<td><img src="{$tpl_path}img/checkout_success.gif"></td>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="category" valign="top">{#heading_success#}</td>
+				</tr>
+				<tr>
+					<td class="main">{#text_success#}<br/><br/></td>
+				</tr>
+				<tr>
+					<td class="category" valign="top">{#title_printorder#}<br/>
+					{$BUTTON_PRINT}<br/><br/></td>
+				</tr>
+				<tr>
+					<td class="main">{#text_notifications#}</td>
+				</tr>
+				<tr>
+					<td>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td class="main">{$NOTIFICATION_BLOCK}<br/></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="category">{#text_thankyou#}<br/><br/></td>
+				</tr>
+			</table>
+
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			{if $GV_SEND_LINK}
+			<!--GV Code Start-->
+				<tr>
+					<td class="main">{#gv_has_vouchera#}{$GV_SEND_LINK}{#gv_has_voucherb#}</td>
+				</tr>
+			<!--GV Code End-->
+			{/if}
+				<tr>
+					<td class="main" align="left"><br/>{$BUTTON_CONTINUE}</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+{$FORM_END}

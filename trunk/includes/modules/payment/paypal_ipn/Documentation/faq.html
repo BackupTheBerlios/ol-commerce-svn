@@ -1,0 +1,89 @@
+<!--
+/*
+  $Id: faq.html,v 1.1.1.1.2.1 2007/04/08 07:18:09 gswkaiser Exp $
+
+  osCommerce, Open Source E-Commerce Solutions
+  http://www.oscommerce.com
+
+  DevosC, Developing open source Code
+  http://www.devosc.com
+
+  Copyright (c) 2003 osCommerce
+  Copyright (c) 2004 DevosC.com
+
+  Released under the GNU General Public License
+*/
+-->
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<title>osCommerce: PayPal_Shopping_Cart_IPN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="Gregory Baboolal (developer&#064;devosc.com)" />
+<meta name="copyright" content="2004" />
+<style type='text/css' media="all">
+@import url(css/general.css);
+@import url(css/stylesheet.css);
+@import url(css/ppscipn.css);
+</style>
+</head>
+<body>
+<table border="0" cellspacing="2" cellpadding="2" class="popupmain" align="center" style="background: #ffffff url('img/logo.gif') no-repeat top left;">
+  <tr class="ppheading"><td class="ppheading">&nbsp;Frequently Asked Questions&nbsp;</td></tr>
+  <tr><td><hr class="solid" /></td></tr>
+  <tr><td><div style="float: left"><span class="pplabelgrey" style="font-style: italic;">MileStone 2.2-2 Community Contribution</span></div><div style="float: right"><img src="img/contents.gif" alt="Contents" title=" Contents " align="middle" />&nbsp;<a href="../PayPal_Shopping_Cart_IPN.html" target="_self">Contents</a>&nbsp;</div></td></tr>
+</table>
+<table class="popupmain" cellspacing="2" cellpadding="2" border="0" align="center">
+  <tr><td class="pptext">The following are some frequently asked questions about this payment module:</td></tr>
+  <tr>
+    <td class="pptext" valign="top" style="padding-left: 5px;">
+    <ul class="ul">
+      <li><b class="ppem380">My shipping costs are different once the customer arrives at the PayPal site.</b><p>In your PayPal account profile in the shipping section, check the box that allows overriding the shipping costs.</p></li>
+      <li><b class="ppem380">Do I need to enable IPN in my PayPal account profile.</b><p>No.</p></li>
+      <li><b class="ppem380">What url should I specify for the IPN feature to be used.</b><p>You don't need to, it will automatically be specified.</p></li>
+      <li><b class="ppem380">Why doesn't the Auto-Return feature work.</b><p>You must enable it first in your PayPal account profile.</p></li>
+      <li><b class="ppem380">What url should I specify for the Auto-Return feature.</b><p>It doesn't matter, this contribution will automatically specify the correct script url location, which is now <code>catalog/checkout_success.php</code></p></li>
+      <li><b class="ppem380">Does this contribution support PayPal Credit Card payments.</b><p>Yes.</p></li>
+      <li><b class="ppem380">Why am I getting so many emails per transaction.</b><p>You get <b>one</b> from PayPal and <b>one</b> osCommerce order confirmation email, and another which is the <b>debug email</b>, either disable <b>debug</b> email notification or specify a sperate email address for <b>debug</b> emails.</p></li>
+      <li><b class="ppem380">Why am I not receiving any IPNs.</b><p>You must ensure that your <b>Primary Email Address</b> and <b>Business ID</b> are configured correctly.<br />Login to your PayPal Account and see what and how many email addresses you are using and which one is the Primary address.<br />Also check your debug emails as it will also specify the Primary Email Address of the intended receiver.</p></li>
+      <li><b class="ppem380">I'm having problems with Multi-Currencies.</b><p>This problem should now be resolved, previously the <b>Cart Test</b> was comparing the currency and amounts of the actual order to what PayPal received as opposed to actually comparing the currency and amounts prior to transfering the customer to PayPal.<br/><br />However, if you're using the Itemized Shopping Cart then discrepancies may arise due to PayPal's two decimal place calculations, in such an event the order will be placed on hold. Although this type of discrepancy may not affect all orders it does however exist and the store owner will then need to manually accept the IPN Transaction.</p></li>
+      <li><b class="ppem380">I'm having problems verifying the Cart Totals.</b><p>See above.</p></li>
+      <li><b class="ppem380">Why is there no PayPal shipping address details in the IPN info?</b><p>Set Enable PayPal Shipping Address to 'No' if you require a PayPal verified shipping address or set to 'Yes' if you do not.</p></li>
+      <li><b class="ppem380">How can I customize the Checkout redirect page.</b><p>The splash template page shown while transfering the customer to PayPal is:<br/><code>../catalog/includes/modules/payment/paypal/catalog/checkout_splash.inc.php</code></p></li>
+      <li><b class="ppem380">Where can I find more PayPal logo buttons.</b><p>Login to your PayPal account and click Merchant Tools or Auction Tools.</p></li>
+      <li><b class="ppem380">Where can I find PayPal documentation.</b><div><ul style="margin-left: 15px; margin-top: 5px; padding-left: 5px;"><li><a href="https://www.paypal.com/en_US/pdf/integration_guide.pdf">PayPal Integration Manual</a></li></ul></div></li>
+      <li><b class="ppem380">How do I use PayPal's Sandbox.</b>
+        <ul style="margin-left: 15px; margin-top: 5px; padding-left: 5px;">
+          <li>Register with <a href="https://developer.paypal.com/" target="PPDC">PayPal Developer Central</a></li>
+          <li>Then create <b>two virtual accounts</b> types:<ul style="margin-top: 5px; margin-left: 10px; padding-left: 10px;"><li>Personal Account</li><li>Premier or Business Account</li></ul></li>
+          <li>Confirm both accounts (each is just a single click option).</li>
+          <li>Transfer some virtual money into your personal account (Click the add funds link).</li>
+          <li>Emails to both accounts will appear in the section where you initially login into the PayPal Developer Central, no real emails are sent so the email addresses for your virtual accounts should be fictitious.</li>
+          <li>Now in your osCommerce-&gt;Admin-&gt;Modules-&gt;Payment-&gt;PayPal configuration section<ul style="margin-top: 5px; margin-left: 10px; padding-left: 10px;"><li>Enter the virtual business account email address into both the Primary Email Address and Business ID fields</li><li>Set the domain to www.sandbox.paypal.com</li></ul></li>
+          <li>Now checkout as a customer via the store, this account should have a real email address (so that you can receive the osC customer order confirmation email), and when you arrive at the PayPal Sandbox site (look for their logo) then login using the virtual personal account details and finalize the payment process.</li>
+        </ul>
+       <br/><p class="ppsmallerrorbold">Note that you must first login via the PayPal Developer Central prior to testing the Sandbox/Checkout process.</p>
+      </li>
+      <li><b class="ppem380">What's the difference between the IPN Test Panel and using PayPal's Sandbox.</b><br />The <b>IPN Test Panel</b> is an independent osCommerce Contribution feature, for testing and development purposes, which allows you to simmulate your own IPNs without having to interact with PayPal.<br/><br/><p class="ppsmallerrorbold">All Test IPNs via the IPN Test Panel will be invalid according to PayPal since they're not authentic transactions.</p></li>
+      <li><b class="ppem380">Is the IPN Test Panel related to PayPal's Sandbox.</b><p>No, see above.</p></li>
+      <li><b class="ppem380">What's the purpose of the digest key.</b><p>Currently the digest key serves two purposes, it authenticates and allows you to use the IPN Test Panel, secondly, untill such time that PayPal provides a secure method of associating an IPN specifically to a particular order, it serves as a unique transaction signature identifier.</p></li>
+      <li><b class="ppem380">Should I change the digest key default value.</b><p>Yes, but remember what it is if uninstalling and reinstalling this contrib payment module in the admin since there might be existing pending orders which will require it in order to associate with to their corresponding IPN(s).</p></li>
+      <li><b class="ppem380">How are IPNs deleted.</b><p>Currently, an IPN appearing the admin section is deleted automatically when deleting it's corresponding order.</p></li>
+      <li><b class="ppem380">How can a customer resume their order.</b><p>Currently, if the customer abandons the checkout process at the PayPal site, e.g for some reason they did not actually pay at that time, then they can log into their osCommerce account and click the confirm order button when viewing the details of that particular order in their account_history_info.<br/><br />This feature is only available when <b>synchronizing invoices</b> with PayPal.<br/><br />This means that if you ever reset the osCommerce <code>orders</code> database table then you must also update it's auto-increment value to be greater than the last known <code>order_id</code>.</p></li>
+      <li><b class="ppem380">I'm getting errors after installing the contribution.</b><p>First, go through the installation edits and remove any blank spaces at the beginning of the line(s), some text editors will insert hidden characters which is a side effect of copying and pasting from HTML documentation.<br />Make sure that the alterations have been performed as well as running the paypal_ipn.sql script.</p></li>
+      <li><b class="ppem380">After installation I'm getting an error in the admin saying 'Cannot Redeclare class PayPal'.</b><p>Files in the <code>catalog/includes/modules/payment</code> that are <i>not</i> needed cannot end with the '<code>.php</code>' extension, so if you backed up your original <code>paypal.php</code> script rename it so that is ends in something like '<code>.php.bak</code>'.</p></li>
+      <li><b class="ppem380">How can I test the IPN system.</b><p>Use the IPN Test Panel via the admin/modules/payment/paypal section, this will help you to determine whether there are any errors occuring on your site.<br />When testing via the IPN Test Panel, if you get a blank white screen upon submitting the test, then in<br /><code>catalog/includes/modules/payment/paypal/application_top.inc.php</code><br />change lines 24 and 25 to:<br/><code>    error_reporting(E_ALL & ~E_NOTICE);<br/>    //error_reporting(0);</code><br />and then retry and see what the errors are etc...</p></li>
+      <li><b class="ppem380">What type of PayPal account do I need.</b><p>You will need either a Premier or Merchant Business Account. <a href="https://www.paypal.com/mrb/mrb=R-5X478387L4986632G&amp;pal=ZH3UM7MDRAMCG" target="blank">Click&nbsp;here&nbsp;to&nbsp;register&nbsp;for&nbsp;an&nbsp;account</a> if you do not already have one.</p></li>
+    </ul>
+    </td>
+  </tr>
+</table>
+<table border="0" cellspacing="2" cellpadding="2" class="popupmain" align="center" style="margin-top: 0px;">
+  <tr><td><hr class="solid" /></td></tr>
+  <tr><td class="buttontd"><form name="contents" action="../PayPal_Shopping_Cart_IPN.html"><input type="submit" value="Contents" class="ppbuttonsmall" /></form></td></tr>
+  <tr style="vertical-align: middle;"><td class="devosc" style="text-align: center;">&nbsp;All logos and trademarks are property of their respective owner.&nbsp;<br/>&nbsp;copyright&nbsp;&copy;&nbsp;2004&nbsp;<a class="devosc" href="http://www.devosc.com" target="_blank">www.devosc.com</a>&nbsp;</td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{olc_template_init affiliate='true' title="#heading_title#" section="affiliate_logout"}
+<table width="100%" border="0" cellspacing="0" cellpadding="1" class="infoBox">
+  <tr>
+  {if $info == 0}
+    <td class="main">{#text_information#}</td>
+  {elseif $info == 1}
+    <td class="main">{#text_information_error_1#}</td>
+  {elseif $info == 2}
+    <td class="main">{#text_information_error_2#}</td>
+  {/if}
+  </tr>
+  <tr>
+    <td align="right" class="main"><br/><a>{$LINK_DEFAULT}</a></td>
+  </tr>
+</table>

@@ -1,0 +1,16 @@
+Hallo {$NAME},
+
+Sie erhalten diese eMail, weil Sie unseren Newsletter nicht mehr empfangen möchten, was wir natürlich sehr bedauern.
+
+Um sicher zu stellen, dass die Abmeldung auch wirklich von Ihnen erfolgte, müssen Sie das bitte noch einmal bestätigen.
+
+Bitte klicken Sie dazu auf den folgenden Deaktivierungslink, damit Ihre eMail-Adresse für den Empfang des Newsletters gesperrt wird.
+
+Ihr Deaktivierungslink:  
+
+{$LINK}
+
+Sollten Sie unseren Newsletter nicht abbestellt haben, bzw. den Empfang des Newsletters doch weiterhin wünschen, brauchen Sie gar nichts zu tun.
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}

@@ -1,0 +1,52 @@
+<br /><br />
+Mit freundlichen Grüssen,<br /><br />
+Ihr <a target="_blank" title="{$STORE_NAME}" href="{$HOME_LINK}">
+<img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}" title="{$STORE_NAME}"></a> Team 
+<br /><hr />
+{$STORE_NAME_ADDRESS_TEXT}:<br/><br/>
+{$STORE_NAME_ADDRESS}
+<br/><br/>
+<table cellspacing="0" cellpadding="0">
+  {if $STORE_USTID}
+  <tr>
+    <td valign="top">{$STORE_USTID_TEXT}:&nbsp;</td>
+    <td valign="top">&nbsp;{$STORE_USTID}</td>
+  </tr>
+  {/if}
+  {if $STORE_TAXNR}
+  <tr>
+    <td valign="top">{$STORE_TAXNR_TEXT}:&nbsp;</td>
+    <td valign="top">&nbsp;{$STORE_TAXNR}</td>
+  </tr>
+  {/if}
+  {if $STORE_REGISTER}
+	  <tr>
+	    <td valign="top">{$STORE_REGISTER_TEXT}:&nbsp;</td>
+	    <td valign="top">&nbsp;{$STORE_REGISTER}</td>
+	  </tr>
+	  {if $STORE_REGISTER_NR}
+	  <tr>
+	    <td valign="top">{$STORE_REGISTER_NR_TEXT}:&nbsp;</td>
+	    <td valign="top">&nbsp;{$STORE_REGISTER_NR}</td>
+	  </tr>
+	  {/if}
+	  {if $STORE_REGISTER_CITY}
+	  <tr>
+	    <td valign="top">{$STORE_REGISTER_NR_TEXT}:&nbsp;</td>
+	    <td valign="top">&nbsp;{$STORE_REGISTER_CITY}</td>
+	  </tr>
+	  {/if}
+	  {if $STORE_MANAGER}
+	  <tr>
+	    <td valign="top">{$STORE_MANAGER_TEXT}:&nbsp;</td>
+	    <td valign="top">&nbsp;{$STORE_MANAGER}</td>
+	  </tr>
+	  {/if}
+	  {if $STORE_DIRECTOR}
+	  <tr>
+	    <td valign="top">{$STORE_DIRECTOR_TEXT}:&nbsp;</td>
+	    <td valign="top">&nbsp;{$STORE_DIRECTOR}</td>
+	  </tr>
+	  {/if}
+  {/if}
+</table>

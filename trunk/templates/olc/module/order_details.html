@@ -1,0 +1,94 @@
+{olc_template_init section="shopping_cart"}
+<!-- W. Kaiser - AJAX-->
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="main"><strong>&nbsp;{#text_lfd#}&nbsp;</strong></td>
+		<td class="main">&nbsp;</td>
+		<td class="main" align="center"><strong>&nbsp;{#text_qty#}&nbsp;</strong></td>
+		<td class="main" align="center"><strong>{#text_article#}</strong></td>
+		<td class="main" align="center" width="15%"><strong>&nbsp;{#text_total#}&nbsp;</strong></td>
+		<td class="main" align="center"><strong>&nbsp;{#text_remove#}&nbsp;</strong></td>
+	</tr>
+	<tr>
+		<td colspan="6" height="16"><hr/></td>
+	</tr>
+	{assign var="lfd" value=0}
+	{foreach name=aussen item=module_data from=$module_content}
+	{assign var="lfd" value=$lfd+1}
+	<tr>
+		<td class="main" valign="top" align="right"><b>{$lfd}.</b>&nbsp;&nbsp;</td>
+
+		<td class="main" valign="top">
+			{if $module_data.PRODUCTS_IMAGE!=''}&nbsp;<img src="{$module_data.PRODUCTS_IMAGE}" border="0">&nbsp;{/if}
+		</td>
+
+		<td valign="top" class="main" align="left">
+			&nbsp;{$module_data.PRODUCTS_QTY}&nbsp;
+		</td>
+
+		<td valign="top" class="main_grey" >
+			<span ID="cart_products_id_{$module_data.PRODUCTS_ELEMENT}" style="display:none">{$module_data.PRODUCTS_ID}</span>
+			<strong><a href="{$module_data.PRODUCTS_LINK}">
+			<span ID="products_name_{$module_data.PRODUCTS_ELEMENT}" >{$module_data.PRODUCTS_NAME}</span></a></strong>
+			<font style="font-size:8pt;">
+				({#text_article_number#}{$module_data.PRODUCTS_MODEL})<br/>
+				{$module_data.PRODUCTS_SHORT_DESCRIPTION|truncate:150:"...":true}<br/>
+				 (<b>{#text_single_price#}</b>
+				 <span ID="products_price_{$module_data.PRODUCTS_ELEMENT}">{$module_data.PRODUCTS_SINGLE_PRICE}</span>
+			 </font>
+			 )
+		</td>
+		<td valign="top" align="right" class="main_grey" nowrap="nowrap">
+			<b>&nbsp;{$module_data.PRODUCTS_PRICE}&nbsp;</b>
+		</td>
+
+		<td align="center" valign="top">{$module_data.BOX_DELETE}</td>
+	</tr>
+	{if $module_data.ATTRIBUTES!=''}
+	<tr>
+		<td colspan="2"></td>
+		<td colspan="4" class="accountcategory" height="20">
+			<strong>Artikeloptionen</strong></td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+		<td colspan="2" valign="top" nowrap="nowrap" class="main_grey">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES}
+				{if $item_data.NAME}
+				<tr>
+					<td class="main" valign="top" width="109">
+						<font style="font-size:8pt;"><b>{$item_data.NAME}:</b></font>&nbsp;
+					</td>
+					<td class="main" align="left" valign="top">
+						<font style="font-size:8pt;">{$item_data.VALUE_NAME}</font>
+					</td>
+					<td class="main_grey" align="right" nowrap="nowrap" valign="top">
+						<font style="font-size:8pt;">{$item_data.PRICE}</font>
+					</td>
+				</tr>
+				{/if}
+				{/foreach}
+			</table>
+		</td>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	{/if}
+	<tr>
+		<td colspan="6" height="16"><hr/></td>
+	</tr>
+	{/foreach}
+	<tr>
+		<td colspan="6" class="main_grey" align="right">
+			<strong>{$TOTAL_CONTENT}</strong>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="6" height="16"><hr/></td>
+	</tr>
+</table>
+<!-- W. Kaiser - AJAX-->

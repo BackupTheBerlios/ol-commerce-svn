@@ -1,0 +1,84 @@
+{olc_template_init use_template_language="true" section="boxes"}
+<table id="cart_content" width="100%" class="{$box_navigation_area} box_CART" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><h3>{#heading_cart_box#}</h3></td>
+	</tr>
+	{if $CONTENT}
+	<tr>
+		<td class="infoBox">
+			{$BOX_CONTENT}
+		</td>
+	</tr>
+	{else}
+	{if $empty_cart}
+	<tr>
+    <td class="infoBox">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+			    <td class="infoBoxContents">
+						{#text_empty_cart#}
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	{else}
+	<tr>
+		<td class="infoBox">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td id="activate_sticky_cart" width="100%" style="display:none;">
+					</td>
+				</tr>
+				{if $ITEMS}
+				<tr>
+					<td class="cartLine" width="100%">
+						<span class="cart_items_short_header">{#cart_content#}</span><br/><br/>
+						<span class="cart_items_short">{#articles_in_cart#}<span id="cart_items_short">{$ITEMS}</span></span>
+						<br/>
+						<span class="cart_total_price_short">{#total_in_cart#}<span id="cart_total_price_short">{$TOTAL}</span></span>
+						<div align="right"><br/>
+							<span class="list_entry_price_disclaimer">
+							{if $PRICE_DISCLAIMER}{$PRICE_DISCLAIMER}{else}{#price_disclaimer_in_cart#}{/if}
+							</span>
+						</div>
+						<br/>
+					</td>
+				</tr>
+			</table>
+			{if $CART_BUTTONS}
+			{$CART_BUTTONS}
+			{/if}
+		</td>
+	</tr>
+	{/if}
+	{/if}
+	{if $SEND_PROTOTYPE}
+	<!-- W . Kaiser - AJAX-->
+	<!--
+	Prototype for one cart-line!
+	Can be used for complete local cart manipulation
+	-->
+	<tr id="cart_line_x" style="display:none">
+		<td nowrap="nowrap" class="cartLine" width="25" valign="top">
+			<!-- Needed for local cart manipulation to store important data-->
+			<span id="products_id_x"></span>
+			<span id="products_price_x"></span>
+			<!-- Needed for local cart manipulation-->
+			<font size="1">
+				<span id="products_qty_x"></span>&nbsp;x&nbsp;
+			</font>
+		</td>
+		<td nowrap="nowrap" class="infoBox" valign="top" >
+			<font size="1">
+				<a href="#link#"
+					title="Produkt '#name#' ansehen">
+					#name_short#
+				</a>
+			</font>
+		</td>
+	</tr>
+	<!-- W . Kaiser - AJAX-->
+	{/if}
+{/if}
+</table>

@@ -1,0 +1,28 @@
+{olc_template_init section="reviews" title="#heading_reviews#"} 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="10%" class="main">
+    	<strong> {#title_nr#} </strong><hr/>
+    </td>
+    <td class="main"><strong> {#title_author#} </strong></td>
+    <td class="main"><strong> {#title_rating#} </strong></td>
+    <td class="main" align="right">
+    	<strong> {#title_date#} </strong>
+    </td>
+  </tr>
+  {foreach name=aussen item=module_data from=$module_content} 
+  <tr> 
+    <td class="main">{$module_data.ID}</td>
+    <td class="main">{$module_data.AUTHOR}</td>
+    <td class="main" align="left">{$module_data.RATING}</td>
+    <td class="main" align="right">{$module_data.DATE}</td>
+  </tr>
+  {/foreach} 
+  <tr> 
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td class="main" colspan="2">{$BUTTON_WRITE}</td>
+    <td class="main" colspan="2" align="right">{$BUTTON_BACK}</td>
+  </tr>
+</table>

@@ -1,0 +1,28 @@
+{olc_template_init use_template_language="true" section="boxes"}
+{$FORM_ACTION}
+	<table width="100%" class="{$box_navigation_area} box_NEWSLETTER" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><h3>{#heading_newsletter#}</h3></td>
+		</tr>
+		<tr>
+		  <td class="infoBox">
+				{if $CONTENT}
+				{$BOX_CONTENT}
+				{else}
+	    	<font class="color" style="font-size:10px">{#newsletter_title#}</font>
+	      <table width="100%"  border="0" cellpadding="0" cellspacing="2">
+	        <tr>
+	          <td width="100%" valign="middle">{$FIELD_EMAIL}</td>
+	        </tr>
+	        <tr>
+	          <td width="100%" valign="middle">{$BUTTON}</td>
+	        </tr>
+	      </table>
+		    {/if}
+	    </td>
+		</tr>
+		<tr>
+			<td class="infoBoxFooter">&nbsp;</td>
+		</tr>
+	</table>
+{$FORM_END}

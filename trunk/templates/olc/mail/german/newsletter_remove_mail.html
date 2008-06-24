@@ -1,0 +1,49 @@
+{if $language==""}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="{$tpl_path}stylesheet.css">
+{/if}
+<table background="{$logo_path}bg_green.png" width="100%" border="0" align="center" cellpadding="4"
+cellspacing="0">
+  <tr>
+    <td valign="top">
+    <table width="100%" border="0" align="center" cellpadding="4" cellspacing="0" id="table1">
+      <tr>
+        <td>
+        <p>Hallo {$NAME},</p>
+        <p>Sie erhalten diese eMail, weil Sie unseren Newsletter <b>nicht</b> mehr empfangen möchten,
+        was wir natürlich sehr bedauern.</p>
+        <p>Um sicher zu stellen, dass die Abmeldung auch wirklich von Ihnen erfolgte, müssen Sie das
+        bitte noch einmal bestätigen.</p>
+        <p>Bitte klicken Sie dazu auf den folgenden <b>Deaktivierungslink</b>, damit Ihre eMail-Adresse
+        für den Empfang des Newsletters gesperrt wird.<br />
+&nbsp;<table border="0" id="table2">
+          <tr>
+            <td valign="top" nowrap="nowrap"><b>Ihr Deaktivierungslink: </b></td>
+            <td valign="top"><a href="{$LINK}">&nbsp;Ich möchte den Newsletter nicht mehr erhalten</a><p>&nbsp;(<a
+            href="{$LINK}">{$LINK}</a>) <br/>
+            </p>
+            </td>
+          </tr>
+        </table>
+        </p>
+        <p>Sollten Sie unseren Newsletter <b>nicht</b> abbestellt haben, bzw. den Empfang des Newsletters
+        doch weiterhin wünschen, brauchen Sie gar nichts zu tun.</p>
+        </td>
+      </tr>
+    </table>
+    </td>
+	  <td width="315" valign="top">
+		<p align="center">
+		<font face="Verdana" size="2">
+		<a target="_blank" title="{$STORE_NAME}" href="{$HOME_LINK}">
+		<img src="{$logo_path}logo.gif" border="0" align="middle" alt="{$STORE_NAME}"></a></p>
+		<p>{$STORE_NAME_ADDRESS}</p>
+		<p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		</font>
+		</td>
+  </tr>
+</table>
+{if $MAIL_IMPRESSUM} <br/>
+<hr>{$MAIL_IMPRESSUM} {/if}

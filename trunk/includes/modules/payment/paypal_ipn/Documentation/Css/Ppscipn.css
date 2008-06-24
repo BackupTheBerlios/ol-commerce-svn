@@ -1,0 +1,17 @@
+/*Install Docs*/
+.code {white-space:nowrap; font-family: Courier, Courier New, Verdana, Arial;}
+.osc {line-height: 1.5; border:1px dotted red; background-color:#E7EFFF;padding:5px; color: red; margin: 10px 0px 10px; 0px; white-space:nowrap; font-family: Courier, Courier New, Verdana, Arial;}
+.ppscipn {line-height: 1.5; border:1px dotted green; background-color:#E2FFE6;padding:5px; color: green; margin: 10px 0px 10px; 0px; white-space:nowrap; font-family: Courier, Courier New, Verdana, Arial;}
+tr.ppheading {height: 55px; vertical-align: bottom;}
+td.ppheading {text-align: right;}
+.ppsubheading {margin-top: 10px;}
+.ul {margin: 10px 0px 0px 0px; padding: 0px 0px 0px 5px; list-style-type: none}
+.ul li {margin-top: 10px;}
+.uli {margin: 0px 0px 0px 10px; padding: 0px 0px 0px 5px;}
+.ulii {margin: 0px 0px 10px 5px; padding: 5px 0px 5px 5px;}
+.ulcontents {margin: 10px 0px 0px 0px; padding: 0px 0px 0px 5px; list-style-type: none; list-style-image: url('../catalog/includes/modules/payment/paypal/images/contents.gif');}
+.ulcontents li {padding-bottom:25px;}
+.devosc {font-family: Verdana, Arial, sans-serif; font-size: 10px; color: #0033cc; font-weight: normal;}
+a.devosc {font-family: Verdana, Arial, sans-serif; font-size: 10px; color: #0033cc; font-weight: normal; text-decoration: none;}
+a.devosc:hover { text-decoration: underline; }
+

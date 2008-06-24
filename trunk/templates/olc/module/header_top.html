@@ -1,0 +1,10 @@
+{php}
+$this->_tpl_vars['header_variation']='_new';
+$template=CURRENT_TEMPLATE_MODULE.'header'.HTML_EXT;
+if (!file_exists(TEMPLATE_PATH.$template))
+{
+	$template=str_replace(CURRENT_TEMPLATE.SLASH,COMMON_TEMPLATE,$template);
+}
+$this->_tpl_vars['template']=$template;
+{/php}
+{include file="$template"}

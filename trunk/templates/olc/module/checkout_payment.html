@@ -1,0 +1,85 @@
+{olc_template_init title="#heading_payment#" section="checkout_payment"}
+{if $ORDER_STEPS}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>{$ORDER_STEPS}</td>
+	</tr>
+</table>
+{/if}
+{if $error!=''}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="headerError" align="center">{$error}</td>
+	</tr>
+	<tr>
+		<td height="5">&nbsp;</td>
+	</tr>
+</table>
+{/if}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    	<td class="subcategory">{#title_address#} </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+{$FORM_ACTION}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<!-- W. Kaiser-->
+	<tr>
+		<td class="main_border_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="main" width="67%" valign="top">{#text_address#}<br/>
+					<br/>
+					{$BUTTON_ADDRESS}</td>
+					<td class="main_border_right" valign="top">
+						<div align="center"><strong>{#title_address#}</strong><br/>
+						<img src="{$tpl_path}img/arrow_south_east.gif"> </div>
+					</td>
+					<td width="12" nowrap="nowrap" class="main" valign="top">
+						&nbsp;</td>
+					<td width="242" nowrap="nowrap" class="main" valign="top">
+						<div align="left">{$ADDRESS_LABEL}</div>
+						<p>&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+<!-- W. Kaiser-->
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+   	<td class="subcategory">{#title_payment#} </td>
+	</tr>
+	<tr>
+		<td  class="main_border_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="100%" valign="top" class="main_border_right">{#text_payment#}<br/>
+					<br/>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>{$PAYMENT_BLOCK}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr><td colspan="2"><hr/></td></tr>
+	<tr>
+		<td valign="top" width="350" class="main">
+			<strong>{#title_continue#}</strong><br/>
+			{#text_continue#}
+		</td>
+		<td>&nbsp;{$BUTTON_CONTINUE}</td>
+	</tr>
+</table>
+{$FORM_END}

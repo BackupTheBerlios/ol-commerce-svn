@@ -1,0 +1,436 @@
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 6.0">
+<meta NAME="ProgId" CONTENT="FrontPage.Editor.Document">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Abgleich der Sprachdateien</TITLE>
+</HEAD>
+
+<body>
+
+<p align="center"><b><font size="5" color="#FF0000">OL-Commerce v 2/AJAX</font></b></p>
+<p align="center">Autor: Dipl.-Ing.(TH) Winfried Kaiser<br/>
+<br/>
+<A href="http://www.seifenparadies.de">http://www.seifenparadies.de</A><br/>
+<A href="mailto:w.kaiser@fortune.de">w.kaiser@fortune.de</A></p>
+<p align="center"><b>&copy; 2006 Dipl.-Ing.(TH) Winfried Kaiser, 24975 Husby</B></p>
+<hr/>
+<p align="center"><B>Diese Software basiert auf der Software &quot;<A TARGET="_blank" href="http://www.ol-commerce.de">OL-Commerce </A> 
+&nbsp;v1.2.2.a&quot;, sie wird veröffentlicht auf Basis der &quot;<A TARGET="_blank" href="http://www.gnu.de/gpl-ger.html">GNU 
+General Public License</A>&quot;.</b></p>
+<p align="center"><B>Es wird vom Autor <U><font color="#FF0000">keinerlei 
+Gewährleistung</font></U> für die Software <font size="3" color="#0000FF">
+OL-Commerce &nbsp;
+v2/AJAX</font></b>
+<B>übernommen!<br/>
+Eine Verpflichtung zur Behebung evtl. auftretender Fehler besteht nicht!</b></p>
+<p align="center"><U><b><font color="#FF0000">Der Einsatz dieser Software 
+erfolgt </font><font color="#0000FF">ausschließlich(!)</font><font color="#FF0000"> 
+auf eigene Gefahr und Risiko des Anwenders!</font></b></U></p>
+<p align="center"><b><font color="#0000FF">Der Anwender hat dafür Sorge zu 
+tragen, dass er seinen </font><font color="#FF0000"><U>aktuellen</U> Software- 
+und Datenbestand vor Einsatz dieser Software </font><U><font color="#FF0000">
+sichert</font></U><font color="#008000">, <br/>
+</font><font color="#0000FF">so dass er im Fehlerfall jederzeit diesen Stand 
+wieder rekonstruieren kann.</font></b></p>
+<hr/>
+<p align="center"><B>Eine Testversion ist
+<A href="http://www.seifenparadies.de/ajax/index.php">
+hier</A> online zu sehen</B></p>
+<p align="center">Der Zugang als Administrator ist folgender:</p>
+<p align="center"><B>Benutzer:</b> test@test.com<br/>
+<B>Passwort:</b> testtest</p>
+<p align="center">(Diese Version ist noch im Pre-Release Stadium, deshalb kann es 
+passieren, dass nicht alles funktioniert.)</p>
+<hr/>
+<p align="left"><B>Installationshinweise</B>: 
+<A TARGET="_blank" href="../olc_installer/readme.html">readme.html</A></p>
+<p align="left"><B>Updatehinweise</B>:
+<A TARGET="_blank" href="../olc_installer/ajax_aenderungen.html">ajax_aenderungen.html</A></p>
+<p align="left"><b>&quot;Multi-Shop&quot;/&quot;Multi-Datenbank&quot;:</b>
+<A TARGET="_blank" href="../olc_installer/readme_multishop.html">readme_multishop.html</A></p>
+<p align="left"><B>Daten-Import</B>:
+<A TARGET="_blank" href="../olc_installer/automatischer_daten_import.html">
+automatischer_daten_import.html</A></p>
+<p align="left"><B>eBay_Konnektor</B>:
+<A TARGET="_blank" href="../olc_installer/eBay-Konnektor.html">eBay-Konnektor.html</A></p>
+<hr/>
+<p align="center">
+<b><br/>
+<font size="5" color="#FF0000">Abgleich der OL-Commerce Sprachdateien </font>
+
+</b>
+
+</p>
+
+<p>Die Gewährleistung der Konsistenz der Sprach-Dateien (Deutsch/English/????) bei Weiterentwicklungen 
+von xxCommerce ist ein <font color="#FF0000"><B>großes(!)</b> </font>Problem. 
+(Bei anderen xxCommerce-Versionen ist das auch nicht besser...)</p>
+<p>So sind die <B>englischen</B> Sprachdateien schon <B>seit Version 1.2 </B>von OL-Commerce
+<B>nicht</B> mehr mit den <B>deutschen</B> übereinstimmend, und auch umgekehrt(!). 
+Mit OL-Commerce v2/AJAX hat sich das Problem, wegen der vielen Erweiterungen, 
+erst mal verschlimmert, da zunächst vorwiegend die <B>deutschen</B> 
+Sprachdateien aktuell gehalten wurden.</p>
+<p>Da es praktisch  <B>unmöglich</B> ist, diese Konsistenz <B>manuell</B> wieder her zu stellen (es handelt sich 
+immerhin um insgesamt <b><font color="#FF0000">260(!)</font> deutsche/englische</b> Sprachdateien), 
+wurde ein WINDOWS- (Visual Basic-) Programm entwickelt ("<b>olc_language-diff-merge.exe</b>"), das diesen Prozess 
+<font color="#FF0000"><B>weitgehend automatisiert(!)</b></font>.
+
+</p>
+<p>Es werden dabei die <font color="#FF0000"> <B>PHP</B></font>-Sprachdateien ("<font color="#FF0000"><b>.php</B></font>") und die
+<font color="#FF0000"><B>Smarty</B></font>-Sprachdateien ("<font color="#FF0000"><b>.conf</B></font>") 
+berücksichtigt.</p>
+<p><b>olc_language-diff-merge.exe</b> <font color="#FF0000"><B>muss</B></font> im Verzeichnis "<b>lang</b>&quot; gespeichert werden, es funktioniert 
+<font color="#FF0000"><B>nur(!)</b></font> in der OL-Commerce-v2/AJAX Umgebung!</p>
+<p>Der Abgleich der Sprachdateien geschieht in <font color="#FF0000"><B>3 
+Schritten</B></font>:</p>
+
+<hr/>
+
+<font color="#FF0000">
+
+<b><br/>
+1. Schritt</b></font><p>Mann lässt von <b>olc_language-diff-merge.exe</b> eine 
+<font color="#FF0000"><B>Analyse der Unterschiede in den 
+Sprach-Dateien</B></font> erstellen.
+
+</p>
+<p>Klicken Sie auf das "<font color="#FF0000"><B>Diff</B></font>"-Menü, um die Ermittlung der Unterschiede in Sprachdateien zu starten.
+
+</p>
+<p>Danach wählen Sie über den komfortablen Verzeichnisauswahl-Mechanismus von 
+WINDOWS die Verzeichnisse:
+
+</p>
+<p><B>Vollständige Sprachdefinitionen</B> (Vorschlag: "<B>lang\<font color="#FF0000">german</font></b>"), 
+<b><br/>
+Unvollständige Sprachdefinitionen </b>(Vorschlag: "<B>lang\<font color="#FF0000">english</font></b>"), 
+<br/>
+<B>Arbeitsverzeichnis</B> für die Speicherung der zu übersetzenden Dateien (Vorschlag: "<b>%temp%\<font color="#FF0000">english</font></b>").
+<br/>
+(&quot;<b>%temp%</b>&quot; ist das WINDOWS-&quot;<B>Temp</B>&quot;-Verzeichnis.)</p>
+<p>Im Arbeitsverzeichnis werden die Dateien angelegt, die die fehlenden zu übersetzenden Texte enthalten.</p>
+<p>Ebenso die <B>Log-Datei</B>, in der alle zu bearbeitenden Dateien aufgeführt werden.
+
+</p>
+<p>Die Analyse arbeitet in <B>2 Phasen</B>:
+
+</p>
+<p>In der <B>1. Phase </B>werden die <B>ausgewählten</B> Verzeichnisse "Vollständige Sprachdefinitionen " und "Unvollständige Sprachdefinitionen" verwendet.
+
+</p>
+<p>In der <B>2. Phase</B> werden die Verzeichnisse "Vollständige Sprachdefinitionen " und "Unvollständige Sprachdefinitionen" <b>vertauscht</b>, so dass auch in umgekehrter Richtung alle fehlenden Texte ermittelt werden können!</p>
+<p>Weiterhin wird auch noch überprüft, ob die <font color="#FF0000"><B>deutschen</B></font> 
+Sprachdateien <font color="#0000FF"><B>englische</B></font>, und die
+<font color="#FF0000"><B>englischen</B></font> Sprachdateien
+<font color="#0000FF"><B>deutsche</B></font> <B>Sprachelemente</B> aufweisen, da 
+gelegentlich Definitionen in einer Sprache einfach in die Sprachdatei der 
+anderen Sprache kopiert wurden.
+
+</p>
+<p><B>Entsprechende Dateien werden im Log ebenfalls aufgeführt. Diese Dateien 
+müssen dann im Einzelnen überprüft werden.</b></p>
+<p>Im Arbeitsverzeichnis wird für die zu bearbeitenden Dateien <B>die gleiche Hierarchie</B> aufgebaut, in der diese Dateien mit den fehlenden Texten in den Quellverzeichnissen liegen.
+
+</p>
+<p>Ein "<B>Diff</B>" der OL-Commerce <B>v1.2a </B>Sprachdateien mit den aktuellen OL-Commerce
+<B>v2/AJAX</B> Sprachdateien gibt folgendes Ergebnis:
+<br/>
+(Die Zahl hinter dem Dateinamen zeigt die Anzahl der zu übersetzenden Texte.)</p>
+
+<hr/>
+
+OLC-Language Diff/Merge 1.0a, 26.12.2006 10:03:22
+
+<p>h:\temp\lang\to_do.txt </p>
+<p>Die folgenden Dateien müssen bearbeitet werden:
+
+</p>
+<p>>>>>> Phase 1: Überprüfe vollständiges Verzeichnis "german" mit unvollständigem Verzeichnis "english"
+
+</p>
+<pre>OLOLC-Language Diff/Merge 1.0a, 27.12.2006 08:31:06
+
+h:\temp\lang\to_do.txt
+
+================================================================================
+
+Die folgenden Dateien müssen bearbeitet werden:
+
+>>>>> Phase 1: Überprüfe vollständiges Verzeichnis "german" mit unvollständigem Verzeichnis "english"
+
+h:\temp\lang\english\affiliate_english.php, 2
+h:\temp\lang\english\ec_process.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\english.php, 96
+h:\temp\lang\english\gv_english.php, 1
+h:\temp\lang\english\lang_english.conf, 87
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\lang_english.conf
+h:\temp\lang\english\pdf_datasheet.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\pdf_export.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\pdf_invoice.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\admin\accounting.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\admin\auctions.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\admin\box_configuration.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\admin\categories.php, 10
+h:\temp\lang\english\admin\configuration.php, 179
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\admin\configuration.php
+h:\temp\lang\english\admin\coupon_admin.php, 2
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\admin\credits.php
+h:\temp\lang\english\admin\cronjobs.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\admin\english.php, 47
+h:\temp\lang\english\admin\module_export.php, 1
+h:\temp\lang\english\admin\new_attributes.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\admin\orders.php, 9
+h:\temp\lang\english\admin\orders_edit.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\admin\pdf_export.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\admin\products_vpe.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\admin\whos_online.php, 4
+h:\temp\lang\english\modules\order_total\ot_cod_fee.php, 10
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\modules\order_total\ot_cod_fee.php
+h:\temp\lang\english\modules\order_total\ot_handling.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\modules\order_total\ot_loworderfee.php, 1
+h:\temp\lang\english\modules\order_total\ot_payment.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\modules\order_total\ot_verpackung.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\modules\payment\barzahl.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\modules\payment\invoice.php, 2
+h:\temp\lang\english\modules\payment\moneyorder.php, 1
+h:\temp\lang\english\modules\payment\paypal.php, 56
+h:\temp\lang\english\modules\payment\paypal_ipn.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\modules\payment\paypal_wpp.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\modules\payment\worldpay.php, ***** Nicht vorhanden *****
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\modules\shipping\ap.php
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\modules\shipping\chp.php
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\modules\shipping\chronopost.php
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\modules\shipping\dhl.php
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\modules\shipping\dp.php
+h:\temp\lang\english\modules\shipping\dpd.php, ***** Nicht vorhanden *****
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\modules\shipping\fedexeu.php
+h:\temp\lang\english\modules\shipping\freeamountausl.php, ***** Nicht vorhanden *****
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\modules\shipping\ups.php
+***** Die englische Sprachdatei enthält vermutlich deutsche Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a\olcommerce\lang\english\modules\shipping\upse.php
+h:\temp\lang\english\modules\shipping\versandmail.php, ***** Nicht vorhanden *****
+h:\temp\lang\english\modules\shipping\zones.php, 7
+
+>>>>> Phase 2: Überprüfe vollständiges Verzeichnis "english" mit unvollständigem Verzeichnis "german"
+
+h:\temp\lang\german\german.php, 16
+h:\temp\lang\german\gv_german.php, 1
+h:\temp\lang\german\lang_german.conf, 1
+h:\temp\lang\german\admin\affiliate_invoice.php, 1
+h:\temp\lang\german\admin\configuration.php, 2
+***** Die deutsche Sprachdatei enthält vermutlich englische Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a_ajax_test\olcommerce\lang\german\admin\configuration.php
+h:\temp\lang\german\admin\coupon_admin.php, 1
+***** Die deutsche Sprachdatei enthält vermutlich englische Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a_ajax_test\olcommerce\lang\german\admin\credits.php
+***** Die deutsche Sprachdatei enthält vermutlich englische Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a_ajax_test\olcommerce\lang\german\admin\german.php
+h:\temp\lang\german\admin\module_export.php, 1
+***** Die deutsche Sprachdatei enthält vermutlich englische Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a_ajax_test\olcommerce\lang\german\modules\shipping\chronopost.php
+***** Die deutsche Sprachdatei enthält vermutlich englische Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a_ajax_test\olcommerce\lang\german\modules\shipping\dp.php
+***** Die deutsche Sprachdatei enthält vermutlich englische Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a_ajax_test\olcommerce\lang\german\modules\shipping\ups.php
+***** Die deutsche Sprachdatei enthält vermutlich englische Sprach-Elemente!
+      h:\apache group\apache\htdocs\seifenparadies\olcommerce_1_2_2a_ajax_test\olcommerce\lang\german\modules\shipping\upse.php
+
+================================================================================
+
+238 Dateien überprüft
+
+192 Dateien stimmten überein
+
+46 Dateien müssen bearbeitet werden.</pRE>
+
+<hr/>
+
+<p>Die Datei &quot;<B>h:\temp\lang\english\english.php</B>&quot; hat dann z.B. folgenden 
+Inhalt:</p>
+
+<hr/>
+
+<pRE>
+define('TEXT_FIELD_REQUIRED', '&nbsp;&lt;span class="fieldRequired"&gt;* Erforderlich&lt;/span&gt;');
+//	W. Kaiser tell_a_friend
+define('ENTRY_SECCODE_CHECK_ERROR', 'Der eingegebene Sicherheitscode ist falsch!');
+//	W. Kaiser tell_a_friend
+//	W. Kaiser - eMail-type by customer
+define('ENTRY_HTMLEMAIL_TEXT', 'eMails im HTML-Format senden&lt;br&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(empfohlen)');
+define('EMAIL_TYPE_HTML', 1);
+define('EMAIL_TYPE_TEXT', 2);
+//W. Kaiser - Baseprice
+define('TEXT_PRODUCTS_VPE_DISPLAY', '&lt;span align="center"&gt;%s&lt;/span&gt;');
+define('TEXT_PRODUCTS_BASEPRICE', ' &lt;span style="font-size=8pt;font-weight=normal;"&gt;(%s: %s)&lt;/span&gt;');
+//W. Kaiser - Baseprice
+//W. Kaiser - Mininum order quantity
+define('TEXT_PRODUCTS_MIN_ORDER', ' &lt;span style="font-size=6pt;font-weight=normal;color:red" align="center"&gt;Mindestabnahme:&lt;br&gt;%s&lt;/span&gt;');
+define('IMAGE_BUTTON_ADMIN', 'Shop verwalten');
+//W. Kaiser - AJAX
+define('IMAGE_BUTTON_INSERT', 'Einfügen');
+// W. Kaiser
+define('ERROR_FERNAG_NOT_ACCEPTED', 'Sofern Sie die Kenntnisnahme unserer Informationen zu Ihrem Widerrufsrecht nicht bestätigen, können wir Ihre Bestellung bedauerlicherweise nicht entgegennehmen!');
+define('TEMPLATE_SPECIAL_PRICE','&lt;font color="ff0000"&gt;Statt &lt;s&gt;%s&lt;/s&gt;&lt;/font&gt;&lt;br&gt;Nur %s');
+define('TEMPLATE_SPECIAL_PRICE_DATE_1','Sonderpreis');
+define('TEMPLATE_SPECIAL_PRICE_DATE_2',' bis zum &lt;b&gt;%s&lt;/b&gt;');
+//	W. Kaiser tell_a_friend
+define('NAVBAR_TITLE_TELL_A_FRIEND_SITE', 'Shop weiterempfehlen');
+// Newsletter
+define('NAVBAR_TITLE_NEWSLETTER','Newsletter');
+define('TEXT_INFO_START','Tragen Sie sich in unseren kostenlosen Newsletter ein!');
+define('TEXT_NEWSLETTER','Sie möchten immer auf dem Laufenden bleiben? Kein Problem, tragen Sie sich in unseren Newsletter ein und Sie sind immer auf dem neuesten Stand. Wenn Sie keine Informationen mehr von uns haben wollen, dann tragen Sie sich aus unserer Newsletter-Liste aus!');
+define('TEXT_EMAIL_INPUT','Ihre E-Mailadresse wurde in unser System eingetragen.&lt;br&gt;Gleichzeitig wurde Ihnen vom System eine E-Mail mit einem Aktivierungslink geschickt. Bitte klicken Sie nach dem Erhalt der Mail auf den Link um Ihre Eintragung zu bestätigen. Andernfalls bekommen Sie keinen Newsletter von uns zugestellt!');
+define('TEXT_WRONG_CODE','&lt;font color="FF0000"&gt;Ihr eingegebener Sicherheitscode stimmte nicht mit dem angezeigten Code überein. Bitte versuchen Sie es erneut.&lt;/font&gt;');
+define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','&lt;font color="FF0000"&gt;Diese E-Mailadresse existiert bereits in unserer Datenbank ist aber noch nicht für den Empfang des Newsletters freigeschalten!&lt;/font&gt;');
+define('TEXT_EMAIL_EXIST_NEWSLETTER','&lt;font color="FF0000"&gt;Diese E-Mailadresse existiert bereits in unserer Datenbank und ist für den Newsletterempfang bereits freigeschalten!&lt;/font&gt;');
+define('TEXT_EMAIL_NOT_EXIST','&lt;font color="FF0000"&gt;Diese E-Mailadresse existiert nicht in unserer Datenbank!&lt;/font&gt;');
+define('TEXT_EMAIL_DEL','Ihre E-Mailadresse wurde aus unserer Newsletterdatenbank gelöscht.');
+define('TEXT_EMAIL_DEL_ERROR','&lt;font color="FF0000"&gt;Es ist ein Fehler aufgetreten, Ihre Mailadresse wurde nicht gelöscht!&lt;/font&gt;');
+define('TEXT_EMAIL_ACTIVE','&lt;font color="FF0000"&gt;Ihre E-Mailadresse wurde erfolgreich für den Newsletterempfang freigeschalten!&lt;/font&gt;');
+define('TEXT_EMAIL_ACTIVE_ERROR','&lt;font color="FF0000"&gt;Es ist ein Fehler aufgetreten, Ihre Mailadresse wurde nicht freigeschalten!&lt;/font&gt;');
+define('TEXT_EMAIL_SUBJECT','Ihre Newsletteranmeldung');
+//W. Kaiser  Down For Maintenance
+define('DOWN_FOR_MAINTENANCE_NAME','Wartungsabschaltung: ');
+define('TEXT_BEFORE_DOWN_FOR_MAINTENANCE', 'Diese Website ist wegen Wartungsarbeiten nicht erreichbar am: ');
+define('TEXT_ADMIN_DOWN_FOR_MAINTENANCE', 'Diese Website ist wegen Wartungsarbeiten zur Zeit nicht erreichbar!');
+define('TEXT_DOWN_FOR_MAINTENANCE_CALL_LATER','Bitte versuchen Sie es später noch einmal');</pRE>
+
+
+<hr/>
+
+<p>Die Datei &quot;<B>h:\temp\lang\english\lang_english.conf</B>&quot; hat dann z.B. 
+folgenden Inhalt:<br/>
+(Diese Dateien sind insofern kompliziert zu analysieren, als dass in <b>
+verschiedenen</B> Abschnitten (&quot;<font color="#FF0000"><b>[....]</b></font>&quot;) die
+<B>gleichen</B> Textvariablen-Namen verwendet werden können!)</p>
+
+<hr/>
+
+<pRE>
+[checkout_new_address]
+text_standard = 'Als Standardadresse gesetzt'
+
+[tell_a_friend]
+text_sec_code = 'Sicherheitscode'
+text_inp_code = 'Hier eingeben'
+
+[account_edit]
+csID = 'Kundenummer:'
+
+[checkout_payment]
+title_ec_checkout_header="PayPal Express-Zahlung"
+title_ec_checkout_agb="Bestätigung der Geschäftsbedingungen"
+title_ec_checkout_info="Der Gesetzgeber schreibt vor, dass Besteller in Online-Shops ausdrücklich bestimmte Informationen zur Kenntnis nehmen, und diese auch ausdrücklich akzeptieren müssen. Bitte lesen Sie daher unsere Geschäftsbedingungen und Hinweise zu Ihrem Widerrufsrecht sorgfältig durch, und akzeptieren Sie dann diese Bedingungen."
+
+[shopping_cart]
+text_delete=Warenkorb löschen
+text_delete_title=Den Inhalt des Warenkorbs löschen
+
+[index]
+goto_text='Gehe zu:'
+
+[print_product_info]
+model='Artikel-Nr.: '
+product_not_in_stock='Zur Zeit leider (noch) nicht verfügbar!'
+product_expected_date='Vorausichtlich verfügbar ab:&nbsp;'
+
+[product_navigator]
+first = '[&lt;&lt; erstes]'
+back = '[&lt; zurück]'
+next = '[weiter &gt;]'
+last = '[letztes &gt;&gt;]'
+total = ' Produkte in dieser Kategorie'
+
+[gift_cart]
+text_info = 'Sie können Ihr Guthaben im Checkout verrechnen.'
+text_send_to_friend = 'Sie können Ihr Guthaben auch in Form eines Gutscheins weiterschenken.&lt;br&gt;Wie ? klicken Sie hier:'
+text_gift = 'Sie haben einen Gutschein erhalten,&lt;br&gt; und möchten Ihn gerne einlösen ?'
+text_code = 'Gutscheincode:'
+create_account = '&lt;b&gt;Achtung:&lt;/b&gt; Sie können Ihren Gutschein nach erstellen Ihres Kundenkontos hier einlösen.'
+text_create_account = '-&gt;Kundenkonto erstellen'
+
+[newsletter]
+heading_title = 'Newsletter'
+heading_text = 'Unser Newsletter'
+text_email = 'Ihre E-Mailadresse'
+text_in = 'eintragen'
+text_out = 'austragen'
+text_sec_code = 'Sicherheitscode'
+text_inp_code = 'Hier eingeben'
+
+[worldpay]
+text_link = Sollte die Weiterleitung nicht funktionieren, klicken Sie bitte auf diesen Link:</pRE>
+
+
+<hr/>
+
+<p>&nbsp;</p>
+
+
+<hr/>
+
+<font color="#FF0000">
+
+<b><br/>
+2. Schritt</b></font><p><B>Die Texte in den Dateien im Arbeitsverzeichnis werden 
+übersetzt.</b></p>
+
+<hr/>
+
+<b><font color="#FF0000"><br/>
+3. Schritt</font></b>
+
+
+
+<p>Mann lässt von <b>olc_language-diff-merge.exe</b> die Zusammenführung der 
+unvollständigen mit den übersetzten Sprach-Dateien vornehmen.</p>
+
+
+
+<p>Klicken Sie auf das "<font color="#FF0000"><B>Merge</B></font>"-Menü, um die <B>Zusammenführung der Unterschiede in den Sprachdateien</B> zu starten.
+
+</p>
+<p>Danach wählen Sie über den komfortablen Verzeichnisauswahl-Mechanismus von 
+WINDOWS die Verzeichnisse:
+
+</p>
+<p><B>Unvollständige Sprachdefinitionen</B> (Vorschlag: "<B>lang\<font color="#FF0000">english</font></b>"), 
+<b><br/>
+Arbeitsverzeichnis</B> der einzupflegenden übersetzten Dateien (Vorschlag: "<b>%temp%\<font color="#FF0000">english</font></b>").<br/>
+(&quot;<b>%temp%</b>&quot; ist das WINDOWS-&quot;<B>Temp</B>&quot;-Verzeichnis.)</p>
+<p> <b>olc_language-diff-merge.exe</b> pflegt dann die <B>übersetzten Texte</B> 
+in die zugehörigen unvollständigen Dateien ein. (Jetzt aber
+<font color="#FF0000"><B>nur</B></font> für das im Arbeitsverzeichnis 
+ausgewählte Sprachverzeichnis! (z.B. &quot;<B>english</B>&quot; oder &quot;&quot;<B>german</B>&quot;))</p>
+<p>Bei den <B>PHP-Sprachdateien </B>werden die neuen Text einfach an das <B>Ende 
+der Datei </B>eingefügt.</p>
+<p>Bei den <B>Smarty-Sprachdateien</B> ist das wesentlich komplizierter, da die 
+übersetzten Texte <B>in den richtigen Abschnitt</B> eingepflegt werden müssen!</p>
+
+<hr/>
+
+<p>Mit <b>olc_language-diff-merge.exe</b> ist der Abgleich der Sprachdateien
+
+nun <B>handhabbar</B>, da sich der Übersetzer nur auf die <B>Übersetzung 
+fehlender Texte konzentrieren kann</B>.</p>
+<p>Die <B>Ermittlung</B> der fehlenden Texte, und das <B>Einpflegen</B> der 
+übersetzten Texte übernimmt <b>olc_language-diff-merge.exe</b>!</p>
+
+
+
+</body>
+
+</HTML>

@@ -1,0 +1,12 @@
+{php}
+$show_marquee=SHOW_MARQUEE_SPECIALS;
+$this->_tpl_vars['heading_var']='heading_specials';
+$box_name='box_SPECIALS';
+$template=CURRENT_TEMPLATE_BOXES.'box_specials_whatsnew'.HTML_EXT;
+if (!file_exists(TEMPLATE_PATH.$template))
+{
+	$template=str_replace(CURRENT_TEMPLATE.SLASH,COMMON_TEMPLATE,$template);
+}
+$this->_tpl_vars['template']=$template;
+{/php}
+{include file="$template"}

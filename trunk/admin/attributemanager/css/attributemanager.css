@@ -1,0 +1,69 @@
+#attributeManager td,div {
+	/*font-family:'Trebuchet MS' Arial;*/
+	font-size:12px;
+}
+
+#attributeManager tr.header {
+	color:Red;
+	font-size:12px;
+}
+
+#attributeManager tr.header td{
+	font-weight:bold;
+	font-size:12px;
+	/*border-bottom:1px solid Brown;*/
+	padding:5px 0px 5px 0px;
+	color:Red;
+}
+
+#attributeManager tr.option {
+	/*background:#eee;*/
+	font-size:12px;
+}
+#attributeManager tr.option td {
+	border-bottom:1px solid Brown;
+	font-size:12px;
+}
+
+#attributeManager tr.optionValue {
+	font-size:12px;
+	/*background:#fff;*/
+}
+
+#attributeManager tr.optionValue td{
+	/*border-top:1px dotted Brown;*/
+	font-size:12px;
+}
+
+#attributeManager .title {
+	color:Red;
+	font-weight:bold;
+	font-size:12px;
+}
+
+#attributeManager div#newAttribute,div#currentAttributes {
+	/*background:#eee;*/
+	border:1px solid #ddd;
+	margin-top:10px
+	font-size:12px;
+}
+
+#attributeManager div.optionValueAddDelete {
+	margin-top:5px;
+	font-size:12px;
+}
+
+.header
+{
+	color:Red;
+	font-weight:bold;
+	font-size:14px;
+}
+
+/*
+.optionValue
+{
+	font-weight:normal;
+	font-size:12px;
+}
+*/	

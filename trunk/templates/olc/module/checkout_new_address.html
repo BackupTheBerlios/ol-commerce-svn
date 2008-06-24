@@ -1,0 +1,124 @@
+{olc_template_init title="#title_new_address#" section="checkout_new_address"}
+{if $language==''}
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    	<td colspan="1" class="main_border_right">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="subcategory">{#title_personal#}&nbsp;</td>
+							<td align="right" class="stockWarning">
+							<p align="left">&nbsp;</td>
+						</tr>
+					</table>
+
+					<table class="formArea" width="100%" 
+					border="0" cellpadding="0" cellspacing="2">
+						{if $INPUT_MALE != ''}
+						<tr>
+							<td class="main" width="170" valign="top">{#text_gender#}&nbsp;</td>
+							<td class="main" width="275" valign="top">{#text_male#}&nbsp;
+							{$INPUT_MALE} {#text_female#}&nbsp; {$INPUT_FEMALE}</td>
+						</tr>
+						{/if}
+						<tr>
+							<td class="main" valign="top" width="170">{#text_firstname#}&nbsp;</td>
+							<td class="main" width="275" valign="top">{$INPUT_FIRSTNAME}</td>
+						</tr>
+						<tr>
+							<td class="main" valign="top" width="170">{#text_lastname#}&nbsp;</td>
+							<td class="main" width="275" valign="top">{$INPUT_LASTNAME}</td>
+						</tr>
+					</table>
+					{if $INPUT_COMPANY != ''}
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="subcategory">{#title_company#}&nbsp;</td>
+						</tr>
+					</table>
+
+					<table class="formArea"  width="100%" border="0" cellspacing="2" cellpadding="0">
+						<tr>
+							<td class="main" width="170" valign="top">{#text_company#}</td>
+							<td class="main" width="275" valign="top">{$INPUT_COMPANY}</td>
+						</tr>
+					</table>
+					{/if}
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="subcategory">{#title_address#}&nbsp;</td>
+						</tr>
+					</table>
+
+					<table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">
+						<tr>
+							<td class="main" width="170" valign="top">{#text_street#}&nbsp;</td>
+							<td class="main" width="275" valign="top">{$INPUT_STREET}</td>
+						</tr>
+						{if $INPUT_SUBURB != ''}
+						<tr>
+							<td class="main" valign="top" width="170">{#text_suburb#}&nbsp;</td>
+							<td class="main" width="275" valign="top">{$INPUT_SUBURB}</td>
+						</tr>
+						{/if}
+						<tr>
+							<td class="main" width="170" valign="top">{#text_country#}&nbsp;</td>
+							<td class="main" width="275" valign="top">{$SELECT_COUNTRY}</td>
+						</tr>
+						<tr>
+							<td class="main" valign="top" width="170">{#text_code#}&nbsp;</td>
+							<td class="main" width="275" valign="top">{$INPUT_CODE}</td>
+						</tr>
+						<tr>
+							<td class="main" valign="top" width="170">{#text_city#}&nbsp;</td>
+							<td class="main" width="275" valign="top">{$INPUT_CITY}</td>
+						</tr>
+						{if $INPUT_STATE}
+						<tr>
+							<!-- W. Kaiser - AJAX-->
+							<td class="main" width="170" valign="top">
+								<span id="entry_state_area_1" style="display:inline;">{#text_state#}&nbsp;</span>
+							</td>
+							<td class="main" width="275" valign="top">
+								<span id="entry_state_area_2" style="display:inline;">{$INPUT_STATE}</span>
+							</td>
+							<!-- W. Kaiser - AJAX-->
+						</tr>
+						{/if}
+						<!-- W. Kaiser - AJAX-->
+						{if $CHECKBOX_PRIMARY}
+						<tr>
+							<td class="main" width="170" valign="top">
+								&nbsp;
+							</td>
+							<td class="main" width="275" valign="top">
+								{$CHECKBOX_PRIMARY}
+							</td>
+						</tr>
+						{/if}
+						<!-- W. Kaiser - AJAX-->
+					</table>
+
+					{if !$IS_ACCOUNT}
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td colspan="2"></td>
+						</tr>
+						<tr>
+							<td align="right">{$BUTTON_SUBMIT}</td>
+						</tr>
+					</table>
+					{/if}
+		</td>
+	</tr>
+</table>

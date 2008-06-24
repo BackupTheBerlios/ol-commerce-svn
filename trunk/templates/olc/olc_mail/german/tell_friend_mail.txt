@@ -1,0 +1,24 @@
+Hallo {$to_name},
+
+{$from_name} hat Ihnen eine Information zu unserem Internet-Shop '{$shop_name}' gesendet.
+{if $message <>''}
+
+=============================================================================================
+
+Hier ist die Nachricht:
+
+{$message}
+
+=============================================================================================
+{/if}
+{if $PRODUCTS_LINK != ''}
+
+Um das betreffende Produkt {if $products_name != ''} '{$products_name}'{/if} anzusehen,
+klicken Sie bitte auf den folgenden Link, oder kopieren diesen und fügen Sie ihn in der Adress-Zeile Ihres Browsers ein:
+
+{$PRODUCTS_LINK}
+
+{/if}
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}

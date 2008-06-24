@@ -1,0 +1,15 @@
+RENAME TABLE chc_access TO chc1_access;
+RENAME TABLE chc_config TO chc1_config;
+RENAME TABLE chc_counted_users TO chc1_counted_users;
+RENAME TABLE chc_data TO chc1_data;
+RENAME TABLE chc_downloads_and_hyperlinks TO chc1_downloads_and_hyperlinks;
+RENAME TABLE chc_downloads_and_hyperlinks_logs TO chc1_downloads_and_hyperlinks_logs;
+RENAME TABLE chc_ignored_users TO chc1_ignored_users;
+RENAME TABLE chc_locale_information TO chc1_locale_information;
+RENAME TABLE chc_log_data TO chc1_log_data;
+RENAME TABLE chc_online_users TO chc1_online_users;
+RENAME TABLE chc_pages TO chc1_pages;
+RENAME TABLE chc_referrers TO chc1_referrers;
+RENAME TABLE chc_screen_resolutions TO chc1_screen_resolutions;
+RENAME TABLE chc_search_engines TO chc1_search_engines;
+RENAME TABLE chc_user_agents TO chc1_user_agents;

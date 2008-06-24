@@ -1,0 +1,480 @@
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Language" CONTENT="de">
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 6.0">
+<META NAME="ProgId" CONTENT="FrontPage.Editor.Document">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Der Import von Daten eines ander</TITLE>
+</HEAD>
+
+<BODY>
+
+<P ALIGN="center"><B><FONT SIZE="4" COLOR="#FF0000">(Semi-)Automatischer Import 
+beliebiger xxCommerce Shop-Daten in die OL-Commerce -Datenbank<BR>
+</FONT></B>(Ab Version OL-Commerce v2/AJAX)</P>
+<P ALIGN="center">Autor: Dipl.-Ing.(TH) Winfried Kaiser<BR>
+<BR>
+<A HREF="http://www.seifenparadies.de">http://www.seifenparadies.de</A><BR>
+<A HREF="mailto:w.kaiser@fortune.de">w.kaiser@fortune.de</A></P>
+<P ALIGN="center"><B>&copy; 2006 Dipl.-Ing.(TH) Winfried Kaiser, 24975 Husby</B></P>
+<P ALIGN="center"><B><FONT COLOR="#FF0000">Achtung, wichtig!</FONT></B></P>
+<P ALIGN="center">Das im folgenden beschriebene Skript unterliegt
+<FONT COLOR="#FF0000"><B>nicht(!)</B></FONT> der GNU/GPL-Lizenz, sondern den 
+geltenden Urheberrechtsgesetzen.</P>
+<P ALIGN="center"><FONT COLOR="#FF0000"><B>Alle Rechte liegen beim Autor.</B></FONT></P>
+<P ALIGN="center">Diese Skript ist <B><FONT COLOR="#FF0000">nicht</FONT> </B>
+Bestandteil von OL-Commerce, kann aber kostenlos vom Autor bezogen werden<BR>
+(<A HREF="http://www.seifenparadies.de/programme/xxc_import.zip">www.seifenparadies.de/programme/xxc_import.zip</A>)</P>
+<P ALIGN="center">Die gewährte Lizenz erlaubt lediglich den Einsatz des 
+Programms, um xxCommerce-basierende Shop-Daten, in die <B>OL-Commerce (!)</B>-Datenbank 
+einzuspielen!</P>
+<P ALIGN="center"><B>Jegliche </B>andere Verwendung ist ein Verstoß gegen die 
+Lizenzbedingungen, und wird im Rahmen der Urheberrechtsgesetze rechtlich 
+verfolgt.</P>
+<P ALIGN="center"><FONT COLOR="#FF0000"><B>Die Verwendung dieser Software 
+erfolgt ausschließlich auf eigenes Risiko des Anwenders!</B></FONT></P>
+<P ALIGN="center">Ein Gewährleistung jeglicher Art ist nicht gegeben, ebenso 
+nicht eine Verpflichtung zur Behebung evtl. auftretender Programmfehler.</P>
+<HR>
+<P ALIGN="left"><B>Überblick</B>:
+<A TARGET="_blank" HREF="OL-Commerce _v2_ajax.html">OL-Commerce _v2_ajax.html</A></P>
+<P ALIGN="left"><B>Installationshinweise</B>: 
+<A HREF="readme.html">readme.html</A></P>
+<P ALIGN="left"><B>Updatehinweise</B>:
+<A TARGET="_blank" HREF="ajax_aenderungen.html">ajax_aenderungen.html</A></P>
+<P ALIGN="left"><B>&quot;Multi-Shop&quot;/&quot;Multi-Datenbank&quot;:</B>
+<A HREF="readme_multishop.html">readme_multishop.html</A></P>
+<P ALIGN="left"><B>eBay_Konnektor</B>:
+<A TARGET="_blank" HREF="eBay-Konnektor.html">eBay-Konnektor.html</A></P>
+<HR>
+<P>&quot;<B>Wie bekomme ich meine Daten eines anderen xxCommerce-basierenden 
+Shop-Systems in die OL-Commerce -Datenbank</B>&quot; ist eine immer wieder gern gestellte 
+Frage, die auch immer wieder mehr mit Vermutungen als mit Fakten beantwortet 
+wird.</P>
+<P>Um dieses Problem ein für allemal zu lösen, wurde ein PHP-Skript 
+entwickelt, das diese Aufgabe <B>semi-automatisch</B> erledigt.</P>
+<P>Aus der Analyse der <B>PHPMyAdmin</B>-Dumps der <B>Struktur</B>(!) der 
+<B>OL-Commerce </B>- und der <B>Import</B>-Datenbanken, und den Daten der&nbsp; <B>Import</B>-Datenbank werden die evtl. notwendigen SQL-Befehle 
+generiert, um die zu übertragenden Daten in die <B>OL-Commerce </B>-Datenbank zu 
+importieren.</P>
+<P>Das Skript &quot;<B>xxc_import.php</B>&quot;, das 
+im Verzeichnis &quot;<FONT COLOR="#FF0000"><B>admin</B></FONT>&quot; des OL-Commerce -Shops liegen muss, erledigt diese Aufgabe.</P>
+<P>Es erwartet als Eingabe die PHPMyAdmin <B>Strukturdumps</B> der <B>OL-Commerce </B>- und der 
+<B>Import-Datenbank</B>. </P>
+<P>Daraus werden dann die Felder und Tabellen identifiziert, die in 
+der OL-Commerce -Datenbank <B>nicht(!)</B> vorhanden sind, und es werden die 
+notwendigen SQL-Befehle erstellt, die notwendig sind, um mit PHPMyAdmin die 
+<B>OL-Commerce </B>-Datenbank so zu erweitern, das alle Felder und Tabellen der 
+<B>Import</B>-Datenbank in der <B>OL-Commerce </B>-Datenbank enthalten sind.</P>
+<P>Damit kann auch der normale Anwender endlich den Import seiner Daten in die 
+<B>OL-Commerce </B>-Datenbank einfach bewerkstelligen, und das unabhängig vom verwendeten 
+xxCommerce-Shop und dessen Contribution-Stand!</P><HR>
+<P><FONT COLOR="#FF0000"><B>Installation: </B></FONT> </P>
+<P>Kopieren Sie die Datei &quot;<B>xxc_import.php</B>&quot; in das Verzeichnis &quot;<B>admin</B>&quot;.</P>
+<P>Kopieren Sie die Datei &quot;<B>automatischer_daten_import.html</B>&quot; in das 
+Verzeichnis &quot;<B>olc_installer</B>&quot;.</P>
+<HR>
+<P>    	<B>Der Ablauf eines <FONT COLOR="#FF0000">Datenimports</FONT> in die
+<FONT COLOR="#FF0000">OL-Commerce </FONT>-Datenbank ist damit wie folgt:</B><P>    	&nbsp;<TABLE BORDER="1" WIDTH="100%" ID="table1">
+	<TR>
+		<TD VALIGN="top"><FONT COLOR="#FF0000"><B>1. </B></FONT></TD>
+		<TD>Man erstellt mit <B>PHPMyAdmin</B> einen <B>Struktur</B>-Export der aktuellen 
+		Datenstruktur der <B>OL-Commerce </B>-Datenbank und der <B>Import</B>-Datenbank:<P>
+		Wichtig ist dabei, dass man dazu in PHPMyAdmin folgende Optionen anwählt 
+		bzw. abwählt:</P>
+		<TABLE BORDER="0" ID="table2" CELLSPACING="5" CELLPADDING="5">
+			<TR>
+				<TD ALIGN="center"><FONT COLOR="#0000FF"><B>Option</B></FONT></TD>
+				<TD ALIGN="center"><FONT COLOR="#0000FF"><B>Anwählen</B></FONT></TD>
+				<TD ALIGN="center"><FONT COLOR="#0000FF"><B>Abwählen</B></FONT></TD>
+			</TR>
+			<TR>
+				<TD><B><LABEL FOR="checkbox_sql_structure">Struktur</LABEL></B></TD>
+				<TD ALIGN="center"><FONT COLOR="#FF0000"><B>x</B></FONT></TD>
+				<TD ALIGN="center">&nbsp;</TD>
+			</TR>
+			<TR>
+				<TD><B>Mit 'DROP TABLE'</B></TD>
+				<TD ALIGN="center">&nbsp;</TD>
+				<TD ALIGN="center"><FONT COLOR="#FF0000"><B>x</B></FONT></TD>
+			</TR>
+			<TR>
+				<TD><B>Daten</B></TD>
+				<TD ALIGN="center">&nbsp;</TD>
+				<TD ALIGN="center"><FONT COLOR="#FF0000"><B>x</B></FONT></TD>
+			</TR>
+			<TR>
+				<TD><B>AUTO_INCREMENT-Wert hinzufügen </B></TD>
+				<TD ALIGN="center">&nbsp;</TD>
+				<TD ALIGN="center"><FONT COLOR="#FF0000"><B>x</B></FONT></TD>
+			</TR>
+		</TABLE>
+		<P>Die Option &quot;<B>SQL-Export-Kompatibilität</B>&quot; 
+		ist auf &quot;<FONT COLOR="#FF0000"><B>NONE</B></FONT>&quot; zu setzen, 
+		als &quot;<B>Exporttyp</B>&quot; ist &quot;<FONT COLOR="#FF0000"><B>INSERT</B></FONT>&quot;, 
+		zu wählen!<BR>
+		&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD VALIGN="top"><FONT COLOR="#FF0000"><B>2. </B></FONT> </TD>
+		<TD>Man erstellt nun mit <B>PHPMyAdmin</B> einen <B>Daten</B>-Export der aktuellen 
+		<B>Daten</B> der <B>Import</B>-Datenbank:<P>
+		Wichtig ist dabei, dass man dazu in PHPMyAdmin folgende Optionen anwählt 
+		bzw. abwählt:</P>
+		<TABLE BORDER="0" ID="table7" CELLSPACING="5" CELLPADDING="5">
+			<TR>
+				<TD ALIGN="center"><FONT COLOR="#0000FF"><B>Option</B></FONT></TD>
+				<TD ALIGN="center"><FONT COLOR="#0000FF"><B>Anwählen</B></FONT></TD>
+				<TD ALIGN="center"><FONT COLOR="#0000FF"><B>Abwählen</B></FONT></TD>
+			</TR>
+			<TR>
+				<TD><B><LABEL FOR="checkbox_sql_structure">Struktur</LABEL></B></TD>
+				<TD ALIGN="center">&nbsp;</TD>
+				<TD ALIGN="center"><FONT COLOR="#FF0000"><B>x</B></FONT></TD>
+			</TR>
+			<TR>
+				<TD><B>Daten</B></TD>
+				<TD ALIGN="center"><FONT COLOR="#FF0000"><B>x</B></FONT></TD>
+				<TD ALIGN="center">&nbsp;</TD>
+			</TR>
+			<TR>
+				<TD><B>Vollständige 'INSERT's </B></TD>
+				<TD ALIGN="center"><FONT COLOR="#FF0000"><B>x</B></FONT></TD>
+				<TD ALIGN="center">&nbsp;</TD>
+			</TR>
+			<TR>
+				<TD><B>Erweiterte 'INSERT's</B></TD>
+				<TD ALIGN="center"><FONT COLOR="#FF0000"><B>x</B></FONT></TD>
+				<TD ALIGN="center">&nbsp;</TD>
+			</TR>
+		</TABLE>
+		<BR>
+		Die Option &quot;<B>SQL-Export-Kompatibilität</B>&quot; 
+		ist auf &quot;<FONT COLOR="#FF0000"><B>NONE</B></FONT>&quot; zu setzen, 
+		als &quot;<B>Exporttyp</B>&quot; ist &quot;<FONT COLOR="#FF0000"><B>INSERT</B></FONT>&quot;, 
+		zu wählen!<BR>
+		&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD VALIGN="top"><FONT COLOR="#FF0000"><B>3. </B></FONT></TD>
+		<TD>Man startet OL-Commerce und loggt sich als &quot;<B>Haupt-Admin</B>&quot; ein.
+		<P><FONT COLOR="#FF0000"><B>Wichtig: </B></FONT>Das Skript kann
+		<FONT COLOR="#FF0000"><B>nur</B></FONT> vom Haupt-Admin (Kunden-ID &quot;1&quot;) 
+		ausgeführt werden!</P>
+		<P>Dann wird über den Menüpunkt &quot;<B>xxCommerce-Daten importieren</B>&quot; 
+		das Import-Skript gestartet. Dieses gibt 
+		dann die folgende Maske aus:</P>
+		<table border="0" width="100%" cellspacing="0" cellpadding="2" ID="table3">
+	      <tr>
+  	      <td>
+    	    	<table border="0" width="100%" cellspacing="0" cellpadding="0" ID="table4">
+  						<tr>
+    						<td width="80" rowspan="2">&nbsp;</td>
+    						<td class="pageHeading"><B>OL-Commerce Datenbank-Import</B></td>
+	  					</tr>
+
+	  					<tr>
+	    					<td class="main" valign="top"><B>Automatische 
+							Übernahme <FONT COLOR="#FF0000">xxCommerce</FONT>-kompatibler 
+							Datenbestände</B></td>
+	  					</tr>
+
+						</table>
+					</td>
+	      </tr>
+	      <tr>
+  	      <td class="main" valign="top">
+<p>
+  <BR>
+  Bitte geben Sie in die folgenden Felder die <font color=
+  "#0000FF"><b>Speicherorte</b></font> des
+  <b>PHPMyAdmin</b>-<font color=
+  "#0000FF"><b>Struktur</b></font>-Dumps der aktuellen
+  <font color="#FF0000"><b>OL-Commerce </b></font>- und der
+  <font color="#FF0000"><b>Import</b></font>-Datenbank, sowie
+  den Speicherort des <b>PHPMyAdmin</b>-<font color=
+  "#0000FF"><b>Daten</b></font>-Dumps der aktuellen
+  <font color="#FF0000"><b>Import</b></font>-Datenbank ein.
+  <b><a target="_blank" href=
+  "../olc_installer/semi_automatischer_daten_import.html">Hilfe</a></b>
+</p>
+<form method="post" action="" enctype="multipart/form-data">
+  <input type="hidden" value="process" name="action">
+  <table border="0">
+    <tr>
+      <td>
+        <b>Speicherort des....</b>
+      </td>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <font color="#0000FF"><b>Struktur</b></font>-Dumps
+        der <font color=
+        "#FF0000"><b>OL-Commerce </b></font>-Datenbank:&nbsp;
+      </td>
+      <td>
+        <input type="file" name="olc" size="40">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <font color="#0000FF"><b>Struktur</b></font>-Dumps
+        der <font color=
+        "#FF0000"><b>Import</b></font>-Datenbank:
+      </td>
+      <td>
+        <input type="file" name="import" size="40">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" valign="top">
+        <font size="1">&nbsp;</font>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b><font color="#0000FF">Daten</font></b>-Dumps der
+        <font color="#FF0000"><b>Import</b></font>-Datenbank:
+      </td>
+      <td>
+        <input type="file" name="import_data" size="40">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" valign="top">
+        <font size="1">&nbsp;</font>
+      </td>
+    </tr>
+    <!--
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+      <td align="right">
+        <p align="left">
+          <input type="checkbox" name="auto_update" value=
+          "on" checked> <b>Update automatisch ausf&uuml;hren</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+      <td align="right">
+        <p align="left">
+          <input type="checkbox" name="cleanup" value=
+          "on" checked><b> Nicht von OL-Commerce verwendbare Daten löschen</b>
+        </p>
+      </td>
+    </tr>
+    -->
+    <tr>
+      <td>
+        <br>
+        <input type="reset" value="Zur&uuml;cksetzen">
+      </td>
+      <td align="right" height="57">
+        <br>
+        <input type="submit" value="Absenden">
+      </td>
+    </tr>
+  </table>
+</form>	    
+  </table>
+		<FONT COLOR="#0000FF"><B>Nach Auswahl der notwendigen Dateien	wird mit "Absenden" die Analyse gestartet.</B></FONT><HR>
+		<P><B>Beispiel:</B></P>
+<P><B><FONT COLOR="#FF0000">Die Analyse der aktuellen </FONT>
+<FONT COLOR="#0000FF">OL-Commerce v2/AJAX</FONT><FONT COLOR="#FF0000">-Datenbank 
+und der </FONT><FONT COLOR="#0000FF">xtCommerce 3.04 SP1</FONT><FONT COLOR="#FF0000">-Datenbank 
+erstellt folgende SQL-Befehle zur Aktualisierung der </FONT>
+<FONT COLOR="#0000FF">OL-Commerce v2/AJAX</FONT><FONT COLOR="#FF0000"> Datenbank:</FONT></B></P>
+<P>#<BR>
+# SQL-Befehle zum Update der OL-Commerce -Datenbank &quot;wtl&quot; auf die Struktur<BR>
+# der in Datei &quot;tmp/xtc.sql&quot; definierten Strukturdaten.<BR>
+#<BR>
+# Erstellt am 25.09.2006 13:38:28 mit &quot;admin/xxc_import.php&quot;<BR>
+#<BR>
+# Copyright (c) ab 2006: Dipl.-Ing.(TH) Winfried Kaiser, 24975 Husby<BR>
+# http://www.seifenparadies.de<BR>
+# w.kaiser@fortune.de<BR>
+#<BR>
+# Die SQL-Befehle für das Update wurden in der Datei &quot;tmp/wtl_to_xtc.sql&quot; 
+gespeichert.<BR>
+#<BR>
+SET SESSION sql_mode=''<BR>
+<BR>
+CREATE TABLE `olc_campaigns_ip` (<BR>
+campaign VARCHAR( 32 ) NOT NULL,<BR>
+time DATETIME NOT NULL ,<BR>
+user_ip VARCHAR( 15 ) NOT NULL <BR>
+);<BR>
+<BR>
+CREATE TABLE `olc_campaigns` (<BR>
+campaigns_id int(11) NOT NULL auto_increment,<BR>
+campaigns_leads int(11) NOT NULL default '0',<BR>
+campaigns_name varchar(32) NOT NULL default '',<BR>
+campaigns_refID varchar(64) default NULL,<BR>
+date_added datetime default NULL,<BR>
+last_modified datetime default NULL,<BR>
+PRIMARY KEY (campaigns_id),<BR>
+KEY IDX_CAMPAIGNS_NAME (campaigns_name)<BR>
+);<BR>
+<BR>
+CREATE TABLE `olc_database_version` (<BR>
+version varchar(32) NOT NULL<BR>
+);<BR>
+<BR>
+CREATE TABLE `olc_payment_qenta` (<BR>
+q_DATE datetime NOT NULL default '0000-00-00 00:00:00',<BR>
+q_ORDERDESC varchar(255) NOT NULL default '',<BR>
+q_ORDERID int(11) unsigned NOT NULL default '0',<BR>
+q_QTID bigint(18) unsigned NOT NULL default '0',<BR>
+q_STATUS tinyint(1) NOT NULL default '0',<BR>
+q_TRID varchar(255) NOT NULL default '',<BR>
+PRIMARY KEY (q_TRID)<BR>
+);<BR>
+<BR>
+CREATE TABLE `olc_products_xsell_grp_name` (<BR>
+groupname varchar(255) NOT NULL default '',<BR>
+language_id smallint(6) NOT NULL default '0',<BR>
+products_xsell_grp_name_id int(10) NOT NULL,<BR>
+xsell_sort_order int(10) NOT NULL default '0'<BR>
+);<BR>
+<BR>
+ALTER TABLE `olc_address_book` ADD address_date_added datetime DEFAULT 
+'0000-00-00 00:00:00';<BR>
+ALTER TABLE `olc_address_book` ADD address_last_modified datetime DEFAULT 
+'0000-00-00 00:00:00';<BR>
+<BR>
+ALTER TABLE `olc_admin_access` ADD campaigns int(1) NOT NULL default '0';<BR>
+ALTER TABLE `olc_admin_access` ADD cross_sell_groups int(1) NOT NULL default 
+'0';<BR>
+ALTER TABLE `olc_admin_access` ADD csv_backend int(1) NOT NULL default '0';<BR>
+ALTER TABLE `olc_admin_access` ADD fck_wrapper int(1) NOT NULL default '0';<BR>
+ALTER TABLE `olc_admin_access` ADD popup_image int(1) NOT NULL default '0';<BR>
+ALTER TABLE `olc_admin_access` ADD stats_campaigns int(1) NOT NULL default '0';<BR>
+<BR>
+ALTER TABLE `olc_categories` ADD group_permission_0 tinyint(1) NOT NULL;<BR>
+ALTER TABLE `olc_categories` ADD group_permission_1 tinyint(1) NOT NULL;<BR>
+ALTER TABLE `olc_categories` ADD group_permission_2 tinyint(1) NOT NULL;<BR>
+ALTER TABLE `olc_categories` ADD group_permission_3 tinyint(1) NOT NULL;<BR>
+<BR>
+ALTER TABLE `olc_content_manager` ADD group_ids TEXT;<BR>
+ALTER TABLE `olc_content_manager` ADD sort_order int(4) NOT NULL default '0';<BR>
+<BR>
+ALTER TABLE `olc_countries` ADD status int(1) DEFAULT '1' NULL;<BR>
+<BR>
+ALTER TABLE `olc_customers_status` ADD customers_status_max_order int(7) DEFAULT 
+NULL;<BR>
+ALTER TABLE `olc_customers_status` ADD customers_status_min_order int(7) DEFAULT 
+NULL;<BR>
+ALTER TABLE `olc_customers_status` ADD customers_status_read_reviews int(1) NOT 
+NULL DEFAULT '1';<BR>
+ALTER TABLE `olc_customers_status` ADD customers_status_write_reviews int(1) NOT 
+NULL DEFAULT '1';<BR>
+<BR>
+ALTER TABLE `olc_customers` ADD customers_date_added datetime DEFAULT 
+'0000-00-00 00:00:00';<BR>
+ALTER TABLE `olc_customers` ADD customers_last_modified datetime DEFAULT 
+'0000-00-00 00:00:00';<BR>
+ALTER TABLE `olc_customers` ADD customers_vat_id varchar (20);<BR>
+ALTER TABLE `olc_customers` ADD customers_vat_id_status int(2) DEFAULT '0' NOT 
+NULL;<BR>
+ALTER TABLE `olc_customers` ADD password_request_key varchar(32) NOT NULL;<BR>
+ALTER TABLE `olc_customers` ADD payment_unallowed varchar(255) NOT NULL;<BR>
+ALTER TABLE `olc_customers` ADD refferers_id int(5) DEFAULT '0' NOT NULL;<BR>
+ALTER TABLE `olc_customers` ADD shipping_unallowed varchar(255) NOT NULL;<BR>
+<BR>
+ALTER TABLE `olc_orders` ADD afterbuy_id INT(32) DEFAULT '0' NOT NULL;<BR>
+ALTER TABLE `olc_orders` ADD afterbuy_success INT(1) DEFAULT'0' NOT NULL;<BR>
+ALTER TABLE `olc_orders` ADD conversion_type INT(1) DEFAULT '0' NOT NULL;<BR>
+ALTER TABLE `olc_orders` ADD customers_firstname varchar(64) NOT NULL;<BR>
+ALTER TABLE `olc_orders` ADD customers_lastname varchar(64) NOT NULL;<BR>
+ALTER TABLE `olc_orders` ADD customers_vat_id varchar (20);<BR>
+ALTER TABLE `olc_orders` ADD orders_ident_key varchar(128);<BR>
+ALTER TABLE `olc_orders` ADD refferers_id VARCHAR(32) NOT NULL;<BR>
+<BR>
+ALTER TABLE `olc_products_content` ADD group_ids TEXT;<BR>
+<BR>
+ALTER TABLE `olc_products_description` ADD products_keywords VARCHAR(255) 
+DEFAULT NULL;<BR>
+<BR>
+ALTER TABLE `olc_products_xsell` ADD products_xsell_grp_name_id int(10) unsigned 
+NOT NULL default '1';<BR>
+<BR>
+ALTER TABLE `olc_products` ADD group_permission_0 tinyint(1) NOT NULL;<BR>
+ALTER TABLE `olc_products` ADD group_permission_1 tinyint(1) NOT NULL;<BR>
+ALTER TABLE `olc_products` ADD group_permission_2 tinyint(1) NOT NULL;<BR>
+ALTER TABLE `olc_products` ADD group_permission_3 tinyint(1) NOT NULL;<BR>
+ALTER TABLE `olc_products` ADD products_ean varchar(128);<BR>
+ALTER TABLE `olc_products` ADD products_startpage int(1) NOT NULL DEFAULT '0';<BR>
+ALTER TABLE `olc_products` ADD products_startpage_sort int(4) NOT NULL DEFAULT 
+'0';<BR>
+<BR>
+ALTER TABLE `olc_specials` ADD specials_quantity int(4) NOT NULL;<BR>
+&nbsp;</P>
+
+		</TD>
+	</TR>
+	<TR>
+		<TD VALIGN="top"><FONT COLOR="#FF0000"><B>4.&nbsp;</B></FONT></TD>
+		<TD>Nachdem die Information für den Struktur-Update verfügbar ist, 
+		überarbeitet &quot;<B>xxc_import.php</B>&quot; im nächsten Schritt die SQL-Befehle 
+		der <B>Import-Daten</B>-Datei so, dass die Daten importiert werden 
+		können.<P><FONT COLOR="#FF0000"><B>Dazu werden 
+		folgende </B></FONT><B><FONT COLOR="#FF0000">Überarbeitungen gemacht:</FONT></B></P>
+		<P><FONT COLOR="#FF0000"><B>Wenn</B></FONT> Sie für die <B>OL-Commerce </B>-Datenbank bei der Installation einen 
+		Tabellenpräfix gewählt haben (z.B. &quot;<B>olc_</B>&quot;), werden alle 
+		Tabellennamen der Import-Datei geändert. (Aber nur die, die auch zu 
+		OL-Commerce gehören! Andere Tabellen-Namen bleiben unverändert.)</P>
+		<P>Weiterhin <B>wird</B> in die erste Zeile des <B>Daten</B>-Dumps die 
+		Anweisung &quot;<FONT COLOR="#0000FF"><B>SET SESSION sql_mode='';</B></FONT>&quot; 
+		vorangestellt, wenn die <B>OL-Commerce </B>-Datenbank auf einem <B>
+		MySQL 5.x</B>-Server läuft. (Die PHPMyAdmin-SQL-Anweisungen sind nämlich 
+		teilweise mit den strikteren MySQL 5 SQL-Anforderungen noch nicht 
+		kompatibel, so dass es andernfalls Fehler gäbe.)<P>Für alle Tabellen, in 
+		die bei der <B>OL-Commerce </B>-Installation schon Daten eingebracht 
+		werden, werden die Import-Befehle gelöscht, da diese die 
+		Shop-Konfiguration betreffen!<P><FONT COLOR="#FF0000"><B>Ausnahmen:</B></FONT><P>
+		Import-Daten für die Tabellen &quot;<B>content_manager</B>&quot;, &quot;<B>currencies</B>&quot;, 
+		&quot;<B>languages</B>&quot;, &quot;<B>shipping_status</B>&quot; werden übernommen, da sie 
+		shop-spezifische Informationen enthalten. (Zuvor werden die schon in der&nbsp; <B>OL-Commerce </B>-Datenbank 
+		vorhandenen Daten gelöscht.)
+		<!--
+		<P>
+		Wenn die Option &quot;<B>Update automatisch ausführen</B>&quot; gewählt wurde, 
+		dann werden die erstellten SQL-Befehle gleich auf die <B>OL-Commerce </B>-Datenbank 
+		angewendet.<!--
+		Wenn die Option &quot;<B>Nicht von OL-Commerce verwendbare Daten löschen </B>&quot; 
+		gewählt wurde, dann werden in die SQL-Update-Befehle auch Befehle 
+		aufgenommen, um die für den Import durchgeführten notwendigen 
+		Strukturänderungen der <B>OL-Commerce </B>-Datenbank wieder rückgängig zu 
+		machen, und die dafür importierten Daten wieder zu löschen.<P>
+		<FONT COLOR="#FF0000"><B>Hintergrund:</B></FONT></P>
+<P>Das Update der Tabellenstruktur stellt lediglich <B>formal</B> sicher, dass die zu 
+importierenden Daten fehlerfrei in der <B>OL-Commerce </B>-Datenbank gespeichert 
+werden können.<B> Verwendet </B>werden diese Daten natürlich <FONT COLOR="#FF0000"><B>nicht</B></FONT>, 
+da OL-Commerce nicht darauf eingerichtet ist.</P>
+<P><FONT COLOR="#0000FF"><B>Daher können die neu in die OL-Commerce -Datenbank eingebrachten 
+Struktur-Daten nach dem 
+Import auch wieder gelöscht werden!</B></FONT></P>
+		--></TD>
+	</TR>
+</TABLE>
+<TABLE BORDER="0" WIDTH="100%" ID="table8">
+	<TR>
+		<TD VALIGN="top"><BR>
+		<FONT COLOR="#FF0000"><B>Wichtig: </B></FONT></TD>
+		<TD VALIGN="top"><BR>
+		&quot;<B>xxc_import.php</B>&quot; benötigt Zugriff zur Datei &quot;<B>olc_installer/prefix_olcommerce.sql</B>&quot; 
+		zur Ermittlung der bei der Installation schon eingebrachten Daten.</TD>
+	</TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

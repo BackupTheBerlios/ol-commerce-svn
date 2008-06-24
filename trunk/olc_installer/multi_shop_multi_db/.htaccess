@@ -1,0 +1,7 @@
+#Note:     "AllowOverride FileInfo" or "AllowOverride All" must be set in the Apache config file "httpd.conf" for this to work!!!!
+
+ErrorDocument 404 /seifenparadies/Kopie_von_olcommerce_1_2_2A_AJAX_Test/olcommerce/404.php
+
+#RewriteEngine On
+#RewriteCond %{HTTP_HOST} ^www.domain.com$ [NC]
+#RewriteRule ^(.*)$ http://domain.com/$1 [R=301,L]

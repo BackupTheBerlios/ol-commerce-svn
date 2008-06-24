@@ -1,0 +1,292 @@
+{if $TEXT_NOT_FOUND}
+	{$TEXT_NOT_FOUND}
+{else}
+{$PRODUCT_NAVIGATOR}
+{$FORM_ACTION}
+	<table width="100%" border="0">
+		<tr>
+			<td>
+			  {olc_template_init use_template_language="true" header="header_info" section="product_info"
+			  	title=$PRODUCTS_NAME}
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="main">
+							<table	nowrap width="100%" border="0">
+								<tr>
+									<td class="category" valign="top" align="left">
+										<span id="products_name_">
+											<b><font size="4">{$PRODUCTS_NAME}</font></b>
+											<br/><br/>
+											<span style="font-weight:normal;">{$PRODUCTS_SHORT_DESCRIPTION}</span>
+										</span>
+										{if $PRODUCTS_MANUFACTURER_NAME}
+										<br/><br/>
+										<font size="1">
+										{if $PRODUCTS_MANUFACTURER_URL}
+										<a href="{$PRODUCTS_MANUFACTURER_URL}" title="{$PRODUCTS_MANUFACTURER_NAME}" TARGET="_blank">
+										{/if}
+										<b>{#text_manufacturer#}</b>
+										<span style="font-weight:normal;">{$PRODUCTS_MANUFACTURER_NAME}</span>
+										{if $PRODUCTS_MANUFACTURER_URL}
+										</a>
+										{/if}
+										{if $PRODUCTS_MANUFACTURER_IMAGE}
+										&nbsp;&nbsp;
+										{if $PRODUCTS_MANUFACTURER_URL}
+										<a href="{$PRODUCTS_MANUFACTURER_URL}"
+										title="{$PRODUCTS_MANUFACTURER_NAME}" TARGET="_blank">
+										{/if}
+										<img border="0" src="{$PRODUCTS_MANUFACTURER_IMAGE}" align="middle"
+											title="{$PRODUCTS_MANUFACTURER_NAME}">
+										{if $PRODUCTS_MANUFACTURER_URL}
+										</a>
+										{/if}
+										</font>
+										{/if}
+										{if $PRODUCTS_DISCOUNT}
+										<p class="main" style="font-weight:normal;font-size:8pt">
+											{$PRODUCTS_DISCOUNT}<br/><br/>
+										</p>
+										{/if}
+										{/if}
+									</td>
+									<td width="50" class="category" valign="top" align="right" rowspan="2">
+										&nbsp;</td>
+									<td class="category" valign="top" align="right" rowspan="2" width="45%">
+										<font  size="3">
+											<!-- W. Kaiser - AJAX-->
+											<font  size="4">
+											<b>
+											<div nowrap="nowrap" id="products_price_display">{$PRODUCTS_PRICE}</div>
+											</b></font>
+											<font size="1" style="font-size:8pt;font-weight:normal;">
+											{if $PRODUCTS_BASEPRICE}
+												{$PRODUCTS_BASEPRICE}
+											{/if}
+											{if $PRODUCTS_SPECIALPRICE}
+												<br/>
+												<br/>
+												<font color="#FF0000">{$PRODUCTS_SPECIALPRICE}</font>
+											{/if}
+											{if $PRODUCTS_PRICE_RAW <> 0}
+											<p>
+												{$PRICE_DISCLAIMER}
+											</p>
+											{/if}
+											</font>
+											<span id="products_price_id" style="display:none;">
+												{$PRODUCTS_ID_FULL}
+											</span>
+											<span id="products_price_net_" style="display:none;">
+												{$PRODUCTS_PRICE}
+											</span>
+											<!-- W. Kaiser - AJAX-->
+										</font>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td class="main">
+							<table border="0" width="100%">
+								<tr>
+									<td class="main" nowrap="nowrap" valign="top">
+						         {if $PRODUCTS_PRINT}{#print#} {$PRODUCTS_PRINT}&nbsp;&nbsp;{$PRODUCTS_PRINT_PDF}{/if}
+									</td>
+									<td class="main" nowrap="nowrap" valign="top" align="right">
+										{if $PRODUCTS_PRICE_RAW <> 0}
+										<table border="0">
+											<tr>
+												<td class="main" nowrap="nowrap" valign="top" align="right">
+													<font size="1">
+														<b>{#text_shippingtime#}</b>&nbsp;
+													</font>
+												</td>
+												<td class="main" valign="top">
+													<font size="1">
+														{if $PRODUCTS_PRICE_RAW > 0 && $PRODUCTS_DATE_AVAILABLE==''}
+															{if $SHIPPING_IMAGE}
+															<img src="{$SHIPPING_IMAGE}" align="middle" alt="">&nbsp;({/if}{$SHIPPING_NAME}{if $SHIPPING_IMAGE}){/if}
+														{else}
+															<font color="#FF0000">
+																<b>{#product_not_in_stock#}</b>
+															</font>
+															{if $PRODUCTS_DATE_AVAILABLE<>''}
+															<font color="#008000"><br/>
+																({$PRODUCTS_DATE_AVAILABLE})
+															</font>
+															{/if}
+														{/if}
+													</font>
+												</td>
+											</tr>
+										</table>
+										{/if}
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<table width="100%" border="0">
+					<tr>
+						<td width="50"></td>
+						<td><hr/></td>
+						<td width="50"></td>
+					</tr>
+				</table>
+				<table width="100%" border="0">
+					<tr>
+						<td valign="top" class="main_border_right" rowspan="2" align="center"
+							style="border-right: 1px solid brown;">
+							<table width="1" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="1">
+										<div align="center">
+											<table width="1" border="0" cellpadding="5" cellspacing="0">
+												<tr>
+													<td align="center" style="padding:10px">
+														<font style="font-size: 6pt">
+                          		{if $PRODUCTS_IMAGE!=''}
+                          		{if $PRODUCTS_POPUP_LINK}<a href="{$PRODUCTS_POPUP_LINK}">{/if}
+                          		{$PRODUCTS_IMAGE}
+                          		{if $PRODUCTS_POPUP_LINK}</a>{/if}
+															<br/>{$PICTURE_DISCLAIMER}
+															<br/><br/>
+			                        <!-- more images -->
+															{if $PRODUCTS_IMAGE_1}
+																<a href="{$PRODUCTS_POPUP_LINK_1}">{$PRODUCTS_IMAGE_1}</a>
+																<br/><font style="font-size: 6pt">{$PICTURE_DISCLAIMER}</font>
+																<br/><br/>
+															{/if}
+			                        {if $PRODUCTS_IMAGE_2}
+			                          <a href="{$PRODUCTS_POPUP_LINK_2}">{$PRODUCTS_IMAGE_2}</a>
+																<br/><font style="font-size: 6pt">{$PICTURE_DISCLAIMER}</font>
+																<br/><br/>
+															{/if}
+															{if $PRODUCTS_IMAGE_3}
+			                          <a href="{$PRODUCTS_POPUP_LINK_3}">{$PRODUCTS_IMAGE_3}</a>
+																<br/><font style="font-size: 6pt">{$PICTURE_DISCLAIMER}</font>
+																<br/><br/>
+															{/if}
+															{if $PRODUCTS_IMAGE_4}
+			                          <a href="{$PRODUCTS_POPUP_LINK_4}">{$PRODUCTS_IMAGE_4}</a>
+																<br/><font style="font-size: 6pt">{$PICTURE_DISCLAIMER}</font>
+																<br/><br/>
+															{/if}
+			                        <!-- more images eof -->
+	                         		{/if}
+												      {if $PRODUCTS_VPE}{$PRODUCTS_VPE}<br/>{/if}
+	 													  {if $PRODUCTS_MIN_ORDER_QTY}{$PRODUCTS_MIN_ORDER_QTY}<br/>{/if}
+									            {if $PRODUCTS_MODEL}{#text_article_number#} {$PRODUCTS_MODEL}<br/>{/if}
+									            {if $PRODUCTS_DISCOUNT}{$PRODUCTS_DISCOUNT}<br/>{/if}
+									            <br/>
+														</font>
+													</td>
+												</tr>
+											</table>
+											<br/>
+											<font size="1" >
+												{if $PRODUCTS_IMAGE_LINK!=''}
+													<a href="{$PRODUCTS_IMAGE_LINK}" target="_new">
+														{$PRODUCTS_TEXT_ZOOM}
+													</a>
+													<br/>
+												{/if}
+												{if $PRODUCTS_FSK18=='true'}<br/>
+													<img src="{$tpl_path}img/fsk18.gif">
+												{/if}
+												{$MODULE_graduated_price}
+											</font>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="100%" class="main" valign="top" style="padding-left:10px">
+							{$PRODUCTS_DESCRIPTION}
+						</td>
+					</tr>
+				</table>
+				<table width="100%" border="0">
+					{if  $PRODUCTS_PRICE_RAW > 0}
+					{if $MODULE_product_options}
+					<tr>
+						<td colspan="2" width="100%" class="main" valign="top">
+							<font size="1">{$MODULE_product_options}</font>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					{/if}
+					{if ($PRODUCTS_STATUS == '1' && $PRODUCTS_DATE_AVAILABLE == '') || $GENERAL_DISCLAIMER}
+					<tr>
+						<td>
+							{if $PRODUCTS_STATUS == '1'}
+							{$ADD_QTY} {$ADD_CART_BUTTON}
+							{/if}
+						</td>
+						<td align="right" CLASS="main">
+							{if $GENERAL_DISCLAIMER!=''}
+							<small>{$GENERAL_DISCLAIMER}</small>
+							{/if}
+						</td>
+					</tr>
+					{/if}
+					{/if}
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+			<!-- <td width="50">&nbsp;</td>-->
+		</tr>
+	</table>
+	{if $PRODUCTS_URL != ''}
+	<table width="100%" border="0" class="productsNotifications">
+		<tr>
+			<td><p align="center"><font size="1" >{$PRODUCTS_URL}<br/>
+			</font></p></td>
+		</tr>
+	</table>
+	{/if}
+	{if !$PRINT_VERSION}
+	{if $MODULE_products_reviews != ''}
+	<table width="100%" border="0">
+		<tr>
+			<td>{$MODULE_products_reviews}</td>
+		</tr>
+	</table>
+	{/if}
+
+	{if $MODULE_products_media != ''}
+	<table width="100%" border="0">
+		<tr>
+			<td><div align="center">{$MODULE_products_media}</div></td>
+		</tr>
+	</table>
+	{/if}
+
+	{if $MODULE_xsell != ''}
+	<table width="100%" border="0">
+		<tr>
+			<td><div align="center">{$MODULE_xsell}</div></td>
+		</tr>
+	</table>
+	{/if}
+
+	{if $MODULE_also_purchased!= ''}
+	<table width="100%" border="0">
+		<tr>
+			<td><div align="center">{$MODULE_also_purchased}</div></td>
+		</tr>
+	</table>
+	{/if}
+	{$FORM_END}
+	{/if}
+{/if}
+<!-- W. Kaiser - AJAX-->
+
+

@@ -1,0 +1,49 @@
+{olc_template_init use_template_language="true" section="boxes"}
+{$FORM_ACTION}
+	<table width="100%" class="{$box_navigation_area} box_SEARCH" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><h3>{#heading_search#}</h3></td>
+		</tr>
+		{if $CONTENT}
+		<tr>
+	  	<td class="infoBox">
+			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		     	<tr>
+		     	  <td class="infoBoxContents" align="left">{$BOX_CONTENT}</td>
+		     	</tr>
+				</table>
+		 	</td>
+	  </tr>
+		{else}
+		<tr>
+			<td colspan="2" class="infoBox">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="infoBoxContents">
+							{#text_search_word#}<br/>{$INPUT_SEARCH}&nbsp;{$BUTTON_SUBMIT}
+						</td>
+					</tr>
+					{if $SELECTIONS}
+					<tr>
+						<td align="left" class="infoBoxContents">
+							{$SELECTIONS}
+						</td>
+					</tr> 
+					{/if}
+					{if $LINK_ADVANCED}
+					<tr>
+						<td align="left" valign="middle" class="infoBoxContents">
+							<a href="{$LINK_ADVANCED}"></a>&nbsp; 
+							<a href="{$LINK_ADVANCED}" title="{#text_advanced_search#}">{#text_advanced_search#}</a>
+						</td>
+					</tr>
+					{/if}
+				</table>
+			</td>
+		</tr>
+		{/if}
+		<tr>
+			<td colspan="2" class="infoBoxFooter">&nbsp;</td>
+		</tr>
+	</table>
+{$FORM_END}

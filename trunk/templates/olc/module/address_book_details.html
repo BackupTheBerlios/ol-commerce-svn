@@ -1,0 +1,104 @@
+{olc_template_init title="#title_address#" section="address_book_process"}
+{if $language==''}
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+<!-- address_book_details-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="stockWarning" align="left" valign="top">{#text_must_x#}</td>
+	</tr>
+</table>
+
+<table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">
+	{if $csID != ''}
+	<tr>
+		<td class="main_highlight" width="110" valign="top" >{#csID#}</td>
+		<td class="main_highlight" valign="top" ><b>{$csID}</b></td>
+		<td class="main" valign="top" >&nbsp;</td>
+	</tr>
+	{/if}
+	{if $INPUT_MALE != ''}
+	<tr>
+		<td class="main" width="110" valign="top">{#text_gender#}</td>
+		<td class="main" valign="top">{#text_male#}
+		{$INPUT_MALE} {#text_female#} {$INPUT_FEMALE}</td>
+		<td class="main">&nbsp;</td>
+	</tr>
+	{/if}
+	<tr>
+		<td class="main" width="110" valign="top" >{#text_firstname#}</td>
+		<td class="main" valign="top" >{$INPUT_FIRSTNAME}</td>
+		<td class="main" width="275" valign="top" >&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="main" width="110" valign="top">{#text_lastname#}</td>
+		<td class="main" valign="top">{$INPUT_LASTNAME}</td>
+		<td class="main" width="275" valign="top">&nbsp;</td>
+	</tr>
+	{if $INPUT_COMPANY != ''}
+	<tr>
+		<td class="main" width="110" valign="top">&nbsp;</td>
+		<td class="main" valign="top">&nbsp;</td>
+		<td class="main" width="275" valign="top">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="main" width="110" valign="top">{#text_company#}<br/> </td>
+		<td class="main" valign="top">{$INPUT_COMPANY}</td>
+		<td class="main" width="275" valign="top">&nbsp;</td>
+	</tr>
+	{/if}
+	<tr>
+		<td class="main" width="110" valign="top">&nbsp;</td>
+		<td class="main" valign="top" >&nbsp;</td>
+		<td class="main" width="275" valign="top" >&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="main"  width="110" valign="top">{#text_street#}</td>
+		<td class="main" valign="top" >{$INPUT_STREET}</td>
+		<td class="main" width="275" valign="top" >&nbsp;</td>
+	</tr>
+	{if $INPUT_SUBURB != ''}
+	<tr>
+		<td class="main" width="110" valign="top">{#text_suburb#}</td>
+		<td class="main" valign="top">{$INPUT_SUBURB}</td>
+		<td class="main" width="275" valign="top">&nbsp;</td>
+	</tr>
+	{/if}
+	<tr>
+		<td class="main" width="110" valign="top">{#text_code#}</td>
+		<td class="main" valign="top">{$INPUT_CODE}</td>
+		<td class="main" width="275" valign="top">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="main" width="110" valign="top">{#text_city#}</td>
+		<td class="main" valign="top">{$INPUT_CITY}</td>
+		<td class="main" width="275" valign="top">&nbsp;</td>
+	</tr>
+	{if $INPUT_STATE != ''}
+	<tr>
+		<!-- W. Kaiser - AJAX-->
+		<td class="main" width="110" valign="top">
+			<span id="entry_state_area_1" style="display:inline;">{#text_state#}</span>
+		</td>
+		<td class="main" valign="top">
+			<span id="entry_state_area_2" style="display:inline;">{$INPUT_STATE}</span>
+		</td>
+		<td class="main" width="275" valign="top">
+			<span id="entry_state_area_3" style="display:inline;">&nbsp;</span>
+		</td>
+		<!-- W. Kaiser - AJAX-->
+	</tr>
+	{/if}
+	<tr>
+		<td class="main" width="110" valign="top">{#text_country#}</td>
+		<td class="main" valign="top">{$SELECT_COUNTRY}</td>
+		<td class="main" width="275" valign="top">&nbsp;</td>
+	</tr>
+	{if $CHECKBOX_PRIMARY != ''}
+	<tr>
+		<td class="main" width="110" valign="top">&nbsp;</td>
+		<td class="main" valign="top">{$CHECKBOX_PRIMARY} {#text_standard#}</td>
+		<td class="main" width="275" valign="top">&nbsp;</td>
+	</tr>
+	{/if}
+</table>

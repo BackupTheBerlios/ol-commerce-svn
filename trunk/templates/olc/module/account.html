@@ -1,0 +1,71 @@
+{olc_template_init title="#heading_account#" section="account"} 
+<table border="0" cellspacing="3" cellpadding="3">
+	{if $order_content}
+  <tr>
+    <td colspan="2" class="subcategory" >{#title_main#}</td>
+  </tr>
+  <tr> 
+		<td class="boxText_border_top"><img src="{$tpl_path}img/account_personal.gif"></td>
+		<td valign="middle" class="boxText_border_top" > 
+			<table border="0" cellspacing="0" cellpadding="3">
+				{foreach name=aussen item=order_data from=$order_content} 
+				<tr> 
+					<td valign="top" class="main"><img src="{$tpl_path}img/arrow_green.gif"></td>
+					<td class="main"><a href="{$order_data.ORDER_LINK}">{$order_data.ORDER_DATE}
+					&nbsp;&nbsp;{#order_nr#} {$order_data.ORDER_ID}</a><br/>
+					{#order_total#}{$order_data.ORDER_TOTAL}<br/>
+					{#order_status#} {$order_data.ORDER_STATUS}</td>
+					<td class="main">&nbsp;{$order_data.ORDER_BUTTON}</td>
+				</tr>
+				{/foreach}
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" valign="middle" class="boxText_border_top" > 
+			<table width="100%" border="0" cellspacing="0" cellpadding="3">
+				<tr> 
+					<td class="main"><img src="{$tpl_path}img/arrow_green.gif"><a href="{$LINK_ORDERS}">{#text_orders#}</a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	{/if}
+	<tr>
+   	<td colspan="2" class="subcategory">{#title_account#} </td>
+	</tr>
+	<tr>
+		<td class="boxText_border_top"><img src="{$tpl_path}img/account_personal.gif"></td>
+		<td valign="middle" class="boxText_border_top" > 
+			<table width="100%" border="0" cellspacing="0" cellpadding="3">
+				<tr>
+					<td class="main"><img src="{$tpl_path}img/arrow_green.gif"><a href="{$LINK_EDIT}">{#text_edit#}</a></td>
+				</tr>
+				<tr>
+					<td class="main"><img src="{$tpl_path}img/arrow_green.gif"><a href="{$LINK_ADDRESS}">{#text_address#}</a></td>
+				</tr>
+				<tr>
+					<td class="main"><img src="{$tpl_path}img/arrow_green.gif"><a href="{$LINK_PASSWORD}">{#text_password#}</a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+    	<td colspan="2" class="subcategory"><br/>{#title_notification#} <br/></td>
+	</tr>
+	<tr> 
+		<td class="boxText_border_top"><img src="{$tpl_path}img/account_notifications.gif"></td>
+		<td valign="middle" class="boxText_border_top"> 
+			<table width="100%" border="0" cellspacing="0" cellpadding="3">
+				<tr> 
+					<td class="main"><img src="{$tpl_path}img/arrow_green.gif">
+					<a href="{$LINK_NEWSLETTER}">{#text_newsletter#}</a></td>
+				</tr>
+				<tr> 
+					<td class="main"><img src="{$tpl_path}img/arrow_green.gif">
+					<a href="{$LINK_NOTIFICATIONS}">{#text_notifications#}</a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

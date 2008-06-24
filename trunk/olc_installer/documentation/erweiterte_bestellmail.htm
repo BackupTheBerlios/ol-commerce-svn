@@ -1,0 +1,427 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- order_mail --><html><head>
+
+<TITLE>eMail für die Bestell-Bestätigung</TITLE>
+<link rel="stylesheet" type="text/css" href="http://www.seifenparadies.de/ajax/templates/aqua/stylesheet.css">
+<STYLE type=text/css>
+@media Screen    
+{
+A {
+	COLOR: #a52a2a; TEXT-DECORATION: none
+}
+A:hover {
+	font-WEIGHT: bold
+}
+A.captionbar {
+	font-WEIGHT: normal; COLOR: #ffffff
+}
+A.captionbar:hover {
+	font-WEIGHT: bold; COLOR: #ffffff
+}
+A.headerNavigation {
+	font-SIZE: 13px; COLOR: #a52a2a
+}
+A.headerNavigation:hover {
+	font-WEIGHT: bold
+}
+A.pageResults {
+	COLOR: #843301
+}
+A.pageResults:hover {
+	COLOR: #843301
+}
+body {
+	font-SIZE: 12px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-IMAGE: url(http://www.seifenparadies.de/images/bg_green.png); MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #e3ebe2; SCROLLBAR-SHADOW-COLOR: #abd390; COLOR: #a52a2a; SCROLLBAR-3DLIGHT-COLOR: #aad79d; SCROLLBAR-ARROW-COLOR: #a52a2a; SCROLLBAR-TRACK-COLOR: #a52a2a; font-FAMILY: Verdana, Arial, sans-serif; SCROLLBAR-DARKSHADOW-COLOR: #7bba52; SCROLLBAR-BASE-COLOR: #f0f7da; BACKGROUND-COLOR: #f8fbee
+}
+HR {
+	COLOR: brown
+}
+.standard {
+	font-SIZE: 14px; COLOR: brown
+}
+.td_style {
+	PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: brown; PADDING-TOP: 0.75pt
+}
+.td_style_bold {
+	PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-WEIGHT: bold; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: brown; PADDING-TOP: 0.75pt
+}
+.td_style_header {
+	BORDER-RIGHT: brown 1px solid; BORDER-TOP: brown 1px solid; font-SIZE: 14px; BORDER-LEFT: brown 1px solid; COLOR: brown; BORDER-BOTTOM: brown 1px solid
+}
+.td_style_header_bold {
+	BORDER-RIGHT: brown 1px solid; BORDER-TOP: brown 1px solid; font-WEIGHT: bold; font-SIZE: 14px; BORDER-LEFT: brown 1px solid; COLOR: brown; BORDER-BOTTOM: brown 1px solid; TEXT-ALIGN: center
+}
+.payment {
+	font-WEIGHT: bold; font-SIZE: 14px; COLOR: red
+}
+    }
+TD.main {
+	font-SIZE: 13px; LINE-HEIGHT: 1.5
+}
+P.main {
+	font-SIZE: 13px; LINE-HEIGHT: 1.5
+}
+.main {
+	font-SIZE: 14px; COLOR: #a52a2a; LINE-HEIGHT: 1.5
+}
+
+@media Print    
+{
+HR {
+	COLOR: black
+}
+.standard {
+	font-SIZE: 14px; COLOR: black
+}
+.td_style {
+	PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: black; PADDING-TOP: 0.75pt
+}
+.td_style_bold {
+	PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-WEIGHT: bold; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: black; PADDING-TOP: 0.75pt
+}
+.td_style_header {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; font-SIZE: 14px; BORDER-LEFT: black 1px solid; COLOR: black; BORDER-BOTTOM: black 1px solid
+}
+.td_style_header_bold {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; font-WEIGHT: bold; font-SIZE: 14px; BORDER-LEFT: black 1px solid; COLOR: black; BORDER-BOTTOM: black 1px solid; TEXT-ALIGN: center
+}
+TD.main {
+	font-SIZE: 13px; LINE-HEIGHT: 1.5
+}
+P.main {
+	font-SIZE: 13px; LINE-HEIGHT: 1.5
+}
+.main {
+	font-SIZE: 14px; COLOR: #a52a2a; LINE-HEIGHT: 1.5
+}
+
+}
+</STYLE>
+
+<meta content="Microsoft FrontPage 6.0" name=GENERATOR>
+<BASE TARGET="_blank">
+</HEAD>
+<body>
+<p align="center"><b><font size="5" color="#FF0000">eMail für die 
+Bestell-Bestätigung</font></b></p>
+<p><font size="2">Die eMail für die Bestell-Bestätigung zum Kunden wurde im 
+Vergleich zu OL-Commerce v1.2/xtCommerce vX <font color="#FF0000"><B>komplett 
+überarbeitet</B></font> und <b><font color="#FF0000">umfangreich erweitert</font></b>, 
+so dass jetzt ein <B>professionelles</B>, <B>aussagefähiges</B> und <b>
+weitestgehend </b><font color="#FF0000"><B>rechts-/abmahnungssicheres</B></font> 
+Dokument verfügbar ist.</font></p>
+<p><font size="2">Die weiter unten als Beispiel dargestellte Bestell-eMail ist 
+mit der Vorlage &quot;<B>common/mail/german/order_mail.html</B>&quot; und dem erweiterten 
+Skript<font color="#FF0000"><b> automatisch</B></font> erstellt worden. (Die 
+Text-Variante der eMail enthält die gleichen Informationen.)<br/>
+(Zur Erinnerung: bei OL-Commerce v4 ist der Versand von HTML- oder 
+Text-Format-eMails <b><font color="#FF0000">keine </font><font color="#0000FF">
+systemweite</font><font color="#FF0000"> </font></B>Einstellung mehr, sondern 
+das Format wird jetzt <font color="#0000FF"><B>vom Kunden</B></font> selbst 
+gewählt.)</font></p>
+<p><font size="2">Man sollte sich <B>unbedingt </B>die Zeit nehmen, um diese 
+Vorlage mit den für den Shop gültigen Daten (Anschrift, eigene Bankverbindung 
+usw.) zu überarbeiten.</font></p>
+<p><font size="2">Diese Bestell-Bestätigungs-eMail sollte, nach gegenwärtigem 
+Stand, <B>weitestgehend <font color="#FF0000">rechts- und abmahnsicher</font></b> 
+sein! </font></p>
+<p><font color="#0000FF" size="2"><B>Es muss aber jeder Anwender </font>
+<font size="2" color="#FF0000">selbst</font><font color="#0000FF" size="2"> 
+prüfen, ob dies aktuell auch so ist!</font></b></p>
+      <p align=left><font size="2">So wird der Text der <B>Widerrufsbelehrung</B> 
+		des Shops mit in die eMail <font color="#FF0000"><B>eingebunden</B></font> 
+		(siehe am Ende der eMail), da der Kunde sonst, nach aktueller 
+		Rechtsprechung, statt des <B>14-tägigen</B> ein <font color="#FF0000">
+		<B>4-wöchiges</B></font> Rückgaberecht hat!</font></p>
+<p align=left><b><font size="2">Versand der AGB und einer Bestellbestätigung im
+<font color="#FF0000">PDF</font>-Format</font></b></p>
+      <p><img border="0" SRC="email_anhang.jpg" width="427" height="41"></p>
+<p><font size="2">Weiterhin wird eine &quot;<B>agb.pdf</B>&quot; als <font color="#FF0000">
+<B>Anhang</B></font> zu der eMail mitverschickt, weil sonst, nach aktueller 
+Rechtsprechung, die eigenen AGBn des Shops <font color="#FF0000"><B>nicht 
+wirksam</B></font> in das Vertragsverhältnis einbezogen sind, und die 
+Bestimmungen des BGB gelten. Diese &quot;<B>agb.pdf</B>&quot; <b><font color="#FF0000">
+muss</font></b> im Verzeichnis &quot;<B>lang/german</B>&quot; abgelegt sein (&quot;<B>lang/english</B>&quot; 
+für die englische Version), damit sie mitverschickt wird!</font></p>
+<p><font size="2">Schließlich wird auch noch eine <B>Bestellbestätigung im
+<font color="#FF0000">PDF</font>-Format</B> als Anhang mitverschickt.</font></p>
+<p><font size="2">(Für <font color="#FF0000"><B>alle</B></font> PDF-Dokumente 
+(Bestellbestätigung, Lieferschein, Rechnung) <font color="#FF0000"><B>muss</B></font> 
+die Datei &quot;<B>templates/my_template/img/invoice_logo.jpg</B>&quot; vorhanden sein, 
+die als Logo in diese Dokumente eingebunden wird.)</font></p>
+<p><font size="2">Diese <B>Bestellbestätigung im <font color="#FF0000">PDF</font>-Format</B> 
+dient &quot;<B>nur</B>&quot; der <B>Dokumentation der Professionalität</B> des Shops, und 
+zeigt, das OL-Commerce v4 ein <font color="#FF0000"><B>komplettes</B></font> und
+<font color="#FF0000"><B>hochprofessionelles</B></font> Shop-System ist, das 
+seinesgleichen sucht!</font></p>
+<p><font size="2">Interessant ist sicher auch noch, dass OL-Commerce v4 neben 
+der <B>IP</B> des Kunden (hier:<b> 89.49.59.141</B>) über eine <B>DNS-Abfrage</B> 
+auch den <font color="#0000FF"><B>Klarnamen des Providers</B></font> (hier: <b>
+M3b8d.m.pppool.de</B>), sowie die Uhrzeit ermittelt, dokumnetiert und 
+speichert)!</font></p>
+<p><font size="2">Damit hat man evtl. bei <font color="#FF0000"><B>Betrügereien</B></font> 
+eine bessere Chance, den Besteller über Staatsanwalt und Provider zu ermitteln.</font></p>
+<hr/>
+<p align="center"><font size="5" color="#FF0000"><B>Beginn des Beispiels einer 
+Bestell-eMail<br/>
+</b></font><b><font size="2">(Anonymisierte echte Bestellung)</font></b></p>
+<hr/>
+<p>&nbsp;</p>
+<table width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td>
+      <table class=standard cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <tr>
+          <td vAlign=top><font size="2">Claudia Musterfrau <br/>Musterstr. 6<br/>
+			99999 Musterhausen<br/>Deutschland </font> </td>
+          <td vAlign=top width=315>
+            <p align=center><A title=Seifenparadies 
+            href="http://www.seifenparadies.de/index.php" target=_blank 
+            alt="Seifenparadies"><font size="2"><img title=Seifenparadies height=51 
+            src="http://www.seifenparadies.de/templates/aqua/img/logo.gif" 
+            width=200 align=middle border=0 NOSEND="1"></font></A><font size="2">
+			</font> </p>
+            <p><b><font size="2">Seifenparadies Gerta M. Kaiser</font></b><font size="2"><br/>Schleswiger Str. 22a 
+			</font> 
+</p>
+            <p><font size="2">D-24975 Husby</font></p>
+            <p><b><font size="2">Fon</font></b><font size="2">: 04634-9313186<br/><B>Fax</B>: 04634-1517 
+			</font> </p>
+            <p><b><font size="2">eMail</font></b><font size="2">: <a 
+            href="mailto:vertrieb@seifenparadies.de">vertrieb@seifenparadies.de</A> 
+            </font> 
+            </p></td></tr></TBODY></table><font size="2"><br/>
+      </font>
+      <table class=standard width="100%" border=0>
+        <TBODY>
+        <tr>
+          <td width="50%">
+            <p><b><font size="2">Lieferadresse</font></b><font size="2"><br/>
+			</font></p></td>
+          <td>
+            <p><b><font size="2">Rechnungsadresse</font></b><font size="2"><br/>
+			</font></p></td></tr>
+        <tr>
+          <td><font size="2">Claudia Musterfrau <br/>Musterstr. 6<br/>99999 
+			Musterhausen<br/>Deutschland </font> </td>
+          <td><font size="2">Claudia Musterfrau <br/>Musterstr. 6<br/>99999 
+			Musterhausen<br/>Deutschland </font> </td></tr>
+        <tr>
+          <td colSpan=2><font size="2"><br/>
+            </font>
+            <hr/>
+
+            <p><b><font size="2">Ihre Telefonnummer: </font> </b><font size="2">0123-45678</font><p><b>
+			<font size="2">Ihre eMail-Adresse: </font> </b><font size="2">
+			xxxxxxxxxx@anynet.de 
+            </font> 
+            <p><b><font size="2">Ihre Internet-Adresse: </font> </b>
+			<font size="2">89.49.59.141 (M3b8d.m.pppool.de) -- 
+            Zeit: 10:42:37</font></p>&nbsp;</td></tr></TBODY></table></td></tr></TBODY></table>
+<p>&nbsp;</p>
+<hr/>
+
+<p class=standard><font size="2">Hallo Claudia Musterfrau,<br/><br/>vielen Dank für Ihre 
+Bestellung beim <A title=Seifenparadies 
+href="http://www.seifenparadies.de/index.php" target=_blank 
+alt="Seifenparadies"><img title=Seifenparadies height=51 alt=Seifenparadies 
+src="http://www.seifenparadies.de/templates/aqua/img/logo.gif" width=200 
+align=middle border=0 NOSEND="1"></A> <br/><br/>Anbei erhalten Sie eine 
+Zusammenfassung Ihrer Bestellung.<br/><br/>Ihre Bestellbestätigung finden Sie im 
+PDF-Format auch als Anhang zu dieser eMail! 
+(<B>bestellbestätigung_20834.pdf</B>)<br/><br/>Sollten Sie Fragen zu Ihrer 
+Bestellung haben, zögern Sie nicht, uns zu kontaktieren.<br/><br/>Mit freundlichen 
+Grüssen,<br/><br/>Ihr <A title=Seifenparadies 
+href="http://www.seifenparadies.de/index.php" target=_blank 
+alt="Seifenparadies"><img title=Seifenparadies height=51 alt=Seifenparadies 
+src="http://www.seifenparadies.de/templates/aqua/img/logo.gif" width=200 
+align=middle border=0 NOSEND="1"></A> Team </font> </p>
+<hr/>
+
+<table class=td_style style="PAGE-BREAK-BEFORE: always" cellSpacing=0 
+cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td>
+      <p align=center><b><font size=2>Ihre Bestellung<br/>&nbsp;</font></b><font size="2">
+		</font> 
+    </p></td></tr>
+  <tr>
+    <td><b><font size="2">Bestellnummer:</font></b><font size="2"> 20834<br/></font><b><font size="2">Bestelldatum: </font></b>
+	<font size="2"> Freitag, 08. Dezember 
+      2006<br/><B>Zahlungsweise:</b> Lastschriftverfahren<br/><br/><br/></font></td></tr>
+  <tr>
+    <td>
+      <table cellSpacing=0 cellPadding=3 width="100%" border=0>
+        <TBODY>
+        <tr>
+          <td class=td_style_header_bold><font size="2">Stk. </font> </td>
+          <td class=td_style_header_bold><font size="2">Produkt </font> </td>
+          <td class=td_style_header_bold><font size="2">Artikel. Nr </font> </td>
+          <td class=td_style_header_bold width=150><font size="2">Einzelpreis</font></td>
+          <td class=td_style_header_bold width=150><font size="2">Preis </font> </td></tr>
+        <tr>
+          <td class=td_style_header vAlign=top align=middle width=40>
+			<font size="2">1 </font> </td>
+          <td class=td_style_header vAlign=top align=left><b><font size="2">SheaMango</font></b><font size="2">
+			</font> </td>
+          <td class=td_style_header vAlign=top align=left><font size="2">1296 <!--<br/><em></em>-->
+			</font></td>
+          <td class=td_style_header vAlign=top align=right width=150>
+			<font size="2">4,50 EUR 
+          </font> 
+          </td>
+          <td class=td_style_header vAlign=top align=right width=150><b>
+			<font size="2">4,50 
+            EUR</font></b><font size="2"> </font> </td></tr>
+        <tr>
+          <td class=td_style_header vAlign=top align=middle width=40>
+			<font size="2">1 </font> </td>
+          <td class=td_style_header vAlign=top align=left><b><font size="2">Schneekönigin</font></b><font size="2">
+			</font> 
+          </td>
+          <td class=td_style_header vAlign=top align=left><font size="2">1302 <!--<br/><em></em>-->
+			</font></td>
+          <td class=td_style_header vAlign=top align=right width=150>
+			<font size="2">4,&#8211; EUR 
+          </font> 
+          </td>
+          <td class=td_style_header vAlign=top align=right width=150><b>
+			<font size="2">4,&#8211; 
+            EUR</font></b><font size="2"> </font> </td></tr>
+        <tr>
+          <td class=td_style_header vAlign=top align=middle width=40>
+			<font size="2">1 </font> </td>
+          <td class=td_style_header vAlign=top align=left><b><font size="2">Sanfter 
+            Pickelkiller</font></b><font size="2"> </font> </td>
+          <td class=td_style_header vAlign=top align=left><font size="2">1087 <!--<br/><em></em>-->
+			</font></td>
+          <td class=td_style_header vAlign=top align=right width=150>
+			<font size="2">4,&#8211; EUR 
+          </font> 
+          </td>
+          <td class=td_style_header vAlign=top align=right width=150><b>
+			<font size="2">4,&#8211; 
+            EUR</font></b><font size="2"> </font> </td></tr>
+        <tr>
+          <td class=td_style_header vAlign=top align=middle width=40>
+			<font size="2">1 </font> </td>
+          <td class=td_style_header vAlign=top align=left><b><font size="2">Seidenrosen</font></b><font size="2">
+			</font> 
+          </td>
+          <td class=td_style_header vAlign=top align=left><font size="2">1230 <!--<br/><em></em>-->
+			</font></td>
+          <td class=td_style_header vAlign=top align=right width=150>
+			<font size="2">4,50 EUR 
+          </font> 
+          </td>
+          <td class=td_style_header vAlign=top align=right width=150><b>
+			<font size="2">4,50 
+            EUR</font></b><font size="2"> </font> </td></tr>
+        <tr>
+          <td class=td_style_header vAlign=top align=middle width=40>
+			<font size="2">1 </font> </td>
+          <td class=td_style_header vAlign=top align=left><b><font size="2">Sweet 
+            Sensation</font></b><font size="2"> </font> </td>
+          <td class=td_style_header vAlign=top align=left><font size="2">1295 <!--<br/><em></em>-->
+			</font></td>
+          <td class=td_style_header vAlign=top align=right width=150>
+			<font size="2">4,&#8211; EUR 
+          </font> 
+          </td>
+          <td class=td_style_header vAlign=top align=right width=150><b>
+			<font size="2">4,&#8211; 
+            EUR</font></b><font size="2"> </font> </td></tr></TBODY></table></td></tr></TBODY></table>
+<div class=td_style align=right><font size="2"><br/><B>Zwischensumme: 21,&#8211; EUR 
+</b><br/>Versandkosten (Versand nach Deutschland : 0,44 kg): 3,&#8211; EUR 
+<br/><B>Summe</B>:<b> 24,&#8211; EUR</B> <br/></font></div>
+<div class=td_style>
+<hr/>
+
+<p><font size="2">Gemäß §19 UStG wird keine MwSt. erhoben. </font> </p>
+<hr/>
+
+<p class=payment><font size="2">Den Rechnungsbetrag werden wir wunschgemäß von Ihrem folgenden 
+Bankkonto abbuchen. </font> </p>
+<table class=standard cellSpacing=6 cellPadding=0 border=0>
+  <TBODY>
+  <tr>
+    <td class=td_style_bold><font size="2">Kontoinhaber:&nbsp; </font> </td>
+    <td class=td_style><font size="2">&nbsp;Claudia Musterfrau </font> </td></tr>
+  <tr>
+    <td class=td_style_bold><font size="2">Geldinstitut:&nbsp; </font> </td>
+    <td class=td_style><font size="2">&nbsp;Kreissparkasse Musterhausen</font></td></tr>
+  <tr>
+    <td class=td_style_bold><font size="2">Bankleitzahl:&nbsp; </font> </td>
+    <td class=td_style><font size="2">&nbsp;12345678 </font> </td></tr>
+  <tr>
+    <td class=td_style_bold><font size="2">Kontonummer:&nbsp; </font> </td>
+    <td class=td_style><font size="2">&nbsp;0123456789 </font> </td></tr></TBODY></table>
+<p class=standard><font size="2">Ihre Bestellung wird nach Zahlungseingang 
+versandt.</font></p></div><font size="2"><br/>
+</font>
+<hr/>
+
+<p><font size="2">Gesetzgeber und Rechtsprechung verlangen, dass wir Sie auch an dieser Stelle 
+auf Ihr Widerrufsrecht hinweisen. Lesen Sie die folgende Information dazu also 
+bitte aufmerksam durch:</font></p>
+<table>
+  <TBODY>
+  <tr>
+    <td class=main>
+      <p align=center><b><font size="2">Widerrufsbelehrung</font></b></p>
+      <p><b><font size="2">Widerrufsrecht</font></b></p>
+      <p><font size="2">Sie können Ihre Vertragserklärung innerhalb von zwei Wochen ohne Angabe 
+      von Gründen in Textform (z. B. Brief, Fax, E&shy;Mail) oder durch 
+      Rücksendung der Sache widerrufen. Die Frist beginnt frühestens mit Erhalt 
+      dieser Belehrung. Zur Wahrung der Widerrufsfrist genügt die rechtzeitige 
+      Absendung des Widerrufs oder der Sache.</font></p>
+      <p><font size="2">Der Widerruf ist zu richten an:</font></p>
+      <p ?ALIGN="left"><STRONG style="font-WEIGHT: 400"><font size="2">Das 
+      Seifenparadies<br/><br/>Gerta M. Kaiser<br/>Schleswiger Str. 
+      22a<br/><br/>D-24975 Husby<br/><br/>Fax: 04634-1517</font></strong></p>
+      <p ?ALIGN="left"><font size="2">eMail: info@seifenparadies.de</font></p>
+      <p><b><font size="2">Widerrufsfolgen</font></b></p>
+      <p><font size="2">Im Falle eines wirksamen Widerrufs sind die beiderseits empfangenen 
+      Leistungen zurückzugewähren und ggf. gezogene Nutzungen (z. B. Zinsen) 
+      herauszugeben. Können Sie uns die empfangene Leistung ganz oder teilweise 
+      nicht oder nur in verschlechtertem Zustand zurückgewähren, müssen Sie uns 
+      insoweit Wertersatz (ggf. bis zur vollen Höhe des Kaufpreises) leisten. 
+      Bei der Überlassung von Sachen gilt dies nicht, wenn die Verschlechterung 
+      der Sache ausschließlich auf deren Prüfung - wie sie Ihnen etwa im 
+      Ladengeschäft möglich gewesen wäre - zurückzuführen ist. Im Übrigen können 
+      Sie die Wertersatzpflicht vermeiden, indem Sie die Sache nicht wie ein 
+      Eigentümer in Gebrauch nehmen und alles unterlassen, was deren Wert 
+      beeinträchtigt.</font></p>
+      <p><font size="2">Paketversandfähige Sachen sind zurückzusenden. Nicht paketversandfähige 
+      Sachen werden bei Ihnen abgeholt. Sie haben die Rücksendekosten zu tragen, 
+      wenn die gelieferte Ware der bestellten entspricht und wenn der Preis der 
+      zurückzusendenden Sache einen Betrag von 40 Euro nicht übersteigt oder 
+      wenn Sie bei einem höheren Preis der Sache zum Zeitpunkt des Widerrufs 
+      noch nicht die Gegenleistung oder eine vertraglich vereinbarte Teilzahlung 
+      erbracht haben. Anderenfalls ist die Rücksendung für Sie kostenfrei. 
+      Verpflichtungen zur Erstattung von Zahlungen müssen Sie innerhalb von 30 
+      Tagen nach Absendung Ihrer Widerrufserklärung erfüllen.</font></p>
+      <p><b><font size="2">Ende der Widerrufsbelehrung</font></b></p></td></tr></TBODY></table>
+<font size="2"><br/>
+</font>
+<hr/>
+
+<p><font size="2">Gesetzgeber und Rechtsprechung verlangen, dass wir Ihnen auch an dieser 
+Stelle unsere "Allgemeinen Geschäftsbedingen (AGB)" zugänglich machen. Sie 
+finden diese im Anhang zu dieser eMail in der Datei "<B>agb.pdf</B>"</font></p>
+<hr/>
+<p align="center"><b><font size="5" color="#FF0000">Ende des Beispiels einer 
+Bestell-eMail</font></b></p>
+<hr/>
+<p align="left"><font size="2">Die <B>Bestellbestätigung im
+<font color="#FF0000">PDF</font>-Format</B> für diese Bestellung kann hier 
+betrachtet werden: <b><A href="bestellbestätigung_20834.pdf">
+bestellbestätigung_20834.pdf</A></b></font></p>
+<p align="left"><font size="2">Die anderen eMail-Vorlagen in &quot;<B>common/mail/german/</b>&quot; 
+wurden ebenfalls so überarbeitet, dass ein ähnliches Erscheinungsbild wie bei 
+dieser eMail entsteht.</font></p>
+
+</body></HTML>

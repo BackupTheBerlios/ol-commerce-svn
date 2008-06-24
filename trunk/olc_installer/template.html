@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<meta http-equiv="Content-Language" content="de" />
+<title>OL-Commerce {$STEP_TEXT} {$STEP}</title>
+<link rel="stylesheet" type="text/css" href="template.css" />
+{$BASE}
+{$SCRIPT}
+</head>
+
+<body style="margin: 0">
+<map id="logo" name="logo">
+<area shape="circle" alt="OL-Commerce Homepage" title="OL-Commerce Homepage" coords="30,38,30" 
+href="http://www.ol-commerce.de/v4" target="_blank" />
+<area shape="rect" alt="OL-Commerce Homepage" title="OL-Commerce Homepage" coords="73,16,291,69" 
+href="http://www.ol-commerce.de/v4" target="_blank" />
+</map><map id="ajax_logo" name="ajax_logo">
+<area shape="circle" alt="{$AJAX_LOGO_TITLE}" title="{$AJAX_LOGO_TITLE}" coords="55,53,51" 
+href="{$AJAX_LOGO_LINK}" target="_blank" />
+</map>
+
+<table style="width: 100%;" align="center" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="frame_left">&nbsp;</td>
+    <td class="user_area">
+      <table style="width: 100%;" align="center" cellspacing="0" cellpadding="0">
+        <tr>
+          <td valign="top" class="frame_left">
+          	<img usemap="#logo" title="" alt="" src="images/logo.gif" class="image" />
+          </td>
+          <td valign="top" class="frame_right">
+          	<img alt="AJAX" longdesc="AJAX" usemap="#ajax_logo" src="images/ajax_logo.gif" class="image" /> 		
+          </td>
+  		  </tr>
+        <tr>
+          <td colspan="2" valign="top">
+          	<div id="USER_AREA">
+{$USER_AREA}
+          	</div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" valign="top" class="footer">
+            <br /><br />
+            {$FOOTER} 
+            <br /><br />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" valign="top" style="text-align: center;">
+              <a href="http://validator.w3.org/check?uri=referer">
+              	<img
+                  src="http://www.w3.org/Icons/valid-xhtml10"
+                  alt="Valid XHTML 1.0 Transitional" height="31" width="88" 
+  		            style="text-align: center;border:0px" />
+             </a>
+            <br /><br />
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="frame_right">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,196 @@
+{olc_template_init title="#heading_create_account#" section="create_account"}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			{if $error != ''}
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="headerError"><div align="center">{$error}</div></td>
+				</tr>
+			</table>
+			{/if}
+			{$FORM_ACTION}
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="subcategory">{#title_personal#}&nbsp;</td>
+							<td align="right" class="stockWarning">
+							<p align="left">&nbsp;</td>
+						</tr>
+					</table>
+
+					<table class="formArea"  width="100%" border="0" cellpadding="0" cellspacing="2">
+						{if $INPUT_MALE != ''}
+						<tr>
+							<td class="main" width="170" valign="top">{#text_gender#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{#text_male#}&nbsp;
+							{$INPUT_MALE} {#text_female#}&nbsp; {$INPUT_FEMALE}</td>
+						</tr>
+						{/if}
+						<tr>
+							<td class="main" valign="top" width="170">{#text_firstname#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_FIRSTNAME}</td>
+						</tr>
+						<tr>
+							<td class="main" valign="top" width="170">{#text_lastname#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_LASTNAME}</td>
+						</tr>
+						{if INPUT_DOB != ''}
+						<tr>
+							<td class="main" valign="top" width="170">{#text_birthdate#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_DOB}</td>
+						</tr>
+						{/if}
+						<tr>
+							<!-- W. Kaiser - eMail-type by customer -->
+							<td class="main" valign="top" width="170">{#text_email#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_EMAIL}</td>
+							<!-- W. Kaiser - eMail-type by customer -->
+						</tr>
+					</table>
+
+					{if $INPUT_COMPANY != ''}
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="subcategory">{#title_company#}&nbsp;</td>
+						</tr>
+					</table>
+
+					<table class="formArea"  width="100%" border="0" cellspacing="2" cellpadding="0">
+						<tr>
+							<td class="main" width="170" valign="top">{#text_company#}</td>
+							<td class="main" valign="top">{$INPUT_COMPANY}</td>
+							<td class="main" valign="top" width="17">&nbsp;</td>
+						</tr>
+					</table>
+
+					{/if}
+
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="subcategory">{#title_address#}&nbsp;</td>
+						</tr>
+					</table>
+
+					<table class="formArea"  width="100%" border="0" cellspacing="2" cellpadding="0">
+						<tr>
+							<td class="main" width="170" valign="top">{#text_street#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_STREET}</td>
+						</tr>
+						{if $INPUT_SUBURB != ''}
+						<tr>
+							<td class="main" valign="top" width="170">{#text_suburb#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_SUBURB}</td>
+						</tr>
+						{/if}
+						<tr>
+							<td class="main" width="170" valign="top">{#text_country#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$SELECT_COUNTRY}</td>
+						</tr>
+						<tr>
+							<td class="main" valign="top" width="170">{#text_code#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_CODE}</td>
+						</tr>
+						<tr>
+							<td class="main" valign="top" width="170">{#text_city#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_CITY}</td>
+						</tr>
+						{if $INPUT_STATE != ''}
+						<tr>
+							<!-- W. Kaiser - AJAX -->
+							<td class="main" width="170" valign="top">
+								<span id="entry_state_area_1" style="display:inline;">{#text_state#}&nbsp;</span>
+							</td>
+							<td class="main" width="275" valign="top">
+								<span id="entry_state_area_2" style="display:inline;">{$INPUT_STATE}	<!--</span>-->
+							</td>
+							<!--
+							<td class="errorText" width="250" valign="top">
+								<span id="entry_state_area_3" style="display:inline;">{$INPUT_STATE_ERROR}</span>
+							</td>
+							-->
+							<!-- W. Kaiser - AJAX -->
+						</tr>
+						{/if}
+					</table>
+
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="subcategory">{#title_contact#}&nbsp;</td>
+						</tr>
+					</table>
+
+					<table class="formArea"  width="100%" border="0" cellspacing="2" cellpadding="0">
+						<tr>
+							<td class="main" width="170" valign="top">{#text_tel#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_TEL}</td>
+						</tr>
+						<tr>
+							<td class="main" valign="top" width="170">{#text_fax#}&nbsp;</td>
+							<td class="main" valign="top" width="275">{$INPUT_FAX}</td>
+						</tr>
+					</table>
+					{if $CHECKBOX_NEWSLETTER}
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="subcategory">{#title_options#}&nbsp;</td>
+						</tr>
+					</table>
+					<table class="formArea"  width="100%" border="0" cellspacing="2" cellpadding="0">
+						<tr>
+							<td class="main" width="170">{#text_newsletter#}</td>
+							<td class="main">{$CHECKBOX_NEWSLETTER}</td>
+						</tr>
+					</table>
+					{/if}
+					{if $INPUT_PASSWORD != ''}
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="subcategory">{#title_password#}&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+					</table>
+
+					<table class="formArea"  width="100%" border="0" cellspacing="2" cellpadding="0">
+						<tr>
+							<td class="main" valign="top" width="170">{#text_password#}</td>
+							<td class="main" valign="top" width="275">{$INPUT_PASSWORD}</td>
+						</tr>
+						<tr>
+							<td class="main" valign="top" width="170">{#text_confirmation#}</td>
+							<td class="main" valign="top" width="275">{$INPUT_CONFIRMATION}</td>
+						</tr>
+					</table>
+					{/if}
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><div align="right">{$BUTTON_SUBMIT}</div></td>
+						</tr>
+					</table>
+			{$FORM_END}
+		</td>
+	</tr>
+</table>

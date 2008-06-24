@@ -1,0 +1,121 @@
+<html dir="LTR" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15"> 
+<meta browser="generator" content="Microsoft FrontPage 6.0">
+<meta browser="robots" content="index,follow">
+<meta browser="language" content="german">
+<meta browser="author" content="Winfried Kaiser">
+<meta browser="publisher" content="olCommerce">
+<meta browser="company" content="olCommerce">
+<meta browser="page-topic" content="olCommerce">
+<meta browser="distribution" content="global">
+<meta browser="revisit-after" content="14">
+{if $tpl_path}
+<link rel="stylesheet" type="text/css" href="{$tpl_path}stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+<title>olCommerce - Javascript aktivieren</title>
+</head>
+<body>
+<p>&nbsp;</p>
+{if $tpl_path}
+<p align="center"><img border="0" SRC="{$tpl_path}img/logo.gif"></p>
+{else}
+<p align="center"><img border="0" SRC="../img/logo.gif"></p>
+{/if}
+	<table border="0" width="100%">
+		<tr>
+		  <td width="100%">
+			<font size="2"><p align="center">Sehr geehrter Besucher, sehr geehrte Besucherin,</p></font>
+			<p align="center">
+				<font size="2">Um unseren Shop mit der <b>
+					<A TARGET="_blank" href="http://de.wikipedia.org/wiki/Ajax_(Programmierung)">
+					AJAX-Technologie</A></b> zu betreiben,<br/>
+				<font color="#FF0000">
+				<B>muss</B></font> in Ihrem Browser <b>
+					Javascript</B> aktiviert sein!<br/>
+					<br/>
+					Im folgenden finden Sie eine Zusammenstellung von <B>Hinweisen</B>,<br/>
+					um 
+					Javascript für die gängigsten Browser zu aktivieren.
+				</font>
+			</p>
+			<table border="0" width="100%">
+		    <tbody><tr>
+		      <td valign="top" width="3%" ROWSPAN="4">&nbsp;</td>
+		      <td width="47%"><p><font size="1">
+				{if $tpl_path}
+				<img src="{$cat_path}images/ie_icon.gif" alt="IE Icon" align="middle" height="40" hspace="0" width="40">
+				{else}
+				<img src="../../../images/ie_icon.gif" alt="IE Icon" align="middle" height="40" hspace="0" width="40">
+				{/if}
+				</font><b>
+				<font size="2">Internet 
+				Explorer</font></b></p>
+		      </td>
+		      <td ROWSPAN="4"><font size="1"></font></td>
+		      <td width="43%"><font size="1">
+				{if $tpl_path}
+				<img src="{$cat_path}images/firefox_icon.gif" alt="FireFox Icon" align="middle" border="0" height="40" hspace="0" width="40">
+				{else}
+				<img src="../../../images/firefox_icon.gif" alt="IE Icon" align="middle" height="40" hspace="0" width="40">
+				{/if}
+				</font><span class="pageHeading"><font size="2"><B>Firefox</B></font></td>
+		      <td valign="top" width="3%" ROWSPAN="4">&nbsp;</td>
+		    </tr>
+		  		<tr>
+		      <td valign="top" width="47%" ROWSPAN="3"><font size="1">1. Öffnen Sie das <B>Extras</B> Menü, und 
+				wählen Sie <B>Internetoptionen</B><br/>
+				2. Klicken Sie auf den Reiter
+				<B>Sicherheit</B><br/>
+				3. Im <B>Sicherheitsdialog </b>
+				klicken Sie auf den Globus <B>Internet</B><br/>
+				4. Klicken Sie auf die 
+				Schaltfläche <B>Stufe anpassen</B><br/>
+				5. Suchen Sie in dem folgenden Bereich den Eintrag <B>Scripting</B> <br/>
+				6. Wählen Sie <B>aktivieren</B> 
+				um JavaScript einzuschalten</font></td>
+		      <td valign="top" width="43%"><span class="pageHeading"><font size="1">1. Öffnen Sie das <B>Extras</B>
+		      	Menü, und wählen Sie <b>
+				Einstellungen</B><br/>
+				2. Klicken Sie auf den Globus
+				<B>Inhalt</B><br/>
+				3. Aktivieren Sie die <B>JavaScript</B> Option<br/>&nbsp;</font></td>
+		    </tr>
+	  		<tr>
+		      <td valign="top" width="47%">
+			    <font size="1"><br/>
+				{if $tpl_path}
+				<img src="{$cat_path}images/netscape_icon.jpg" align="middle" height="40" width="40"><b> </b></font><b>
+				{else}
+				<img src="../../../images/netscape_icon.jpg" alt="Netscape Browser" align="middle" height="40" hspace="0" width="40">
+				{/if}
+			    <font size="2">Netscape</font></b><font size="1">
+				</font>
+			  </td>
+		    </tr>
+		  	<tr>
+		      <td valign="top" width="47%">
+				<font size="1">
+				1. Öffnen Sie das <B>Extras</B> Menü, und wählen Sie <b>
+					Einstellungen</B><br/>
+				2. Klicken Sie auf den Globus <B>Inhalt</B><br/>
+				3. Aktivieren Sie die <B>JavaScript</B> Option</font>
+			  </td>
+		    </tr>
+		  </tbody></table>                
+		  </td>
+		</tr>
+		<tr>
+			<td>
+			<p align="center">&nbsp;<p align="center"><font size="2">Nach erfolgter Einstellung können Sie unseren 
+			Shop über <b><A href="{$no_ajax_link}&force_javascript_check=true">
+			<font color="#FF0000">diesen Link</font></A></b> neu starten.</font><p align="center">
+			<font size="2">Oder über <b>
+			<A href="{$no_ajax_link}no_ajax=true"><font color="#FF0000">diesen Link</font></A></b> im <b>
+			konventionellen</B> Modus starten.</font></td>
+		</tr>
+	</table>
+</body>
+</html>

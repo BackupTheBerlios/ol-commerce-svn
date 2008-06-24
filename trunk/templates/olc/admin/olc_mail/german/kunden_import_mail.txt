@@ -1,0 +1,21 @@
+{if $GENDER == 'f'}
+Sehr geehrte Frau {$LASTNAME},
+{else}
+Sehr geehrter Herr {$LASTNAME},
+{/if}
+
+seit 01.02.2007 ist unser neuer Onlineshop unter Modellsport.de erreichbar.
+
+Da Sie bereits Kunde bei uns sind, haben wir Ihre Daten in den neuen Shop übernommen. 
+
+Sie können sich mit folgenden Login-Daten anmelden:
+
+Benutzer: {$EMAIL}
+Passwort: {$PASSWORT}
+
+Bitte überprüfen Sie bei Gelegenheit, ob die Angaben, wie Name, Adresse usw. noch korrekt sind und geben uns Bescheid, wenn sich irgendwelche Fehler eingeschlichen oder Daten geändert haben sollten.
+
+Wir danken für Ihre Mithilfe und verbleiben
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}

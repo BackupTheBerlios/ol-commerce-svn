@@ -1,0 +1,537 @@
+<head>
+<meta HTTP-EQUIV="Content-Language" CONTENT="de">
+</HEAD>
+
+<p align="center"><b><font size="5" color="#FF0000">OL-Commerce v4.0a/AJAX</font></b></p>
+<p align="center">Autor: Dipl.-Ing.(TH) Winfried Kaiser<br/>
+<br/>
+<A href="http://www.seifenparadies.de">http://www.seifenparadies.de</A><br/>
+<A href="mailto:w.kaiser@fortune.de">w.kaiser@fortune.de</A></p>
+<p align="center"><b>&copy; 2006 Dipl.-Ing.(TH) Winfried Kaiser, 24975 Husby</B></p>
+<hr/>
+<p align="center"><B>Diese Software basiert auf der Software &quot;<A TARGET="_blank" href="http://www.ol-commerce.de">OL-Commerce </A> 
+v1.2.2.a&quot;, sie wird veröffentlicht auf Basis der &quot;<A TARGET="_blank" href="http://www.gnu.de/gpl-ger.html">GNU 
+General Public License</A>&quot;.</b></p>
+<p align="center"><B>Es wird vom Autor <U><font color="#FF0000">keinerlei 
+Gewährleistung</font></U> für die Software <font size="3" color="#0000FF">OL-Commerce v4.0a/AJAX</font></b>
+<B>übernommen!<br/>
+Eine Verpflichtung zur Behebung evtl. auftretender Fehler besteht nicht!</b></p>
+<p align="center"><U><b><font color="#FF0000">Der Einsatz dieser Software 
+erfolgt </font><font color="#0000FF">ausschließlich(!)</font><font color="#FF0000"> 
+auf eigene Gefahr und Risiko des Anwenders!</font></b></U></p>
+<p align="center"><b><font color="#0000FF">Der Anwender hat dafür Sorge zu 
+tragen, dass er seinen </font><font color="#FF0000"><U>aktuellen</U> Software- 
+und Datenbestand vor Einsatz dieser Software </font><U><font color="#FF0000">
+sichert</font></U><font color="#008000">, <br/>
+</font><font color="#0000FF">so dass er im Fehlerfall jederzeit diesen Stand 
+wieder rekonstruieren kann.</font></b></p>
+<hr/>
+<p align="center"><B>Eine Testversion ist
+<A href="http://www.seifenparadies.de/ajax/olc_original/index.php">
+hier</A> online zu sehen</B></p>
+<p align="center">Der Zugang als Administrator ist folgender:</p>
+<BLOCKQUOTE>
+	<p align="center"><B>Benutzer:</b> test@test.com<br/><B>Passwort:</b> testtest</p>
+</BLOCKQUOTE>
+<hr/>
+<p align="left"><B>Überblick</B>:
+<A TARGET="_blank" href="../OL-Commerce%20_v4_ajax.html">OL-Commerce _v4_ajax.html</A></p>
+<p align="left"><B>Updatehinweise</B>:
+<A TARGET="_blank" href="ajax_aenderungen.html">ajax_aenderungen.html</A></p>
+<p align="left"><B>Installationshinweise</B>: 
+<A href="../readme.html">readme.html</A></p>
+<p align="left"><B>Daten-Import</B>:
+<A TARGET="_blank" href="automatischer_daten_import.html">
+automatischer_daten_import.html</A></p>
+<p align="left"><B>eBay_Konnektor</B>:
+<A TARGET="_blank" href="eBay-Konnektor.html">eBay-Konnektor.html</A></p>
+<hr/>
+<p align="center"><b><font size="5" color="#FF0000">Multi-</font><font size="5" color="#0000FF">Shop</font><font size="5" color="#FF0000"> und 
+Multi-</font><font size="5" color="#0000FF">Datenbank</font><font size="5" color="#FF0000"><br/>
+mit OL-Commerce v4</font></b></p>
+<p>Ein häufig geäußerter Wunsch in Bezug auf Shop-Systeme ist, dass man mit 
+<font color="#FF0000"><B>einer(!)</b></font> Software-Installation <B>mehrere Shops</B> betreiben kann.</p>
+<p>
+<font color="#FF0000"><B>Dieser Wunsch kann mit OL-Commerce v4/AJAX nun auch 
+erfüllt werden!</b></font></p>
+<p>Das Szenario ist wie folgt:</p>
+<UL>
+	<LI>Es gibt auf dem Server <font color="#FF0000"> <B>eine(!)</b> </font> <B>komplette</B> 
+	OL-Commerce -Installation mit allen Templates <br/>
+	(z.B. im Verzeichnis &quot;olcommerce&quot;).<br/>
+&nbsp;</LI>
+	<LI>Es gibt auf dem Server weiterhin &quot;<B>n</B>&quot; weitere Verzeichnisse für 
+	weitere Shops <br/>
+	(z.B. in den Verzeichnissen &quot;olcommerce_1&quot; bis &quot;olcommerce_n&quot;, 
+	die Namen sind beliebig).</LI>
+</UL>
+<p>In den Verzeichnissen &quot;<B>olcommerce_xx</B>&quot; gibt es folgende Dateien:</p>
+<p><font color="#800000">(</font><b><font color="#800000">Die Beispiel-Dateien 
+dafür liegen im Verzeichnis &quot;</font><font color="#FF0000">olc_installer/muli_shop_multi_db</font><font color="#800000">&quot;, 
+und müssen von dort in das </font></b><font color="#800000"><b>&quot;</font><font color="#FF0000">olcommerce_xx</font><font color="#800000">&quot;</font></b><b><font color="#800000">-Verzeichniss&nbsp; 
+kopiert und angepasst (</font></b><font color="#800000">-</font><b><font color="#800000">
+</font></b><b><font color="#FF0000">configure.php </font><font color="#800000">
+und </font><font color="#FF0000">template.txt</font></b><font color="#800000"> 
+-) </font><b><font color="#800000">werden.</font></b><font color="#800000">)</font></p>
+<table border="0" ID="table1" cellspacing="5" cellpadding="5">
+	<tr>
+		<td valign="top"><font color="#FF0000"><b>.htaccess</B></font></td>
+		<td valign="top"><font color="#0000FF"><B>Definition des &quot;Fehler 404&quot;-Handlers für den APACHE 
+		Server.<br/>
+		</b></font>(Beim IIS muss dieser Handler anders vereinbart werden!)</td>
+	</tr>
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>404.php</B></font></td>
+		<td valign="top"><font color="#0000FF"><b>&quot;Fehler 404&quot;-Handler. 
+		</b></font>
+		<p>Da in den Verzeichnissen &quot;<B>olcommerce_xx</B>&quot;
+		<b><font color="#FF0000">keinerlei</font></b> OL-Commerce -Dateien liegen, 
+		werden alle Anforderungen an den Server an diesen Handler 
+		weitergeleitet.</p>
+		<p>Dieser Handler analysiert den Aufruf, setzt die 
+		notwendigen Parameter, und übergibt die Informationen an das 
+		entsprechende Programm der OL-Commerce Hauptinstallation (meist &quot;<B>index.php</B>&quot;).
+		</p>
+		<p>Die wichtigen Informationen sind dabei die in &quot;<B>configure.php</B>&quot; 
+		definierten (von der Hauptinstallation <font color="#FF0000"><b>
+		abweichenden(!)</b></font>) Konstanten, und das Arbeitsverzeichnis 
+		dieses Shops.</td>
+	</tr>
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>configure.php</B></font></td>
+		<td valign="top"><font color="#0000FF"><B>Lokale Konfigurationsdatei für diesen Shop.
+		</b></font>
+		<p>Hier wird definiert, welches das <b><font color="#FF0000">Verzeichnis der OL-Commerce 
+		Hauptinstallation </font></B>ist (&quot;<B>MASTER_DIRECTORY</B>&quot;).</p>
+		<p>Weiterhin können <b><font color="#FF0000">von der Hauptinstallation abweichende Informationen</font></b> 
+		vereinbart werden. Um z.B. eine <B>andere Datenbank</B> zu verwenden, 
+		und/oder einen <B>anderen Tabellen-Präfix</B>.</p>
+		<p>Oder auch z.B. die Verwendung des &quot;<B>Cool-Menu</B>&quot; 
+		ein-/auszuschalten.</p>
+		<p><font color="#0000FF"><B>Beispiel:</b></font></p>
+		<hr/>
+		<p>/<font color="#FF0000"><b>/ Directory of the full OL-Commerce installation</B></font><br/>
+		define('<B>MASTER_SHOP_DIRECTORY</B>', '/olcommerce/');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		//Is <font color="#FF0000"><B>set</B></font> by the
+		<font color="#FF0000"><B>installer</B></font><br/>
+		<font color="#FF0000"><b>// Directory of the Multi-Shop</B></font><br/>
+		define('<B>MULTI_SHOP_DIRECTORY</B>', '/olcommerce_1/');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		//<font color="#FF0000"><B>M u s t</B></font> be <b>
+		<font color="#FF0000">m a n u a l l y</font></b> set to the actual value!!!!<br/>
+		<br/>
+		<b><font color="#FF0000">//We want &quot;</font><font color="#0000FF">Cool-Menu</font><font color="#FF0000">&quot; for this store<br/>
+		</font></B>define('<B>SHOW_COOL_MENU</B>', true); // Set to 'true' to 
+		use DHTML-menu<br/>
+		<br/>
+		<b>
+		<font color="#0000FF">//If a </font><font color="#FF0000">different 
+		database</font><font color="#0000FF"> then that of the
+		</font><font color="#FF0000"> master&nbsp; shop</font><font color="#0000FF">  
+		is to be used for that store, define it here<br/>
+		</font></b>/*<br/>
+		<b>// define alternative database connection<br/>
+		</B>define('<B>DB_SERVER</B>', '');<br/>
+		define('<B>DB_SERVER_USERNAME</B>', '');<br/>
+		define('<B>DB_SERVER_PASSWORD</B>', '');<br/>
+		define('<B>DB_DATABASE</B>', '');<br/>
+		*/<br/>
+		<br/>
+		/*<br/>
+		<b><font color="#0000FF">//And/or you can use </font><font color="#FF0000">
+		different tables</font><font color="#0000FF"> (in the same database),
+		</font></B>by installing the DB with a different table prefix<br/>
+		//define('<B>TABLE_PREFIX</B>', 'olc_1_');<br/>
+		*/<br/>
+		<br/>
+		/*<br/>
+		//<br/>
+		<font color="#FF0000"><b>//Multi-Datenbank function!<br/>
+		</b></font>//<br/>
+		/<b>/Split DB into 2 DB's</B><br/>
+		//<br/>
+		//<font color="#0000FF"><B>One</B></font> &quot;<font color="#FF0000"><B>common</B></font>&quot; 
+		products (and other) database <font color="#FF0000"><B>plus</B></font><br/>
+		//<b><font color="#0000FF">multiple</font></b> &quot;<b><font color="#FF0000">individual</font></b>&quot; 
+		databases for orders, customers (et.al.)<br/>
+		//<br/>
+		<b>//This allows the creation of shop portals with a
+		<font color="#FF0000">common</font><font color="#0000FF"> products structure</font>, but
+		<font color="#FF0000">different</font><font color="#0000FF"> merchants</font>!<br/>
+		</b>//<br/>
+		//The &quot;<font color="#FF0000"><B>common</B></font>&quot; database
+		<font color="#0000FF"><B>m u s t</B></font> always be installed on the
+		<B>main database </B>of the installation!<br/>
+		//(either the DB of the master OL-Commerce -installation, or the one specified 
+		previously)<br/>
+		//<br/>
+		//The &quot;<b><font color="#FF0000">individual</font></b>&quot; databases <b>
+		<font color="#0000FF">m u s t</font></b> always be installed on a
+		<font color="#FF0000"><B>second(!)</b> </font>database!<br/>
+		//<br/>
+		// <b><font color="#FF0000">***** Note: </font></B>Multiple DB <B>servers(!)</b> are
+		<b><font color="#FF0000">not</font></b> allowed (yet?)! Do
+		<b><font color="#FF0000">not(!)</font></b> remove comments on the following 
+		lines!<br/>
+		//define('DB_SERVER_1', '');<br/>
+		//define('DB_SERVER_USERNAME_1', '');<br/>
+		//define('DB_SERVER_PASSWORD_1', '');<br/>
+		//define('DB_DATABASE_1', '');<br/>
+		// <b><font color="#FF0000">***** Note: </font></B>Multiple DB <B>servers(!)</b> are
+		<b><font color="#FF0000">not</font></b> allowed (yet?)! Do
+		<b><font color="#FF0000">not(!)</font></b> remove comments on the previous 
+		lines!<br/>
+		//<br/>
+		//&quot;<font color="#FF0000"><B>Individual</B></font>&quot; database for this store<br/>
+		//define('<B>DB_DATABASE_1</B>', ''); //You can use
+		<font color="#0000FF"><b><U>different</U> DB's</B></font> on then <b>
+		<font color="#FF0000"><U>s a 
+		m e</U></font><font color="#0000FF"> server</font></b>!<br/>
+		//define('<B>TABLE_PREFIX_INDIVIDUAL_DATA</B>','olc_1_); //<B>and/or</B>
+		<font color="#0000FF"><b><U>different</U> prefixes</B></font> in the <b>
+		<font color="#0000FF">&nbsp;</font><font color="#FF0000"><U>s a m e</U></font><font color="#0000FF">&nbsp; DB</font></b>!!<br/>
+		//<br/>
+		*/</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>template.txt</B></font></td>
+		<td valign="top"><b><font color="#FF0000">Textdatei</font><font color="#0000FF">, 
+		die den Namen des aktiven Templates enthält (z.B. &quot;olc&quot;).</font></b></td>
+	</tr>
+	</table>
+<p><U><font color="#FF0000"><B>Die komplette weitere Bearbeitung geschieht dann in der Hauptinstallation von 
+OL-Commerce !</b></font></U></p>
+<p>Durch den 1. Aufruf des Hauptshops über &quot;<B>404.php&quot;</b> kennt der Hauptshop 
+die für diese Session gültigen wichtigen Parameter, um die notwendige 
+Information für den zu bedienenden &quot;Multishop&quot;, so dass er darauf entsprechende 
+reagieren kann.<p>Im Grunde muss der Hauptshop nur die &quot;<B>configure.php</B>&quot; 
+des Multishops einbinden, und aus der Datei &quot;<B>template.txt</B>&quot; des Multishops 
+das zu verwendende Template ermitteln. D.h., er muss das <B>Arbeitsverzeichnis</B> des 
+Multishops kennen. Dieses wird über einen &quot;<B>Link</B>&quot;- bzw. &quot;<B>Formular</B>&quot;-Parameter 
+weitergegeben.<p>Im &quot;AJAX&quot;-Modus wird der Parameter durch das 
+AJAX-Support-Javascript angehängt, so dass die &quot;<B>Links</B>&quot; nicht damit 
+&quot;verschandelt&quot; werden.<p>Mit diesem Konzept kann man mit 
+<font color="#0000FF"><B>einer(!)</b></font> <b><font color="#FF0000">OL-Commerce -Hauptinstallation</font></b> also Shops verwalten, die entweder 
+<B>total unabhängig </B>sind 
+(mit eigener DB usw.), oder die auf der <B>gleichen Datenbasis</B>, aber mit 
+unterschiedlichen Shop-Layouts arbeiten. Das erspart eine Menge an Pflegeaufwand, 
+da die Software immer nur in <font color="#0000FF"><B>einem(!)</b></font> Verzeichnis aktuell gehalten werden muss.<br/>
+&nbsp;<hr/>
+<p>Mit Hilfe von &quot;<B>mod_rewrite</B>&quot; kann man verschiedene Shop-URLs in eine 
+solche Struktur umleiten.<p>Ein Aufruf von &quot;<A href="http://www.shop_adresse_1.de">www.shop_adresse_1.de</A>&quot; 
+könnte so auf das Verzeichnis &quot;<B>olcommerce_1</B>&quot;, ein Aufruf von &quot;<A href="http://www.shop_adresse_1.de">www.shop_adresse_2.de</A>&quot; 
+könnte so auf das Verzeichnis &quot;<B>olcommerce_2</B>&quot; umgeleitet werden, usw.<p>
+Mann kann also nach außen hin diese &quot;<B>Multishop</B>&quot;-Eigenschaft verstecken, und hat 
+es mit völlig separaten Shops zu tun.<br/>
+&nbsp;<p>
+Für andere Server, die kein &quot;<B>mod_rewrite</B>&quot; unterstützen (z.B. Microsoft 
+IIS) könnte man das auch in einer erweiterten &quot;404.php&quot; realisieren!<br/>
+&nbsp;<hr/>
+<p><font color="#0000FF"><B>Was damit allerdings noch </font>
+<font color="#FF0000">nicht </font><font color="#0000FF">funktioniert, ist ein 
+anderes häufiger nachgefragtes Konzept:</font></b><p>eine <b><font color="#FF0000">gemeinsame</font> 
+Produktdatenbasis</B> aber mit <font color="#FF0000"> <B>unabhängigen Händler-Shops</B></font> (<B>Beispiel</B>: 
+ein Großhändler pflegt eine Produktdatenbank, und bietet seinen Händlern eigene 
+Shops für diese Produkte an).<p>Dazu ist, <B>zusätzlich</B> zu dem zuvor 
+beschriebenen &quot;<B>Multishop</B>&quot;-Konzept, noch eine <B>Trennung der Datenbank </B>in 2 
+Teile notwendig (<b>&quot;Multi-Datenbank&quot;</b>): eine <b><font color="#FF0000">gemeinsame</font> 
+Datenbank </B>für Produkte, Kategorien usw., und&nbsp; <b><font color="#FF0000">
+individuelle</font> Datenbanken für jeden Händler </B>für Kunden, Bestellungen usw..<p>
+Das bedeutet, dass OL-Commerce seine Daten aus <b><font color="#FF0000">2 
+unabhängigen Datenbanken </font></b>(die auf <font color="#0000FF"><B>demselben Server(!) </b></font>vorhanden sein müssen) holen muss. 
+<p>OL-Commerce war natürlich nicht auf eine solche Vorgehensweise ausgelegt, so 
+dass hier Änderungen notwendig sind.<p>Schwierig sind die Datenbank-Abfragen, in 
+denen Tabellen aus beiden Datenbanken angesprochen werden (z.B. bei den &quot;Best-Sellern&quot;, 
+wo Produktdaten aus der <B>gemeinsamen</B>, und Order-Daten aus der jeweils 
+<B>individuellen</B> Datenbank ausgelesen werden müssen).<p>MySQL erlaubt 
+erfreulicherweise in seiner 
+Abfrage-Syntax die Angabe von <B>Datenbank-Namen </B>überall dort, wo 
+Tabellen-Namen verwendet werden.<p><font color="#0000FF"><B>Beispiel:</b></font><p><B>SELECT 
+t1.db1_feld, t2.db2_feld FROM
+<font color="#FF0000">db1</font>.tabelle AS t1 , <font color="#FF0000">db2</font>.tabelle 
+AS t2;</b><p>
+wobei &quot;<font color="#FF0000"><B>db1</B></font>&quot; und &quot;<font color="#FF0000"><B>db2</B></font>&quot; 
+zwei unabhängige Datenbanken auf dem aktiven Server sind.<p><U><font color="#FF0000"><B>So weit, so 
+gut! Aber müssen jetzt die Tabellen-Namen in all den Zillionen Datenbank-Abfragen 
+geändert werden?</b></font></U><p>In OL-Commerce 1.x, xtCommerce, osCommerce und all 
+den anderen xxCommerce-Systemen müsste man das tatsächlich noch so tun!</p>
+<p><B>OL-Commerce v4</B> hat allerdings eine Eigenschaft, die das zum <B>Kinderspiel</B> 
+machen: den <U><b> <font color="#FF0000">Tabellen-Präfix</font></b></U>!</p>
+<p>Man kann ja bei der OL-Commerce -Installation einen <B>Tabellen-Präfix</B> angeben (z.B. &quot;<B>olc_</B>&quot;), 
+der dann <B>vor </B>den eigentlichen Tabellenamen gestellt wird. (Die Tabelle &quot;<B>customers</B>&quot; 
+z.B. würde also dann als &quot;<B>olc_customers</B>&quot; installiert). </p>
+<p>Ursprünglich dazu konzipiert, um mehrere Shops in einer Datenbank betreiben 
+(bzw. die OL-Commerce -Tabellen einfach aus einer Datenbank entfernen) 
+zu können, <font color="#FF0000">kommt uns der <B>Tabellen-Präfix </B>bei der Lösung des &quot;<B>Multi-Datenbank</B>&quot;-Problems
+</font><font color="#0000FF"><B>außerordentlich</B></font><font color="#FF0000"> 
+gelegen</font>!</p>
+<p>Man kann das Konzept des Tabellen-Präfix (der an einer zentralen Stelle im 
+Programm verwaltet wird) nämlich einfach dahingehend erweitern, dass es jetzt 
+keinen einheitlichen Tabellen-Präfix für alle Tabellen gibt, sondern einen für 
+die &quot;<font color="#FF0000"><B>common</B></font>&quot;-Datenbank, und einen für die &quot;<font color="#FF0000"><B>individual</B></font>&quot;-Datenbank.</p>
+<p><font color="#0000FF"><B>Und diesen beiden Tabellen-Präfixen kann man dann problemlos den Namen ihrer 
+Datenbank mitgeben!</b></font></p>
+<p>Der &quot;<B>TABLE_PREFIX_COMMON</B>&quot; wäre dann zum Beispiel &quot;<B>db1.olc_</B>&quot;, 
+und der <B>TABLE_PREFIX_INDIVIDUAL</B> &quot;<B>db2.olc_</B>&quot;.</p>
+<p><font color="#FF0000"><B>Und, voilà, OL-Commerce ist, ohne weitere Änderung,&nbsp; 
+ab sofort in der Lage, mit </font><font color="#0000FF">2 separaten Datenbanken</font><font color="#FF0000"> 
+zu arbeiten!</font></b></p>
+<p>(Alle anderen &quot;xxCommerce&quot;-Systeme werden sich sehr schwer tun, diese 
+Funktionalität zu replizieren, die Einbeziehung dieses Tabellen-Präfix ist nämlich 
+eine &quot;Schweinearbeit&quot;. Die Implementierung in OL-Commerce v4 dauert 
+dagegen gerade mal 30 Minuten!)</p>
+<p>Nun muss man natürlich noch die bisher <font color="#FF0000"><B>gemeinsame</B></font> OL-Commerce -Datenbank in die 
+beiden Teile &quot;<font color="#FF0000"><B>common</B></font>&quot; und &quot;<font color="#FF0000"><B>individual</B></font>&quot; 
+aufteilen.</p>
+<p>Im Verzeichnis &quot;<B>olc_installer</B>&quot; liegen die beiden SQL-Dateien &quot;<font color="#FF0000"><B>prefix_olcommerce_common.sql</B></font>&quot; 
+und &quot;<font color="#FF0000"><B>prefix_olcommerce_individual.sql</B></font>&quot; vor, 
+welche diese beiden Datenbanken erstellen.</p>
+<p><B>Die Tabellen sind wie folgt aufgeteilt:</b></p>
+<div align="center">
+<table border="0" ID="table2" cellspacing="10" cellpadding="5">
+	<tr>
+		<td align="center">&quot;<b><font color="#FF0000">common</font></b>&quot; 
+		Datenbank</td>
+		<td align="center">&quot;<font color="#FF0000"><B>individual</B></font>&quot; 
+		Datenbank</td>
+	</tr>
+	<tr>
+		<td valign="top">address_format<br/>
+		banktransfer_blz<br/>
+		categories<br/>
+		categories_description<br/>
+		cm_file_flags<br/>
+		countries<br/>
+		currencies<br/>
+		geo_zones<br/>
+		languages<br/>
+		payment_moneybookers_countries<br/>
+		payment_moneybookers_currencies<br/>
+		plz<br/>
+		products<br/>
+		products_attributes<br/>
+		products_attributes_download<br/>
+		products_content<br/>
+		products_description<br/>
+		products_graduated_prices<br/>
+		products_images<br/>
+		products_notifications<br/>
+		products_options<br/>
+		products_options_values<br/>
+		products_options_values_to_products_options<br/>
+		products_to_categories<br/>
+		products_vpe<br/>
+		products_xsell<br/>
+		reviews<br/>
+		reviews_description<br/>
+		shipping_status<br/>
+		tax_class<br/>
+		tax_rates<br/>
+		vornamen<br/>
+		zones<br/>
+		zones_to_geo_zones</td>
+		<td valign="top">address_book<br/>
+		admin_access<br/>
+		affiliate_affiliate<br/>
+		affiliate_banners<br/>
+		affiliate_banners_history<br/>
+		affiliate_clickthroughs<br/>
+		affiliate_payment<br/>
+		affiliate_payment_status<br/>
+		affiliate_payment_status_history<br/>
+		affiliate_sales<br/>
+		banktransfer<br/>
+		banners<br/>
+		banners_history<br/>
+		box_configuration<br/>
+		cao_log<br/>
+		card_blacklist<br/>
+		configuration<br/>
+		configuration_group<br/>
+		content_manager<br/>
+		counter<br/>
+		counter_history<br/>
+		coupon_email_track<br/>
+		coupon_gv_customer<br/>
+		coupon_gv_queue<br/>
+		coupon_redeem_track<br/>
+		coupons<br/>
+		coupons_description<br/>
+		customers<br/>
+		customers_basket<br/>
+		customers_basket_attributes<br/>
+		customers_basket_save_baskets<br/>
+		customers_basket_save<br/>
+		customers_basket_attributes_save<br/>
+		customers_info<br/>
+		customers_ip<br/>
+		customers_memo<br/>
+		customers_status<br/>
+		customers_status_history<br/>
+		manufacturers<br/>
+		manufacturers_info<br/>
+		media_content<br/>
+		module_newsletter<br/>
+		newsletter_recipients<br/>
+		newsletters<br/>
+		newsletters_history<br/>
+		orders<br/>
+		orders_products<br/>
+		orders_products_attributes<br/>
+		orders_products_download<br/>
+		orders_recalculate<br/>
+		orders_session_info<br/>
+		orders_status<br/>
+		orders_status_history<br/>
+		orders_total<br/>
+		payment_moneybookers<br/>
+		paypal<br/>
+		paypal_payment_status_history<br/>
+		paypal_auction<br/>
+		personal_offers_by_customers_status_0<br/>
+		personal_offers_by_customers_status_1<br/>
+		personal_offers_by_customers_status_2<br/>
+		sessions<br/>
+		specials<br/>
+		whos_online<br/>
+		whos_online_data</td>
+	</tr>
+</table>
+</div>
+<p>In die &quot;<font color="#FF0000"><B>individual</B></font>&quot; Datenbank gehören 
+auch die folgenden Tabellen:</p>
+<div align="center">
+<table border="0" ID="table3" cellspacing="10" cellpadding="5">
+	<tr>
+		<td align="center" colspan="2">&quot;<font color="#FF0000"><B>individual</B></font>&quot; 
+		Datenbank</td>
+	</tr>
+	<tr>
+		<td valign="top" align="center"><B>chCounter</B></td>
+		<td valign="top" align="center"><B>Livehelp</B></td>
+	</tr>
+	<tr>
+		<td valign="top">chc_access<br/>
+		chc_config<br/>
+		chc_counted_users<br/>
+		chc_data<br/>
+		chc_downloads_and_hyperlinks<br/>
+		chc_downloads_and_hyperlinks_logs<br/>
+		chc_ignored_users<br/>
+		chc_locale_information<br/>
+		chc_log_data<br/>
+		chc_online_users<br/>
+		chc_pages<br/>
+		chc_referrers<br/>
+		chc_screen_resolutions<br/>
+		chc_search_engines<br/>
+		chc_user_agents</td>
+		<td valign="top">livehelp_channels<br/>
+		livehelp_config<br/>
+		livehelp_departments<br/>
+		livehelp_identity_daily<br/>
+		livehelp_identity_monthly<br/>
+		livehelp_keywords_daily<br/>
+		livehelp_keywords_monthly<br/>
+		livehelp_layerinvites<br/>
+		livehelp_leavemessage<br/>
+		livehelp_messages<br/>
+		livehelp_modules<br/>
+		livehelp_modules_dep<br/>
+		livehelp_operator_channels<br/>
+		livehelp_operator_departments<br/>
+		livehelp_operator_history<br/>
+		livehelp_paths_firsts<br/>
+		livehelp_paths_monthly<br/>
+		livehelp_questions<br/>
+		livehelp_quick<br/>
+		livehelp_referers_daily<br/>
+		livehelp_referers_monthly<br/>
+		livehelp_smilies<br/>
+		livehelp_transcripts<br/>
+		livehelp_users<br/>
+		livehelp_visit_track<br/>
+		livehelp_visits_daily<br/>
+		livehelp_visits_monthly</td>
+	</tr>
+</table>
+</div>
+<hr/>
+<p>Zur <B>Aufteilung</B> einer bestehenden Datenbank in den &quot;<B>common</B>&quot; und 
+den &quot;<B>individual</B>&quot; Teil für den &quot;<B>Multi-Datenbank</B>&quot;-Betrieb gibt es im 
+Verzeichnis &quot;<B>olc_installer</B>&quot; die beiden Dateien &quot;<B>prefix_delete_<font color="#FF0000">common</font>_tables.sql</B>&quot; 
+und &quot;<B>prefix_delete_<font color="#FF0000">individual</font>_tables.sql</B>&quot;, 
+die (per &quot;<B>PHPMyAdmmin</B>&quot;) aus einer Datenbank die &quot;<B>common</B>&quot;- bzw. &quot;<B>individual</B>&quot;-<font color="#FF0000"><B>OL-Commerce </b></font>-Tabellen 
+löschen.</p>
+<p>Daneben gibt es noch die &quot;<B>prefix_delete_individual_<font color="#FF0000">chcounter</font>_tables.sql</B>&quot; 
+und die &quot;<B>prefix_delete_individual_<font color="#FF0000">livehelp</font>_tables.sql</B>&quot;, 
+welche die evtl. vorhandenen Tabellen der Zusatzmodule &quot;<B>chCounter</B>&quot; und &quot;<B>Livehelp</B>&quot; 
+löschen.</p>
+<p>Schließlich gibt es auch noch die Dateien &quot;<B>prefix_rename_<font color="#FF0000">common</font>_tables.sql</B>&quot;, 
+&quot;<B>prefix_rename_<font color="#FF0000">chcounter</font>_tables.sql</B>&quot; und &quot;<B>prefix_rename_<font color="#FF0000">livehelp</font>_tables.sql</B>&quot;, 
+mit deren Hilfe man &quot;<B>individual</B>&quot;-Tabellen umbenennen kann.</p>
+<hr/>
+<p><U><B>Die Aufteilung einer <font color="#FF0000">existierenden Datenbank</font> 
+kann man damit wie folgt vornehmen:</b></U></p>
+<p>Man erstellt ein <font color="#FF0000"><B>komplettes Datenbank-Backup</B></font> 
+mit &quot;<B>PHPMyAdmmin</B>&quot; und spielt dieses in eine <font color="#FF0000"><b>
+neue(!) Datenbank</B></font> ein.</p>
+<p>Mit &quot;<B>prefix_delete_<font color="#FF0000">individual</font>_tables.sql</B>&quot;, &quot;<B>prefix_delete_individual_<font color="#FF0000">chcounter</font>_tables.sql</B>&quot; 
+und &quot;<B>prefix_delete_individual_<font color="#FF0000">livehelp</font>_tables.sql</B>&quot; 
+löscht man in der <font color="#0000FF"><B>Original(!)-Datenbank</B></font> die 
+Tabellen des &quot;<B>individual</B>&quot; Teils (wenn man mit <b><font color="#FF0000">
+mehreren Datenbanken</font></b> arbeiten will).</p>
+<p>In der <font color="#0000FF"><B>neuen(!) Datenbank</B></font> löscht man mit 
+&quot;<B>prefix_delete_<font color="#FF0000">common</font>_tables.sql</B>&quot; die 
+Tabellen des &quot;<B>common</B>&quot; Teils.</p>
+<p>Wenn man den &quot;<B>Multi-Datenbank</B>&quot;-Betrieb mit <font color="#FF0000"><b>
+2(!) Datenbanken</B></font> macht, <B>ist man jetzt fertig</B>.</p>
+<p>Sollen jedoch auch die Tabellen des &quot;<B>individual</B>&quot; Teils in
+<font color="#FF0000"><B>derselben(!) Datenbank</B></font> wie die des &quot;<B>common</B>&quot; 
+Teils liegen, muss man (<font color="#FF0000"><B>ab dem 2.(!!) Multishop</B></font>) 
+die Tabellen des &quot;<B>individual</B>&quot; Teils mit einem anderen Tabellen-Präfix 
+versehen, damit diese in <b><font color="#FF0000">derselben(!) Datenbank</font></b> koexistieren können.</p>
+<p>Mit den Dateien &quot;<B>prefix_rename_<font color="#FF0000">common</font>_tables.sql</B>&quot;, 
+&quot;<B>prefix_rename_<font color="#FF0000">chcounter</font>_tables.sql</B>&quot; und &quot;<B>prefix_rename_<font color="#FF0000">livehelp</font>_tables.sql</B>&quot; 
+kann das erledigt werden.</p>
+<table border="0" ID="table4" cellpadding="5">
+	<tr>
+		<td valign="top"><b><font color="#FF0000">WICHTIG:</font></b></td>
+		<td valign="top"><B>Bei allen diesen Operationen müssen evtl. in den &quot;<font color="#FF0000">.sql</font>&quot;-Dateien 
+		die &quot;</b><font color="#FF0000"><B>Tabellen-Präfixe</B></font><b>&quot; an die 
+		aktuellen Gegebenheiten angepasst werden!</b></td>
+	</tr>
+</table>
+<p>Man kann dann mit &quot;<B>PHPMyAdmin</B>&quot; einen Dump der <font color="#FF0000">
+<B>neuen(!) Datenbank</B></font> machen, und diesen Dump in die
+<font color="#0000FF"><B>Original(!)-Datenbank</B></font> einspielen.</p>
+<p>Auf diese Weise erhält man dann <font color="#FF0000"><B>eine(!)</b></font> 
+Datenbank mit <font color="#FF0000"><B>einem(!)</b></font> Satz Tabellen des &quot;<B>common</B>&quot; Teils und 
+<b><font color="#FF0000">mehreren(!)</font></b> Sätzen 
+&quot;<B>individual</B>&quot;-Tabellen.</p>
+<hr/>
+<p>Man darf dann natürlich nicht vergessen, die &quot;<B>configure.php</B>&quot; des &quot;<B>Multi-Shops</B>&quot; 
+anzupassen!</p>
+<p><font color="#FF0000"><B>Fall 1:</b></font> Man arbeitet im &quot;<B>Multi-Shop</B>&quot;-Betrieb 
+mit <font color="#FF0000"><B>2(!)</b></font> Datenbanken</p>
+<p>Die Einträge sind wie folgt zu setzen</p>
+<p>define('<B>DB_DATABASE_1</B>', '<font color="#FF0000"><B>olc_database_1</B></font>');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //You can use
+		<font color="#0000FF"><b><U>different</U> DB's</B></font> on then <b>
+		<font color="#FF0000"><U>s a 
+		m e</U></font><font color="#0000FF"> server</font></b>!<br/>
+		define('<B>TABLE_PREFIX_INDIVIDUAL_DATA</B>',<font color="#FF0000"><b>''</b></font>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //<B>and/or</B>
+		<font color="#0000FF"><b><U>different</U> prefixes</B></font> in the <b>
+		<font color="#0000FF">&nbsp;</font><font color="#FF0000"><U>s a m e</U></font><font color="#0000FF">&nbsp; DB</font></b>!!</p>
+<p><font color="#FF0000"><B>Fall 2:</b></font> Man arbeitet im &quot;<B>Multi-Shop</B>&quot;-Betrieb 
+mit <font color="#FF0000"><B>1(!)</b></font> Datenbank</p>
+<p>Die Einträge sind wie folgt zu setzen</p>
+<p>define('<B>DB_DATABASE_1</B>', <font color="#FF0000"><b>''</b></font>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //You can use
+		<font color="#0000FF"><b><U>different</U> DB's</B></font> on then <b>
+		<font color="#FF0000"><U>s a 
+		m e</U></font><font color="#0000FF"> server</font></b>!<br/>
+		define('<B>TABLE_PREFIX_INDIVIDUAL_DATA</B>','<font color="#FF0000"><B>olc1_</B></font>');&nbsp;&nbsp;&nbsp; //<B>and/or</B>
+		<font color="#0000FF"><b><U>different</U> prefixes</B></font> in the <b>
+		<font color="#0000FF">&nbsp;</font><font color="#FF0000"><U>s a m e</U></font><font color="#0000FF">&nbsp; DB</font></b>!!</p>
+<p>(Die Namen '<font color="#FF0000"><B>olc_database_1</B></font>' und '<font color="#FF0000"><B>olc1_</B></font>' 
+können natürlich beliebig sein.)</p>
+

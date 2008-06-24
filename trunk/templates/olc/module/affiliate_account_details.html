@@ -1,0 +1,202 @@
+{olc_template_init affiliate='true' title="#heading_title#" section="affiliate_account_details"} 
+<table border="0" width="100%" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="formAreaTitle">{#category_personal#}</td>
+  </tr>
+  <tr>
+    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
+      <tr>
+        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
+          {if $ACCOUNT_GENDER == 'true'}
+          <tr>
+            <td class="main">&nbsp;{#entry_gender#}</td>
+            <td class="main">&nbsp;{$gender_content}</td>
+          </tr>
+          {/if}
+          <tr>
+            <td class="main">&nbsp;{#entry_first_name#}</td>
+            <td class="main">&nbsp;{$firstname_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_lastname#}</td>
+            <td class="main">&nbsp;{$lastname_content}</td>
+          </tr>
+          {if $ACCOUNT_DOB == 'true'}
+          <tr>
+            <td class="main">&nbsp;{#entry_date_of_birth#}</td>
+            <td class="main">&nbsp;{$dob_content}</td>
+          </tr>
+          {/if}
+          <tr>
+            <td class="main">&nbsp;{#entry_email_address#}</td>
+            <td class="main">&nbsp;{$email_content}</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  {if $ACCOUNT_COMPANY == 'true'}
+  <tr>
+    <td class="formAreaTitle"><br/>{#category_company#}</td>
+  </tr>
+  <tr>
+    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
+      <tr>
+        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
+          <tr>
+            <td class="main">&nbsp;{#entry_affiliate_company#}</td>
+            <td class="main">&nbsp;{$company_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_affiliate_company_taxid#}</td>
+            <td class="main">&nbsp;{$company_taxid_content}</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  {/if}
+  <tr>
+    <td class="formAreaTitle"><br/>{#category_payment_details#}</td>
+  </tr>
+  <tr>
+    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
+      <tr>
+        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
+          {if $AFFILIATE_USE_CHECK == 'true'}
+          <tr>
+            <td class="main">&nbsp;{#entry_affiliate_payment_check#}</td>
+            <td class="main">&nbsp;{$payment_check_content}</td>
+          </tr>
+          {/if}
+          {if $AFFILIATE_USE_PAYPAL == 'true'}
+          <tr>
+            <td class="main">&nbsp;{#entry_affiliate_payment_paypal#}</td>
+            <td class="main">&nbsp;{$payment_paypal_content}</td>
+          </tr>
+		  {/if}
+		  {if $AFFILIATE_USE_BANK == 'true'}
+		  <tr>
+            <td class="main">&nbsp;{#entry_affiliate_payment_bank_name#}</td>
+            <td class="main">&nbsp;{$payment_bank_name_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_affiliate_payment_bank_branch_number#}</td>
+            <td class="main">&nbsp;{$payment_bank_branch_number_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_affiliate_payment_bank_swift_code#}</td>
+            <td class="main">&nbsp;{$payment_bank_swift_code_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_affiliate_payment_bank_account_name#}</td>
+            <td class="main">&nbsp;{$payment_bank_account_name_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_affiliate_payment_bank_account_number#}</td>
+            <td class="main">&nbsp;{$payment_bank_account_number_content}</td>
+          </tr>
+          {/if}
+          </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td class="formAreaTitle"><br/>{#category_address#}</td>
+  </tr>
+  <tr>
+    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
+      <tr>
+        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
+          <tr>
+            <td class="main">&nbsp;{#entry_street_address#}</td>
+            <td class="main">&nbsp;{$street_address_content}</td>
+          </tr>
+          {if $ACCOUNT_SUBURB == 'true'}
+		  <tr>
+            <td class="main">&nbsp;{#entry_suburb#}</td>
+            <td class="main">&nbsp;{$suburb_content}</td>
+          </tr>
+          {/if}
+          <tr>
+            <td class="main">&nbsp;{#entry_post_code#}</td>
+            <td class="main">&nbsp;{$postcode_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_city#}</td>
+            <td class="main">&nbsp;{$city_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_country#}</td>
+            <td class="main">&nbsp;{$country_id_content}</td>
+          </tr>
+          {if $ACCOUNT_STATE == 'true'}
+          <tr>
+            <td class="main">&nbsp;{#entry_state#}</td>
+            <td class="main">&nbsp;{$state_content}</td>
+          </tr>
+          {/if}
+          </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td class="formAreaTitle"><br/>{#category_contact#}</td>
+  </tr>
+  <tr>
+    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
+      <tr>
+        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
+          <tr>
+            <td class="main">&nbsp;{#entry_telephone_number#}</td>
+            <td class="main">&nbsp;{$telephone_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_fax_number#}</td>
+            <td class="main">&nbsp;{$fax_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_affiliate_homepage#}</td>
+            <td class="main">&nbsp;{$homepage_content}</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  {if $PASSWORD_READONLY == 'false'}
+  <tr>
+    <td class="formAreaTitle"><br/>{#category_password#}</td>
+  </tr>
+  <tr>
+    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
+      <tr>
+        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
+          <tr>
+            <td class="main">&nbsp;{#entry_password#}</td>
+            <td class="main">&nbsp;{$password_content}</td>
+          </tr>
+          <tr>
+            <td class="main">&nbsp;{#entry_password_confirmation#}</td>
+            <td class="main">&nbsp;{$password_confirmation_content}</td>
+          </tr>
+          </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  {/if}
+  <tr>
+    <td class="formAreaTitle"><br/></td>
+  </tr>
+  <tr>
+    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
+      <tr>
+        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
+          <tr>
+            <td class="main">&nbsp;</td>
+            <td class="main">&nbsp;{$agb_content}</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>

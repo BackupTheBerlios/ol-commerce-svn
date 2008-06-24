@@ -1,0 +1,476 @@
+<!-- order_mail -->
+{config_load file="$language/lang_$language.conf" section="print_order"}
+
+{assign var="VERSAND" value="<p CLASS=standard>Ihre Bestellung wird nach Zahlungseingang versandt.</p>"}
+
+
+<html>
+<head>
+	<title>{#title#} {$oID}</title>
+	{if $language==''}
+	<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+	<style type="text/css">
+	{literal}
+	body {
+		font-SIZE: 12px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-IMAGE: url(http://www.seifenparadies.de/images/bg_green.png); MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #e3ebe2; SCROLLBAR-SHADOW-COLOR: #abd390; COLOR: #a52a2a; SCROLLBAR-3DLIGHT-COLOR: #aad79d; SCROLLBAR-ARROW-COLOR: #a52a2a; SCROLLBAR-TRACK-COLOR: #a52a2a; font-FAMILY: Verdana, Arial, sans-serif; SCROLLBAR-DARKSHADOW-COLOR: #7bba52; SCROLLBAR-BASE-COLOR: #f0f7da; BACKGROUND-COLOR: #ebf5d2
+	}
+	hr
+	{
+		color:Brown;
+	}
+	.standard
+	{
+		font-size:14px;
+		color:Brown;
+	}
+	.td_style
+	{
+		padding:.75pt .75pt .75pt .75pt;
+		font-size:14px;
+		color:Brown
+	}
+	.td_style_bold
+	{
+		padding:.75pt .75pt .75pt .75pt;
+		font-size:14px;
+		font-weight:bold;
+		color:Brown
+	}
+	.td_style_header
+	{
+		border:1px solid Brown;
+		font-size:14px;
+		color:Brown
+	}
+	.td_style_header_bold
+	{
+		border:1px solid Brown;
+		font-size:14px;
+		font-weight:bold;
+		text-align: center;;
+		color:Brown
+	}
+	.payment
+	{
+		font-size:14px;
+		font-weight:bold;
+		color:Red;
+	}
+	td.main, p.main {
+		font-size: 13px;
+		line-height: 1.5;
+	}
+
+	.main {
+		color: #A52A2A;
+		font-size: 14px;
+		line-height: 1.5;
+	}
+
+	{/literal}
+	</style>
+	{/if}
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<style type="text/css">
+		{literal}
+		@media screen
+		{
+		{/literal}
+{$STYLE}
+		{literal}
+			hr
+			{
+				color:Brown
+			}
+			.standard
+			{
+				font-size:14px;
+				color:Brown
+			}
+			.td_style
+			{
+				padding:.75pt .75pt .75pt .75pt;
+				font-size:14px;
+				color:Brown
+			}
+			.td_style_bold
+			{
+				padding:.75pt .75pt .75pt .75pt;
+				font-size:14px;
+				font-weight:bold;
+				color:Brown
+			}
+			.td_style_header
+			{
+				border:1px solid Brown;
+				font-size:14px;
+				color:Brown
+			}
+			.td_style_header_bold
+			{
+				border:1px solid Brown;
+				font-size:14px;
+				font-weight:bold;
+				text-align: center;;
+				color:Brown
+			}
+			.payment
+			{
+				font-size:14px;
+				font-weight:bold;
+				color:Red;
+			}
+		}
+		td.main, p.main {
+			font-size: 13px;
+			line-height: 1.5;
+		}
+
+		.main {
+			color: #A52A2A;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+
+		@media print
+		{
+			HR {
+				COLOR: black
+			}
+			.standard {
+				font-SIZE: 14px; COLOR: black
+			}
+			.td_style {
+				PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: black; PADDING-TOP: 0.75pt
+			}
+			.td_style_bold {
+				PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; font-WEIGHT: bold; font-SIZE: 14px; PADDING-BOTTOM: 0.75pt; COLOR: black; PADDING-TOP: 0.75pt
+			}
+			.td_style_header {
+				BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; font-SIZE: 14px; BORDER-LEFT: black 1px solid; COLOR: black; BORDER-BOTTOM: black 1px solid
+			}
+			.td_style_header_bold {
+				BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; font-WEIGHT: bold; font-SIZE: 14px; BORDER-LEFT: black 1px solid; COLOR: black; BORDER-BOTTOM: black 1px solid; TEXT-ALIGN: center
+			}
+			td.main, p.main {
+				font-size: 13px;
+				line-height: 1.5;
+			}
+
+			.main {
+				color: #A52A2A;
+				font-size: 14px;
+				line-height: 1.5;
+			}
+		}
+		{/literal}
+	</style>
+	<title>{#title#} {$oID}</title>
+</head>
+<body>
+	<table width="100%" border="0">
+	  <tr>
+	    <td>
+	    	<table class="standard" width="100%" border="0" cellpadding="0" cellspacing="0">
+	        <tr>
+				<td valign="top">
+					{$address_label_customer}
+				</td>
+				<td width="315" valign="top">
+					<p align="center">
+							<a target="_blank" title="Seifenparadies" alt="Seifenparadies" href="{$HOME_LINK}">
+							<img src="{$logo_path}logo.gif" width="200" height="51" border="0" align="middle"
+								title="Seifenparadies"></a>
+					</p>
+					<p>
+				  		<b>Seifenparadies Gerta M. Kaiser</b><br/>
+						Schleswiger Str. 22a
+					</p>
+					<p>D-24975 Husby</p>
+					<p>
+						<b>Fon</b>: 04634-9313186<br/>
+						<b>Fax</b>: 04634-1517
+					</p>
+					<p><b>eMail</b>:
+					<a href="mailto:vertrieb@seifenparadies.de">
+					vertrieb@seifenparadies.de</a>
+			  </td>
+	       </tr>
+	     </table>
+			<br/>
+			<table class="standard" width="100%" border="0">
+			<tr>
+			  <td width="50%">
+				<p>
+					<b>Lieferadresse</b><br/>
+				</p>
+			 </td>
+			 <td>
+			  {if $address_label_payment}
+				<p>
+					<b>Rechnungsadresse</b><br/>
+				</p>
+			 	{/if}
+			 </td>
+			</tr>
+			<tr>
+			  <td>
+				{$address_label_shipping}
+			  </td>
+
+			  <td>
+				{if $address_label_payment}{$address_label_payment}{/if}
+			  </td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<br/>
+					<hr/>
+					{if $FON}<p><b>Ihre Telefonnummer: </b>{$FON}{/if}
+					{if $FAX}<p><b>Ihre Telefaxnummer: </b>{$FAX}{/if}
+					{if $EMAIL}<p><b>Ihre eMail-Adresse: </b>{$EMAIL}{/if}
+					{if $CUSTOMERS_IP}<p><b>Ihre Internet-Adresse: </b>{$CUSTOMERS_IP}</p>{/if}
+					<br/>
+					<br/>
+				</td>
+			</tr>
+		</table>
+	  </tr>
+	</table>
+	<hr/>
+	<p class="standard">
+	  	Hallo {$NAME},<br/><br/>vielen Dank für Ihre Bestellung beim
+		<a target="_blank" alt="Seifenparadies" title="Seifenparadies" href="{$HOME_LINK}">
+		<img src="{$logo_path}logo.gif" width="200" height="51" border="0" align="middle" alt="Seifenparadies"   title="Seifenparadies"></a>
+		<br/><br/>
+		{if $AUCTION_MESSAGE}
+		<img src="{$tpl_path}images/ebay.gif" border="0" align="middle"> {$AUCTION_MESSAGE}
+		{else}
+	    Anbei erhalten Sie eine Zusammenfassung Ihrer Bestellung.
+	    {/if}
+	    <br/><br/>
+		{if $INVOICE_ATTACHED}
+		Ihre Bestellbestätigung finden Sie im PDF-Format auch als Anhang zu dieser eMail! (<b>{$INVOICE_ATTACHED}</b>)<br/><br/>
+		{/if}
+	    Sollten Sie Fragen zu Ihrer Bestellung haben, zögern Sie nicht, uns zu kontaktieren.<br/>
+	    <br/>
+	    Mit freundlichen Grüssen,<br/>
+		<br/>
+	    Ihr
+	    <a target="_blank" alt="Seifenparadies" title="Seifenparadies" href="{$HOME_LINK}"><img src="{$logo_path}logo.gif" width="200" height="51" border="0" align="middle" alt="Seifenparadies" title="Seifenparadies"></a> Team
+	</p>
+	<hr/>
+	<table class="td_style" style="page-break-before: always" width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td>
+			<p align="center">
+			<b><font size="4">Ihre Bestellung<br/></font>&nbsp;</b>
+		</td>
+	  </tr>
+	  <tr>
+	    <td>
+			<b>{#order#}</b> {$oID}<br/>
+			<b>{#orderdate#}</b> {$DATE}<br/>
+			{if $PAYMENT_METHOD}<b>{#payment#}</b> {$PAYMENT_METHOD}<br/>{/if}
+			<br/>
+			<br/>
+		</td>
+	  </tr>
+	  <tr>
+	    <td>
+	    	<table width="100%" border="0" cellpadding="3" cellspacing="0" >
+				<tr>
+					<td class="td_style_header_bold">
+						{#head_units#}
+					</td>
+					<td class="td_style_header_bold">
+						{#head_products#}
+					</td>
+					<td class="td_style_header_bold">
+						{#head_artnr#}
+					</td>
+					<td class="td_style_header_bold" width="150">
+						{#head_single_price#}</td>
+					<td class="td_style_header_bold" width="150">
+						{#head_price#}
+					</td>
+				</tr>
+				{foreach name=aussen item=order_values from=$order_data}
+				<tr>
+					<td width="40" class="td_style_header" valign="top" align="center">
+						{$order_values.PRODUCTS_QTY}
+					</td>
+					<td class="td_style_header" valign="top" align="left">
+							<b>{$order_values.PRODUCTS_NAME}</b>
+							{if $order_values.PRODUCTS_ATTRIBUTES}
+							<em>{$order_values.PRODUCTS_ATTRIBUTES}</em>
+							{/if}
+					</td>
+					<td class="td_style_header" valign="top" align="left">
+						{$order_values.PRODUCTS_MODEL}
+						<!--<br/><em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em>-->
+					</td>
+					<td class="td_style_header" valign="top" width="150" align="right">
+						{$order_values.PRODUCTS_SINGLE_PRICE}
+					</td>
+					<td class="td_style_header" valign="top" width="150" align="right">
+						<b>{$order_values.PRODUCTS_PRICE}</b>
+					</td>
+				</tr>
+				{/foreach}
+			</table>
+		</td>
+	  </tr>
+	</table>
+	{assign var="first_line" value="true"}
+	<div class="td_style" align="right">
+		<br/>
+		{foreach name=aussen item=order_total_values from=$order_total}
+		{if $first_line=="true"}<b>{/if}
+		{$order_total_values.TITLE}{$order_total_values.TEXT}
+		{if $first_line=="true"}</b>{/if}
+		<br/>
+		{assign var="first_line" value="false"} {/foreach}
+	</div>
+	<div class="td_style">
+		<hr/>
+		<p>
+			{$TAX_INFORMATION}
+		</p>
+		{if $COMMENTS}
+		<hr/>
+		<p>
+			<B>Ihre Mitteilung an uns:</b>
+		</p>
+		<p>
+			{$COMMENTS}
+		</p>
+		{/if}
+		<hr/>
+		{if $PAYMENT_METHOD == 'Vorkasse'}
+		<p class="payment">
+			Bitte senden Sie uns einen Scheck über den Rechnungsbetrag, oder
+			überweisen Sie ihn auf unsere folgende Bankverbindung:
+		</p>
+		{$MY_BANK}
+		{$VERSAND}
+		{elseif $PAYMENT_METHOD == 'Überweisung'}
+		<p class="payment">
+			Bitte überweisen Sie den Rechnungsbetrag auf unsere folgende Bankverbindung:
+		</p>
+		{$MY_BANK}
+		{$VERSAND}
+		{elseif $PAYMENT_METHOD == 'Lastschriftverfahren'}
+		<p class="payment">
+			Den Rechnungsbetrag werden wir wunschgemäß von Ihrem folgenden Bankkonto abbuchen.
+		</p>
+		<table class="standard" border=0 cellspacing=6 cellpadding=0>
+		 <tr>
+		  <td class="td_style_bold">
+		  	Kontoinhaber:&nbsp;
+		  </td>
+		  <td class="td_style">
+		  	&nbsp;{$INHABER}
+		  </td>
+		 </tr>
+		 <tr>
+		  <td class="td_style_bold">
+		  	Geldinstitut:&nbsp;
+		  </td>
+		  <td class="td_style">
+		  	&nbsp;{$BANK}
+		  </td>
+		 </tr>
+		 <tr>
+		  <td class="td_style_bold">
+		  	Bankleitzahl:&nbsp;
+		  </td>
+		  <td class="td_style">
+		  	&nbsp;{$BLZ}
+		  </td>
+		 </tr>
+		 <tr>
+		  <td class="td_style_bold">
+			  Kontonummer:&nbsp;
+		  </td>
+		  <td class="td_style">
+		  	&nbsp;{$KONTO}
+		  </td>
+		 </tr>
+		 </table>
+		{$VERSAND}
+		{elseif $PAYMENT_METHOD == 'Kreditkarte'}
+		<p class="payment">
+			Den Rechnungsbetrag werden wir wunschgemäß Ihrer folgenden Kreditkarte belasten.
+		</p>
+		<table border=0 cellspacing=6 cellpadding=0 id=table16>
+		 <tr>
+		  <td class="td_style_bold">
+		  	Kreditkarte:&nbsp;
+		  </td>
+		  <td class="td_style">
+			  &nbsp;{$CC_TYPE}
+		 </td>
+		 </tr>
+		 <tr>
+		  <td class="td_style_bold">
+		  	Kreditkartennummer:&nbsp;
+		  </td>
+		  <td class="td_style">
+		  	&nbsp;{$CC_NUMBER}
+		  </td>
+		 </tr>
+		 <tr>
+		  <td class="td_style_bold">
+		  	Kontrollnummer:&nbsp;
+		  </td>
+		  <td class="td_style">
+		  	&nbsp;{$CC_CVN}
+		  </td>
+		 </tr>
+		 <tr>
+		  <td class="td_style_bold">
+		  	Kreditkarteninhaber:&nbsp;
+		  </td>
+		  <td class="td_style">
+		  	&nbsp;{$CC_OWNER}
+		  </td>
+		 </tr>
+		 <tr>
+		  <td class="td_style_bold">
+			 Gültig bis:&nbsp;
+		  </td>
+		  <td class="td_style">
+			  &nbsp;{$CC_EXPIRE}
+		   </td>
+		 </tr>
+		 </table>
+		{elseif $PAYMENT_METHOD == 'Nachnahme'}
+		<p class="payment">
+			Der Rechnungsbetrag wird von Ihnen per Nachnahme beglichen.
+		</p>
+		{elseif $PAYMENT_METHOD == 'PayPal'}
+		<p class="payment">
+			Den Rechnungsbetrag werden Sie per <a target="_blank" href="http://www.paypal.de/">
+			PayPal</a> begleichen.
+		</p>
+		{$VERSAND}
+		{/if}
+	</div>
+	{if $FERNAG_INFO}
+	<br/>
+	<hr/>
+	<p>{#order_mail_fernag_info#}</p>
+	{$FERNAG_INFO}
+	{/if}
+	{if $AGB_INFO}
+	<br/>
+	<hr/>
+	<p>{#order_mail_agb_info#}</p>
+	{/if}
+</body>
+</html>
+{if $MAIL_IMPRESSUM}
+<br/><hr>
+{$MAIL_IMPRESSUM}
+{/if}

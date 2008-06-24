@@ -1,0 +1,20 @@
+Sehr geehrter Kunde, 
+
+es wurde ein Kundenkonto für Sie eingerichtet!
+
+Sie können sich mit folgenden Daten in unseren Shop anmelden.
+
+{if $COMMENTS} Anmerkungen:
+
+{$COMMENTS}
+{/if}
+
+Ihre Anmeldedaten für unseren Shop:
+
+eMail: {$EMAIL}
+
+Ihr Passwort: {$PASSWORD}
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}
+

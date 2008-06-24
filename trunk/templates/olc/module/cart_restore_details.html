@@ -1,0 +1,51 @@
+{olc_template_init section="shopping_cart"}
+<!-- W. Kaiser - AJAX-->
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="main">&nbsp;<strong>{#text_lfd#}</strong>&nbsp;</td>
+		<td class="main">&nbsp;</td>
+		<td class="main" align="center"><strong>&nbsp;{#text_qty#}&nbsp;</strong></td>
+		<td class="main" align="center"><strong>{#text_article#}</strong></td>
+		<td class="main" align="center" width="15%"><strong>&nbsp;{#text_total#}&nbsp;</strong></td>
+	</tr>
+	<tr>
+		<td colspan="5" height="16"><hr/></td>
+	</tr>
+	{assign var="lfd" value=0}
+	{foreach name=aussen item=module_data from=$module_content}
+	{assign var="lfd" value=$lfd+1}
+	<tr>
+		<td class="main" valign="top" align="right"><b>{$lfd}.</b>&nbsp;&nbsp;</td>
+		<td class="main" valign="top">
+			{if $module_data.PRODUCTS_IMAGE!=''}<img src="{$module_data.PRODUCTS_IMAGE}" border="0">{/if}
+		</td>
+		<td valign="top" class="main" align="center">&nbsp;{$module_data.PRODUCTS_QTY}&nbsp;</td>
+		<td valign="top" class="main_grey">
+			<strong><a href="{$module_data.PRODUCTS_LINK}">>{$module_data.PRODUCTS_NAME}</a></strong>
+			<font style="font-size:8pt;">({#text_article_number#}{$module_data.PRODUCTS_MODEL})<br/>
+			{$module_data.PRODUCTS_SHORT_DESCRIPTION|truncate:150:"...":true}<br/>
+			 (<b>{#text_single_price#}</b>{$module_data.PRODUCTS_SINGLE_PRICE})</font>
+		</td>
+		<td valign="top" align="right" class="main_grey" nowrap="nowrap">
+			<b>{$module_data.PRODUCTS_PRICE}</b>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="5" height="16"><hr/></td>
+	</tr>
+	{/foreach}
+	<tr>
+		<td colspan="5" class="main_grey" align="right">
+			<strong>{$TOTAL_CONTENT}</strong>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="5" height="16"><hr/></td>
+	</tr>
+</table>
+<!-- W. Kaiser - AJAX-->

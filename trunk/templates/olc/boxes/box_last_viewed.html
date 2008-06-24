@@ -1,0 +1,52 @@
+{olc_template_init use_template_language="true" section="boxes"}
+<table class="{$box_navigation_area} box_LAST_VIEWED" width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+    	<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><h3>{#heading_last_viewed#}</h3></td>
+        </tr>
+    	</table>
+    </td>
+  </tr>
+  <tr>
+    <td class="infoBox" align="left">
+  		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="center" valign="middle" class="infoBoxContents">
+            <a>{if $IMAGE}{$LINK}{$IMAGE}</a><br/>{/if}
+          	<a>{$LINK}{$NAME}</a><br/>
+            <table width=100%" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center" valign="middle">
+						  		<span class="price_list">{#text_only#}{$PRICE}</span><br />
+									{if $VPE}
+					      	{if !$OL_COMMERCE}
+									<span class="list_entry_products_vpe">{$VPE}</span><br />
+									{/if}
+						    	{/if}
+									<span class="list_entry_price_disclaimer">
+										{$TAX_INFO}{if !$OL_COMMERCE}{#price_disclaimer_box#}{/if}
+									</span>
+                </td>
+              </tr>
+          	</table>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle" class="infoBoxContents">
+          	<br/><p><a href="{$MY_PERSONAL_PAGE}"><b>{#text_my_page#}</b></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle" class="infoBoxContents">
+            <br/>{#text_watch_category#}<br/><a href="{$CATEGORY_LINK}"><strong>{$CATEGORY_NAME}</strong></a>
+          </td>
+        </tr>
+    	</table>
+    </td>
+  </tr>
+	<tr>
+		<td class="infoBoxFooter">&nbsp;</td>
+	</tr>
+</table>

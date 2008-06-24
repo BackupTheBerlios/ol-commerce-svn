@@ -1,0 +1,63 @@
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td style="border-bottom: 1px solid; border-color: #cccccc;"><div align="right">
+		<font color="Brown"><img src="{$logo_path}logo.gif"></font></div></td>
+  </tr>
+  <tr>
+    <td>
+	<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown"><b>Sehr geehrter Kunde,</b><br/>
+      <br/>
+      Sie haben soeben Ihr Kundenkonto erfolgreich erstellt.</font><p>
+	<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">
+	Als <b>registrierter</b> Kunde haben sie folgende Vorteile in unserem Shop.</font></p>
+	<table border="0" cellspacing="5" cellpadding="5" id="table1">
+		<tr>
+			<td valign="top">
+			<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">-
+			<b>Kundenwarenkorb</b></b></font></td>
+			<td width="905" valign="top">
+			<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">
+			Jeder Artikel bleibt registriert bis Sie zur Kasse gehen, oder die
+			Artikel aus dem Warenkorb entfernen.</font></td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">
+			<b>- Adressbuch</b></font></td>
+			<td width="905" valign="top">
+			<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">
+			Wir können jetzt die Artikel direkt zu der von Ihnen ausgesuchten
+			Adresse senden. Der perfekte Weg ein Geburtstagsgeschenk zu
+			versenden.</font></td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">
+			<b>- Bestellübersicht</b></font></td>
+			<td width="905" valign="top">
+			<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">
+			Sie können jederzeit Ihre vorherigen Bestellungen überprüfen.</font></td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">
+			<b>- Meinungen über Produkte</b></font></td>
+			<td width="905" valign="top">
+			<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">
+			Teilen Sie Ihre Meinung zu unseren Produkten mit anderen Kunden.<br/>
+      &nbsp;</font></td>
+		</tr>
+	</table>
+	<p>
+	<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="Brown">Falls Sie Fragen zu unserem Kundenservice haben, wenden Sie sich bitte an:
+      {$content.MAIL_REPLY_ADDRESS}
+      . <br/>
+    Achtung: Diese eMail-Adresse wurde uns von einem Kunden bekannt gegeben. Falls Sie sich nicht angemeldet haben, senden Sie bitte eine eMail an
+    {$content.MAIL_REPLY_ADDRESS}
+    . </font></td>
+  </tr>
+</table>
+{if $MAIL_IMPRESSUM}
+<br/><hr>
+{$MAIL_IMPRESSUM}
+{/if}

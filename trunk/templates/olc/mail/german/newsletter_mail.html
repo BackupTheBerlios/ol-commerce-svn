@@ -1,0 +1,33 @@
+<table background="{$logo_path}bg_green.png" width="100%" border="0" align="center" cellpadding="4"
+cellspacing="0">
+  <tr>
+    <td valign="top">
+    <p><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#800000">Sehr geehrter
+    Kunde,</font></b></p>
+    <font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+    <p><font color="#800000">Sie erhalten diese eMail, weil Sie sich zum Empfang unserer Informations-eMails
+    angemeldet haben. </font></p>
+    <p><font color="#800000">Bitte klicken Sie auf den Aktivierungslink, damit Ihre eMail-Adresse für
+    den Empfang der Informations-eMails freigeschaltet wird. </font></p>
+    <p><font color="#800000"><b><font size="2">Ihr Aktivierungslink:<br />
+    <br />
+    </font></b></font><font size="2"><a href="{$LINK}"><font color="#800000">{$LINK}</font></a></font><br/>
+    </p>
+    <p><font color="#800000">Sollten Sie sich nicht für den Empfang unserer Informations-eMails angemeldet
+    haben, bzw. den Empfang der Informations-eMails doch nicht wünschen, brauchen Sie gar nichts zu
+    tun:</font></p>
+    <p><font color="#800000">Ihre Adresse wird dann aus unserer Datenbank automatisch gelöscht.</font></font></p>
+    </td>
+	  <td width="315" valign="top">
+		<p align="center">
+		<font face="Verdana" size="2">
+		<a target="_blank" title="{$STORE_NAME}" alt="{$STORE_NAME}" href="{$HOME_LINK}">
+		<img src="{$logo_path}logo.gif" border="0" align="middle" alt="{$STORE_NAME}"></a></p>
+		<p>{$STORE_NAME_ADDRESS}</p>
+		<p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		</font>
+		</td>
+  </tr>
+</table>
+{if $MAIL_IMPRESSUM} <br/>
+<hr>{$MAIL_IMPRESSUM} {/if}

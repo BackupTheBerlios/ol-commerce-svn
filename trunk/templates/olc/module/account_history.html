@@ -1,0 +1,28 @@
+{olc_template_init title="#heading_history#" section="account_history"}
+{foreach name=aussen item=order_data from=$order_content} 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    	<td class="subcategory">{#text_oid#}{$order_data.ORDER_ID}</td>
+    	<td align="right">{$order_data.ORDER_BUTTON}</td>
+	</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+	<tr> 
+		<td class="main_border_top">
+		<strong>{#text_date#}</strong> {$order_data.ORDER_DATE}&nbsp;&nbsp;
+		<strong>{#text_articles#}</strong> {$order_data.ORDER_PRODUCTS}&nbsp;&nbsp;
+		<strong>{#text_total#}</strong> {$order_data.ORDER_TOTAL}<br/><strong>{#text_status#}</strong> {$order_data.ORDER_STATUS}
+		</td>
+	</tr>
+</table>
+
+{/foreach}
+		 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr> 
+		<td>{$SPLIT_BAR}</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="left">{$BUTTON_BACK}</td>
+	</tr>
+</table>

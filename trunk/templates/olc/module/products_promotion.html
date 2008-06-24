@@ -1,0 +1,56 @@
+{olc_template_init title="#heading_account#" section="products_promotion"}
+{php}
+$max_col=2;
+$entries=sizeof($promotion_modul);
+$rows=$entries/2;
+$rows+=$entries%2;
+$row=0;
+{/php}
+<table border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		{foreach name=promo item=module_data from=$module_content}
+		{php}
+			$col++;
+		{/php}
+    <td class="list_entry" valign="top">
+    	<table class="list_entry_promotion" cellspacing="0" cellpadding="0">
+			  <tr>
+			  	<td class="list_box_header"></td>
+			  </tr>
+			  <tr>
+			    <td valign="top" class="list_entry_cell_promotion">
+			    	<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}"
+							alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" border="0" /></a>
+			    </td>
+			  </tr>
+			  <tr>
+			  	<td class="list_box_footer"></td>
+			  </tr>
+			</table>
+		</td>
+	{php}
+	if($col>=$max_col)
+	{
+		$col=0;
+		$row++;
+		echo '
+	</tr>
+	<tr>';
+		if ($row<>$rows)
+		{
+			echo '
+	</tr>
+		<td colspan="2" class="list_sep_v"></td>
+	<tr>';
+		}
+	}
+	else
+	{
+		echo '
+		<td class="list_sep_h"></td>
+';
+	}
+	{/php}
+{/foreach}
+  </tr>
+</table>

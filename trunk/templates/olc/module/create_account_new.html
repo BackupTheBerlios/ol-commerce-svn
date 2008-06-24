@@ -1,0 +1,161 @@
+{olc_template_init title="#heading_create_account#" section="create_account"}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		{$FORM_ACTION}
+
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+						<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="category">{#title_personal#}</td>
+					<td align="right" class="stockWarning">
+					<p align="left">{#text_must_x#}</td>
+				</tr>
+			</table>
+
+			<table width="100%" border="0" cellpadding="0" cellspacing="2"  class="formArea">
+				{if $INPUT_MALE != ''}
+				<tr> 
+					<td class="main"  width="150">{#text_gender#}</td>
+					<td class="main" >{#text_male#} 
+					{$INPUT_MALE} {#text_female#} {$INPUT_FEMALE}</td>
+				</tr>
+				{/if}
+				<tr> 
+					<td class="main" >{#text_firstname#}</td>
+					<td class="main" >{$INPUT_FIRSTNAME}</td>
+				</tr>
+				<tr> 
+					<td class="main">{#text_lastname#}</td>
+					<td class="main">{$INPUT_LASTNAME}</td>
+				</tr>
+				{if $INPUT_DOB != ''}
+				<tr> 
+					<td class="main">{#text_birthdate#}</td>
+					<td class="main">{$INPUT_DOB}</td>
+				</tr>
+				{/if}
+				<tr>
+					<!-- W. Kaiser - eMail-type by customer-->
+					<td class="main" valign="top">{#text_email#}</td>
+					<td class="main" valign="top">{$INPUT_EMAIL}</td>
+					<!-- W. Kaiser - eMail-type by customer-->
+				</tr>
+			</table>
+			{if $INPUT_COMPANY != ''}
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="subcategory">{#title_company#}</td>
+				</tr>
+			</table>
+			<table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">
+				<tr> 
+					<td class="main"  width="150">{#text_company#}</td>
+					<td class="main" >{$INPUT_COMPANY}</td>
+				</tr>
+			</table>
+			{/if}
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="subcategory">{#title_address#}</td>
+				</tr>
+			</table>
+			<table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">
+				<tr> 
+					<td class="main" width="150">{#text_street#}</td>
+					<td class="main" >{$INPUT_STREET}</td>
+				</tr>
+				{if $INPUT_SUBURB != ''}
+				<tr> 
+					<td class="main">{#text_suburb#}</td>
+					<td class="main">{$INPUT_SUBURB}</td>
+				</tr>
+				{/if}
+				<tr> 
+					<td class="main">{#text_code#}</td>
+					<td class="main">{$INPUT_CODE}</td>
+				</tr>
+				<tr> 
+					<td class="main">{#text_city#}</td>
+					<td class="main">{$INPUT_CITY}</td>
+				</tr>
+				<tr>
+					<td class="main">{#text_country#}</td>
+					<td class="main">{$SELECT_COUNTRY}</td>
+				</tr>
+				{if $INPUT_STATE != ''}
+				<tr> 
+					<td class="main">{#text_state#}</td>
+					<td class="main">{$INPUT_STATE}</td>
+				</tr>
+				{/if}
+			</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="subcategory">{#title_contact#}</td>
+				</tr>
+			</table>
+			<table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">
+				<tr> 
+					<td class="main"  width="150">{#text_tel#}</td>
+					<td class="main" >{$INPUT_TEL}</td>
+				</tr>
+				<tr>
+					<td class="main" >{#text_fax#}</td>
+					<td class="main" >{$INPUT_FAX}</td>
+				</tr>
+			</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="subcategory">{#title_options#}</td>
+				</tr>
+			</table>
+			<table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">
+				<tr>
+					<td class="main"  width="150">{#text_newsletter#}</td>
+					<td class="main" >{$CHECKBOX_NEWSLETTER}</td>
+				</tr>
+			</table> 
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="subcategory">{#title_password#}</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<table class="formArea" border="0" cellspacing="2" cellpadding="0">
+				<tr> 
+					<td class="main">{#text_password#}&nbsp;</td>
+					<td class="main">&nbsp;{$INPUT_PASSWORD}</td>
+				</tr>
+				<tr> 
+					<td class="main" >{#text_confirmation#}&nbsp;</td>
+					<td class="main" >&nbsp;{$INPUT_CONFIRMATION}</td>
+				</tr>
+			</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><div align="right">{$BUTTON_SUBMIT}</div></td>
+				</tr>
+			</table>
+		{$FORM_END}
+	</tr>
+</table>

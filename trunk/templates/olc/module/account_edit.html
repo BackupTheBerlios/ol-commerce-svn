@@ -1,0 +1,67 @@
+{olc_template_init title="#heading_account#" section="account_edit"} 
+{$FORM_ACTION}
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr> 
+			<td class="main"><strong>{#title_personal#}</strong> </td>
+			<td class="stockWarning"><div align="left">{#text_must_x#}</div></td>
+		</tr>
+	</table>
+	<table class="formArea" width="100%"  border="0" cellspacing="0" cellpadding="0">
+		<p align="left">{if $csID != ''} </p>
+		<tr> 
+			<td class="main_highlight" width="110" valign="top" >{#csID#}</td>
+			<td class="main_highlight" valign="top" ><b>{$csID}</b></td>
+		</tr>
+		<tr>
+			<td class="main" width="110" valign="top">&nbsp;</td>
+			<td class="main">&nbsp;</td>
+		</tr>
+		{/if}
+		{if $INPUT_MALE != ''} 
+		<tr> 
+			<td class="main" width="110" valign="top">{#text_gender#}</td>
+			<td class="main" valign="top">{#text_male#} 
+			{$INPUT_MALE} {#text_female#} {$INPUT_FEMALE}</td>
+		</tr>
+		{/if} 
+		<tr> 
+			<td class="main" width="110" valign="top" >{#text_firstname#}</td>
+			<td class="main" >{$INPUT_FIRSTNAME}</td>
+		</tr>
+		<tr> 
+			<td class="main" width="110" valign="top">{#text_lastname#}</td>
+			<td class="main">{$INPUT_LASTNAME}</td>
+		</tr>
+		{if $INPUT_DOB != ''} 
+		<tr> 
+			<td class="main" width="110" valign="top">{#text_birthdate#}</td>
+			<td class="main">{$INPUT_DOB}</td>
+		</tr>
+		{/if} 
+		<tr> 
+			<td class="main" width="110" valign="top">{#text_email#}</td>
+			<td class="main">{$INPUT_EMAIL}</td>
+		</tr>
+		<tr> 
+			<td class="main" width="110" valign="top">{#text_tel#}</td>
+			<td class="main">{$INPUT_TEL}</td>
+		</tr>
+		<tr>
+			<td class="main" width="110" valign="top">{#text_fax#}</td>
+			<td class="main">{$INPUT_FAX}</td>
+		</tr>
+		<tr>
+			<td width="110" >&nbsp;</td>
+			<td class="main"><b><font color="#FF0000">* = Erforderlich</font></b></td>
+		</tr>
+	</table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td colspan="2" class="main">&nbsp;</td>
+		</tr>
+		<tr> 
+			<td>{$BUTTON_BACK}</td>
+			<td align="right">{$BUTTON_SUBMIT}</td>
+		</tr>
+	</table>
+{$FORM_END}

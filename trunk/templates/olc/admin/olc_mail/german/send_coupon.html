@@ -1,0 +1,46 @@
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="{$style_path}">
+{/if}
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td valign="top" align="right">
+	    <table class="standard" align="right" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td valign="top" align="left">
+		        <font size="2">
+				      <p>
+			        	<a target="_blank" title="{$STORE_NAME}"
+					        alt="{$STORE_NAME}" href="{$HOME_LINK}"><img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}"></a>
+				      </p>
+			        <p>{$STORE_NAME_ADDRESS}</p>
+			        <p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		        </font>
+		       </td>
+	      </tr>
+	    </table>
+	    <br />
+		</td>
+  </tr>
+  <tr>
+    <td>
+      <font size="2">
+      {$MESSAGE}
+      <br/>
+      <br/>
+			Sie können den Gutschein bei Ihrer Bestellung einlösen. Geben Sie dazu Ihre <b>Gutschein-Nummer</b> in das Feld <b>Gutscheine</b> ein.
+			<br/>
+			<br/>
+			Ihr Gutschein-Nummer lautet: <strong>{$COUPON_ID}</strong>
+			<br/>
+			<br/>
+			Heben Sie Ihre Gutschein-Nummer gut auf, nur so können Sie davon profitieren,
+			wenn Sie uns das nächste mal unter <a href="{$WEBSITE}">{$WEBSITE}</a> besuchen.</font>
+		</td>
+  </tr>
+</table>
+{if $MAIL_IMPRESSUM}
+{$MAIL_IMPRESSUM}
+{/if}

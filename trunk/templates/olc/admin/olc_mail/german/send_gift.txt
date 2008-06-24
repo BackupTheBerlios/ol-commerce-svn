@@ -1,0 +1,23 @@
+Herzlichen Glückwunsch,
+	
+dies ist ein Gutschein zum Einkauf bei <a target="_blank" href="{$HOME_LINK}">{$STORE_NAME}</a>!
+{if $MESSAGE}
+
+{$MESSAGE}
+{/if}  
+
+Gutscheinwert {$AMMOUNT}
+    
+Bitte notieren Sie sich zur Sicherheit Ihren persönlichen Gutschein-Code.
+
+Ihr Gutscheincode lautet: {$GIFT_ID} 
+
+Um Ihren Gutschein zu verbuchen, klicken Sie auf den unten stehenden Link.
+
+Gutschein verbuchen: <a href="{$GIFT_LINK}">{$GIFT_LINK}</a>  
+
+Falls es wider Erwarten zu Problemen beim Verbuchen kommen sollte, 
+besuchen Sie unsere Webseite {$WEBSITE} und geben den Gutschein-Code bitte manuell ein.
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}

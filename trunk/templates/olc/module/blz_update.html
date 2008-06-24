@@ -1,0 +1,81 @@
+{$FORM_ACTION}
+	<table width="98%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="main" colspan="2">
+				<p align="center"><b><font size="4">BLZ-Update</font></b></p>
+				{if $ERROR != ''}
+				<p align="center"><font color="#FF0000"><b>{$ERROR}</b></font></p>
+				{/if}
+			</td>
+		</tr>
+		{if $SHOW_EXPLANATION != ''} 
+		<tr>
+			<td class="main" colspan="2">
+				<p>&nbsp;</p>
+				<p align="center"><b>Mit diesem Programm kann die 
+				Bankleitzahlen-Datenbank mit den aktuellen Daten der Bundesbank 
+				aktualisiert werden!</b></p>
+				<p align="center">Die Bundesbank stellt im Internet 
+				unter</p>
+				<p align="center">
+				<a target="_blank" href="http://www.bundesbank.de/zahlungsverkehr/zahlungsverkehr_bankleitzahlen_download.php">
+				http://www.bundesbank.de/zahlungsverkehr/zahlungsverkehr_bankleitzahlen_download.php</a></p>
+				<p align="center">regelmäßig Aktualisierungen der 
+				Bankleitzahl-Daten zur Verfügung.</p>
+				<p align="center"><font color="#FF0000"><b>Wichtig!</b></font></p>
+				<p align="center">
+				<font color="#0000FF">Ab 
+				dem 5. Juni 2006 gilt ein neuer Satzaufbau 
+				der Bankleitzahlendatei, den wir jetzt schon 
+				verwenden!</font>
+				</p>
+				<p align="center">Laden Sie daher bis zu diesem 
+				Termin die BLZ-Daten von folgender URL:</p>
+				<p align="center">
+				<A href="http://www.bundesbank.de/download/zahlungsverkehr/zv_blz_neuer_satzaufbau.zip">
+				http://www.bundesbank.de/download/zahlungsverkehr/zv_blz_neuer_satzaufbau.zip</A></p>
+				<p align="center">und laden Sie dort die &quot;<b>Bankleitzahlendatei 
+				im neuen (ab 5. Juni 2006 gültigen) Satzaufbau&quot;</b></p>
+				<p align="center">Dieses Programm kann diese (Text-)Datei 
+				lesen, die relevanten Inhalte extrahieren,<br/>
+				und die xtCommerce-<b>Bankleitzahlen-Datenbank</b> damit 
+				aktualisieren.</p>
+				<p align="left"><b>Ablauf des Updates:</b></p>
+				<ul>
+					<li>
+					<p align="left">Laden Sie die Bankleitzahl-Daten 
+					der Bundesbank (ZIP-Archiv) auf Ihren Rechner.</p></li>
+					<li>
+					<p align="left">Entpacken Sie das Archiv und 
+					laden Sie die Bankleitzahl-Daten der Bundesbank&nbsp; (TEXT-Datei) 
+					in das Verzeichnis &quot;<b>\blz</b>&quot; Ihres xtCommerce-Shops.<br/>
+					(<font color="#FF0000"><b>Wichtig:</b></font> Der Dateiname
+					<b><font color="#FF0000">muss</font></b> mit &quot;<font color="#0000FF">blz</font>&quot; 
+					beginnen, und die Endung &quot;<font color="#0000FF"><b>.txt</b></font>&quot; 
+					haben!)</p></li>
+					<li>
+					<p align="left">Starten Sie den BLZ-Update.</p>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		{/if}
+		<tr>
+			<td class="main" colspan="2">
+				{$CONTENT_BODY}
+			</td>
+		</tr>
+		<tr>
+			<td class="main" align="left" valign="bottom">
+			{$BUTTON_BACK}</td>
+			<td class="main" align="right" valign="bottom">
+			{if $SHOW_EXPLANATION != ''} 
+			<b><font color="#FF0000">Die Bearbeitung kann 3 bis 5 Minuten dauern!
+			Bitte keinesfalls unterbrechen!<br/>
+			</font></b><br/>
+			{$BUTTON_CONTINUE}
+			{/if} 
+			</td>
+		</tr>
+	</table>
+{$FORM_END}

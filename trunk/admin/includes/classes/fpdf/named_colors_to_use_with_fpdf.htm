@@ -1,0 +1,554 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Language" CONTENT="de">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 6.0">
+<meta NAME="ProgId" CONTENT="FrontPage.Editor.Document">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Named colors to use with the</TITLE>
+</HEAD>
+
+<body>
+
+<span id="intelliTxt">
+<p align="center">
+
+<font size="5"><B>Named colors to use with the &quot;<font color="#FF0000">fpdf</font>&quot; 
+class</B></font>
+<span id="intelliTxt0">
+<p align="center">
+
+Instead of calling the color-setting-functions of &quot;fpdf&quot;
+<p align="center">
+
+<B>function SetDrawColor($r,$g=-1,$b=-1)<br/>
+function SetFillColor($r,$g=-1,$b=-1)<br/>
+function SetTextColor($r,$g=-1,$b=-1)<br/>
+&nbsp;</b><p align="center">
+
+<B>with the <font color="#FF0000">R</font>, <font color="#008000">G</font> and
+<font color="#0000FF">B</font> values as parameters, they now can all be called 
+with a <font color="#FF0000">color</font> <font color="#FF0000">name</font></b>
+<B>as parameter.</b><p align="center">
+
+This is much easier to use, as
+<p align="center">
+
+<b>&quot;</b><span id="intelliTxt1"><B>SetTextColor('brown')&quot; </b></span>
+<p align="center">
+
+<span id="intelliTxt1">
+is much better readable then</span><span id="intelliTxt2"><p align="center">
+
+<b>&quot;SetTextColor(155,42,42)</b><span id="intelliTxt3"><b>&quot; </b></span></span>
+<hr/>
+<p align="center">
+
+<B>The following color names can be used:<br/>
+</b>(Any other name will be converted to black)<p align="center">
+
+&nbsp;</span><center>
+
+<table width=340 BORDER=1 cellpadding=1 cellspacing=1 ID="table1">
+
+
+
+	<td align="center" BGCOLOR="aliceblue" width="15%">Aliceblue<br/>F0F8FF
+	
+	</td><td align="center" BGCOLOR="antiquewhite" width="15%">Antiquewhite<br/>FAEBD7
+	
+	</td><td align="center" BGCOLOR="aqua" width="15%">Aqua<br/>00FFFF
+	<tr>
+	<td align="center" BGCOLOR="aquamarine" width="15%">Aquamarine<br/>7FFFD4
+	
+	
+	
+	</td><td align="center" BGCOLOR="azure" width="15%">Azure<br/>F0FFFF<br/>
+	
+	</td><td align="center" BGCOLOR="beige" width="15%">Beige<br/>F5F5DC
+	
+	<tr>
+	<td align="center" BGCOLOR="bisque" width="15%">Bisque<br/>FFE4C4
+	
+	</td><td align="center" BGCOLOR="black" width="15%"><font color="FFFFFF">Black<br/>000000</font>
+	
+	
+	
+	</td><td align="center" BGCOLOR="blanchedalmond" width="15%">Blanchedalmond<br/>FFEBCD
+	
+	<tr>
+	<td align="center" BGCOLOR="blue" width="15%"><font color="#FFFFFF">Blue<br/>0000FF
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="bluevoilet" width="15%">Blueviolet<br/>8A2BE2
+	
+	</td><td align="center" BGCOLOR="brown" width="15%"><font color="#FFFFFF">Brown<br/>A52A2A
+	
+	</font>
+	
+	<tr>
+	
+	
+	<td align="center" BGCOLOR="burlywood" width="15%">Burlywood<br/>DEB887
+	
+	</td><td align="center" BGCOLOR="cadetblue" width="15%">Cadetblue<br/>5F9EA0
+	
+	</td><td align="center" BGCOLOR="chartreuse" width="15%">Chartreuse<br/>7FFF00
+	
+	<tr>
+	<td align="center" BGCOLOR="chocolate" width="15%">Chocolate<br/>D2691E
+	
+	
+	
+	</td><td align="center" BGCOLOR="coral" width="15%">Coral<br/>FF7F50
+	
+	</td><td align="center" BGCOLOR="cornflowerblue" width="15%">Cornflowerblue<br/>6495ED
+	
+	<tr>
+	<td align="center" BGCOLOR="cornsilk" width="15%">Cornsilk<br/>FFF8DC
+	
+	</td><td align="center" BGCOLOR="crimson" width="15%">Crimson<br/>DC143C
+	
+	
+	
+	</td><td align="center" BGCOLOR="cyan" width="15%">Cyan<br/>00FFFF
+	
+	<tr>
+	<td align="center" BGCOLOR="darkblue" width="15%"><font color="#FFFFFF">Darkblue<br/>00008B
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="darkcyan" width="15%">Darkcyan<br/>008B8B
+	
+	</td><td align="center" BGCOLOR="darkgoldenrod" width="15%">Darkgoldenrod<br/>B8860B
+	
+	<tr>
+	
+	
+	<td align="center" BGCOLOR="darkgray" width="15%">Darkgray<br/>A9A9A9
+	
+	</td><td align="center" BGCOLOR="darkgreen" width="15%">
+	<font color="#FFFFFF">Darkgreen<br/>006400
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="darkkhaki" width="15%">Darkkhaki<br/>BDB76B
+	
+	<tr>
+	<td align="center" BGCOLOR="darkmagenta" width="15%"><font color="#FFFFFF">Darkmagenta<br/>8B008B
+	
+	
+	
+	</font>
+	
+	
+	
+	</td><td align="center" BGCOLOR="darkolivegreen" width="15%">
+	<font color="#FFFFFF">Darkolivegreen<br/>556B2F
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="darkorange" width="15%">Darkorange<br/>FF8C00
+	
+	<tr>
+	<td align="center" BGCOLOR="darkorchid" width="15%"><font color="#FFFFFF">Darkorchid<br/>9932CC
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="darkred" width="15%"><font color="#FFFFFF">Darkred<br/>8B0000
+	
+	
+	
+	</font>
+	
+	
+	
+	</td><td align="center" BGCOLOR="darksalmon" width="15%">Darksalmon<br/>E9967A
+	
+	<tr>
+	<td align="center" BGCOLOR="darkseagreen" width="15%">Darkseagreen<br/>8FBC8F
+	
+	</td><td align="center" BGCOLOR="darkslateblue" width="15%">
+	<font color="#FFFFFF">Darkslateblue<br/>483D8B
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="darkslategray" width="15%">
+	<font color="#FFFFFF">Darkslategray<br/>2F4F4F
+	
+	</font>
+	
+	<tr>
+	
+	
+	<td align="center" BGCOLOR="darkturquoise" width="15%">Darkturquoise<br/>00CED1
+	
+	</td><td align="center" BGCOLOR="darkviolet" width="15%">
+	<font color="#FFFFFF">Darkviolet<br/>9400D3
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="deeppink" width="15%">deeppink<br/>FF1493
+	
+	<tr>
+	<td align="center" BGCOLOR="deepskyblue" width="15%">Deepskyblue<br/>00BFFF
+	
+	
+	
+	</td><td align="center" BGCOLOR="dimgray" width="15%"><font color="#FFFFFF">Dimgray<br/>696969
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="dodgerblue" width="15%">Dodgerblue<br/>1E90FF
+	
+	<tr>
+	<td align="center" BGCOLOR="firebrick" width="15%"><font color="#FFFFFF">Firebrick<br/>B22222
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="floralwhite" width="15%">Floralwhite<br/>FFFAF0
+	
+	
+	
+	</td><td align="center" BGCOLOR="forestgreen" width="15%">Forestgreen<br/>228B22
+	
+	<tr>
+	<td align="center" BGCOLOR="fuchsia" width="15%">Fuchsia<br/>FF00FF
+	
+	</td><td align="center" BGCOLOR="gainsboro" width="15%">Gainsboro<br/>DCDCDC
+	
+	</td><td align="center" BGCOLOR="ghostwhite" width="15%">Ghostwhite<br/>F8F8FF
+	
+	<tr>
+	
+	
+	<td align="center" BGCOLOR="gold" width="15%">Gold<br/>FFD700
+	
+	</td><td align="center" BGCOLOR="goldenrod" width="15%">Goldenrod<br/>DAA520
+	
+	</td><td align="center" BGCOLOR="gray" width="15%">Gray<br/>808080
+	<tr>
+	<td align="center" BGCOLOR="green" width="15%"><font color="#FFFFFF">Green<br/>008000
+	
+	
+	
+	</font>
+	
+	
+	
+	</td><td align="center" BGCOLOR="greenyellow" width="15%">Greenyellow<br/>ADFF2F
+	
+	</td><td align="center" BGCOLOR="honeydew" width="15%">Honeydew<br/>F0FFF0
+	
+	<tr>
+	<td align="center" BGCOLOR="hotpink" width="15%">Hotpink<br/>FF69B4
+	
+	</td><td align="center" BGCOLOR="indianred" width="15%">Indianred<br/>CD5C5C
+	
+	
+	
+	</td><td align="center" BGCOLOR="indigo" width="15%"><font color="#FFFFFF">Indigo<br/>4B0082
+	
+	</font>
+	
+	<tr>
+	<td align="center" BGCOLOR="ivory" width="15%">Ivory<br/>FFFFF0
+	
+	</td><td align="center" BGCOLOR="khaki" width="15%">Khaki<br/>F0E68C
+	
+	</td><td align="center" BGCOLOR="lavender" width="15%">Lavender<br/>E6E6FA
+	
+	
+	<tr>
+	
+	
+	<td align="center" BGCOLOR="lavenderblush" width="15%">Lavenderblush<br/>FFF0F5
+	
+	</td><td align="center" BGCOLOR="lawngreen" width="15%">Lawngreen<br/>7CFC00
+	
+	</td><td align="center" BGCOLOR="lemonchiffon" width="15%">Lemonchiffon<br/>FFFACD
+	
+	<tr>
+	<td align="center" BGCOLOR="lightblue" width="15%">Lightblue<br/>ADD8E6
+	
+	
+	</td><td align="center" BGCOLOR="lightcoral" width="15%">Lightcoral<br/>F08080
+	
+	</td><td align="center" BGCOLOR="lightcyan" width="15%">Lightcyan<br/>E0FFFF
+	
+	<tr>
+	<td align="center" BGCOLOR="lightgoldenrodyellow" width="15%">Lightgoldenrodyellow<br/>FAFAD2
+	
+	</td><td align="center" BGCOLOR="lightgreen" width="15%">Lightgreen<br/>90EE90
+	
+	
+	
+	</td><td align="center" BGCOLOR="lightgrey" width="15%">Lightgrey<br/>D3D3D3
+	
+	<tr>
+	<td align="center" BGCOLOR="lightpink" width="15%">Lightpink<br/>FFB6C1
+	
+	</td><td align="center" BGCOLOR="lightsalmon" width="15%">Lightsalmon<br/>FFA07A
+	
+	</td><td align="center" BGCOLOR="lightseagreen" width="15%">Lightseagreen<br/>20B2AA
+	
+	<tr>
+	
+	
+	<td align="center" BGCOLOR="lightskyblue" width="15%">Lightskyblue<br/>87CEFA
+	
+	</td><td align="center" BGCOLOR="lightslategray" width="15%">
+	<font color="#FFFFFF">Lightslategray<br/>778899
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="lightsteelblue" width="15%">Lightsteelblue<br/>B0C4DE
+	
+	<tr>
+	<td align="center" BGCOLOR="lightyellow" width="15%">Lightyellow<br/>FFFFE0
+	
+	
+	
+	</td><td align="center" BGCOLOR="lime" width="15%">Lime<br/>00FF00
+	
+	</td><td align="center" BGCOLOR="limegreen" width="15%">Limegreen<br/>32CD32
+	
+	<tr>
+	<td align="center" BGCOLOR="linen" width="15%">Linen<br/>FAF0E6
+	
+	</td><td align="center" BGCOLOR="magenta" width="15%">Magenta<br/>FF00FF
+	
+	
+	
+	</td><td align="center" BGCOLOR="maroon" width="15%"><font color="#FFFFFF">Maroon<br/>800000
+	
+	</font>
+	
+	<tr>
+	<td align="center" BGCOLOR="mediumaquamarine" width="15%">Mediumauqamarine<br/>66CDAA
+	
+	</td><td align="center" BGCOLOR="mediumblue" width="15%">
+	<font color="#FFFFFF">Mediumblue<br/>0000CD
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="mediumorchid" width="15%">
+	<font color="#FFFFFF">Mediumorchid<br/>BA55D3</font>
+	
+	<tr>
+	
+	
+	
+	
+	<td align="center" BGCOLOR="mediumpurple" width="15%"><font color="#FFFFFF">Mediumpurple<br/>9370D8
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="mediumseagreen" width="15%">Mediumseagreen<br/>3CB371
+	
+	</td><td align="center" BGCOLOR="mediumslateblue" width="15%">Mediumslateblue<br/>7B68EE
+	
+	<tr>
+	<td align="center" BGCOLOR="mediumspringgreen" width="15%">Mediumspringgreen<br/>00FA9A
+	
+	
+	
+	</td><td align="center" BGCOLOR="mediumturquoise" width="15%">Mediumturquoise<br/>48D1CC
+	
+	</td><td align="center" BGCOLOR="mediumvioletred" width="15%">
+	<font color="#FFFFFF">Mediumvioletred<br/>C71585
+	
+	</font>
+	
+	<tr>
+	<td align="center" BGCOLOR="midnightblue" width="15%"><font color="#FFFFFF">Midnightblue<br/>191970
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="mintcream" width="15%">Mintcream<br/>F5FFFA
+	
+	
+	
+	</td><td align="center" BGCOLOR="mistyrose" width="15%">Mistyrose<br/>FFE4E1
+	
+	<tr>
+	<td align="center" BGCOLOR="moccasin" width="15%">Moccasin<br/>FFE4B5
+	
+	</td><td align="center" BGCOLOR="navajowhite" width="15%">Navajowhite<br/>FFDEAD
+	
+	</td><td align="center" BGCOLOR="navy" width="15%"><font color="#FFFFFF">Navy<br/>000080
+	
+	</font>
+	
+	<tr>
+	
+	<td align="center" BGCOLOR="oldlace" width="15%">Oldlace<br/>FDF5E6
+	
+	</td><td align="center" BGCOLOR="olive" width="15%"><font color="#FFFFFF">Olive<br/>808000
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="olivedrab" width="15%">
+	<font color="#FFFFFF">Olivedrab<br/>688E23
+	
+	</font>
+	
+	<tr>
+	<td align="center" BGCOLOR="orange" width="15%">Orange<br/>FFA500
+	
+	
+	
+	</td><td align="center" BGCOLOR="orangered" width="15%">Orangered<br/>FF4500
+	
+	</td><td align="center" BGCOLOR="orchid" width="15%">Orchid<br/>DA70D6
+	
+	<tr>
+	<td align="center" BGCOLOR="palegoldenrod" width="15%">Palegoldenrod<br/>EEE8AA
+	
+	</td><td align="center" BGCOLOR="palegreen" width="15%">Palegreen<br/>98FB98
+	
+	
+	
+	
+	
+	</td><td align="center" BGCOLOR="paleturquoise" width="15%">Paleturquoise<br/>AFEEEE
+	
+	<tr>
+	<td align="center" BGCOLOR="palevioletred" width="15%">Palevioletred<br/>D87093
+	
+	</td><td align="center" BGCOLOR="papayawhip" width="15%">Papayawhip<br/>FFEFD5
+	
+	</td><td align="center" BGCOLOR="peachpuff" width="15%">Peachpuff<br/>FFDAB9
+	
+	<tr>
+	
+	
+	<td align="center" BGCOLOR="peru" width="15%">Peru<br/>CD853F
+	
+	</td><td align="center" BGCOLOR="pink" width="15%">Pink<br/>FFC0CB
+	
+	</td><td align="center" BGCOLOR="plum" width="15%">Plum<br/>DDA0DD
+	
+	<tr>
+	<td align="center" BGCOLOR="powderblue" width="15%">Powderblue<br/>B0E0E6
+	
+	
+	
+	</td><td align="center" BGCOLOR="purple" width="15%"><font color="#FFFFFF">Purple<br/>800080
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="red" width="15%"><font color="#FFFFFF">Red<br/>FF0000
+	
+	</font>
+	
+	<tr>
+	<td align="center" BGCOLOR="rosybrown" width="15%">Rosybrown<br/>BC8F8F
+	
+	</td><td align="center" BGCOLOR="royalblue" width="15%">
+	<font color="#FFFFFF">Royalblue<br/>4169E1
+	
+	
+	
+	</font>
+	
+	
+	
+	</td><td align="center" BGCOLOR="saddlebrown" width="15%">
+	<font color="#FFFFFF">Saddlebrown<br/>8B4513
+	
+	</font>
+	
+	<tr>
+	<td align="center" BGCOLOR="salmon" width="15%">Salmon<br/>FA8072
+	
+	</td><td align="center" BGCOLOR="sandybrown" width="15%">Sandybrown<br/>F4A460
+	
+	</td><td align="center" BGCOLOR="seagreen" width="15%">
+	<font color="#FFFFFF">Seagreen<br/>2E8B57
+	
+	
+	</font>
+	
+	
+	<tr>
+	
+	<td align="center" BGCOLOR="seashell" width="15%">Seashell<br/>FFF5EE
+	
+	</td><td align="center" BGCOLOR="sienna" width="15%"><font color="#FFFFFF">Sienna<br/>A0522D
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="silver" width="15%">Silver<br/>C0C0C0
+	
+	<tr>
+	<td align="center" BGCOLOR="skyblue" width="15%">Skyblue<br/>87CEEB
+	
+	
+	
+	</td><td align="center" BGCOLOR="slateblue" width="15%">
+	<font color="#FFFFFF">Slateblue<br/>6A5ACD
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="slategray" width="15%">Slategray<br/>708090
+	
+	<tr>
+	<td align="center" BGCOLOR="snow" width="15%">Snow<br/>FFFAFA
+	
+	</td><td align="center" BGCOLOR="springgreen" width="15%">Springgreen<br/>00FF7F
+	
+	
+	
+	</td><td align="center" BGCOLOR="steelblue" width="15%">
+	<font color="#FFFFFF">Steelblue<br/>4682B4
+	
+	</font>
+	
+	<tr>
+	<td align="center" BGCOLOR="tan" width="15%">Tan<br/>D2B48C
+	
+	</td><td align="center" BGCOLOR="teal" width="15%"><font color="#FFFFFF">Teal<br/>008080
+	
+	</font>
+	
+	</td><td align="center" BGCOLOR="thistle" width="15%">Thistle<br/>D8BFD8
+	
+	<tr>
+	
+	
+	<td align="center" BGCOLOR="tomato" width="15%">Tomato<br/>FF6347
+	
+	</td><td align="center" BGCOLOR="turquoise" width="15%">Turquoise<br/>40E0D0
+	
+	</td><td align="center" BGCOLOR="violet" width="15%">Violet<br/>EE82EE
+	
+	<tr>
+	<td align="center" BGCOLOR="wheat" width="15%">Wheat<br/>F5DEB3<br/>
+	
+	
+	
+	</td><td align="center" BGCOLOR="white" width="15%">White<br/>FFFFFF
+	
+	</td><td align="center" BGCOLOR="whitesmoke" width="15%">Whitesmoke<br/>F5F5F5
+	
+	<tr>
+	<td align="center" BGCOLOR="yellow" width="15%">Yellow<br/>FFFF00
+	
+	</td><td align="center" BGCOLOR="yellowgreen" width="15%">YellowGreen<br/>9ACD32
+	
+	</td>
+
+</tr>
+
+</table>
+
+
+
+</CENTER>
+</span>
+
+</body>
+
+</HTML>

@@ -1,0 +1,33 @@
+{olc_template_init section="shopping_cart" title="#heading_cart#"}
+{$MODULE_gift_cart}
+{if $cart_empty==true}
+	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+			<td class="main"><div align="center">{#text_empty#}</div></td>
+		</tr>
+		<tr style="height:5px;font-size:1px"><td>&nbsp;</td></tr>
+		<tr>
+			<td class="main"><div align="right">{$BUTTON_CONTINUE}</div></td>
+		</tr>
+	</table>
+{else}
+	{$FORM_ACTION}
+		{$HIDDEN_OPTIONS}
+	  <br/>
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	      <td>{$MODULE_order_details}</td>
+	    </tr>
+	    <tr>
+	      <td class="main"></td>
+	    </tr>
+	  </table>
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	    <td><div align="right">{$BUTTON_RELOAD}</div></td>
+			<td><div align="center">{$BUTTON_CONTINUE_SHOPPING}</div></td>
+			<td><div align="left">{$BUTTON_CHECKOUT}</div></td>
+	  </tr>
+	</table>
+	</form>
+{/if}

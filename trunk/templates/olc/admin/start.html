@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta name="generator" content="Microsoft FrontPage 6.0">
+    {if $language==''} 
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	{else}
+	<link rel="stylesheet" type="text/css" href="{$tpl_path}stylesheet.css">
+    {/if}
+	<script language="javascript" src="includes/general.js"></script>
+	<!-- <script language="javascript" src="includes/cronjobs.js.php"></script>-->
+	<script language="javascript" src="includes/admin_global_scripts.js.php"></script>
+	<link rel="stylesheet" type="text/css" href="includes/javascript/spiffyCal/spiffyCal_v2_1.css">
+	<script language="JavaScript" src="includes/javascript/spiffyCal/spiffyCal_v2_1.js"></script>
+	<script language="JavaScript" type="text/javascript">
+	//Global variables for "spiffy-calendar"
+	{literal}
+	var dateAvailable;
+	var dateExpires;
+	var dateScheduled;
+	</script>
+	{/literal}
+	<!-- osc@kangaroopartners.com - AJAX Attribute Manager start-->
+	<script language="JavaScript" type="text/JavaScript" src="attributemanager/javascript/attributemanager.js"></script>
+	<link rel="stylesheet" type="text/css" href="attributemanager/css/attributemanager.css" />
+	<script language="JavaScript" type="text/javascript">
+	{literal}
+	//Global variables and code for "atribute-manager"
+	var productsId;
+	var pageAction;
+	var sessionId;
+	
+	function goOnLoad()
+	{
+		attributeManagerInit();
+		SetFocus();
+	}
+	{/literal}
+	</script>
+	<!-- osc@kangaroopartners.com - AJAX Attribute Manager end-->
+	<!--Javascripts for "SPAW"-Editor-->
+    <script language="JavaScript" src="includes/classes/spaw/spaw_script.js.php"></script>
+	{if $SPAW_STYLESHEET}
+	<link rel="stylesheet" type="text/css" href="{$SPAW_STYLESHEET}">
+	{/if}
+	<!-- <link rel="stylesheet" type="text/css" href="includes/classes/spaw/wysiwyg.css">-->
+	<script language="JavaScript" src="includes/classes/spaw/lib/themes/{$SPAW_THEME}/js/toolbar.js.php"></script>
+	<link rel="stylesheet" type="text/css" href="includes/classes/spaw/lib/themes/{$SPAW_THEME}/css/toolbar.css">
+	<script>
+    var spaw_active_toolbar = "{$SPAW_ACTIVE_TOOLBAR}";
+	</script>
+	<!-- Info: http://www.onjava.com/pub/a/onjava/2005/10/26/ajax-handling-bookmarks-and-back-button.html-->
+	<script src="../includes/ajax_lib/x_core.js"></script>
+	<script src="../includes/ajax_lib/x_dom.js"></script>
+	<script src="../includes/ajax_lib/x_event.js"></script>
+	<script src="../includes/ajax_dhtmlHistory.js"></script>
+	<!--
+	Not supported yet!!!
+	//Info: http://codinginparadise.org/projects/storage/README.html
+	<script src="../includes/ajax_storage.js" type="text/javascript"></script>
+	-->
+	{$AJAX_JS}
+    <title>OL-Commerce Verwaltung</title>
+  </head>
+  <body {$ONLOAD}>
+    <!-- MAINTABLE BEGIN-->
+    <span class="main" id="box_TOP_DIV">
+    {$box_TOP_DIV}
+    </span>
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tableShop">
+      <!-- HEADER BEGIN-->
+      <tr>
+        <td width="100%" align="center" valign="middle">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" class="header">
+            <tr>
+              <td class="main" align="center">
+                <p align="left">
+                <img src="{$tpl_path}images/logo.gif" border="0" hspace="0" width="200" height="51">
+              </td>
+              <td class="company" align="right">
+                <a href="start.php" class="headerLink">
+                	<img src="{$tpl_path}images/top_index.gif" border="0"align="middle">
+                </a>
+                <img src="{$tpl_path}images/img_spacer.gif" border="0" align="middle">
+                <a href="http://www.ol-commerce.de/modules/newbb/" target="_blank" class="headerLink">
+                	<img src="{$tpl_path}images/top_support.gif" border="0" align="middle">
+                </a>
+                <img src="{$tpl_path}images/img_spacer.gif" border="0" align="middle"> 
+                <a href="../index.php" class="headerLink" target="_blank">
+                	<img src="{$tpl_path}images/top_shop.gif" border="0" align="middle">
+                </a>
+                <img src="{$tpl_path}images/img_spacer.gif" border="0" align="middle">
+                <a href="../logoff.php" class="headerLink">
+                	<img src="{$tpl_path}images/top_logout.gif" border="0" align="middle">
+                </a>
+                <img src="{$tpl_path}images/img_spacer.gif" border="0" align="middle">
+                <br/>
+				<div class="main" id="ajax_active_indicator" align="right" 
+					style="visibility:hidden">
+					<img border="0" SRC="{$tpl_path_catalog}img/ajax_activity.gif">
+				</div>
+             </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- HEADER END-->
+      <!-- CONTENT BEGIN-->
+      <tr>
+        <td>
+          <table width="100%" border="0" cellpadding="2	" cellspacing="2" class="bg">
+            <tr>
+              <td class="columnLeft" nowrap="nowrap" valign="top">
+                <span class="main" id="box_LEFT1">
+                {$box_LEFT1}
+                </span>
+                <span class="main" id="box_LEFT2">
+                {$box_LEFT2}
+                </span>
+              </td>
+              <td class="main" id="messages" align="left" valign="top" >
+				<!-- main_content-->
+				<div class="main" id="main_content">
+					{$main_content}
+					</div>
+				<!-- main_content-->
+              </td>
+              <td valign="top" id="navRight" class="columnRight" nowrap="nowrap">
+                <span class="main" id="box_RIGHT">
+                {$box_RIGHT}
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- CONTENT END-->
+      <!-- FOOTER BEGIN-->
+      <tr>
+        <td>
+          <span class="main" id="PARSE_TIME">{$PARSE_TIME}</span>
+          <p align="center">
+            <span class="main">{$FOOTER}</span>
+          </p>
+        </td>
+      </tr>
+      <!-- FOOTER END-->
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <!-- MAINTABLE END-->
+  </body>
+</html>

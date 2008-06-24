@@ -1,0 +1,79 @@
+{olc_template_init use_template_language="true" section="boxes"}
+{literal}
+<style type="text/css">
+td.tabcol  {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol0 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol1 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol2 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol3 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol4 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol5 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol6 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol7 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol8 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol9 {font-weight:bold; font-size:12px;vertical-align: middle;}
+
+td.tabcol10 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol11 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol12 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol13 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol14 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol15 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol16 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol17 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol18 {font-weight:bold; font-size:12px;vertical-align: middle;}
+td.tabcol19 {font-weight:bold; font-size:12px;vertical-align: middle;}
+
+a.sublink {font-weight:bold; font-weight:bold; font-size:12px;vertical-align: middle;}
+a.sublink:hover { text-decoration: underline; font-size:12px}
+</style>
+{/literal}
+<table class="{$box_navigation_area} box_TAB_NAVIGATION" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr valign="top" align="left">
+		<td>
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					{section name=data loop=$content.main}
+					<td class="{$content.main[data].CSS}">
+						<img src="{$tpl_path}img/tab_left.gif" border="0" alt="">
+					</td>
+					<td nowrap="nowrap" class="{$content.main[data].CSS}">
+						{if $content.main[data].ICO}
+							<img src="{$content.main[data].ICO}" border="0"
+								alt="{$content.main[data].NAME}"
+								title="{$content.main[data].NAME}"
+								align="absmiddle"
+							/>&nbsp;
+						{/if}
+						<a class="inactiveTab" href="{$content.main[data].URL}"
+						{if $content.main[data].TARGET}
+						target="{$content.main[data].TARGET}"
+						{/if}
+						>{$content.main[data].NAME}</a>
+					</td>
+					<td class="{$content.main[data].CSS}">
+						<img src="{$tpl_path}img/tab_right.gif" border="0" alt="">&nbsp;
+					</td>
+					{/section}
+				</tr>
+			</table>
+		</td>
+	</tr>
+    <tr>
+    	<td class="tabcol{$active_tab}" align="left">
+			{if $content.sub[$active_tab]}|{/if}&nbsp;
+			{section name=data2 loop=$content.sub[$active_tab]}
+			<a class="sublink" href="{$content.sub[$active_tab][data2].URL}"
+				{if $content.sub[$active_tab][data2].TARGET}
+				target="{$content.sub[$active_tab][data2].TARGET}"
+				{/if}
+				alt="{$content.sub[$active_tab][data2].NAME}"
+				title="{$content.sub[$active_tab][data2].NAME}"
+			>{$content.sub[$active_tab][data2].NAME}</a>&nbsp;|&nbsp;
+			{/section}
+    	</td>
+  </tr>
+  <tr>
+    	<td class="infoBox">&nbsp;</td>
+  </tr>
+</table>

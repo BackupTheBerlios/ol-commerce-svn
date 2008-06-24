@@ -1,0 +1,36 @@
+{olc_template_init title="#text_save_title#" section="shopping_cart"}
+{$FORM_ACTION}
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="category">
+				{#heading_save_carts#}
+			</td>
+		</tr>
+	</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		{if $ERROR_MESSAGE}
+		<tr>
+			<td class="category" align="center">
+				<br/><p >{$ERROR_MESSAGE}</font>
+			</td>
+		</tr>
+		{else}
+		<tr>
+			<td class="main">
+				<br/><b>{#text_name#}:</b>&nbsp;&nbsp;{$main_content}
+			</td>
+		</tr>
+		<tr>
+			<!--
+			<td class="main" align="left" valign="bottom">
+				{$BUTTON_BACK}
+			</td>
+			-->
+			<td align="middle" valign="bottom">
+				<br/><br/>
+				{$BUTTON_CONTINUE}
+			</td>
+		</tr>
+		{/if}
+	</table>
+{$FORM_END}

@@ -1,0 +1,2895 @@
+<BASE TARGET="_blank">
+
+<p align="center"><b><font size="5" color="#FF0000">OL-Commerce v4/AJAX</font></b></p>
+<p align="center">Autor: Dipl.-Ing.(TH) Winfried Kaiser<br/>
+<br/>
+<A href="http://www.seifenparadies.de">http://www.seifenparadies.de</A><br/>
+<A href="mailto:w.kaiser@fortune.de">w.kaiser@fortune.de</A></p>
+<p align="center"><b>&copy; 2006 Dipl.-Ing.(TH) Winfried Kaiser, 24975 Husby</B></p>
+<hr/>
+<p align="center"><B>Diese Software basiert auf der Software &quot;<A TARGET="_blank" href="http://www.ol-commerce.de">OL-Commerce </A> 
+&nbsp;v1.2.2.a&quot;, sie wird veröffentlicht auf Basis der &quot;<A TARGET="_blank" href="http://www.gnu.de/gpl-ger.html">GNU 
+General Public License</A>&quot;.</b></p>
+<p align="center"><B>Es wird vom Autor <U><font color="#FF0000">keinerlei 
+Gewährleistung</font></U> für die Software <font size="3" color="#0000FF">
+OL-Commerce &nbsp;
+v4/AJAX</font></b>
+<B>übernommen!<br/>
+Eine Verpflichtung zur Behebung evtl. auftretender Fehler besteht nicht!</b></p>
+<p align="center"><U><b><font color="#FF0000">Der Einsatz dieser Software 
+erfolgt </font><font color="#0000FF">ausschließlich(!)</font><font color="#FF0000"> 
+auf eigene Gefahr und Risiko des Anwenders!</font></b></U></p>
+<p align="center"><b><font color="#0000FF">Der Anwender hat dafür Sorge zu 
+tragen, dass er seinen </font><font color="#FF0000"><U>aktuellen</U> Software- 
+und Datenbestand vor Einsatz dieser Software </font><U><font color="#FF0000">
+sichert</font></U><font color="#008000">, <br/>
+</font><font color="#0000FF">so dass er im Fehlerfall jederzeit diesen Stand 
+wieder rekonstruieren kann.</font></b></p>
+<hr/>
+<p align="center"><B>Eine Testversion ist
+<A href="http://www.seifenparadies.de/ajax/index.php">
+hier</A> online zu sehen</B></p>
+<p align="center">Der Zugang als Administrator ist folgender:</p>
+<p align="center"><B>Benutzer:</b> test@test.com<br/>
+<B>Passwort:</b> testtest</p>
+<p align="center">(Diese Version ist noch im Pre-Release Stadium, deshalb kann es 
+passieren, dass nicht alles funktioniert.)</p>
+<hr/>
+<p align="left"><B>Installationshinweise</B>: 
+<A TARGET="_blank" href="../readme.html">readme.html</A></p>
+<p align="left"><B>Updatehinweise</B>:
+<A TARGET="_blank" href="ajax_aenderungen.html">ajax_aenderungen.html</A></p>
+<p align="left"><b>&quot;Multi-Shop&quot;/&quot;Multi-Datenbank&quot;:</b>
+<A TARGET="_blank" href="readme_multishop.html">readme_multishop.html</A></p>
+<p align="left"><B>Daten-Import</B>:
+<A TARGET="_blank" href="automatischer_daten_import.html">
+automatischer_daten_import.html</A></p>
+<p align="left"><B>eBay_Konnektor</B>:
+<A TARGET="_blank" href="eBay-Konnektor.html">eBay-Konnektor.html</A></p>
+<hr/>
+<p align="left"><B>OL-Commerce v4.0a/AJAX</B> ist eine <U><font color="#0000FF">
+<B>wesentliche</B></font></U> Erweiterung von&nbsp;
+<A TARGET="_blank" href="http://www.ol-commerce.de/">OL-Commerce </A> V1.2.2a, 
+wobei insbesondere die <B>vollständige Umstellung</B> des <font color="#FF0000"> <B>kundenorientierten</B></font> Teiles 
+und des Admin-Bereiches von 
+OL-Commerce auf die <b>
+<A TARGET="_blank" href="http://de.wikipedia.org/wiki/Ajax_(Programmierung)">
+AJAX-Technologie</A></b> einen Meilenstein in der Entwicklung von Shop-Software darstellt.</p>
+<p align="left"><B>AJAX</B> ist ein Akronym für die Wortfolge 
+<font color="#FF0000"> <B>A</B></font>synchronous
+<font color="#FF0000">
+<B>J</B></font>avascript <font color="#FF0000"> <B>A</B></font>nd 
+<font color="#FF0000"> <B>X</B></font>ML.<br/>
+<br/>
+Es bezeichnet ein Konzept der Datenübertragung zwischen einem Internet-Server und dem 
+Browser, welches es ermöglicht, dass die HTML-Seite <font color="#FF0000"><B>nicht</B></font>, 
+wie üblich, mit jeder 
+Server-Anfrage komplett neu geladen werden muss! Das Novum besteht 
+in der Tatsache, dass <B>nur gewisse Teile </B>einer HTML-Seite sukzessive bei Bedarf 
+nachgeladen werden.</p>
+<p align="left"><B>AJAX</B> ist derzeit <B>das</B> &quot;Hot-Topic&quot; in der 
+Web-Entwicklung. <br/>
+(Weitere Info dazu z.B. über
+<A TARGET="_blank" href="http://de.wikipedia.org/wiki/Ajax_(Programmierung)">
+http://de.wikipedia.org/wiki/Ajax_(Programmierung)</A>.)</p>
+<p><font color="#FF0000"><B>Warum AJAX-Technologien in OL-Commerce verwenden?</b></font></p>
+<p>Es gibt mehrere Gründe dafür: u.a.</p>
+<p><font color="#FF0000"><B>Schnellere Reaktion:</b></font></p>
+<p>Da nur die Teile übertragen werden, die sich wirklich geändert haben, 
+ist der Datenstrom sehr viel kleiner als konventionell. Zudem entfällt die 
+Berechnung der nicht benötigten Teile, was einiges an Datenbankzugriffen und 
+PHP-Aktionen einspart. Schließlich entfällt auch die Erstellung der kompletten 
+&quot;index.html&quot; durch &quot;Smarty&quot;. (Besonders beeindruckend ist das auch bei 
+Fehlermeldungen, bei denen normalerweise immer die komplette Seite neu erstellt 
+werden muss, um wenige Worte Text zu kommunizieren. Das mit AJAX-Technologie 
+geänderte Verfahren überträgt nur noch den Meldungstext, und zeigt ihn in einer 
+normalen WINDOWS-Box an, wie man das normalerweise von Desktop-Anwendungen 
+gewohnt ist.)</p>
+<p><font color="#FF0000"><B>Verbesserte Ergonomie:</b></font></p>
+<p>Der auffälligste (und einzig sichtbare) Unterschied von 
+AJAX-Anwendungen gegenüber konventionellen Web-Anwendungen ist der, dass sich 
+der Bildschirm nicht mehr bei jeder Funktion neu aufbaut, sondern dass sich nur 
+noch Teilbereiche auf dem Bildschirm ändern. Das beim Surfen normalerweise zu 
+beobachtende komplette Löschen und den Neu-Aufbau der Seite entfällt! Die 
+Bildschirmdarstellung ist stabil, nur der Inhalt einiger Bereiche ändert sich 
+nach einem &quot;Klick&quot;. Das web-übliche Geflacker und Gezappel beim Eintreffen neuer 
+Informationen vom Server gehört damit der Vergangenheit an! Web-Anwendungen 
+verhalten sich jetzt wie lokale Anwendungen.</p>
+<p><b><font color="#FF0000">Online Validierung:</font></b></p>
+<p>Man kann über AJAX beim Ausfüllen von Formularen Informationen direkt 
+im Hintergrund überprüfen, bzw. zusätzliche Daten einsteuern, so dass eine 
+direkte Bedienerführung möglich ist. </p>
+<p><font color="#FF0000"><B>Komplette Javascript-Kontrolle über den Shop</B></font><b><font color="#FF0000">:</font></b></p>
+<p>Da man für den AJAX-Betrieb sowieso tief in das Innenleben des Shops 
+einsteigen muss, kann man zusätzlich gleich einige nützliche Dinge mit erledigen, die das 
+(lokale) Arbeiten mit dem Shop verbessern.</p>
+<p><B>Beispiele:</b></p>
+<table border="0" ID="table3" cellspacing="5" cellpadding="5" width="1024">
+	<tr>
+		<td valign="top" colspan="2"><b>&quot;Sticky&quot;-Cart </b></td>
+		<td valign="top">Eine Warenkorb-Kopie, die immer sichtbar ist. Der Kunde 
+		sieht damit auch bei einer Bestellung im unteren Bereich der 
+		Produktliste, wie der Warenkorb sich ändert.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" colspan="2"><B>Lokale Produkt-Optionsauswahl<br/>
+		</b>(mit direkter Änderung des Warenkorbs!)</td>
+		<td valign="top">Bei der Auswahl von Optionen wird nicht jedes mal der 
+		Server kontaktiert, sondern nur beim Ablegen in den Warenkorb. Auch die 
+		Optionsänderung von schon im Warenkorb befindlichen Produkten ist lokal 
+		möglich, wobei beim Aufruf zur Änderung gleich die gewählten Optionen 
+		aktiviert sind.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" colspan="2"><B>Lokale Warenkorb-Änderung<br/>
+		</b>(mit direkter Änderung des Warenkorbs!)</td>
+		<td valign="top">Der Inhalt des Warenkorbs kann lokal geändert werden 
+		(Stückzahl, Optionen, Löschen). Der Server wird erst nach Abschluss 
+		aller Änderungen kontaktiert.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" colspan="2"><B>Direkte Änderung von Produktoptionen im
+		<font color="#FF0000">Admin</font>-Produktbereich</B></td>
+		<td valign="top">Produktoptionen können jetzt direkt im Produktformular 
+		geändert werden.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" colspan="2"><B>Verhinderung von Seiten-Reloads</B></td>
+		<td valign="top">Der Besucher kann den AJAX-Betrieb mit &quot;F5&quot;, &quot;Strg+R&quot;, 
+		&quot;Strg+N&quot;, &quot;Strg+O&quot; oder &quot;Backspace&quot; nicht mehr stören, sondern nur noch 
+		kontrolliert navigieren.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" colspan="3">
+			<hr/>
+			<p align="left">Neben der AJAX-Integration sind eine ganze Reihe von 
+			Verbesserungen eingeflossen, die vom Autor selbst entwickelt, verbessert oder 
+			für OL-Commerce adaptiert wurden.</p>
+			<p align="left"><B>Diese sind u.a:</b></p>
+		</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>1.</b></font></td>
+		<td valign="top">Einbeziehung<B> </B>von<br/>
+		<A class="l" TARGET="_blank" href="http://elektronischer-markt.de/">
+		<B>Elm@r </b>- Der elektronische Markt</A></td>
+		<td valign="top">
+		<A href="mailto:Elm@r" style="text-decoration: none">
+		<font color="#000000">E</font></A>inbindung der
+		<A href="mailto:Elm@r" style="text-decoration: none">
+		<font color="#000000">Elm@r</font></A>-Programme für &quot;Froogle&quot;- und 
+		einige andere Export-Formate. Online Abfrage über das &quot;<B>shop.xml</B>&quot;-Format. 
+		Die &quot;<A href="mailto:Elm@r.Software" style="text-decoration: none"><font color="#000000">Elm@r&quot;-Software</font></A> 
+		ist in der Distribution enthalten.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>2.</b></font></td>
+		<td valign="top">Einbeziehung<B> </B>von<br/>
+		<A class="l" TARGET="_blank" href="http://www.christoph-bachner.net/chcounter">
+		<B>chCounter</B> - Besucherstatistiken für Websites</A></td>
+		<td valign="top">Shop-Statistik bis auf 
+		Produkt-/Kategorieebene. Die &quot;<A href="mailto:Elm@r.Software" style="text-decoration: none"><font color="#000000">chCounter&quot;-Software</font></A> 
+		ist in der Distribution enthalten.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>3.</b></font></td>
+		<td valign="top">
+		<b>
+		<A TARGET="_blank" href="https://www.google.de/webmasters/sitemaps/docs/de/about.html">Google Sitemap</A></b></td>
+		<td valign="top">Erstellung einer Sitemap für Google, so 
+		dass eine bessere Indizierung erfolgen kann</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>4.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>BLZ-Aktualisierung</B></font> anhand der Bundesbank-Daten</td>
+		<td valign="top">Die Daten der BLZ-Datenbank können anhand 
+		der Bundesbank-Daten automatisch aktualisiert werden</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" colspan="3">
+		<p align="center"><br/>
+		Die folgenden Änderungen 5. bis 9 machen den Shop <font color="#FF0000"> <B>abmahnungssicherer</B></font>, 
+		da <B>alle bekannten Anforderungen</B> an solche Shops berücksichtigt wurden.<br/>
+&nbsp;</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>5.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Verpackungseinheiten</B></font> 
+		<b><font color="#0000FF">(VPE)</font></b> für Produkte</td>
+		<td valign="top">Für die Produkte kann eine 
+		<B>Verpackungseinheit</B> angegeben werden</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>6.</b></font></td>
+		<td valign="top"><b>
+		<A TARGET="_blank" href="http://www.ihk-nordwestfalen.de/handel/grundpreisauszeichnung.php">
+		Grundpreise</A></b> für Produkte</td>
+		<td valign="top">Für Produkte mit unüblichen Mengeneinheiten kann der <B>Grundpreis</B> für eine übliche 
+		Mengeneinheit 
+		angegeben werden. (Dazu <B>muss</B> für das Produkt eine <B>VPE </B>definiert 
+		werden!)<p>Bei den <B>Verpackungseinheiten (VPE)</b> wird dazu die VPE 
+		wie folgt eingeben:</p>
+		<p><B>VPE-Name</B>, <B>VPE-Art</B>[, <B>GRUNDPREIS-Anzeige-Name</B>] 
+		(z.B.: &quot;<B>cm,Länge,1m</B>&quot;)<br/>
+		(wobei &quot;<B>GRUNDPREIS-Anzeige-Name</B>&quot; optional ist, und weggelassen 
+		werden kann).</p>
+		<p>Die VPE eines Artikels würde dann z.B. angezeigt als &quot;<B>Länge: 1cm</B>&quot;.</p>
+		<p>Da die <B>Preisangaben-Verordung (PreisangabenVO) </B>vorschreibt, 
+		dass bei &quot;unüblichen&quot; Mengen auch der Preis für eine &quot;übliche&quot; Menge 
+		anzugeben ist, kommt hier der <B>Grundpreis</B> ins Spiel. </p>
+		<p>Wenn man eine &quot;unübliche&quot; Mengeneinheit verwendet, kann man dem 
+		Produkt dann einen <B>Faktor</B> (&quot;Grundpreis-Faktor&quot;) zuordnen , der 
+		angibt, <B>wie viel Einheiten des Produktes den Grundpreis ergeben</B>. 
+		Im o.g. Beispiel würde man dann den Grundpreis-Faktor &quot;<B>100</B>&quot; 
+		angeben, um die übliche Mengeneinheit &quot;1 Meter&quot; (=100 cm) mit einem 
+		Preis zu versehen. </p>
+		<p>Die Bildungsregel für die Grundpreis-Menge ist also: <b>
+		Grundpreis-Faktor</B> <B>VPE-Name</B></p>
+		<p>Nun ist es allerdings so, dass das <B>keine zulässige Mengeneinheit
+		</B>im Sinne der PreisangabenVO ist!</p>
+		<p>Und hier kommt dann der Parameter &quot;<B>GRUNDPREIS-Anzeige-Name</B>&quot; 
+		ins Spiel:</p>
+		<p>statt für die Grundpreis-Menge den Wert &quot;<B>100 cm</B>&quot; zu verwenden, 
+		würde der für &quot;<B>GRUNDPREIS-Anzeige-Name</B>&quot; definierte Wert &quot;<B>1 m</B>&quot; 
+		verwendet, so dass man damit wieder gesetzeskonform ist!</p>
+		<p>Damit ist man jetzt voll flexibel in der Definition von <B>VPEn</B> 
+		und <B>Grundpreisen</B>.</p>
+		<p><b><font color="#FF0000">Man muss allerdings selbst aufpassen, dass 
+		der </font><font color="#0000FF">Grundpreis-Anzeigename</font><font color="#FF0000"> 
+		und der </font><font color="#0000FF">Grundpreis-Faktor</font><font color="#FF0000"> 
+		konsistent sind.</font></b></p>
+		<p><B>Im Beispiel</B>: Produkt VPE (1cm), Grundpreis-Faktor (100), 
+		Grundpreis-Anzeigename (1m)! </p>
+		<hr/>
+		<p><font color="#0000FF"><B>Zur Info: §2, Abs. 3. PreisangabenVO:</b></font></p>
+		<p>&quot;Die Mengeneinheit für den Grundpreis ist jeweils 1 <B>Kilogramm</B>, 
+		1 <B>Liter</B>, 1 <B>Kubikmeter</B>, 1 <B>Meter</B> oder 1 <b>
+		Quadratmeter</B> der Ware. Bei Waren, deren Nenngewicht oder Nennvolumen 
+		üblicherweise 250 Gramm oder Milliliter nicht übersteigt, dürfen als 
+		Mengeneinheit für den Grundpreis 100 <B>Gramm</B> oder <B>Milliliter</B> 
+		verwendet werden. Bei nach Gewicht oder nach Volumen angebotener loser 
+		Ware ist als Mengeneinheit für den Grundpreis entsprechend der 
+		allgemeinen Verkehrsauffassung entweder 1 Kilogramm oder 100 Gramm oder 
+		1 Liter oder 100 Milliliter zu verwenden. Bei Waren, die üblicherweise 
+		in Mengen von 100 Liter und mehr, 50 Kilogramm und mehr oder 100 Metern 
+		und mehr abgegeben werden, ist für den Grundpreis die Mengeneinheit zu 
+		verwenden, die der allgemeinen Verkehrsauffassung entspricht.&quot;</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>7.</b></font></td>
+		<td valign="top">
+		<A TARGET="_blank" href="http://transpatent.com/gesetze/pangv.html"><b>
+		Preisinformation</B> bei jedem Preis (<font size="3"><span style="font-weight: 400">Preisangabenverordnung 
+		(PAngV)</span></font></A></td>
+		<td valign="top">Bei jedem Preis wird angegeben, ob die 
+		MwSt. enthalten, und Versandkosten nicht enthalten sind (mit einem 
+		Link zum Content &quot;<B>Versandkosten</B>&quot;). 
+		<p><font color="#0000FF">Diese Anzeige ist <b>
+		abhängig vom Kundenstatus</B> (mit/ohne MwSt.)! <B>Der MwSt-Satz des 
+		Produktes wird mit angegeben.</b></font></p>
+		<p>Es besteht auch die Möglichkeit, den 
+		Shop als <B>Kleinunternehmer gemäß §19 UStG </B>zu betreiben. Dann 
+		erfolgt bei den Preisen ein entsprechender Hinweis. (Siehe auch <b><font color="#0000FF">
+		<A href="#46">46. Shop 
+		konfigurierbar für Kleinunternehmer gemäß §19 UStG</A></font></b>)</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>8.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Disclaimer</B></font> für Bilder</td>
+		<td valign="top">Es wird der Text &quot;<B>Abb. ähnlich</B>&quot; unter den 
+		Bildern angezeigt</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>9.</b></font></td>
+		<td valign="top">Bei der Bestellung wird die <font color="#0000FF"><B>Bestätigung der AGBn
+		</b></font>und der <font color="#0000FF"><B>Kenntnisnahme des Widerrufsrechts</B></font> erzwungen</td>
+		<td valign="top">Der Besteller muss beide Informationen 
+		bestätigen. Zudem wird ein Link zu einer PDF-Version der AGBn und der 
+		Widerrufsbelehrung angeboten. (AGBn und der Widerrufsbelehrung in einem 
+		nicht änderbaren Format.) Diese PDF-Dateien müssen im Verzeichnis &quot;<B>lang/xxxxx/agb.pdf</B>&quot; 
+		und &quot;<B>lang/xxxxx/fernag.pdf</B>&quot; vorhanden sein. ('<B>xxxxx</B>' 
+		stellt die Bezeichnung aller verfügbaren Sprachen dar ('english', 'german') 
+		.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right" colspan="3" height="32">&nbsp;</td>
+		</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>10.</b></font></td>
+		<td valign="top"><b><font color="#0000FF">Produkte mit Preisen &lt;= 0</font></b> werden angezeigt, 
+		aber 
+		die Produkte können nicht bestellt werden.</td>
+		<td valign="top">
+Ein Produktpreis von &quot;0&quot; bewirkt, dass das Produkt zwar angezeigt wird, aber 
+<font color="#FF0000"><B>nicht bestellbar </b></font>ist!<p>Hat ein Produkt einen Preis &lt; 0, dann wird zusätzlich die Meldung angezeigt, 
+dass es <font color="#FF0000"> <B>derzeit ausverkauft</B> </font>ist. </p>
+		<p>Wenn dann gleichzeitig im Produkt noch ein 
+<B>Erscheinungsdatum</B> angegeben ist, dann wird dieses zusätzlich als 
+voraussichtliches Verfügbarkeitsdatum angezeigt. Wenn dieses <b>
+		Erscheinungsdatum</B> dann erreicht ist, wird das Produkt
+		<font color="#FF0000"><B>automatisch </b></font>wieder bestellbar.</p></td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>11. </b></font></td>
+		<td valign="top"><b><font color="#0000FF">Gleichartige Auflistungen</font></b> werden mit <B>demselben</B> Code und 
+		<B>demselben</B> Template erstellt.</td>
+		<td valign="top"><font color="#0000FF"><B>Alle Produklisten
+		</b></font>(Kategorie-Liste, Neue 
+		Produkte, Sonderangebote, Cross-Selling, Also-Purchased, Upcoming 
+		Products, Such-Ergebnisse) werden mit <B>demselben Code </B>und auf Basis 
+		<B>desselben Templates </b>(&quot;<B>template/module/product_listing/product_listing_v1.html</B>&quot;) 
+		erstellt. Das erspart eine Menge redundanten Code, alle diese 
+		Listen sehen gleich aus, und der Pflegeaufwand dafür reduziert sich 
+		enorm.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>12.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>AJAX-basierter Attributmanager</B></font> im 
+		Admin-Produktbereich</td>
+		<td valign="top">Auf der Admin-Seite wurde der AJAX-basierte 
+		Attributmanager in die Produktverwaltung integriert, mit dem die 
+		Attributverwaltung jetzt auf Produktebene stattfindet, eingebaut. 
+		(Adaption einer &quot;osCommerce&quot;-Contribution.)</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>13.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Lokale Bestell-Attribut-Verwaltung</B></font> im Kundenbereich</td>
+		<td valign="top">Die Attributauswahl bei Produkten 
+		(Varianten) wird 
+		zunächst lokal durchgeführt (mit Änderung des Warenkorbs), und erst 
+		später auf dem Server aktualisiert.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>14.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Lokale Warenkorbverwaltung</B></font> im Kundenbereich</td>
+		<td valign="top">Der Warenkorb (Stückzahländerungen, 
+		Löschungen) wird zunächst lokal geändert (mit Änderung des Warenkorbs), 
+		und erst später auf dem Server aktualisiert.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>15.</b></font></td>
+		<td valign="top">&quot;<font color="#0000FF"><B>Sticky-Cart</B></font>&quot; (immer sichtbarer Warenkorb)</td>
+		<td valign="top">Der &quot;Sticky-Cart&quot; ist eine Warenkorbkopie, 
+		die dann angezeigt wird, wenn der feste Warenkorb aus dem Bild scrollt. 
+		So sieht der Kunde auch beim Einkauf am Ende der Produktliste sofort die 
+		Änderungen im Warenkorb.<p>Wenn der &quot;Sticky-Cart&quot; angezeigt wird, dann 
+		hat man die Möglichkeit, mit Klick auf &quot;<B>Warenkorb schließen</B>&quot; 
+		diesen auszublenden. Der &quot;Sticky-Cart&quot; verschwindet dann permanent. </p>
+		<p>Im Warenkorb selbst wird aber dafür jetzt der Text &quot;<B>Warenkorb 
+		permanent anzeigen</B>&quot; angezeigt, mit einem Klick auf diesen kann der &quot;Sticky-Cart&quot; 
+		dann wieder eingeschaltet werden.</p>
+		<p>Die Verwendung des &quot;Sticky-Cart&quot; ist standardmäßig aktiviert, sie kann 
+		aber über einen Parameter im 
+Admin-Bereich (<B>Konfiguration/Mein Geschäft/Den Warenkorb permanent anzeigen 
+		(Sticky-Cart)</b>) 
+		festgelegt werden.</p></td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>16.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>AJAX-basierte Online-Validierung der Bankleitzahl und Kontonummer 
+		</b></font>in &quot;<B>D</B>&quot;</td>
+		<td valign="top">Bei der Eingabe der Bankverbindung beim 
+		Bestellvorgang wird diese sofort gegen eine BLZ-Datenbank validiert. Für 
+		D wird auch die Kontonummer auf formale Stimmigkeit für die gewählte 
+		Bank geprüft.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>17.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Geändertes Fehleranzeigeverfahren</B></font></td>
+		<td valign="top">Fehlersituationen werden jetzt (im 
+		AJAX-Betrieb) <font color="#FF0000"> <B>sofort über eine Meldungsbox </b>
+		</font>angezeigt, und nicht wie 
+		bisher als Teil einer Rückgabeseite.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>18.</b></font></td>
+		<td valign="top"><b><font color="#0000FF">Wartungsarbeiten</font> </B>verwalten</td>
+		<td valign="top">Im <B>Admin-Bereich</B> kann der Shop für 
+		Wartungsarbeiten stillgelegt werden, mit einer optionalen Vorwarnung. Im 
+		Wartungsmodus können nur noch bestimmte Bediener auf den Shop zugreifen.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>19.</b></font></td>
+		<td valign="top">Verwendung des <b><font color="#0000FF">&quot;SPAW&quot;-Editors</font> </b>(Produkt-Texte) 
+		mit Internet-Explorer und Firefox.</td>
+		<td valign="top">Eine Version des Editors kann jetzt auch mit <B>Firefox</B> 
+		verwendet werden.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>20.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Verbessertes&nbsp; Kalendermodul
+		</b></font>(Produkte)</td>
+		<td valign="top">Das <font color="#0000FF"> <B>Kalendermodul</B></font> wurde auf <b>
+		deutsche Verhältnisse</B> umgestellt (Feiertage!), die Datums-Daten werden 
+		jetzt im <B>deutschen</B> Format eingegeben.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>21.</b></font></td>
+		<td valign="top"><b><font color="#0000FF">Datenbank-Tabellen-Präfix</font></b></td>
+		<td valign="top">Die Datenbank-Tabellen können mit einem 
+		Präfix versehen werden. Es ist damit möglich, mehrere Shops in 
+		einer MySQL-Datenbank zu organisieren, da man eindeutige Tabellen-Namen 
+		hat.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>22.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Der Shop funktioniert auch mit MySQL 5.0!</b></font></td>
+		<td valign="top">Die <B>MySQL-Version 5.x </B>hat eine 
+		teilweise geänderte SQL-Syntax (vor allem bei &quot;JOIN&quot;s), die das 
+		Funktionieren von OL-Commerce 1.x/xtCommerce 2.x mit dieser MySQL-Version
+		<B>verhindern</B>. Die notwendigen Änderungen wurden berücksichtigt.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>23.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Schnittstelle zu CAO-Faktura</B></font></td>
+		<td valign="top">Es wurden die notwendigen Schnittstellen zu 
+		CAO-Faktura (bis Version 1.3) integriert.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>24.</b></font></td>
+		<td valign="top"><b><font color="#0000FF">Erweiterte Information bei der 
+		Kunden-Internet-Adresse</font></b></td>
+		<td valign="top">Neben der <B>IP-Adresse</B> wird auch der logische (DNS-)Name 
+		des aufrufenden Computers und das Datum gespeichert. Durch Anzeige des symbolischen DNS-Namens 
+		ist i.d.R. sofort sichtbar, <B>wer</B> der Provider des Besuchers ist. Das 
+		Datum erlaubt evtl. die Rückverfolgung, wem diese IP beim Provider 
+		zugeordnet war. Damit 
+		kann der Missbrauch wahrscheinlich besser verhindert werden.<br/>
+		<B>Format</B>: <font color="#0000FF"><B>195.4.32.84 
+		(F2054.f.strato-dslnet.de) -- Datum: 22.04.2006 07:28:18</B></font></td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>25.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Die aktuelle &quot;Smarty&quot;-Version wurde eingebaut.</b></font></td>
+		<td valign="top">Die Version <B>2.6.13 </B>vom <B>9.3.2006
+		</B>ist Bestandteil der Distribution.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><b><font color="#FF0000">26.</font></b></td>
+		<td valign="top"><b><font color="#0000FF">Sendungscode für 
+		Versandtracking</font></b></td>
+		<td valign="top">Es besteht die Möglichkeit,  		beim <B>Versand einer Sendung</B> (Admin-Bereich) den 
+		<b>"Tracking-" bzw. &quot;Sendungs&quot;</b>-<B>Code</B> des  		Versenders mit einzugeben. Darüber kann der Kunde den Status seiner  		Sendung nach dem Versand bei dem Versender im Internet überprüfen.  		<p>Dieser  		"<B>Tracking-Code</B>" wird auch in der 
+		<B>Bestellstatus-eMail </B>beim Versand der Bestellung  		mitgesendet, so dass der Kunde eine einfache Bestellverfolgung vornehmen kann.</p> 		<p>Auch im "<B>Bestellungen</B>"-Bereich des Admins wird bei vorhandenem  		Sendungscode ein entsprechender Link eingebaut, so dass auch von hier  		aus die Sendung einfach verfolgt werden kann.</p> 		<p>Im Kunden-Bereich "<B>Konto/Bestellhistorie</B>" wird das gleichermaßen  		eingebaut, so dass auch von hier aus die Sendung einfach verfolgt werden  		kann.</p> 		<hr/><p>Technisch ist das so gelöst, das alle 
+		<b><font color="#FF0000">relevanten</font></b>(!) OL-Commerce <b> 		&nbsp;Versand-Module</B> (PHP-Klassen im Verzeichnis "<B>includes/modules/shipping</B>")  		eine neue Methode "<B>get_track_url()</b>" erhalten haben, die die vom  		Versender für das Versandtracking definierte URL zurückliefert.<p>An der  		Stelle der Tracking URL, an der der <B>Sendungscode</B> steht, muss '<b>#track_code#</b>'  		als Platzhalter stehen!<p>An der Stelle der Tracking URL, an der die <b> 		PLZ</B> steht, muss '<b>#post_code#</b>' als Platzhalter stehen!<p> 		<font color="#FF0000"><B>Es muss in den verwendeten Versandmodulen  		überprüft werden, ob die notwendige URL 
+		für das Tracking dort schon definiert ist. Wenn  		nicht, muss diese ermittelt und dort eingetragen werden!</b></font><br/> &nbsp;<hr/>
+		<p>Die Methode &quot;<B>get_track_url</B>&quot; hat folgenden Code:</p>
+		<pre>
+<B>function get_track_url()
+</b>{
+  //$track_url=URL used for tracking;
+
+  // An der Stelle der Tracking URL, an der der Sendungscode steht, muss '#track_code#' 
+	als Platzhalter stehen!
+  // An der Stelle der Tracking URL, an der die PLZ steht, muss '#post_code#' als Platzhalter
+	stehen!
+
+  //Beispiel Deutsche Post AG/DHL
+
+  //$track_url='<A href="http://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=de&zip=#post_code#&idc=#track_code#">http://nolp.dhl.de/nextt-online-public/set_identcodes.do?</A>
+	<A href="http://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=de&zip=#post_code#&idc=#track_code#">lang=de&zip=#post_code#&idc=#track_code#</A>';
+  return $track_url;
+}</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>27.</b></font></td><td valign="top"><font color="#0000FF"><B>Überprüfung der 
+		Kunden-Adresse im Internet</B></font></td><td valign="top">Es werden folgende Prüfungen <b>
+		online über das Internet </B>durchgeführt:<UL>
+			<LI><B>Validierung</B> von <b><font color="#0000FF">PLZ, ORT und 
+			STRASSE</font></b> über die <font color="#FF0000"> <B>PLZ-Suche der Post</B></font></LI><LI><B>Validierung</B> von <b><font color="#0000FF">PLZ, ORT und 
+			STRASSE </font></B>im <font color="#FF0000"> <B>Telefonbuch der Telekom </b>
+			</font></LI>
+			<LI><B>Rückwärtssuche</B> der <font color="blue"><B>Fon- und/oder 
+			Fax-Nummer</B></font> im <b><font color="#FF0000">Telefonbuch der Telekom</font> </b></LI>
+		</UL>
+		<p>Damit kann der <B>Admin</B> prüfen, ob die Kundenadresse <B>plausibel</B> 
+		ist.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>28.</b></font></td><td valign="top"><b><font color="#0000FF">Vereinheitlichung 
+		der Masken zur Eingabe/Anzeige von Kundendaten</font></b></td>
+		<td valign="top">In OL-Commerce werden in 4 
+		verschiedenen Programmen (Admin- und Kundenbereich) die <B>Formulare für 
+		die Kundendaten </B>jeweils <font color="#FF0000"><B>unabhängig</B></font> 
+		aufgebaut/und geprüft. Diese Redundanz wurde eliminiert, so dass alle 
+		Formulare nun mit <B>einer einzigen Routine </B>angezeigt bzw. geprüft 
+		werden. Das reduziert den Pflegeaufwand und garantiert ein einheitliches 
+		Aussehen der Formulare. (Zudem war das die Voraussetzung zu einer 
+		AJAX-basierten Adressen-Validierung (PLZ, ORT).</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>29.</b></font></td><td valign="top"><b>
+		<font color="#0000FF">Kunden-eMail-Format wird auf </font><font color="#FF0000">kundenebene</font><font color="#0000FF"> festgelegt</font></b></td>
+		<td valign="top">Das eMail-Format, das der Kunde 
+		erhält (HTML, TEXT), wird auf <B>kundenebene </B>festgelegt, nicht mehr 
+		auf <B>systemebene</B>! Jeder Kunde kann selbst entscheiden, welches 
+		Format er erhält.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>30.</b></font></td><td valign="top"><font color="#0000FF"><B>Optimierung der 
+		Preis- und Steuer-Routinen</B></font></td><td valign="top">Die (wirklich hirntoten)
+		<font color="#0000FF"><B>Preis- und Steuer-Routinen</B></font> von 
+		OL-Commerce wurden optimiert. (Für <font color="#FF0000"><B>jede</B></font> 
+		Preisdarstellung wurden <font color="#FF0000"><B>4 Datenbankzugriffe(!)</b></font> 
+		gemacht. Diese 4 Datenbankzugriffe werden jetzt nur noch <b>
+		<font color="#FF0000">einmal pro 
+		Programmdurchlauf</font> </B>gemacht.)</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>31.</b></font></td><td valign="top"><font color="#0000FF"><B>Sichere &quot;Tell-a-friend&quot;-Funktion</B></font></td>
+		<td valign="top">Als <B>Schutz vor Missbrauch
+		</B>dieser Funktion zum <B>SPAM-eMail-Versand </B>wird ein (graphischer) 
+		Sicherheits-Code angezeigt, den der Besucher zur Kontrolle mit eingeben muss. 
+		(Wie bei der &quot;Newsletter&quot;-Funktion.)<p>
+		Entgegen der bisher weitgehend verbreiteten Ansicht, dass die <b><font color="#0000FF">
+		&quot;Tell-a-friend&quot;-Funktion </font><font color="#FF0000">grundsätzlich 
+		wettbewerbswidrig</font><font color="#0000FF"> </font></B>sei, hat das
+		<B>OLG Nürnberg</B> in einem Verfahren gegen das Versandhaus &quot;<B>Quelle</B>&quot; 
+		entschieden, dass dies <b><font color="#FF0000">nur dann</font> </B>zutrifft, wenn der Anbieter mit 
+		der Empfehlung durch den Besucher in der eMail <font color="#FF0000"> <B>gleichzeitig noch 
+		eigene Werbung versendet</B></font>. Weiteres dazu siehe z.B. <b>
+		<A href="http://www.affiliateundrecht.de/olg-nuernberg-produktempfehlung-mails-wettbewerbwidrig-3-U-1084-05.html">
+		hier</A></b>.</p><p>Zudem kann im Admin-Bereich noch festgelegt werden, <font color="#FF0000">
+		<B>ob</B> </font> <b><font color="#FF0000">nur Besucher mit einem Konto</font> </B>diese Funktion 
+		verwenden dürfen.</p><p>&quot;<B>Quelle</B>&quot; hat übrigens Revision beim BGH eingelegt, und packt 
+		immer noch fleißig eigene Werbung in seine &quot;Tell-a-friend&quot;-eMails.<p>Wer deswegen dennoch &quot;<B>kalte Füße</B>&quot; hat, sollte die &quot;<B>box_TELL_A_FRIEND</B>&quot; 
+		aus der &quot;<B>index.html</B>&quot; entfernen.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>32.</b></font></td><td valign="top"><b><font color="#0000FF">Umfangreiche </font><font color="#FF0000">
+		Online-Validierung</font></b></td><td valign="top">
+<p>Man kann über AJAX beim Ausfüllen von Formularen Informationen direkt 
+im Hintergrund überprüfen, bzw. zusätzliche Daten einsteuern, so dass eine 
+direkte Bedienerführung möglich ist. </p>
+		<p>So wird bei 
+der Eingabe der <B>Bankverbindung bei einer Bestellung</B> nach Eingabe der <b>
+Bankleitzahl</B> diese direkt überprüft. Falls diese korrekt ist, wird der <b>
+Bankname</B> zurückgeliefert, und in das entsprechende Feld eingetragen. Kann 
+die Bankleitzahl nicht ermittelt werden, erfolgt eine Fehlermeldung. </p>
+		<p>Sind 
+mehrere Möglichkeiten vorhanden (eine BLZ gilt für mehrere Filialen, oder es 
+		wurden nur Teile einer BLZ eingegeben), werden diese in einer 
+		<B>Auswahlbox im Formular</B> angezeigt, 
+und der Bediener kann daraus die zutreffende auswählen.</p><p>Für <font color="#FF0000"> <B>Deutschland</B></font> wird bei der Eingabe der 
+		<font color="#0000FF"> <B>Kontonummer</B></font> 
+mit einem <B>Prüfziffern-<A class="p" href="http://www.google.de/search?hl=de&rls=GGGL,GGGL:2005-09,GGGL:de&sa=X&oi=spell&resnum=0&ct=result&cd=1&q=Algorithmus&spell=1" style="text-decoration: none"><font color="#000000">Algorithmus</font></A></b> direkt geprüft, ob diese für die gewählte 
+Bank <B>formal(!)</b> richtig ist. (Damit kann natürlich <B>nicht </B>geprüft 
+		werden, ob diese Konto dem anmeldenden Kunden gehört.)</p><p>Bei der Anlage eines <b><font color="#FF0000">neuen Kunden-Kontos</font> </B>kann überprüft 
+		werden:<br/>
+		(für die mit '<b><font color="#FF0000">*</font></b>' gekennzeichneten 
+		Felder sind <B>zusätzliche Daten</B> erforderlich)</p><OL>
+			<LI><B>Anrede/Vorname<font color="#FF0000">*<br/>
+			<br/>
+			</font></B>Anhand einer Vornamen-Datenbank mit über 45.000 Einträgen 
+			kann die Stimmigkeit von Anrede und Vorname geprüft werden.<br/>
+&nbsp;</LI>
+			<LI><B>PLZ/Ort(/Bundesland in &quot;D&quot;)<font color="#FF0000">*<br/>
+			<br/>
+			</font></B>Anhand einer Postleitzahlen-Datenbank mit über 22.500 
+			Einträgen wird die PLZ überprüft. Wird sie gefunden, dann wird die 
+			Stadt (in <B>Deutschland </B>zusätzlich das Bundesland) automatisch 
+			gesetzt. Gibt es zu einer PLZ mehrere mögliche Orte (oder wurden nur 
+			Teile einer PLZ eingegeben), werden alle 
+			diese Möglichkeiten in einer Auswahlbox angezeigt, aus der dann der 
+			richtige Ort ausgewählt werden kann.<br/>
+&nbsp;</LI>
+			<LI><B>Geburtsdatum<br/>
+			<br/>
+			</B>Das Geburtsdatum wird auf formale Richtigkeit 
+			überprüft. Ist das OK, wird es daraufhin überprüft, ob der Besucher 
+			mindestens 18 Jahre alt ist. (Diese Prüfung findet lokal (ohne 
+			Serverzugriff) statt.)<br/>
+&nbsp;</LI>
+			<LI><B>eMail-Adresse<br/>
+			<br/>
+			</B>Die eMail-Adresse wird zunächst auf syntaktische Richtigkeit 
+			überprüft. Ist das OK, wird sie dann beim <B>Mail-Server der 
+			angegebenen Domain </b>(z.B.: &quot;web.de&quot;) dahingehend überprüft, ob 
+			der Server diese eMail-Adresse<B> </B>kennt.<br/>
+&nbsp;</LI>
+			<LI><B>Telefon-Nummer<br/>
+			<br/>
+			</B>Es wird versucht, die Telefon-Nummer über die <b>
+			Telefon-Nummern-Rückwärtssuche der Telekom </B>zu verifizieren. 
+			(<font color="#FF0000">Telefon-Nummer</font> <B>und </b>
+			<font color="#FF0000">Name</font> sind in der 
+			Telefonbuch-Rückmeldung vorhanden.)</LI></OL><p>Für die Punkte <B>4.</b> und <B>5.</b> gilt zusätzlich:</p><p>Wenn die Verifizierung fehl schlägt, wird der Besucher darauf 
+		hingewiesen. Er kann den eingegebenen Wert aber <B>trotzdem akzeptieren</B>, 
+		weil diese beiden Verifizierungsverfahren nicht 100% sicher sind. (Die 
+		Telefon-Nummer muss z.B. nicht im&nbsp; Telefonbuch verzeichnet sein; 
+		nicht alle Mail-Server beantworten die Frage nach der eMail-Adresse 
+		korrekt.) </p>
+		<p>Diese beiden Prüfungen werden nur durchgeführt, wenn im Admin-Bereich 
+		die <B>Online-Validierung der eMail-Adresse</B> <font color="#FF0000">
+		<B>aktiviert</B></font> wurde.</p></td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>32.</b></font></td><td valign="top"><font color="#0000FF"><b>'Sitemap'-Modul</B></font></td>
+		<td valign="top">
+Das vorhandene '<B>Sitemap</B>'<b>-Modul</B> wurde lauffähig gemacht und 
+überarbeitet. Am Anfang von &quot;<B>box_CONTENT</B>&quot; wurde der Link dazu eingebaut.<p>
+Damit kann ein kompletter Überblick über alle Produkt- und -Unterkategorien 
+dargestellt werden.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>33.</b></font></td><td valign="top"><font color="#0000FF"><B>Versandkostenfreie 
+		Lieferung</B></font></td><td valign="top">
+Man kann im Admin-Bereich einen Wert für die versandkostenfreie Lieferung 
+angeben (Bestellwert, ab dem versandkostenfrei geliefert wird), und zwar für 
+Inland uns Ausland getrennt. Diese Werte werden durch Komma getrennt in das 
+vorgesehene Feld eingegeben (Wert <I>Inland</I><font color="#FF0000"><b>,</b></font>Wert
+<I>Ausland</I>).<p><B>Menü</B>: &quot;Admin/Module/<A class="menuBoxContentLink" href="http://www.seifenparadies.de/admin/modules.php?set=shipping" style="text-decoration: none"><font color="#000000">Versandart</font></A></p><p>Bei Checkout wird dann angezeigt, wie viel noch bestellt werden muss, 
+um die Versandkosten zu sparen.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>34.</b></font></td><td valign="top"><font color="#0000FF"><B>Modifiziertes 
+		Modul &quot;also_purchased_products.php&quot;</b></font></td>
+		<td valign="top">
+Man kann im Modul &quot;<font color="#0000FF"><B>includes/modules/also_purchased_products.php</B></font>&quot; 
+(das anzeigt, welche anderen Produkte zusammen mit einem Produkt verkauft 
+wurden), angeben, wie viele Produkte darin angezeigt werden sollen. (Befehl 
+z.B.: &quot;<b>$total_also_purchased=olc_rand(</b><font color="#FF0000"><B>5,8</B></font><b>);
+</b>&nbsp; //Nr. of products to display&quot;. <B>Zufallsanzahl</B> zwischen <b>
+<font color="#FF0000">5</font></b> und <font color="#FF0000"><B>8</B></font> 
+Produkten.) 
+<p>Der Trick dabei ist, dass, wenn weniger als die gewählte Anzahl von Produkten 
+aus der Datenbank ermittelt werden, das System diese Liste mit <B>zufällig 
+ausgewählten</B> Produkten auffüllt. (Sieht halt besser aus!)</p><p>Wird dies nicht gewünscht, ist der o.g. Befehl wie folgt zu ändern: &quot;<b>$total_also_purchased=0;</b>&quot;</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>35.</b></font></td><td valign="top"><font color="#0000FF"><B>Änderung bei der 
+		Eingabe der Zahlungsweise beim &quot;Checkout&quot;</b></font></td>
+		<td valign="top" >
+Bei der Eingabe der <B>Zahlungsweise</B> beim &quot;Checkout&quot; werden die Felder zur 
+Eingabe der <B>Bankverbindung</B> jetzt erst dann angezeigt, wenn die Zahlungsweise &quot;<font color="#FF0000"><B>Lastschriftverfahren</B></font>&quot; 
+gewählt wird.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>36.</b></font></td><td valign="top"><font color="#0000FF"><B>Überarbeitung des 
+		&quot;Newsletter&quot;-Moduls</B></font></td>
+		<td valign="top" >
+Das &quot;<B>Newsletter</B>&quot;-Modul wurde optimiert und überarbeitet.
+<p>Beim <B>Austragen</B> aus der 
+Newsletter-Liste wird jetzt auch eine Bestätigungs-eMail versandt.</p><p>Beim <B>Versand von Newslettern</B> (Admin-Bereich) wird jetzt automatisch 
+ein <B>Link zur Abmeldung des Newsletters </B>eingebaut. </p>
+<p>Weiterhin wurde die Möglichkeit geschaffen, ein <B>Impressum</B> einzubinden.</p><p>Das Programm erwartet dazu die Datei &quot;<B>lang/german/impressum.html</B>&quot;, in 
+der das Impressum definiert ist.</p><p>Dieses Impressum wird, <B>nach</B> dem Deaktivierungslink an das Ende jedes Newsletters gehängt.</p><p>Die Newsletter werden im HTML- bzw. TEXT-Format verschickt, je nachdem 
+welches Format der Kunde wünscht. </p>
+<p>Das Format des Impressums wird automatisch aus 
+dem HTML- auch in das TEXT-Format konvertiert </p>
+<p>Damit dürfte auch diese beiden potentiellen <B>Abmahnprobleme </B>abgesichert 
+sein.</p><p>Ein Impressum könnte wie folgt aussehen (<font color="#FF0000"><B>ohne Gewähr 
+für die rechtliche Richtigkeit!</b></font>):</p><hr/>
+<p align="left">
+<B>Impressum</B><p align="left">
+Shop Name<br/>
+Straße<br/>
+<br/>
+D-Plz Ort<br/>
+<br/>
+Tel.: <br/>
+Fax:
+<p>
+eMail: </p>
+<p>Vertretungsberechtigter Geschäftsführer: </p>
+<p>
+Registergericht: <br/>
+Registernummer: 
+</p>
+<p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: DE</p><p>Inhaltlich Verantwortlicher gemäß § 6 MDStV: </p>
+<p>&nbsp;</p>
+</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>37.</b></font></td><td valign="top"><b><font color="#0000FF">Überarbeitung des 
+		PDF-Exports (Erstellung eines PDF-Katalogs)</font></b></td>
+		<td valign="top" >
+Der PDF-Export (Erstellung eines Produkt-Katalogs) wurde in die Software mit aufgenommen.<br/>
+<br/>
+Da das Ganze bisher doch etwas rustikal implementiert war (nach dem Ende des Exports 
+erschien nur ein weißer Bildschirm mit einer Erfolgsmeldung (tödlich für den 
+AJAX-Betrieb)), wurde das Modul so überarbeitet, dass es sich nun wie alle 
+Programme ordentlich in den Rahmen einfügt.<br/>
+<br/>
+Zudem werden nun noch <B>Artikel-Nummer</B>, <B>Kurzbeschreibung </b>(diese wird 
+auf bis zu 2 Zeilen umbrochen), <B>Verpackungseinheit</B> und der <B>Grundpreis</B> exportiert, weil 
+man sonst ja gar nicht recht weiß, um was es da geht.<br/>
+<br/>
+Zudem wurde die <B>Spaltenzahl</B> für die Darstellung der Produkte von 3 <B>auf 2
+</B>reduziert, damit man ein wenig mehr Platz für die Infos hat. (Über einen 
+Programm-Parameter kann 
+man die Spaltenzahl aber wieder auf 3 erhöhen.)<br/>
+<br/>
+Schließlich wurde auch im <B>Kundeninterface</B> eine Möglichkeit geschaffen, den PDF-Katalog anzufordern, wobei dann die PDF-Daten im Browser 
+dargestellt, und nicht 
+in eine Datei exportiert werden. So können auch die Kunden einen Gesamtkatalog 
+ausgeben lassen!<br/>
+<br/>
+(Wenn man viel Produkte hat, sollte man das allerdings entfernen, da das dann 
+recht lange dauert und viele Ressourcen braucht.)<br/>
+&nbsp;<table border="0" ID="table4">
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>Achtung: </b>
+		</font></td>
+		<td>Im Verzeichnis &quot;<B>templates\mein_template\img</B>&quot; muss die Datei &quot;<B>logo.jpg</B>&quot; 
+		mit dem <b><font color="#0000FF">Firmenlogo</font></b> vorhanden sein!</td></tr></table><br/>
+		Im Zuge der Überarbeitung wurde die Klasse &quot;<B>fpdf.php</B>&quot; (die die 
+PDF-Datei erstellt) dahingehend erweitert, dass man bei der Definition von 
+Farben für die Textausgabe (und anderes) jetzt statt der <B>RGB-Farb-Werte</B> auch die <b>
+CSS-Namen von Farben </B>verwenden kann. (<B>SetColor('brown') </B>ist halt 
+aussagefähiger, als <B>SetColor(165,42,42)</b>).<p>Die möglichen Farben und 
+deren Namen sind in &quot;<B>admin\includes\classes\fpdf\named_colors_to_use_with_fpdf.htm</B>&quot; 
+dargestellt.</p><p>Die Farbdefinitionen werden aus den Definitionen für Punkt <font color="#FF0000"><b>
+<A href="#43"><font color="#FF0000">43.</font></A></A></b></font><A href="#43"> 
+(<font color="#0000FF"><B>PDF-Datenblatt</B></font>)</A> entnommen!</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>38.</b></font></td><td valign="top"><font color="#0000FF"><B>Die Speicherung 
+		der Session-Daten wird (zwangsweise) in der Datenbank vorgenommen</B></font></td>
+		<td valign="top" >
+<font face="Times New Roman">Da das Internet voll ist von Berichten zu dem 
+Fehler &quot;</font><font face="Times New Roman" size="3"><B>Fatal error: 
+session_start(): Failed to initialize storage module</B>&quot; bei Verwendung von 
+Dateien als Ort für die </font>Speicherung der
+<font face="Times New Roman" size="3">Session-Daten, wird diese Option bei der 
+Installation nicht mehr angeboten.</font></td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>39.</b></font></td><td valign="top"><font color="#0000FF"><B>Überprüfung auf 
+		Konsistenz der Verpackungseinheiten (VPE)</b></font></td>
+		<td valign="top" >
+Wenn Verpackungseinheiten definiert wurden, dann wird beim Absenden einer 
+Produktseite geprüft, ob die Anzeige der VPEn definiert wurde. Wenn ja, wird der 
+VPE-Wert geprüft, andernfalls wird rückgefragt, ob das dennoch Ok ist. Wurde die 
+Anzeige der VPE definiert, und hat der VPE-Wert einen unüblichen Wert, so wird 
+geprüft, ob auch die Information für den <B>Grundpreis</B> definiert wurde.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>40.</b></font></td><td valign="top"><b><font color="#0000FF">Vereinheitlichung 
+		der angezeigten und der gedruckten Produkt-Info</font></b></td>
+		<td valign="top" >
+Der Datenblatt-Druck verwendet jetzt denselben Programmcode und dasselbe 
+Template (&quot;<B>templates\mein_template\module\product_info\product_info_v1.html</B>&quot;) 
+wie die Anzeige der Produkt-Info. Das verbessert die optische Konsistenz und den 
+Pflegeaufwand für das Programm und das Template. </td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>41.</b></font></td><td valign="top"><font color="#0000FF"><B>Anzeige der 
+		Produkte aus der Kategorie &quot;TOP&quot; auf der Startseite.</b></font></td>
+		<td valign="top" >
+Die Produkte dieser Kategorie werden auf der Startseite angezeigt.<br/>
+&nbsp;<table border="0" ID="table5">
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>Hinweis: </b></font></td>
+		<td>Diese Daten werden im Modul &quot;<B>includes/center_modules.php</B>&quot; 
+		(zusammen mit &quot;<B>includes/new_products.php</B>&quot; und &quot;<B>includes/upcoming_products.php</B>&quot; 
+		) referenziert. &quot;<B>center_modules.php</B>&quot; wiederum wird in &quot;<B>includes/modules/default.php</B>&quot; 
+		referenziert.<p>Änderungen in der Darstellung dieser Daten sind dort 
+		vorzunehmen.<p>Bisher wurden unter der Überschrift &quot;<B>Neue Produkte</B>&quot; 
+		die &quot;TOP&quot;-Produkte angezeigt.<p>Das wurde so geändert, dass die &quot;TOP&quot;-Produkte 
+		wirklich die aus der Kategorie &quot;TOP&quot; sind, und man das durch die 
+		Zuordnung zu dieser Kategorie aktiv steuern kann.<p>&quot;<B>Neue Produkte</B>&quot; 
+		sind jetzt solche, die in den letzten 30 Tagen hinzugefügt wurden.</td></tr></table></td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>42.</b></font></td><td valign="top"><font color="#0000FF"><B>Konfigurierbare 
+		Einbindung des &quot;Affiliate&quot; Moduls</B></font></td>
+		<td valign="top" >
+Die Verwendung des &quot;Affiliate&quot;-Moduls kann jetzt über einen Parameter im 
+Admin-Bereich (<B>Konfiguration/Mein Geschäft/&quot;Affilliate&quot;-Programm aktivieren</B>) 
+bestimmt werden.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><b>
+		<A NAME="43">43</A>.</b></font></td><td valign="top"><font color="#0000FF"><B>PDF-Datenblatt</B></font></td>
+		<td valign="top" >
+Die <B>Produkt-Information </B>kann vom Kunden (neben dem Ausdruck des 
+HTML-Formats) nun auch im PDF-Format erstellt werden. (Dies ist die Adaption 
+einer <B>osCommerce</B>-Contribution, die allerdings zu fast 80% neu entwickelt 
+wurde, da sie doch noch etwas zu rustikal war (fest vorgegebene Farben, Layout, 
+kein Impressum im Datenblatt, aufgeblähter Code u.v.m..)<p>In der 
+Produkt-Beschreibung werden folgende HTML-Formate in das Datenblatt umgesetzt:</p><p><b>&quot;&lt;p&gt;&lt;/p&gt;&quot;, &quot;&lt;br&gt;&quot;, &quot;&lt;b&gt;&lt;/b&gt;&quot;</b></p><p>so dass diese Formatierungen auch im PDF-Datenblatt erhalten bleiben.</p><p>In der Seite zur Anzeige der Produkt-Information ist dazu, neben dem schon 
+bisher vorhandenen &quot;Drucken&quot;-Button, eine Button zur Erstellung des 
+PDF-Datenblatts sichtbar.</p><p>Die Konfiguration des Datenblatts erfolgt weitgehend Admin-Konfig-Bereich (<B>Konfiguration/PDF-Datenblatt-Generator</B>).</p><p>Die Farbauswahl der einzelnen Datenblatt-Bereiche kann man dabei sehr bequem 
+auf Basis der CSS-Farbdefinitionen direkt aus einer Farbtabelle auswählen, so 
+dass man direkt weiß, wie das aussieht. Durch Anklicken einer Farbzelle wird 
+eine Farbe dann selektiert. (In der Original-Contribution musste man die 
+Farbwerte als RGB-Zahlenwerte angeben, ein totaler Blindflug!) 
+<br/>
+&nbsp;<table border="0" ID="table6">
+	<tr>
+		<td valign="top"><font color="#FF0000"><B>Achtung: </b>
+		</font></td>
+		<td>Im Verzeichnis &quot;<B>templates\mein_template\img</B>&quot; muss die Datei &quot;<B>logo.jpg</B>&quot; 
+		mit dem <b><font color="#0000FF">Firmenlogo</font></b> vorhanden sein!</td></tr><tr>
+		<td valign="top">
+		<p>&nbsp;</p>
+		<p><B>Die Farbauswahl geschieht wie folgt:</b></p><p>
+
+(<B>Coypright &copy;</b>: Dipl.-Ing.(TH) Winfried Kaiser,
+<A href="mailto:w.kaiser@fortune.de">w.kaiser@fortune.de</A>)<p>
+
+&nbsp;<SCRIPT>
+function set_initial_color()
+{
+	set_color_selector_color("Brown");
+}
+
+var color,color_table_visible=false,style_display;
+
+function set_title(obj)
+{
+	with (obj)
+	{
+		title=innerText;
+	}
+}
+
+function show_hide_color_table()
+{
+	if (color_table_visible)
+	{
+		style_display="none";
+	}
+	else
+	{
+		style_display="inline";
+	}
+	color_table_visible=!color_table_visible;
+	document.getElementById("color_table").style.display=style_display;
+}
+
+function set_color_selector_color(color)
+{
+	with (document)
+	{
+		getElementById("color_field").value=color;
+		with (getElementById("color_cell"))
+		{
+			bgColor=color;
+			title=color;
+		}
+	}
+}
+
+function get_color(obj)
+{
+	with (obj)
+	{
+		value=innerText;
+		bg_color=bgColor;
+	}
+	set_color_selector_color(value,bg_color,color);
+}
+
+setTimeout("set_initial_color()",0);
+</SCRIPT>
+			<table width="400" BORDER=0 cellpadding=1 cellspacing=1 align="center" ID="table7">
+				<tr>
+					<td>
+						<p align="center"><font size="2">
+						Mit "Klick" auf das <B>Eingabe</B>- oder das <B>Farbmuster-Feld</B> kann eine
+						<B>Tabelle zur Farbauswahl </B>ein-/ausgeblendet werden.<br/><br/>
+						Mit "Klick" auf eines der dann vorhandenen Farbfelder, wird diese Farbe ausgewählt.<br/><br/>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td >
+						<INPUT NAME="configuration_value" onclick="show_hide_color_table();" ID="color_field" size="15" VALUE="farbe"><font size="2"> &nbsp;<b>Farbmuster:</b>
+						</font>
+					</td>
+					<td width="150" height="20" style="border: 1px solid;border-color: black;" onclick="show_hide_color_table();" ID="color_cell">
+						<font size="2">&nbsp;
+					</font>
+					</td>
+				</tr>
+			</table>
+			<table width="400" BORDER=0 cellpadding=1 cellspacing=1 align="center">
+				<tr>
+					<td>
+						<table border="1" cellpadding=1 cellspacing=1 ID="color_table" style="display:none">
+							<tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="aliceblue" align="center">
+								<font size="2">Aliceblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="antiquewhite" align="center">
+								<font size="2">Antiquewhite</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="aqua" align="center">
+								<font size="2">Aqua</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="aquamarine" align="center">
+								<font size="2">Aquamarine</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="azure" align="center">
+								<font size="2">Azure</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="beige" align="center">
+								<font size="2">Beige</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="bisque" align="center">
+								<font size="2">Bisque</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="black" align="center">
+								<font color="#FFFFFF" size="2">Black</td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="blanchedalmond" align="center">
+								<font size="2">Blanchedalmond</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="blue" align="center">
+								<font color="#FFFFFF" size="2">Blue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="bluevoilet" align="center">
+								<font size="2">Blueviolet</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="brown" align="center">
+								<font color="#FFFFFF" size="2">Brown</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="burlywood" align="center">
+								<font size="2">Burlywood</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="cadetblue" align="center">
+								<font color="#FFFFFF" size="2">Cadetblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="chartreuse" align="center">
+								<font size="2">Chartreuse</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="chocolate" align="center">
+								<font size="2">Chocolate</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="coral" align="center">
+								<font size="2">Coral</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="cornflowerblue" align="center">
+								<font size="2">Cornflowerblue</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="cornsilk" align="center">
+								<font size="2">Cornsilk</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="crimson" align="center">
+								<font color="#FFFFFF" size="2">Crimson</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="cyan" align="center">
+								<font size="2">Cyan</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkblue" align="center">
+								<font color="#FFFFFF" size="2">Darkblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkcyan" align="center">
+								<font size="2">Darkcyan</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkgoldenrod" align="center">
+								<font color="#FFFFFF" size="2">Darkgoldenrod</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkgray" align="center">
+								<font size="2">Darkgray</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkgreen" align="center">
+								<font color="#FFFFFF" size="2">Darkgreen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkkhaki" align="center">
+								<font size="2">Darkkhaki</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkmagenta" align="center">
+								<font color="#FFFFFF" size="2">Darkmagenta</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkolivegreen" align="center">
+								<font color="#FFFFFF" size="2">Darkolivegreen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkorange" align="center">
+								<font size="2">Darkorange</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkorchid" align="center">
+								<font color="#FFFFFF" size="2">Darkorchid</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkred" align="center">
+								<font color="#FFFFFF" size="2">Darkred</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darksalmon" align="center">
+								<font size="2">Darksalmon</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkseagreen" align="center">
+								<font size="2">Darkseagreen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkslateblue" align="center">
+								<font color="#FFFFFF" size="2">Darkslateblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkslategray" align="center">
+								<font color="#FFFFFF" size="2">Darkslategray</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkturquoise" align="center">
+								<font size="2">Darkturquoise</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="darkviolet" align="center">
+								<font color="#FFFFFF" size="2">Darkviolet</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="deeppink" align="center">
+								<font color="#FFFFFF" size="2">Deeppink</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="deepskyblue" align="center">
+								<font size="2">Deepskyblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="dimgray" align="center">
+								<font color="#FFFFFF" size="2">Dimgray</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="dodgerblue" align="center">
+								<font size="2">Dodgerblue</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="firebrick" align="center">
+								<font color="#FFFFFF" size="2">Firebrick</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="floralwhite" align="center">
+								<font size="2">Floralwhite</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="forestgreen" align="center">
+								<font color="#FFFFFF" size="2">Forestgreen</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="fuchsia" align="center">
+								<font size="2">Fuchsia</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="gainsboro" align="center">
+								<font size="2">Gainsboro</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="ghostwhite" align="center">
+								<font size="2">Ghostwhite</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="gold" align="center">
+								<font size="2">Gold</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="goldenrod" align="center">
+								<font size="2">Goldenrod</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="gray" align="center">
+								<font color="#FFFFFF" size="2">Gray</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="green" align="center">
+								<font color="#FFFFFF" size="2">Green</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="greenyellow" align="center">
+								<font size="2">Greenyellow</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="honeydew" align="center">
+								<font size="2">Honeydew</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="hotpink" align="center">
+								<font size="2">Hotpink</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="indianred" align="center">
+								<font color="#FFFFFF" size="2">Indianred</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="indigo" align="center">
+								<font color="#FFFFFF" size="2">Indigo</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="ivory" align="center">
+								<font size="2">Ivory</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="khaki" align="center">
+								<font size="2">Khaki</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lavender" align="center">
+								<font size="2">Lavender</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lavenderblush" align="center">
+								<font size="2">Lavenderblush</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lawngreen" align="center">
+								<font size="2">Lawngreen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lemonchiffon" align="center">
+								<font size="2">Lemonchiffon</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightblue" align="center">
+								<font size="2">Lightblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightcoral" align="center">
+								<font size="2">Lightcoral</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightcyan" align="center">
+								<font size="2">Lightcyan</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightgoldenrodyellow" align="center">
+								<font size="2">Lightgoldenrodyellow</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightgreen" align="center">
+								<font size="2">Lightgreen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightgrey" align="center">
+								<font size="2">Lightgrey</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightpink" align="center">
+								<font size="2">Lightpink</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightsalmon" align="center">
+								<font size="2">Lightsalmon</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightseagreen" align="center">
+								<font color="#FFFFFF" size="2">Lightseagreen</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightskyblue" align="center">
+								<font size="2">Lightskyblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightslategray" align="center">
+								<font color="#FFFFFF" size="2">Lightslategray</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightsteelblue" align="center">
+								<font size="2">Lightsteelblue</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lightyellow" align="center">
+								<font size="2">Lightyellow</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="lime" align="center">
+								<font size="2">Lime</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="limegreen" align="center">
+								<font color="#FFFFFF" size="2">Limegreen</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="linen" align="center">
+								<font size="2">Linen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="magenta" align="center">
+								<font size="2">Magenta</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="maroon" align="center">
+								<font color="#FFFFFF" size="2">Maroon</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mediumaquamarine" align="center">
+								<font size="2">Mediumauqamarine</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mediumblue" align="center">
+								<font color="#FFFFFF" size="2">Mediumblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mediumorchid" align="center">
+								<font color="#FFFFFF" size="2">Mediumorchid</td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mediumpurple" align="center">
+								<font color="#FFFFFF" size="2">Mediumpurple</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mediumseagreen" align="center">
+								<font size="2">Mediumseagreen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mediumslateblue" align="center">
+								<font color="#FFFFFF" size="2">Mediumslateblue</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mediumspringgreen" align="center">
+								<font size="2">Mediumspringgreen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mediumturquoise" align="center">
+								<font size="2">Mediumturquoise</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mediumvioletred" align="center">
+								<font color="#FFFFFF" size="2">Mediumvioletred</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="midnightblue" align="center">
+								<font color="#FFFFFF" size="2">Midnightblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mintcream" align="center">
+								<font size="2">Mintcream</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="mistyrose" align="center">
+								<font size="2">Mistyrose</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="moccasin" align="center">
+								<font size="2">Moccasin</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="navajowhite" align="center">
+								<font size="2">Navajowhite</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="navy" align="center">
+								<font color="#FFFFFF" size="2">Navy</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="oldlace" align="center">
+								<font size="2">Oldlace</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="olive" align="center">
+								<font color="#FFFFFF" size="2">Olive</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="olivedrab" align="center">
+								<font color="#FFFFFF" size="2">Olivedrab</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="orange" align="center">
+								<font size="2">Orange</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="orangered" align="center">
+								<font size="2">Orangered</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="orchid" align="center">
+								<font size="2">Orchid</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="palegoldenrod" align="center">
+								<font size="2">Palegoldenrod</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="palegreen" align="center">
+								<font size="2">Palegreen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="paleturquoise" align="center">
+								<font size="2">Paleturquoise</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="palevioletred" align="center">
+								<font size="2">Palevioletred</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="papayawhip" align="center">
+								<font size="2">Papayawhip</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="peachpuff" align="center">
+								<font size="2">Peachpuff</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="peru" align="center">
+								<font size="2">Peru</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="pink" align="center">
+								<font size="2">Pink</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="plum" align="center">
+								<font size="2">Plum</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="powderblue" align="center">
+								<font size="2">Powderblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="purple" align="center">
+								<font color="#FFFFFF" size="2">Purple</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="red" align="center">
+								<font color="#FFFFFF" size="2">Red</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="rosybrown" align="center">
+								<font size="2">Rosybrown</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="royalblue" align="center">
+								<font color="#FFFFFF" size="2">Royalblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="saddlebrown" align="center">
+								<font color="#FFFFFF" size="2">Saddlebrown</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="salmon" align="center">
+								<font size="2">Salmon</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="sandybrown" align="center">
+								<font size="2">Sandybrown</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="seagreen" align="center">
+								<font color="#FFFFFF" size="2">Seagreen</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="seashell" align="center">
+								<font size="2">Seashell</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="sienna" align="center">
+								<font color="#FFFFFF" size="2">Sienna</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="silver" align="center">
+								<font size="2">Silver</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="skyblue" align="center">
+								<font size="2">Skyblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="slateblue" align="center">
+								<font color="#FFFFFF" size="2">Slateblue</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="slategray" align="center">
+								<font size="2">Slategray</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="snow" align="center">
+								<font size="2">Snow</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="springgreen" align="center">
+								<font size="2">Springgreen</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="steelblue" align="center">
+								<font color="#FFFFFF" size="2">Steelblue</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="tan" align="center">
+								<font size="2">Tan</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="teal" align="center">
+								<font color="#FFFFFF" size="2">Teal</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="thistle" align="center">
+								<font size="2">Thistle</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="tomato" align="center">
+								<font size="2">Tomato</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="turquoise" align="center">
+								<font size="2">Turquoise</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="violet" align="center">
+								<font size="2">Violet</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="wheat" align="center">
+								<font size="2">Wheat</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="white" align="center">
+								<font size="2">White</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="whitesmoke" align="center">
+								<font size="2">Whitesmoke</font></td></tr><tr>
+								<td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="yellow" align="center">
+								<font size="2">Yellow</font></td><td onclick="get_color(this);" onmouseover="set_title(this)" BGCOLOR="yellowgreen" align="center">
+								<font size="2">YellowGreen</font></td></tr></table>&nbsp;</td></tr></table></td></tr></table><!-- Coypright &copy;: Dipl.-Ing.(TH) Winfried Kaiser, w.kaiser@fortune.de--></td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>44.</b></font></td><td valign="top"><b><font color="#0000FF">Der 
+		Javascript-basierte HTML-Editor &quot;</font><font color="#FF0000">htmlarea</font><font color="#0000FF">&quot; 
+		wurde aus der Distribution entfernt</font></b></td>
+		<td valign="top" >
+Der Javascript-basierte HTML-Editor &quot;<B>htmlarea</B>&quot; wird in 
+OL-Commerce nicht 
+mehr verwendet und daher aus der Distribution entfernt. (Es wird nur noch der 
+(bessere) &quot;SPAW&quot;-Editor verwendet.)</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>45.</b></font></td><td valign="top"><font color="#0000FF"><B>Überarbeitung des 
+		Newsletter Versand-Moduls</B></font></td><td valign="top" >
+Das Newsletter Versand-Modul wurde fehlerbereinigt, und so erweitert, dass bei 
+jedem Newsletter automatisch ein <B>Link zum Abmelden von den Newslettern </b>
+angehängt wird (eine <B>rechtliche Vorgabe</B> in Deutschland, man hat sonst 
+leicht wieder eine Abmahnung &quot;am Hals&quot;).<p>Gleichzeitig wurde eine 
+bisher im Programm festgelegte Konstante (die Anzahl der in einem Durchlauf zu 
+versendenden Newsletter eMails) im Admin-Bereich konfigurierbar gemacht. (&quot;<B>Konfiguration/eMail 
+Optionen/Newsletter - Anzahl der eMails pro &quot;send&quot;-Durchlauf </b>&quot;).</p><p>Dort wird festgelegt, wie viele eMails das Newsletter-Programm in einem 
+Durchlauf sendet. Dies ist notwendig um Skript-Timeouts zu verhindern, wenn der 
+Vorgang zu lange läuft. Das Programm verarbeitet die angegebene Anzahl von 
+eMails, ruft sich dann selbst wieder neu auf um den Rest zu verarbeiten, so 
+lange, bis alle eMails versendet sind.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><b><A NAME="46.">46.</A></b></font></td><td valign="top"><font color="#0000FF"><B>Shop 
+		leicht konfigurierbar für Kleinunternehmer gemäß §19 UStG</B></font></td>
+		<td valign="top" >
+Wenn man als <B>Kleinunternehmer gemäß §19 UStG</B> tätig ist, und somit keine MwSt. erheben 
+und abführen muss, dann kann man den Shop sehr einfach entsprechend konfigurieren. (&quot;<B>Admin/Konfiguration/Mein Geschäft/Shop 
+als Kleinunternehmer gemäß §19 UStG führen</B>&quot;).<p>Bei den Preisen wird dann ein entsprechender Hinweis angezeigt.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>47.</b></font></td>
+		<td valign="top"><b><font color="#0000FF">Automatische 
+		Ermittlung der </font><font color="#FF0000">geringsten</font><font color="#0000FF"> 
+		Versandkosten für den Preis-Disclaimer</font></b></td>
+		<td valign="top" >
+Der bei allen Preisen angezeigte <B>Preishinweis</B> gibt u.a. die <b>
+Mindestversandkosten</B> an. (<font style="font-weight: normal; font-size: 12pt" size="1">Standardmäßig 
+z.B. &quot;</font><font style="font-size: 12pt; font-weight: 700" size="1" color="#0000FF">Preis 
+inkl. 16% MwSt. und zzgl. </font><span style="text-decoration: none">
+<font style="font-size: 12pt; font-weight: 700" size="1" color="#0000FF">
+Versandkosten (ab 3,00 EUR) (Für genauere Info anklicken!</font><font style="font-weight: normal; font-size: 12pt" size="1">&quot;)</font></span><font style="font-weight: normal; font-size: 12pt" size="1">.
+</font>&nbsp;Diese Mindestversandkosten musste man bisher selbst manuell in die 
+Konfigurationsdaten einbringen, jetzt werden diese aber <B>automatisch aus allen 
+konfigurierten Versandmodulen</B> ermittelt.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>48.</b></font></td>
+		<td valign="top"><font color="#0000FF"><B>Vereinheitlichung 
+		der Kalendermodule</B></font></td><td valign="top" >
+Im Admin-Bereich von OL-Commerce werden 2 verschiedene JavaScript-Kalendermodule 
+für die Eingabe von Datumswerten verwendet: &quot;<B>spiffyCal</B>&quot; und &quot;<B>calendarcode</B>&quot; 
+(letzterer nur verwendet in &quot;admin/specials.php&quot;). 
+<p>Da &quot;<B>spiffyCal</B>&quot; das bessere Modul ist, wurde &quot;<B>specials.php</B>&quot; auf 
+die Verwendung von &quot;<B>spiffyCal</B>&quot; umgestellt, so dass&nbsp; &quot;<B>calendarcode</B>&quot; 
+aus der Distribution entfernt werden konnte.</p><p>&quot;<B>spiffyCal</B>&quot;&nbsp; selbst wurde auf <B>deutsche Verhältnisse</B> 
+umgestellt (Tages-/Monatsnamen, Feiertage), Datumseingaben werde jetzt im 
+deutschen Datumsformat (&quot;TT.MM.JJJJ&quot;) vorgenommen.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><b><A NAME="49.">49.</A></b></font></td><td valign="top"><font color="#0000FF"><B>Geänderte Preisdarstellung</B></font></td>
+		<td valign="top" >
+Preise mit Nullen als Dezimalstellen (wie &quot;5,00 EUR&quot;) werden jetzt in der 
+üblichen Schreibweise &quot;5,&ndash;&nbsp;EUR&quot; dargestellt.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><b><A NAME="50.">50.</A></b></font></td><td valign="top"><font color="#0000FF"><B>Verwendung des &quot;Cool-Menu&quot;-Menü-Systems 
+		für die Kategorien-/Produktauswahl </b></font></td>
+		<td valign="top" >
+&quot;Cool-Menu&quot; ist ein Javascript/CSS-basierendes DHTML-Menü.<p>Anstelle der Standard-OL-Commerce Kategorienauswahl kann nun alternativ die 
+Auswahl über dieses dynamische Menü erfolgen, wie man es von Desktop-Anwendungen 
+her kennt.</p><p>Dieses Menü kann <b><font color="#FF0000">nur</font> </B>im AJAX-Modus (bei eingeschaltetem JavaScript) 
+verwendet werden!</p><p>Um die Verwendung des dynamischen Menüs zu Aktivieren, muss in 
+&quot;<B>includes/configure.php</B>&quot; folgender Code eingefügt werden:<p><b>
+define('USE_COOL_MENU',true)</b><p>Ist dieser Eintrag nicht vorhanden, oder 
+JavaScript nicht aktiv, wird die Standard-OL-Commerce Kategorienauswahl 
+verwendet.<p>Wenn in &quot;<B>templates/mytemplate/img</B>&quot; die Datei &quot;<B>bullet.gif</B>&quot; 
+vorhanden ist, wird diese vor dem Kategorien-Text angezeigt.<p>Am Ende der &quot;<B>stylesheet.css</B>&quot; 
+des Templates sind die CSS-Definitionen für das &quot;Cool-Menu&quot; vorhanden.<p>Bei dieser 
+Funktion handelt es sich um eine an Smarty/AJAX angepasste Variante einer 
+osCommerce-Contribution.<p>&nbsp;</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><b><A NAME="51.">51.</A></b></font></td><td valign="top"><font color="#0000FF"><b>&quot;AJAX&quot;-ifizierung des Admin-Bereichs</B></font><p><font color="#FF0000"><B>Muss zurückgestellt 
+		werden, da derzeit kein Datei-Upload über AJAX möglich ist!</b></font></td>
+		<td valign="top" >
+<font color="#0000FF"><B>Eine Teil-&quot;AJAX&quot;-ifizierung des 
+		Admin-Bereichs konnte ebenfalls erreicht werden (nur für den 
+Internet-Explorer)</b></font><p>Im Prinzip ist der Admin-Bereich für den 
+AJAX-Betrieb eigentlich maximal ungeeignet, da der von den Programmen erzeugt 
+HTML-Code einfach bei der Entstehung mit dem PHP &quot;echo&quot;-Befehl an den Browser 
+ausgegeben wird. (Anders als im User-Bereich, wo ja mit Smarty eine zentrale 
+Ausgabe an den Browser stattfindet, wo ich mich dann mit meinen AJAX-Routinen 
+einklinken konnte.)<br/>
+<br/>
+Nachdem daher lange Zeit kein Ansatz gefunden werden konnte, wie man auch hier 
+die überlegene AJAX-Technologie einsetzen könnte, wurde das schließlich doch 
+erreicht!<br/>
+<br/>
+Es gibt jetzt auch ein <b>&quot;Smarty&quot;-Template </B>für den <b>
+Admin-Bildschirm </b>(<B>templates\mein_template\admin\start.html</B>) und ein
+<B>Stylesheet</B> (<B>templates\mein_template\admin\stylesheet.css</B>). <br/>
+<br/>
+<B>Damit ist sichergestellt, das das auf &quot;Smarty&quot; basierendes AJAX-Konzept ohne 
+Änderungen verwendbar ist!</b><br/>
+<br/>
+Man gewinnt hier von der Zeit und Transfervolumen bei weitem nicht so viel wie 
+im Besucher-Bereichs (mit seinen vielen Boxen), aber man hat auf jeden Fall auch 
+im Admin-Bereich jetzt die überlegene Ergonomie des AJAX-Betriebs, weil der 
+Bildschirm beim Funktionswechsel eben auch im Admin-Bereich stabil bleibt, und 
+sich nur der Mittelteil ändert. (Was man aber auf jeden Fall spart ist die 
+Berechnung und der Transfer des <B>Seitenkopfes</B> (mit den Navi-Images) und 
+der <B>Menüs</B>.)<br/>
+<br/>
+Mit dem entwickelten &quot;AJAX&quot;-ifizierungs-Konzept für den <B>OL-Commerce </b>-Admin-Bereich 
+könnte man jetzt sogar <b><span style="color: rgb(0, 0, 255);">osCommerce</span></b> 
+&quot;AJAX&quot;-ifizieren.... (Allerdings auf einem wesentlich niedrigeren Niveau als bei 
+OL-Commerce . Man gewinnt damit eigentlich nur die bessere Ergonomie, sonstige 
+Optimierungen sind nicht möglich. Aber das wäre ja auch schon was!)</p><p>Derzeit muss das allerdings auf den Internet-Explorer begrenzt werden, da es 
+mit dem FireFox ein noch (eigentlich sehr kleines) ungelöstes Problem mit dem 
+Betrieb des &quot;SPAW&quot;-Editors im AJAX-Modus gibt: nachdem der zu editierende Text 
+schon erfolgreich angezeigt wurde, verschwindet er wieder....<p>Wer den 
+AJAX-Betrieb doch nicht haben will, kann in &quot;<B>admin/includes/application_top.php</B>&quot;<br/>
+<br/>
+die Zeile <br/>
+<br/>
+<B>define('USE_AJAX_ADMIN',IS_IE);<br/>
+</b><br/>
+in <br/>
+<br/>
+<B>define('USE_AJAX_ADMIN',false);<br/>
+</b><br/>
+ändern, um den AJAX-Modus für den Admin ganz auszuschalten.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><A NAME="49."><font color="#FF0000"><B>5</B></font></A><font color="#FF0000"><b><A NAME="49.">2</A></b></font></td><td valign="top"><font color="#0000FF"><B>Schnittstelle zum &quot;WorldPay&quot;- 
+		Zahlungssystem</B></font></td><td valign="top" >
+Die Zahlung über das &quot;WorldPay&quot;- Zahlungssystem ist möglich.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><b><A NAME="49.">53.</A></b></font></td><td valign="top"><font color="#0000FF"><B>Warenkörbe können gespeichert 
+		werden. Gespeicherte Warenkörbe können wieder geladen werden.</b></font></td>
+		<td valign="top" >
+Mit diesem Mechanismus hat man jetzt die Möglichkeit, typische Warenkörbe, die 
+man voraussichtlich häufiger bestellt, (unter einem beliebigen Namen) zu 
+speichern, und diese Warenkörbe später wieder zu laden, so dass der aktuelle 
+Warenkorb den Stand des gespeicherten Warenkorbs erhält.<p>Bei <B>eingeloggten</B> 
+Kunden wird dazu jetzt im Warenkorb der Link &quot;<B>Warenkorb sichern</B>&quot; 
+angezeigt, wenn sich Produkte im Warenkorb befinden.</p><p>Sind für diesen Kunden schon vorher gespeicherte Warenkörbe vorhanden, wird 
+zusätzlich der Link &quot;<B>Warenkorb laden (x)</b>&quot; angezeigt, wobei &quot;<B>x</B>&quot; die 
+Anzahl der vorhandenen Warenkörbe ist.</p><p>Wenn die Funktion &quot;<B>Warenkorb laden</B>&quot; aktiviert wird, zeigt das System 
+zunächst eine Liste mit allen vorhandenen Warenkörben. </p>
+<p>Bei jedem Warenkorb gibt es den Link &quot;<B>Warenkorb anzeigen</B>&quot;, mit dem man 
+sich zur Übersicht den gespeicherten Warenkorb anzeigen lassen kann (im gleichen 
+Format, wie auch der aktuelle Warenkorb angezeigt wird).</p><p>In dieser Warenkorb-Liste gibt es für jeden Warenkorb weiterhin ein 
+Optionsfeld (&quot;Radio&quot;-Feld), mit dem der Warenkorb, der zum aktuellen Warenkorb 
+werden soll, ausgewählt wird. </p>
+<p>Weiterhin gibt es ein Optionsfeld, mit dessen Hilfe ein Warenkorb zum <b>
+Löschen </B>markiert werden kann.</p><p>Mit der &quot;<B>Weiter</B>&quot;-Schaltfläche wird die gewählte Funktion ausgeführt.</p><p>Gespeicherte Warenkörbe werden 6 Monate nach der letzten Verwendung (&quot;<B>Warenkorb 
+laden</B>&quot;) gelöscht.</p><p>In jeder Session (&quot;Login&quot; bis &quot;Logout&quot; bzw. &quot;Bestellung&quot;) kann nur 1 
+Warenkorb gesichert werden. (D.h., mehrere Sicherungen in einer Session haben 
+immer denselben gespeicherten Warenkorb zum Ziel.)</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><A NAME="49.0">
+		<font color="#FF0000"><B>5</B></font></A><font color="#FF0000"><b><A NAME="49.1">4</A>.</b></font></td><td valign="top"><font color="#0000FF"><B>Widerrufsbelehrung lt. 
+		Fernabsatzgesetz, PDF-Version der AGB, und PDF-Version der 
+		Bestellbestätigung in der Bestell-Bestätigungs-eMail</B></font></td>
+		<td valign="top" >
+Das Kammergericht Berlin hat ein Urteil gefällt (Az: 5 W 156/06), das das <b>
+Fehlen</B> von Widerrufshinweisen lt. Fernabsatzgesetz in der <b>
+Bestellbestätigungs-eMail</B>(!) zum Thema hat.<br/>
+<br/>
+Man handelt sich damit zunächst mal das Problem ein, dass der Kunde statt 2 dann 
+4 Wochen Zeit für den Widerruf hat.<br/>
+<br/>
+Weiterhin ist man damit auch ein potentielles Abmahnopfer, da das Gericht das <b>
+Fehlen</B> von Widerrufshinweisen lt. Fernabsatzgesetz in der <b>
+Bestellbestätigungs-eMail</B> als unlautere Handlung gegen den Mitbewerb sieht.<br/>
+<br/>
+Der Widerrufshinweis wird nun in die Bestellbestätigungs-eMail eingebunden, 
+dabei wird der entsprechende Text aus dem Content-Manager verwendet.<br/>
+<br/>
+In der Shop-Configuration kann man dazu die ID's der Kundengruppen angeben, die
+<B>keine</B> Widerrufsbelehrung erhalten sollen (Händler, Firmen usw.).<p>
+Weiterhin wird die <B>PDF-Version der AGB </B>als Anhang der eMail mitgesendet. 
+Die Datei &quot;<B>agb.pdf</B>&quot; muss dabei im Verzeichnis &quot;lang/xxxxx/&quot; vorhanden 
+sein.</p>
+<p>Wenn der entsprechende Parameter gesetzt wurde (siehe 55), wird auch eine 
+PDF-Version der Bestellbestätigung als Anhang zur eMail mitgesendet.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right" width="25"><A NAME="49.0">
+		<font color="#FF0000"><B>5</B></font></A><font color="#FF0000"><b><A NAME="49.1">5</A></b></font>.</td>
+		<td valign="top"><b><font color="#0000FF">PDF-Rechnung/-Lieferschein/-Bestellbestätigung</font></b></td>
+		<td valign="top" >
+Es wurde die Möglichkeit geschaffen, <B>Rechnungen</B>, <B>Lieferscheine</B> und
+<B>Bestellbestätigungen</B> im PDF-Format zu erstellen, was professioneller als 
+das bisher verwendete HTML-Format ist.<p>Ausgangspunkt war die 
+<B>osCommerce-Contribution &quot;PDF-Invoice&quot;</b>, die allerdings erheblich modifiziert und 
+erweitert wurde. (Eigentlich ist vom Original nur die Idee übrig geblieben...) 
+Vor allem die Definition des Dokumentenlayouts wurde drastisch verbessert und in 
+die Datei &quot;<B>pdf_invoice_config.php</B>&quot; ausgelagert. Statt der im Original 
+vorhandenen individuellen Definition der einzelnen Rechnungsspalten, haben wir 
+jetzt eine selbstkalibrierende Rechnungstabelle, die die gesamte Blatt-Breite 
+ausfüllt. Neu ist auch, dass die Artikel-Attribute mit in der Rechnung 
+erscheinen. Falls aufgrund der Artikelanzahl notwendig, wird eine 
+Übertragsbearbeitung vorgenommen, und auf weiteren Seiten fortgefahren. Es gibt 
+somit keine Begrenzung der Artikelanzahl.)</p><p>Es wurden auch die in 
+Deutschland für Rechnungen vorgeschriebenen Informationen berücksichtigt 
+(Fortlaufende Rechnungs-Nummer/Lieferschein-/Bestell-Nummer, USt.-Id/Steuernummer. 
+Registergericht, Registernummer, Geschäftsführer (nur für im Handelsregister 
+eingetragene Firmen notwendig). <B>Bankverbindung</B> - für 
+Inlandskunden Name, Blz, Konto, für Auslandskunden Name, BIC, IBAN-). </p>
+<p>Diese 
+Information ist im Adminbereich konfigurierbar (&quot;<B>Konfiguration/PDF-Rechnungen-Layout</B>&quot;). 
+Zudem kann dort auch festgelegt werden, ob diese PDF-Dokument verwendet werden 
+sollen (&quot;<B>Konfiguration/Mein Shop/PDF-Rechnungen-Layout</B>&quot;)</p><p>Weiterhin werden in der Rechnung jetzt auch die <B>Produktattribute</B> mit aufgeführt.</p><p>Die Rechnung- und Lieferschein-Nummer (sowie das zugehörig Datum) werden 
+jeweils beim <B>ersten </B>Druck des Dokuments erstellt, und dann auch bei einem 
+Nachdruck verwendet.</p><p>Es werden 3 Dokumentenarten erzeugt: <B>Rechnung</B>, <B>Lieferschein</B> 
+und <B>Bestellbestätigung</B>.</p><p>Wenn die <B>Lieferadresse</B> und/oder die <B>Rechnungsadresse</B> anders 
+ist, als die <B>Kundenadresse</B>, werden auf der <B>1. Seite</B>(!) des Dokuments 
+diese Adressen zusätzlich ausgegeben.</p><table border="1" ID="table8">
+	<tr>
+		<td align="center" valign="top" width="200"><B>Dokumenten-Typ</B></td>
+		<td align="center" valign="top" width="200"><B>Adressat</B></td>
+		<td align="center" valign="top" width="200"><B>1. Zusatz-Adresse<br/>
+		</b>(soweit vorhanden)</td><td align="center" valign="top" width="200"><B>2. Zusatz-Adresse<br/>
+		</b>(soweit vorhanden)</td></tr><tr>
+		<td align="left" width="200"><B>Rechnung</B></td>
+		<td align="center" width="200">Rechnungs-Anschrift</td>
+		<td align="center" width="200">Liefer-Anschrift</td>
+		<td align="center" width="200">Kunden-Anschrift</td></tr><tr>
+		<td align="left" width="200"><B>Lieferschein</B></td>
+		<td align="center" width="200">Liefer-Anschrift</td>
+		<td align="center" width="200">Rechnungs-Anschrift</td>
+		<td align="center" width="200">Kunden-Anschrift</td></tr><tr>
+		<td align="left" width="200"><B>Bestellbestätigung</B></td>
+		<td align="center" width="200">Kunden-Anschrift</td>
+		<td align="center" width="200">Rechnungs-Anschrift</td>
+		<td align="center" width="200">Liefer-Anschrift</td></tr></table>&nbsp;<p>Aus den Shop-Daten wird ein Impressum erstellt, die Datei &quot;<B>templates/xxxx/img/invoice_logo.jpg</B>&quot; 
+wird (soweit vorhanden) als Logo dargestellt.</p><p>Es wird ein <B>Seitenfuß</B> erstellt, der <B>vorgeschriebene Informationen</B> 
+und die <B>Bankverbindung</B> enthält.</p><p>Die <B>Anzahl der möglichen Produkte </B>in der Rechnungstabelle in der 
+Konfigurationsdatei ist so ausgelegt, dass die Produkt-Infomation und der 
+Standard-Rechnungs-Fuß (Summe (16%), Summe (7%), MwSt-Summe (16%), MwSt-Summe 
+(7%), Versandkosten, Gesamt-Summe) auf eine Seite passen.</p><p>Wenn der <B>Rechnungs-Fuß</B> mehr oder weniger Zeilen benötigt, wird die 
+Anzahl der möglichen Produkte entsprechend geändert.</p><p>Wenn alle <B>Adressen</B> identisch sind oder eine Folgeseite gedruckt wird (und 
+damit die Darstellung der zusätzlichen Adressen entfällt), wird die Anzahl der 
+möglichen Produkte um 7 erhöht.</p><p>Wenn die <B>Zusatz-Adressen</B> weniger als 6 Zeilen haben, wird die Anzahl der 
+möglichen Produkte entsprechend erhöht.</p><p>Wenn keine <B>Steuer</B> anfällt (§19 oder Auslandskunde), wird die Anzahl der 
+möglichen Produkte entsprechend erhöht.</p><p>Wenn nur 1 <B>Steuersatz</B> enthalten ist, wird die Anzahl der 
+möglichen Produkte entsprechend erhöht.</p><p>Wenn keine <B>Versandkosten</B> anfallen, wird die Anzahl der möglichen Produkte um 
+1 erhöht.</p><p>Wird auf einer Seite ein Übertrag notwendig, wird zunächst die Anzahl der 
+möglichen Produkte auf dieser Seite erhöht, da dann ja nur der &quot;<B>Übertrag</B>&quot;-Seiten-Fuß 
+dargestellt werden muss.<p>Diese Dokumente können vom Admin- und User-Bereich 
+her gedruckt werden. <B>Rechnung</B> und <B>Lieferschein</B> im User-Bereich 
+allerdings nur, wenn diese Dokumente im Admin-Bereich erstellt wurden.<p>Die
+<B>Bestellbestätigung</B> wird zusätzlich(!) als Anhang zur 
+Bestellbestätigungs-eMail mit verschickt (wenn der entsprechende Parameter im 
+Admin-Bereich gesetzt wurde).<p>Das Rechnungslayout wird in der Datei &quot;<B>pdf_invoice_config.php</B>&quot; 
+definiert.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><A NAME="49."><font color="#FF0000"><B>5</B></font></A><font color="#FF0000"><b><A NAME="56.">6</A>.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>AJAX-Aktivitätsanzeige</B></font></td>
+		<td valign="top" >
+Da im AJAX-Modus das Neuladen der Seite im Browser als Indikator für die 
+Verfügbarkeit neuer Daten entfällt, wurde eine <b><font color="#FF0000">AJAX-Aktivitätsanzeige</font> </B>in das Formular 
+eingebaut, um dem Anwender zu signalisieren, wann eine Kommunikation mit dem 
+Server stattfindet. Es handelt sich dabei um nichts anderes als eine <b>
+animierte GIF-Grafik</B>, die beim Start der Kommunikation angezeigt, und am 
+Ende wieder ausgeblendet wird.<p>Diese Grafik wird mit dem folgenden HTML-Code 
+in die &quot;<B>index.html</B>&quot; eingebunden:<br/>
+(am Besten an den Anfang des linken (oder rechten) Navigationsbereichs)</p>
+<pRE>
+&lt;div class="main" id="ajax_active_indicator" align="right" 
+	style="visibility:hidden"&gt;
+	&lt;IMG border="0" SRC="{$tpl_path}img/ajax_activity.gif"&gt;
+&lt;/div&gt;</pRE>
+<p>Die Grafik &quot;<B>ajax_activity.gif</B>&quot; muss im &quot;<B>img</B>&quot;-Verzeichnis des 
+Templates vorhanden sein.</p>
+<p>(Wenn man mit Google nach &quot;<B>AJAX animated gif</B>&quot; sucht, findet man viele 
+solcher Grafiken.)</p>
+<p>Die <b><font color="#FF0000">AJAX-Aktivitätsanzeige</font> </B>wird dann an 
+der <B>aktuellen Position des Mauszeigers</B> dargestellt, damit sie immer im 
+Blickfeld ist.</p>
+		</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><A NAME="49."><font color="#FF0000"><b><A NAME="57.">57</A>.</b></font></td><td valign="top">
+		<font color="#0000FF"><b>&quot;On-the-fly&quot;-Bilder</B></font></td>
+		<td valign="top" >
+<p>Für 
+Shops mit vielen Bildern ist die Änderung der Bildeigenschaften immer 
+problematisch, weil die notwendige Umrechnung aller Bilder mit Hilfe der &quot;<B>olc-Bildverarbeitung</B>&quot; 
+lange Zeit in Anspruch nehmen kann.</p>
+<p>Angeregt durch die osCommerce-Contribution &quot;pictures-on-the-fly&quot; wurde das 
+Konzept jetzt auch in OL-Commerce realisiert, allerdings ohne Verwendung der o.g. 
+Contribution, sondern basierend auf den olComerce-Modulen für die 
+Bildbearbeitung.</p>
+<p>Der Vorteil ist auch, dass man nicht immer gleich alle zusätzlichen 
+Bildformate (Thumbnail, Info, Popup) erstellen muss, sondern diese können dann 
+bei Bedarf erstellt werden. (Wenn man mit <B>zusätzlichen</B> Produkt-Bildern 
+arbeitet, ist der Vorteil noch größer).</p>
+<p>Die <B>Verwendung</B> der &quot;On-the-fly&quot;-Generierung kann im 
+Admin-Bereich konfiguriert werden. </p>
+<p>Die Bilderstellung wurde auch so geändert, dass, wenn kein Produktbild 
+vorhanden ist, die Datei &quot;<B>lang/xxxx/no_image.jpg</B>&quot; angezeigt wird (falls 
+vorhanden).
+
+<p>Die Routine &quot;<B>inc/olc_image()</b>&quot; wurde so geändert, dass sie, wenn kein 
+Bild vorhanden ist, sie dieses &quot;on-the-fly&quot; erstellt, wenn die Funktion im 
+Admin-Bereich aktiviert wurde.<br/>
+&nbsp;<hr/>
+<p>So weit, so gut!<p>Aber was geschieht, wenn fremde Programme (z.B. Google) auf ein Bild 
+zugreifen wollen, das noch gar nicht existiert?<p>Nun, das Übel wurde an der 
+Wurzel kuriert: mit Hilfe einer &quot;<B>Custom error page</B>&quot; für den &quot;Fehler 404&quot;, 
+den der Server erzeugt, wenn er eine angeforderte Datei nicht finden kann. Dabei 
+wird dann vom Server diese definierte eigene Fehlerbehandlung aktiviert, statt 
+die Standard-Meldung auszugeben.<p>Zu diesem Zweck wurde das Skript &quot;<B>404.php</B>&quot; 
+neu entwickelt, das Fehlerbehandlung übernimmt.<p>Das Script analysiert bei 
+einem Fehler, ob die fehlgeschlagene Anforderung für ein <B>Produktbild</B> gilt (im Pfad 
+der angeforderten Datei ist "<B>images/product_images</B>" enthalten).
+
+<p>Wenn ja, <b><font color="#FF0000">und</font></b> in "<B>images/product_images/original_images</B>" ein Bild gleichen Namens vorhanden ist, wird das Bild "<B>on-the-fly</B>" erstellt und ausgeliefert, so dass die aufrufende Anwendung 
+keinen Fehler erhält.<p>Damit kann man jetzt die Vorteile der "on-the-fly"-Bildgenerierung verwenden, und es ist trotzdem sichergestellt, dass (z.B. an Google oder Elm@r oder CAO-Faktura  oder EasySales) exportierte Bild-URLs
+<b><font color="#FF0000">nicht</font></b> ins Leere laufen, auch wenn bisher noch nicht angelegte Bilder angefordert werden.
+
+<p><b><font color="#FF0000">Und das ohne Änderungen an den Export-Programmen!
+
+</font></b><br/>
+&nbsp;<hr/>
+
+<p>Wenn kein Bild, sondern eine ".<B>htm(l)</b>"-oder "<b>.php</B>"-Datei angefordert wurde, dann wird die Datei "<B>templates/xxxxx/404.html</B>" ausgeliefert, die den Kunden auf das Problem hinweist, und ihm die Möglichkeit bietet, per "Klick" die "<B>Sitemap</B>" 
+des Shops anzuzeigen.</p>
+<p>Trifft keiner der vorherigen Fälle zu, wird der "404" Fehler weitergeleitet.</p>
+<p>Die Fehlerroutine &quot;<B>404.php</B>&quot; kann zusätzlich eine <B>eMail mit dem 
+Fehlerhinweis </B>an die Shop &quot;Support&quot;-eMail-Adresse senden, damit der Admin die 
+fehlende Datei ggfs. nachladen kann. (Bei fehlenden Produkt-Bildern aber nur 
+dann, wenn die &quot;<B>on-the-fly</B>&quot;-Option nicht aktiviert ist!)<p>Das 
+Senden dieser eMail ist in der Admin-Verwaltung konfigurierbar `(&quot;<B>Admin/Konfiguration/eMail 
+Optionen/eMail senden, wenn HTML-Seite nicht gefunden wird</B>&quot;)<br/>
+&nbsp;<hr/>
+
+<p>Für die Verwendung der &quot;<B>404.php</B>&quot; sind beim <B>Server</B> Vorarbeiten 
+notwendig:<p><U><font color="#FF0000"><b><U>Apache</U></b></font></U><p>Im OL-Commerce -Verzeichnis
+<font color="#FF0000"><B>muss</B></font> eine &quot;<B>htaccess</B>"-Datei vorhanden sein, die u.a. (z.B.) folgenden Eintrag enthält:<p>
+<B>ErrorDocument 404 /seifenparadies/olcommerce_1_2_2A_AJAX_Test/olcommerce/404.php</B><p>Damit wird für 404-Fehler vom Server das Script "<b>/seifenparadies/olcommerce_1_2_2A_AJAX_Test/olcommerce/404.php</B>"
+
+aktiviert.
+
+<p>Damit das funktioniert, <font color="#FF0000"><B>muss</B></font> "<B>AllowOverride FileInfo</B>" or "<B>AllowOverride All</B>" in der Apache 
+Konfigurations-Datei "<B>httpd.conf</B>&quot; gesetzt sein!!!!<p>(Auch die meisten &quot;Shared 
+Hoster&quot; haben die Konfigurationsgruppe &quot;<B>FileInfo</B>&quot; wohl für 
+Modifikationen über &quot;htaccess&quot; freigegeben. (z.B. auch 1&amp;1) )<p><b>
+<font color="#0000FF">Die notwendige &quot;htaccess"-Datei wird übrigens bei der Installation gleich richtig aufgesetzt!
+<br/>
+&nbsp;</font></b><hr/>
+
+<p><font color="#FF0000"><B>Microsoft Internet Information Server (IIS)</b></font></p>
+
+Die Einrichtung von eigenen Fehlerseiten für den Internet Information Server ist z.B. hier beschrieben:<br/>
+(leider ist das, warum auch immer, nicht so einfach wie beim <B>Apache</B> Server)<p>
+<A href="http://www.microsoft.com/technet/prodtechnol/windows2000serv/technologies/iis/tips/custerr.mspx">http://www.microsoft.com/technet/prodtechnol/windows2000serv/technologies/iis/tips/custerr.mspx</A>
+</p>
+<p>oder 
+
+</p>
+<p>
+<A href="http://technet2.microsoft.com/WindowsServer/en/library/fa06675a-7e08-4705-b63b-2cbb9586f3b41033.mspx">http://technet2.microsoft.com/WindowsServer/en/library/fa06675a-7e08-4705-b63b-2cbb9586f3b41033.mspx</A>
+
+(wobei ich mal davon ausgehe, dass man statt "asp"- auch "php"-Skripte definieren kann!?)
+
+</p>
+<p>Evtl. bietet der Hoster auch  in seinem Web-Interface die Möglichkeit, eigene Fehler-Seiten zu definieren.
+<br/>
+&nbsp;</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>58.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Import von Daten anderer &quot;xxCommerce&quot;-basierender 
+		Systeme in die OL-Commerce Datenbank</B></font></td>
+		<td valign="top" >
+Vom Autor gibt es ein (kostenlos erhältliches) Skript (&quot;<B>xxc_import.php</B>&quot;), 
+das <b>(semi-)automatisch(!)</b> die Daten aus <b><font color="#0000FF">beliebigen</font><font color="#FF0000"> 
+xxCommerce-basierenden</font></b> Systemen importieren kann.
+<p>Etwa vorhandene Unterschiede der Datenbankstrukturen werden&nbsp; <b>
+automatisch(!)</b> angeglichen!</p>
+<p><font color="#FF0000"><B>Wichtiger Hinweis:</b></font></p>
+<p>Dieses Skript ist <font color="#FF0000"><B>nicht(!)</b></font> Bestandteil 
+von OL-Commerce, und unterliegt auch <font color="#FF0000"><B>nicht(!)</b></font> 
+der GNU/GPL-Lizenz, sondern den <b><font color="#FF0000">gesetzlichen Urheberrechtsbestimmungen</font></b>.</p>
+<p>Das Skript kann von &quot;<A href="http://www.seifenparadies.de/programme/xxc_import.zip">http://www.seifenparadies.de/programme/xxc_import.zip</A>&quot; 
+geladen werden.</p>
+<p>Mit ausdrücklicher Genehmigung des Autors ist im Verzeichnis &quot;<B>olc_installer</B>&quot; der 
+Distribution jedoch das Programm und die Dokumentation dieses Programms beigefügt (&quot;<B>automatischer_daten_import.html</B>&quot;).</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>59.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Integration der Schnittstellen-Programme der 
+		Warenwirtschaftssysteme &quot;</b></font><b><A TARGET="_blank" href="http://www.cao-faktura.de/">CAO-Faktura</A></b><font color="#0000FF"><b>&quot; 
+		und &quot;</b></font><b><A TARGET="_blank" href="http://www.jtl-software.de/eazysales.php">Easy 
+		Sales</A></b><font color="#0000FF"><b>&quot;</b></font></td>
+		<td valign="top" >
+Die Schnittstellen-Programme der Warenwirtschaftssysteme &quot;<b><A TARGET="_blank" href="http://www.cao-faktura.de/">CAO-Faktura</A></b>&quot; 
+und &quot;<b><A TARGET="_blank" href="http://www.jtl-software.de/eazysales.php">Easy 
+Sales</A></b>&quot; wurden in die Distribution integriert.<p>Im Admin-Bereich sind 
+dafür auch direkte Links enthalten, die Anzeige der Links ist in der 
+Shop-Konfiguration konfigurierbar (&quot;<B>Mein Shop</B>&quot;).<br/>
+&nbsp;</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>60.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Verwendung von &quot;<A href="http://adodb.sourceforge.net/"><font color="#FF0000">ADODB</font></A>&quot; 
+		für den Datenbankzugriff.</b></font></td>
+		<td valign="top" >
+<B>ADODB</B> ist eine PHP-Klasse, die transparente Datenbankzugriffe auf
+<font color="#FF0000"><B>verschiedene Datenbank-Server</B></font> ermöglicht. 
+Man ist für OL-Commerce v4/AJAX also nicht mehr auf nur <B>MySQL</B> als 
+Datenbank-Server angewiesen, sondern kann (zumindest in der Theorie) mit 
+demselben Programmcode auf verschiedene Datenbank-Server zugreifen. (Eine Liste 
+der unterstützten Datenbank-Systeme findet man unter
+<A TARGET="_blank" href="http://phplens.com/lens/adodb/docs-adodb.htm#drivers for supported databases">
+http://phplens.com/lens/adodb/docs-adodb.htm#drivers for supported databases</A>)<p>
+Ein weiterer möglicher Vorteil ist, dass <B>ADODB</B> Abfragen an den 
+Datenbank-Server in einem <B>Cache auf dem lokalen lokalen Plattenlaufwerk </b>
+zwischen speichern, und bei Bedarf daraus laden kann. Dies <B>kann</B> den 
+Datenbankserver entlasten, und Abfragen schneller ausliefern.<p>Weiterhin kann
+<B>ADODB</B> alle Zugriffe auf den Datenbankserver in einem <B>Log</B> 
+speichern, und dadurch eine Performance-Analyse der SQL-Befehle durchführen 
+('Bottle-Neck'-Analyse). (Das sollte man natürlich <font color="#FF0000"><b>
+nicht </b></font>mit einem Produktionssystem machen, weil da viel Daten 
+anfallen.)<p>Die Einbindung von <B>ADODB </B>wurde so gestaltet, dass dies 
+transparent in den OL-Commerce - Datenbank-Zugrifssroutinen geschieht ('<B>inc/olc_db_xxxxxx.inc.php</B>').<p>
+Die Einbindung von <B>ADODB </B>ist somit <font color="#FF0000"><b>
+konfigurierbar</B></font>!<p>Für die Verwendung von <B>ADODB</B> müssen die 
+folgenden Definitionen in &quot;<B>includes/configure.php</B>&quot; und &quot;<B>admin/includes/configure.php</B>&quot; 
+eingebracht werden (bei der Installation geschieht dies automatisch):<br/>
+<br/>
+define('<B>USE_ADODB</B>', false); // Set to &quot;true&quot; to use &quot;ADODB database 
+access<br/>
+define('<B>ADOBD_DB_TYPE'</b>, 'mysql'); // ADODB database driver to use. <br/>
+//See http://phplens.com/lens/adodb/docs-adodb.htm#drivers for supported 
+databases<br/>
+define('<B>ADOBD_USE_CACHING</B>', false); // Set to &quot;true&quot; to use the ADODB 
+caching facility<br/>
+define('<B>ADOBD_CACHING_SECONDS</B>', 3600); // Set # of secondes to retain 
+ADODB cached data (3600 is one hour)<br/>
+define('<B>ADOBD_USE_STATS</B>', false); // Set to &quot;true&quot; to use &quot;ADODB&quot; 
+statistics'<br/>
+define('<B>ADODB_USE_LOGGING</B>', false); // Set to &quot;true&quot; to use &quot;ADODB&quot; 
+command logging'<br/>
+<br/>
+Weiterhin muss das Verzeichnis &quot;<B>adodb_cache</B>&quot; angelegt, und mit <b>
+Schreibrechten(!)</b> versehen werden.<br/>
+<br/>
+Die Bedeutung dieser Parameter ist wie folgt:<br/>
+&nbsp;<table border="1" ID="table9" cellspacing="5" cellpadding="5">
+	<tr>
+		<td align="center"><B>Parameter</B></td>
+		<td align="center"><font color="#FF0000"><B>Wert </b></font></td>
+		<td align="center"><b>&nbsp;Wirkung </b></td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top"><B>USE_ADODB </b></td>
+		<td valign="top"><b><font color="#FF0000">true</font></b></td>
+		<td valign="top">Es wird die ADODB-Datenbank-Schnittstelle statt der PHP 
+		&quot;<B>mysql</B>&quot;-Schnittstelle für die Datenbank-Zugriffe verwendet.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top"><B>ADOBD_DB_TYPE </b></td>
+		<td valign="top"><b><font color="#FF0000">mysql</font></b></td>
+		<td valign="top">Legt fest, welcher ADODB Datenbank-Treiber verwendet 
+		werden soll. Eine Liste unterstützter Datenbanken finden Sie <b>
+		<A TARGET="_blank" href="http://phplens.com/lens/adodb/docs-adodb.htm#drivers for supported databases">
+		hier</A></b>.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top"><B>ADOBD_USE_CACHING </b></td>
+		<td valign="top"><b><font color="#FF0000">true</font></b></td>
+		<td valign="top">Das ADODB-Caching speichert Datenbank-Abfragen und ihre 
+		Ergebnisse in einem Cache auf der lokalen Festplatte zwischen. Wenn eine 
+		Abfrage schon im Cache vorhanden ist, kann das den Datenbank-Server 
+		entlasten.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top"><B>ADOBD_CACHING_SECONDS </b></td>
+		<td valign="top"><font color="#FF0000"><B>3600</B></font></td>
+		<td valign="top">Anzahl von Sekunden, für die Daten im Cache gültig sein 
+		sollen.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top"><B>ADOBD_USE_STATS</B></td>
+		<td valign="top"><font color="#FF0000"><B>true</B></font></td>
+		<td valign="top">Wenn &quot;<B>ADOBD_USE_CACHING</B>&quot; &quot;<B>true</B>&quot; ist, kann 
+		damit eine Statistik über die aus dem Cache geladenen Abfragen aktiviert 
+		werden (&quot;<B>Cache-Hit-Rate</B>&quot;).</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top"><B>ADODB_USE_LOGGING</B></td>
+		<td valign="top"><font color="#FF0000"><B>true</B></font></td>
+		<td valign="top">Das ADODB Logging erlaubt die Analyse des 
+		Zeitverhaltens von SQL-Abfragen, um Engpässe zu identifizieren. Da damit 
+		viel Platz in der Datenbank belegt wird, sollte das
+		<font color="#FF0000"><B>nicht(!)</b></font> für produktive Systeme 
+		aktiviert werden!</td>
+	</tr>
+</table>
+<p>Wenn '<B>USE_ADODB</B>' auf '<B>true</B>' gesetzt ist, dann wird im Admin 
+Menü der neue Menü-Punkt '<B>Mein Shop/ADODB Statistik</B>' angezeigt. Damit 
+kann man sich eine Reihe von durch ADODB gesammelte Datenbank-Statistiken 
+anzeigen lassen: Allgemeiner Performance Überblick, fragwürdige SQL-Abfragen mit 
+signifikanter Laufzeit, Cache-Hits usw.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>61.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Bestellstatistik über Zeiträume</B></font></td>
+		<td valign="top" >
+<p>Im Admin-Bereich wurde eine neue Statistik verfügbar gemacht, die den Umsatz 
+in bestimmten Zeiträumen darstellt<p>Diese Statistik sieht wie folgt aus:<table cellSpacing="2" cellPadding="2" width="100%" border="0" ID="table10">
+	<tr>
+		<td valign="top" width="100%">
+		<table cellSpacing="0" cellPadding="2" width="100%" border="0" ID="table11">
+			<tr>
+				<td class="main" valign="top">
+				<p align="center"><B>Aktuelles Jahr (2006)</b></p>
+				<table cellSpacing="5" cellPadding="5" width="90%" align="center" border="1" ID="table12">
+					<tr>
+						<td><B>Zeitraum</B></td>
+						<td align="middle"><B>Umsatz</B></td>
+						<td align="middle"><B>Umsatz pro<br/>
+						Bestellung</B></td>
+						<td align="middle"><B>Anzahl<br/>
+						Bestellungen</B></td>
+					</tr>
+					<tr>
+						<td valign="top"><font size="2"><B>Vorletzter Monat</B> 
+						(August 2006)<br/>
+						(01. August 2006 - 31. August 2006)</font></td>
+						<td valign="top" align="right"><font size="2">599,– EUR</font></td>
+						<td valign="top" align="right"><font size="2">13,93 EUR</font></td>
+						<td valign="top" align="right"><font size="2">43</font></td>
+					</tr>
+					<tr>
+						<td valign="top"><font size="2"><B>Letzter Monat</B> 
+						(September 2006)<br/>
+						(01. September 2006 - 30. September 2006)</font></td>
+						<td valign="top" align="right"><font size="2">157,50 EUR</font></td>
+						<td valign="top" align="right"><font size="2">9,26 EUR</font></td>
+						<td valign="top" align="right"><font size="2">17</font></td>
+					</tr>
+					<tr>
+						<td valign="top"><font size="2"><B>Aktueller Monat</B> 
+						(Oktober 2006)<br/>
+						(01. Oktober 2006 - 31. Oktober 2006)</font></td>
+						<td valign="top" colSpan="3"><font size="2">Keine 
+						Bestellung</font></td>
+					</tr>
+					<tr>
+						<td valign="top"><font size="2"><B>Vorletzte Woche</B> 
+						(KW 38)<br/>
+						(18. September 2006 - 24. September 2006)</font></td>
+						<td valign="top" colSpan="3"><font size="2">Keine 
+						Bestellung</font></td>
+					</tr>
+					<tr>
+						<td valign="top"><font size="2"><B>Letzte Woche</B> (KW 
+						39)<br/>
+						(25. September 2006 - 01. Oktober 2006)</font></td>
+						<td valign="top" colSpan="3"><font size="2">Keine 
+						Bestellung</font></td>
+					</tr>
+					<tr>
+						<td valign="top"><font size="2"><B>Aktuelle Woche</B> 
+						(KW 40)<br/>
+						(02. Oktober 2006 - 08. Oktober 2006)</font></td>
+						<td valign="top" colSpan="3"><font size="2">Keine 
+						Bestellung</font></td>
+					</tr>
+					<tr>
+						<td valign="top"><font size="2"><B>Vorgestern</B> (03. 
+						Oktober 2006)</font></td>
+						<td valign="top" colSpan="3"><font size="2">Keine 
+						Bestellung</font></td>
+					</tr>
+					<tr>
+						<td valign="top"><font size="2"><B>Gestern</B> (04. 
+						Oktober 2006)</font></td>
+						<td valign="top" colSpan="3"><font size="2">Keine 
+						Bestellung</font></td>
+					</tr>
+					<tr>
+						<td valign="top"><font size="2"><B>Heute</B> (05. 
+						Oktober 2006)</font></td>
+						<td valign="top" colSpan="3"><font size="2">Keine 
+						Bestellung</font></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<p>Wenn vorhanden, werden auch die Vergleichsdaten für die <B>beiden vorigen 
+Jahre </B>für denselben Zeitraum angezeigt.<p>Die Funktion ist über das 
+Admin-Menü &quot;<B>Kunden/Bestellstatistik</B>&quot; zugänglich.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>62.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Skripte (periodisch) automatisch starten</B></font></td>
+		<td valign="top" >
+Oft ist es wünschenswert, Skripte automatisch zu aktivieren, um z.B. aktuelle 
+Produktdaten eines Lieferanten automatisch zu übernehmen.<p>LINUX/UNIX haben die 
+Möglichkeit, sog. &quot;CronJobs&quot; zu definieren, bei WINDOWS gibt es den &quot;Taskplaner&quot; 
+für solche Aufgaben. </p>
+<p>Damit kann man vorgeben, welche Programme wann, zu welchen Zeiten aktiviert 
+werden sollen.</p>
+<p>Problematisch an dieser Vorgehensweise ist:</p>
+<UL>
+	<LI>Man kann damit nicht direkt PHP-Skripte starten</LI>
+	<LI>Bei Shared-Hostern hat man i.d.R keinen Zugriff auf diese 
+	Systemfunktionen</LI>
+	<LI>Das ist recht kompliziert einzurichten</LI>
+</UL>
+<p>Was liegt also näher, als solche Aufgaben in OL-Commerce einzubinden, und über 
+die Admin-Konfiguration die zu startenden Programme und ihre 
+Zeit-/Perioden-Parameter zu verwalten. </p>
+<p>Und mit unserem AJAX-Know-How und den AJAX-Routinen kann man das auch sehr 
+schön realisieren!</p>
+<p>Es wurde dazu das neue Skript &quot;<B>admin/cronjobs.php</B>&quot; entwickelt, das 
+prüft, ob Skripte für den zeitgesteuerten Aufruf definiert wurden, und dann die 
+Scheduling-Parameter aufbereitet. Weiterhin generiert das Skript die notwendigen 
+Javascript-Routinen, um die periodische Prüfung der Scheduling-Parameter zu 
+prüfen, und ggfs. ein Skript zu starten, wenn dessen Zeit-Parameter mit der 
+aktuellen Zeit übereinstimmen.</p>
+<p><font color="#FF0000"><B>Das Prüfinterval ist auf 5 Minuten eingestellt.</b></font></p>
+<p>Wurden keine Skripte für den zeitgesteuerten Aufruf definiert, gibt das 
+Programm eine entsprechende Meldung aus, und beendet sich wieder.</p>
+<hr/>
+<p>Die Definition der auszuführenden Skripte erfolgt im Admin-Bereich &quot;(<B>Konfiguration/Mein 
+Shop/Automatische Skript-Ausführung (&quot;Cron_Jobs&quot;)</b>)&quot;.</p>
+<p>In den dort vorhandenen <B>Textbereich</B> werden die zu aktivierenden 
+Skripte mit ihren Parametern eingetragen (pro Skript <B>eine</B> Zeile!).</p>
+<table border="1" width="100%" ID="table13">
+	<tr>
+		<td align="center" width="603"><B>Eintrag</B></td>
+		<td align="center"><B>Bedeutung</B></td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td width="603"><B>admin/import.php<font color="#0000FF">?</font></B>file=<A href="http://www.meinlieferant1.de/produkte.csv">http://www.meinlieferant1.de/produkte.csv</A><b><font color="#FF0000"><br/>
+		,14:15</font></b></td>
+		<td>Starte Skript &quot;<B>admin/import.php</B>&quot;<br/>
+		immer um 14:15</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td width="603"><B>admin/import.php<font color="#0000FF">?</font></B>file=<A href="http://www.meinlieferant2.de/produkte.csv">http://www.meinlieferant2.de/produkte.csv</A><b><font color="#FF0000">, 
+		Montag/Mittwoch/Freitag, 20:00</font></b></td>
+		<td>Starte Skript &quot;<B>admin/import.php</B>&quot; <br/>
+		Montags, Mittwochs und Freitags um 20:00</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td width="603"><B>admin/import.php<font color="#0000FF">?</font></B>file=<A href="http://www.meinlieferant3.de/produkte.csv">http://www.meinlieferant3.de/produkte.csv</A><b><font color="#FF0000">, 
+		120</font></b></td>
+		<td>Starte Skript &quot;<B>admin/import.php</B>&quot; <br/>
+		alle 120 Minuten</td>
+	</tr>
+</table>
+<p>Die nach dem &quot;<b><font color="#0000FF">?</font></b>&quot; anzugebenden Parameter 
+hängen natürlich von dem zu startenden Skript ab, und sind hier nur als 
+Beispiele zu verstehen.</p>
+<p>Die <font color="#FF0000"><B>rot</B></font> dargestellten Werte sind die 
+möglichen Varianten der Zeitsteuerung.</p>
+<hr/>
+<p>Um sicherzustellen, dass diese zeitgesteuerten Skripte auch wirklich 
+aktiviert werden, empfiehlt es sich, das Skript &quot;<B>admin/cronjobs.php</B>&quot; beim 
+Systemstart gleich aktivieren zu lassen.</p>
+<p>In <B>WINDOWS </B>geht das wie folgt:</p>
+<p>Im Verzeichnis &quot;<B>admin</B>&quot; gibt es die beiden &quot;<B>Link</B>&quot;-Dateien </p>
+<p>&quot;<B>OL-Commerce Cron-Jobs starten (FF).lnk</B>&quot; (für die Verwendung mit dem &quot;<B>FireFox</B>&quot;) 
+und</p>
+<p>&quot;<B>OL-Commerce Cron-Jobs starten (IE).lnk</B>&quot; (für die Verwendung mit dem &quot;<B>Internet 
+Explorer</B>&quot;).</p>
+<p>Eine von diesen beiden Link-Dateien muss in den WINDOWS &quot;<B>Autostart</B>&quot;-Ordner 
+kopiert werden, <B>nachdem sie für die aktuelle Konfiguration angepasst wurden</B>. 
+Für die Anpassung klickt man mit der rechten Maustaste auf das &quot;Link&quot;-Symbol, 
+und wählt &quot;Eigenschaften&quot;.</p>
+<p>In das Feld &quot;<B>Ziel</B>&quot; der dann erscheinenden Maske geben Sie dann ein:</p>
+<p><B>Für den FireFox:</b></p>
+<p>&quot;<A href="file:///C:/Firefox/firefox.exe">C:\Firefox\firefox.exe</A>&quot; (oder 
+was sonst auch immer der Pfad des Programms &quot;firefox.exe&quot; sein sollte!)</p>
+<p><B>Für den Internet Explorer:</b></p>
+<p>&quot;<A href="file:///C:/Programme/Internet%20Explorer/iexplore.exe">C:\Programme\Internet 
+Explorer\iexplore.exe</A>&quot; (oder was sonst auch immer der Pfad des Programms &quot;<A href="file:///C:/Programme/Internet%20Explorer/iexplore.exe">iexplore.exe</A>&quot; 
+sein sollte!)</p>
+<p>Danach ein <B>Leerzeichen</B>, gefolgt von </p>
+<p>http://www.meinserver.de/olcommerce/admin/cronjobs.php?<B>email_address</B>=admin_email@meinserver.de&amp;<B>password</B>=admin_password</p>
+<p>(Wenn Sie einen SSL-Server verwenden können, dann &quot;https://....&quot;)<p>Die 
+Angabe der Parameter &quot;<B>email_address</B>&quot; und &quot;<B>password</B>&quot; wie oben 
+gezeigt erspart das manuelle Login, OL-Commerce wurde entsprechend modifiziert.<p>
+<B>Für LINUX/UNIX </b>
+<p>gibt es sicher (?) vergleichbare Möglichkeiten, die dem Autor allerdings 
+nicht bekannt sind.<br/>
+&nbsp;<hr/>
+<p>Damit wird beim Systemstart gleich eine Browserinstanz aktiviert, in der das 
+&quot;Cronjob&quot;-Programm abläuft.<p>Im Fenster dieser Browserinstanz wird ein 
+Protokoll der durchgeführten Aktivitäten dargestellt.<p>Um zu verhindern, dass 
+diese Browserinstanz unbeabsichtigt geschlossen wird (und damit die automatische 
+Ausführung abgebrochen würde!), ist dies nur nach vorheriger Bestätigung 
+möglich.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>63.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Who is online (Live)</b></font></td>
+		<td valign="top" >
+Im Admin-Bereich gibt es eine Möglichkeit, zu prüfen, wer gerade im Shop Online 
+ist.<p>Das ist schon mal ganz nett, schöpft aber das mögliche Potential einer 
+solchen Funktion nicht aus.</p>
+<p>Denn mit unserer AJAX-Technologie haben wir die Möglichkeit, diesen Zustand
+<b><font color="#FF0000">permanent automatisch zu aktualisieren</font></b> 
+lassen, und auch wesentlich mehr Informationen anzuzeigen.</p>
+<p>Es wurde dazu das Skript &quot;<B>admin/whos_online_live.php</B>&quot; entwickelt, das 
+einen <B>permanenten Shopstatus</B> anzeigt (abhängig vom eingestellten 
+Prüfintervall fast bis hin zur <B>Echtzeit</B>, man sollte das aber nicht 
+übertreiben! Standarmäßig wird der Status alle 20 Sekunden überprüft).</p>
+<p>Das Programm überprüft bei jeder Aktivierung</p>
+<OL>
+	<LI><B>Wer ist online</B><br/>
+&nbsp;</LI>
+	<LI>Was und wann war der letzte <B>Seitenaufruf</B><br/>
+&nbsp;</LI>
+	<LI>Welchen Inhalt und Wert hat der <B>Warenkorb</B> des Besuchers<br/>
+	(Mit Summierung der Warenkörbe aller Besucher)<br/>
+&nbsp;</LI>
+	<LI>Welcher Besucher ist <B>neu hinzugekommen</B><br/>
+&nbsp;</LI>
+	<LI>Welcher Besucher hat den <B>Shop verlassen</B><br/>
+&nbsp;</LI>
+	<LI>Welche <B>neuen Bestellungen</B> mit welchem Wert gibt es<br/>
+	(Mit Summierung der Bestellungen aller Besucher)</LI>
+</OL>
+<p>und stellt diese Information in einer Liste im Browserfenster dar.</p>
+<p>Die Funktionen 4. bis 6. können mit einem &quot;Sound&quot; verbunden werden, der bei 
+Eintritt dieses Ereignisses abgespielt wird.</p>
+<p>Die Funktion ist zugänglich über &quot;<B>Admin/Zusatzprogramme/Who is online 
+(Live)</b>&quot;</p>
+<p>Alternativ könnte sie auch analog zu dem in <font color="#FF0000"><B>62.</b></font> 
+beschriebenen Verfahren gleich beim Systemstart aktiviert werden!</p>
+<hr/>
+<p>Einige Einstellungen des Programms können geändert werden.</p>
+<p>In der Datei &quot;<B>admin/live_data/settings.ini</B>&quot; können folgende 
+Parameter eingestellt werden:</p>
+<pre>#<br/>
+#Settings for live functions<br/>
+#<br/>
+<B>set_focus</B>=true 			#Browser window to foreground on status change<br/>
+<br/>br
+
+br
+
+br
+br
+
+br
+br
+
+br
+
+br
+
+br
+br
+br
+
+br
+
+<B>sample_interval_whois</B>=20 	#Sample interval for 'Who is online' in seconds<br/>
+<B>sample_interval_suport</B>=5 	#Sample interval for 'Live support' in seconds<br/>
+#<br/>
+# If you do not want sounds, put a '#' at the beginning of the following lines<br/>
+#<br/>
+<B>new_visitor</B>=knock_knock.wav 	#Sound file for new visitor<br/>
+<B>lost_visitor</B>=door_close.wav 	#Sound file for lost visitor<br/>
+<B>new_order</B>=new_order.wav 	#Sound file for new order<br/>
+<B>support_request</B>=telephone.wav 	#Sound file for new support request</pre>
+<p>Im Verzeichnis &quot;<B>admin/live_data</B>&quot; <font color="#FF0000"><B>müssen</B></font> 
+auch alle Sound-Dateien gespeichert sein, die verwendet werden sollen.<br/>
+&nbsp;</p>
+</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>64.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Live Help</B></font></td>
+		<td valign="top" >
+Es gibt im Markt sog. &quot;Live Help&quot;-Systeme, mit deren Hilfe man es den 
+Shop-Besuchern ermöglichen kann, direkt mit dem Shop-Betreiber (in einer&nbsp; 
+Art Chat) in Verbindung zu treten, um Fragen zu klären. (Natürlich nur dann, 
+wenn sich entsprechende Operatoren als verfügbar angemeldet haben.)<p>Die 
+Absicht ist es, ein bestehendes Open Source &quot;Live Help&quot;-System in den Shop zu 
+integrieren, und, mit Hilfe von AJAX wieder wirklich &quot;Live&quot; zu gestalten.</p>
+<p>Derzeit ist geplant das &quot;Crafty Syntax Live Help&quot;-System dazu zu verwenden.</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>65.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Suchmaschinen-optimierte URL</B></font></td>
+		<td valign="top" >
+Die standardmäßig von OL-Commerce verwendeten URLs der Form &quot;<B>http://www.meinserver.de/product_info.php?products_id=123</B>&quot; 
+sind nicht &quot;<font color="#FF0000"><B>suchmaschinenfreundlich</B></font>&quot;. Ein 
+Problem damit ist z.B., dass auch bei Tausenden von Produkten nur der eine Link 
+zu &quot;<B>http://www.meinserver.de/product_info.php</B>&quot; gefunden und bewertet 
+wird.<p>Um dieses Problem zu beheben, bietet OL-Commerce schon die Möglichkeit, &quot;<font color="#FF0000"><B>suchmaschinen-optimierte</B></font>&quot; 
+URLs der Form &quot;<b><A href="http://www.meinserver.de/product_info.php/products_id/123">http://www.meinserver.de/product_info.php/products_id/123</A></b>&quot; 
+zu verwenden.</p>
+<p>Diese Form ist leider erst ab dem APACHE 2.x Server möglich (da dazu die erst 
+ab dann gültige Option &quot;<B>AcceptPathInfo On</B>&quot; notwendig ist), und sie lässt 
+(wegen dem &quot;.php&quot;) immer noch erkennen, dass es sich hier um dynamische Seiten 
+handelt.</p>
+<p>Es wurde daher eine neue Form der &quot;<font color="#FF0000"><B>suchmaschinen-optimierten</B></font>&quot; 
+URLs der Form geschaffen, die einer <B>statischen</B> URL entspricht:</p>
+<p><B>http://www.server.de/olcommerce/<font color="#0000FF">seo</font>-processor-par1-val1-par2-val2-...-parn-valn.htm</B></p>
+<p><b>&quot;seo&quot;</b> ist (in Verbindung mit der Endung &quot;.htm&quot;) die Kennung, dass es 
+sich um eine &quot;<font color="#FF0000"><B>suchmaschinen-optimierte</B></font>&quot; URL 
+handelt (<B>seo</B> = &quot;<font color="#FF0000"><B>s</B></font>earch 
+<font color="#FF0000"> <B>e</B></font>ngine <font color="#FF0000"> <B>o</B></font>ptimized&quot;).</p>
+<p><b>&quot;processor&quot;</b> ist das Programm, das die Anforderung abarbeiten muss.</p>
+<p>&quot;<B>parn-valn</B>&quot; sind die &quot;GET&quot;-Parameter der URL (&quot;<B>parn</B>&quot;=Parameter-Name, 
+&quot;<B>valn</B>&quot;=Parameter-Wert).</p>
+<p><font color="#FF0000"><B>Beispiele</B></font>: </p>
+<p><B>http://www.server.de/olcommerce/<font color="#0000FF">seo</font>-products_info-products_id-144.htm</B></p>
+<p><B>http://www.server.de/olcommerce/<font color="#0000FF">seo</font>-index-cPath-1_10.htm</B></p>
+<p>Zur Verwendung dieser &quot;<font color="#FF0000"><B>suchmaschinen-optimierten</B></font>&quot; 
+URLs, <font color="#0000FF"><B>muss(!)</b></font> im APACHE-Server das Modul &quot;<B>mod_rewrite</B>&quot; 
+konfiguriert und über die &quot;<B>htaccess</B>&quot;-Datei zugänglich sein.</p>
+<p>Um eine beliebige Anzahl von Parametern verwenden zu können (und dabei die 
+damit normalerweise notwendigen umfänglichen &quot;mod-rewrite&quot;-Definitionen zu 
+vermeiden), werden über &quot;mod_rewrite&quot; nur alle Seiten-Anforderungen der Form &quot;<B>seo-</B>xxxxxxxx.<B>htm</B>&quot; 
+an das neue Skript &quot;<B>seo.php</B>&quot; weitergeleitet.</p>
+<p>&quot;<B>seo.php</B>&quot; interpretiert die PHP-Variable &quot;<b>$_SERVER['REQUEST_URI']</b>&quot; 
+(die im o.g. Beispiel den Wert &quot;<B>olcommerce/seo-products_info-products_id-144.htm</B>&quot; 
+enthalten würde), und kann daraus die normalerweise erwarteten 
+PHP-&quot;$_GET&quot;-Parameter aufbauen (im Beispiel <b>$_GET['products_id']</b> 
+mit dem Wert <B>144</B>), und dann das notwendige Skript &quot;<B>products_info.php</B>&quot; 
+aktivieren.<br/>
+&nbsp;<hr/>
+<p>Neben dem oben beschriebenen <B>Standard-Modus</B> kann ein
+<font color="#FF0000"><B>erweiterter Modus</B></font> gewählt werden, der die 
+Links noch anschaulicher macht. <p>(Konfigurierbar über &quot;<B>Admin/Konfiguration/Meta-Tags-Suchmaschinen/Erweiterte 
+suchmaschinen-optimierte URLs benutzen?</b>&quot;. Standardmäßig aktiviert!)<p>So wird dann z.B. der <B>Produkt-Link</B><p>
+<B>http://www.server.de/olcommerce/seo-products_info-products_id-144.htm</B></p>
+<p>in der Form<p><B>http://www.server.de/olcommerce/seo-p-voller_name_des_products;products_id.htm<br/>
+(<font color="#FF0000">Beispiel</font>: </B>http://www.server.de/olcommerce/seo-p-indian_summer;123.htm)</p>
+<p>dargestellt.</p>
+<p>Und der <B>Kategorien-Link</B></p>
+<p><B>http://www.server.de/olcommerce/seo-index-cPath-1_10.htm</B></p>
+<p>wird dann angezeigt als<p><b>
+http://www.server.de/olcommerce/seo-k-kompletter-pfad_name-der_kategorie.htm<br/>
+(<font color="#FF0000">Beispiel</font>: </b>
+http://www.server.de/olcommerce/seo-k-seifen-ziegenmilch_seifen.htm)<br/>
+&nbsp;<p><font color="#FF0000"><B>Was dann insgesamt noch wesentlich anschaulicher, professioneller 
+und für Suchmaschinen geradezu unwiderstehlich ist!</b><br/>
+&nbsp;</font><hr/>
+<p>Wem das Zeichen &quot;<b>-</b>&quot; als Trennzeichen für die Elemente der 
+suchmaschinen-optimierten URLs nicht gefällt, kann alternativ das Zeichen &quot;<b>/</b>&quot; 
+wählen. (Konfigurierbar über &quot;<B>Admin/Konfiguration/Meta-Tags-Suchmaschinen/Trennzeichen 
+für suchmaschinen-optimierte URLs</B>&quot;)<br/>
+&nbsp;<p>Wem die Endung &quot;<b>.htm</B>&quot; als Dateityp für die 
+suchmaschinen-optimierten URLs nicht gefällt, kann alternativ &quot;<b>.html</B>&quot; 
+wählen. (Konfigurierbar über &quot;<B>Admin/Konfiguration/Meta-Tags-Suchmaschinen/Dateityp 
+für suchmaschinen-optimierte URLs</B>&quot;)<br/>
+&nbsp;<hr/>
+<p>Die &quot;<B>mod_rewrite</B>&quot;-Befehle 
+in der &quot;<B>htacccess</B>&quot;-Datei sehen wie folgt aus:<br/>
+&nbsp;<hr/>
+<p>&lt;IfModule mod_rewrite.c&gt;<br/>
+# Rewrite URLs<br/>
+<br/>
+RewriteEngine On<br/>
+RewriteBase DIR_WS_CATALOG<br/>
+<br/>
+RewriteCond %{QUERY_STRING} ^(.*)$<br/>
+<b><font color="#FF0000">RewriteRule ^seo-(.+)\.htm$ seo.php [L]</font></b><br/>
+<br/>
+RewriteCond %{QUERY_STRING} ^(.*)$<br/>
+RewriteRule ^index\.html?$ index.php?%1 [L]<br/>
+&lt;/IfModule&gt;<p>(Für &quot;<B>DIR_WS_CATALOG</B>&quot; ist der (nach der Installation vorhandene) Wert 
+der gleichnamigen Konstanten in &quot;<B>includes/configure.php</B>&quot; einzusetzen.)<p>
+<font color="#FF0000"><B>Die notwendigen &quot;</font><font color="#0000FF">mod_rewrite</font><font color="#FF0000">&quot;-Befehle in der &quot;</font><font color="#0000FF">htacccess</font><font color="#FF0000">&quot;-Datei werden bei der 
+Installation automatisch auf die für den Zielserver gültigen Werte gesetzt!</font></b><br/>
+&nbsp;<hr/>
+<p>Über das &quot;mod_rewrite&quot;-Modul werden im Grunde also nur alle URLs mit einer 
+bestimmten Struktur an das Skript &quot;<B>seo.php</B>&quot; weiter geleitet, welches das 
+eigentliche &quot;Rewriting&quot; übernimmt, und unsere SEO-URL interpretiert, und daraus 
+die für OL-Commerce notwendige Struktur aufbaut. In einem PHP-Skript ist man doch 
+wesentlich flexibler als in den &quot;RewriteRule&quot;s für &quot;mod_rewrite&quot;. (Was für eine 
+glückliche Entscheidung es war, das so zu lösen, sehen wir gleich!)<br/>
+&nbsp;<hr/>
+<p>Bisher beruht das neue SEO-URL-Konzept auf dem <B>Apache</B> Server, da er in 
+der Lage ist, über das &quot;mod_rewrite&quot;-Modul ein &quot;Rewriting&quot; von 
+angeforderten URLs vorzunehmen.<p><B>Was ist aber nun z.B. mit dem Microsoft IIS, 
+der ja standardmäßig <font color="#FF0000">kein &quot;Rewriting&quot; unterstützt</font>?</b><p>
+<font color="#0000FF"><U><B>Nun, auch hierfür gibt es in OL-Commerce eine </font>
+<font color="#FF0000">ganz simple</font><font color="#0000FF"> Lösung!</font></b></U><p>
+Auf dem IIS werden nämlich Anforderungen, die wie unsere SEO-URLs strukturiert sind, 
+einen &quot;<b><font color="#FF0000">Fehler 404 (Seite nicht gefunden)</font></b>&quot; 
+zur Folge haben, da diese Seite auf dem Server ja wirklich nicht vorhanden ist!<p>
+Wegen der Problematik der <font color="#0000FF"><b><A href="#57">&quot;On-the-fly&quot;-Bilder</A></b></font> 
+verwendet OL-Commerce aber dafür schon einen eigenen Fehler-Handler (&quot;<B>404.php</B>&quot;), 
+so dass diese Situation schon im Griff war.<p>Jetzt musste dieser Handler nur noch minimal dahingehend erweitert werden, 
+dass er zunächst prüft, ob die Fehler-URL eine SEO-URL war, und, wenn das zutrifft, die 
+weitere Bearbeitung an &quot;<B>seo.php</B>&quot; weiterleitet!<p>Und, voilá, 
+die 
+wunderschönen SEO-URLs von OL-Commerce können auch auf dem Microsoft IIS verwendet werden!<p>
+(Natürlich funktioniert dieses Konzept auch auf dem <B>Apache </B>Server!)</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><b><A NAME="66">
+		</A>66.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Bildschirm-Layout</B></font></td>
+		<td valign="top" >
+<b><font color="#FF0000">Eine wichtige Information vorweg:</font></b><p>Wenn Sie 
+die im folgenden beschriebene Konzeption <b><font color="#FF0000">nicht</font></b> 
+verwenden wollen (z.B., wenn Sie ein eigenes Template verwenden, dessen Umbau zu 
+komplex ist, oder in dem die &quot;Boxen&quot; nicht nur am linken und rechten Rand 
+definiert sind), dann setzen Sie in der &quot;<B>includes/configure.php</B>&quot; folgende 
+Definition:</p>
+<p><font color="#0000FF"><B>define('NO_BOX_LAYOUT', true);</b></font></p>
+<hr/>
+<p>Um die Anzeige von &quot;Boxen&quot; auf dem Bildschirm zu kontrollieren, ist immer ein 
+Eingriff in das Template &quot;<B>index.html</B>&quot; erforderlich gewesen, wo man ungewünschte 
+&quot;Boxen&quot; durch entfernen ihres SMARTY-Platzhalters konnte.</p>
+<p>Das hatte den Nachteil, 
+dass man </p>
+<UL>
+	<LI>mit einem Editor im Quelltext arbeiten muss<br/>
+&nbsp;</LI>
+	<LI>zwar die Anzeige unterbinden kann, die Erstellung dieser Box aber immer 
+	noch durchgeführt wird.</LI>
+</UL>
+<p>Da im Zuge der AJAX-ifizierung von OL-Commerce die Berechnung der Boxen 
+sowieso schon optimiert wurde (um unnötige Berechnungen von Boxeninhalten zu 
+vermeiden), wurde die Anzeige von (nicht unbedingt benötigten) Boxen jetzt im 
+Admin-Bereich konfigurierbar gemacht (&quot;<B>Admin/Konfiguration/Bildschirm-Layout</B>&quot;).</p>
+<p>Für folgende Inhalte kann man festlegen, <B>ob diese angezeigt werden 
+sollen</B>:</p>
+<UL>
+	<LI>Affiliate Programm</LI>
+	<LI>Benachrichtigungen (Tell a friend)</LI>
+	<LI>Bestellhistorie</LI>
+	<LI>Bestseller (zeitaufwändige Funktion!)</LI>
+	<LI>Informationen (Content)</LI>
+	<LI>Live Hilfe</LI>
+	<LI>Neue Produkte</LI>
+	<LI>Neue-/bald verfügbare-/Top-Produkte</LI>
+	<LI>Newsletter</LI>
+	<LI>Produkt-Beurteilungen</LI>
+	<LI>Produkt-Empfehlungen</LI>
+	<LI>Schnellkauf</LI>
+	<LI>Sonderangebote</LI>
+	<LI>Sprachen</LI>
+	<LI>Wechsel des Shop-Designs</LI>
+	<LI>Währungen</LI>
+</UL>
+
+Für diese Inhalte und die weiteren Boxen
+
+(die immer angezeigt werden)<UL>
+	<LI>Hersteller</LI>
+	<LI>Hersteller Informationen</LI>
+	<LI>Informationen</LI>
+	<LI>Inhalt</LI>
+	<LI>Kategorien</LI>
+	<LI>Login</LI>
+	<LI>Verwaltung</LI>
+	<LI>Warenkorb</LI>
+</UL>
+
+kann man zusätzlich auch noch definieren
+
+<UL>
+	<LI>In <B>welchem Navigationsbereich</B> sie liegen (Links, rechts)</LI>
+	<LI>Die <B>Position im Navigationsbereich</B></LI>
+</UL>
+
+<p><font color="#FF0000"><B>Damit kann das Bildschirm-Design nun vollständig im Admin-Bereich kontrolliert werden,
+</font><font color="#0000FF">ohne</font><font color="#FF0000"> dazu in dem 
+Template Änderungen vornehmen zu müssen!</font></b></p>
+<hr/>
+<p>Technisch ist das Ganze wie folgt gelöst:</p>
+<p>Im Template &quot;<B>index.html</B>&quot; werden im linken/rechten Navigationsbereich statt 
+der bisherigen Platzhalter</p>
+<p>(z.B. &quot;<b>&lt;div class=&quot;main&quot; id=&quot;box_CART&quot;&gt;{$box_CART}&lt;/div&gt;</b>&quot;)</p>
+<p>folgende Platzhalter verwendet:</p>
+<p>&quot;<b>&lt;div class=&quot;main&quot; id=&quot;box_l_xx&quot;&gt;{$box_<font color="#0000FF">l</font>_<font color="#FF0000">xx</font>}&lt;/div&gt;</b>&quot; 
+für den <B>linken</B>, und</p>
+<p>&quot;<b>&lt;div class=&quot;main&quot; id=&quot;box_r_xx&quot;&gt;{$box_<font color="#0000FF">r</font>_<font color="#FF0000">xx</font>}&lt;/div&gt;</b>&quot; 
+für den <B>rechten</B> Navigationsbereich.</p>
+<p>(<b><font color="#FF0000">xx</font></b> = jeweils von &quot;01&quot; bis &quot;25&quot;).</p>
+<p>Da es derzeit standardmäßig 23 Boxen gibt, kann man damit im Prinzip alle 
+Navigationsmöglichkeiten realisieren: Nur links, nur rechts, rechts und links.</p>
+<p>Es gibt jetzt eine zusätzliche Tabelle in der Datenbank (&quot;<B>olc_box_configuration</B>&quot;), in 
+der die Zuordnungen der &quot;echten&quot; Boxen zu den Positions-Boxen im Navigationsbereich erfolgt.</p>
+<p>Bei der Installation werden folgende Zuordnungen eingebracht:</p>
+<p>INSERT IGNORE INTO olc_box_configuration (box_id, template, box_key_name, 
+box_visible, box_sort_order, box_forced_visible, box_real_name, 
+box_position_name, last_modified, date_added) VALUES<br/>
+(NULL, <font color="#FF0000"><b>'<font color="#FF0000"><B>olc</B></font>'</b></font>, 'SHOW_ADMIN', 1, 1, 1, 'box_ADMIN', 
+'box_r_03', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_CART', 1, 2, 1, 'box_CART', 'box_r_01', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_CATEGORIES', 1, 3, 1, 'box_CATEGORIES', 'box_l_01', NULL, 
+now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_CONTENT', 1, 4, 1, 'box_CONTENT', 'box_l_05', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_INFOBOX', 1, 5, 1, 'box_INFOBOX', 'box_r_05', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_LOGIN', 1, 6, 1, 'box_LOGIN', 'box_r_02', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_MANUFACTURERS_INFO', 0, 7, 1, 'box_MANUFACTURERS_INFO', 
+'box_l_03', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_MANUFACTURERS', 0, 8, 1, 'box_MANUFACTURERS', 'box_l_02', 
+NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_SEARCH', 1, 9, 1, 'box_SEARCH', 'box_l_08', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_CHANGE_SKIN', 1, 10, 0, NULL, NULL, NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_ADD_A_QUICKIE', 1, 11, 0, 'box_ADD_A_QUICKIE', 'box_l_04', 
+NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_AFFILIATE', 1, 12, 0, 'box_AFFILIATE', 'box_l_13', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_BESTSELLERS', 1, 13, 0, 'box_BESTSELLERS', 'box_r_06', NULL, 
+now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_CENTER', 1, 14, 0, NULL, NULL, NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_CURRENCIES', 0, 15, 0, 'box_CURRENCIES', 'box_r_07', NULL, 
+now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_ORDER_HISTORY', 1, 16, 0, 'box_ORDER_HISTORY', 'box_l_12', 
+NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_INFORMATION', 1, 17, 0, 'box_INFORMATION', 'box_l_06', NULL, 
+now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_LANGUAGES', 0, 18, 0, 'box_LANGUAGES', 'box_r_08', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_LIVEHELP', 0, 19, 0, 'box_LIVEHELP', 'box_r_04', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_NEWSLETTER', 1, 20, 0, 'box_NEWSLETTER', 'box_r_10', NULL, 
+now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_LAST_VIEWED', 1, 22, 0, 'box_LAST_VIEWED', 'box_r_11', NULL, 
+now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_NOTIFICATIONS', 1, 23, 0, 'box_NOTIFICATIONS', 'box_r_09', 
+NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_REVIEWS', 1, 24, 0, 'box_REVIEWS', 'box_l_07', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_SPECIALS', 1, 25, 0, 'box_SPECIALS', 'box_l_09', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_TELL_FRIEND', 1, 26, 0, 'box_TELL_FRIEND', 'box_l_11', NULL, 
+now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_WHATSNEW', 1, 27, 0, 'box_WHATSNEW', 'box_l_10', NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_TAB_NAVIGATION', 0, 28, 0, 'box_TAB_NAVIGATION', 'box_m_01', 
+NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_PDF_CATALOG', 1, 29, 0, NULL, NULL, NULL, now()),<br/>
+(NULL, '<font color="#FF0000"><B>olc</B></font>', 'SHOW_GALLERY', 1, 30, 0, NULL, NULL, NULL, now());</p>
+<p>'<B>olc</B>' ist der Name des Templates, für den diese Zuordnungen gelten. 
+Wenn ein anderes Template verwendet werden soll, dann ist '<B>olc</B>' 
+entsprechend zu ändern. Ist ein weiteres Templates vorhanden, muss die 
+vorstehende Definition mit dem Namen des Templates <B>zusätzlich</B> in die Datenbank 
+eingebracht werden.</p>
+<p>Sind über die standardmäßig vorhandenen Boxen hinaus noch weitere vorhanden, so müssen diese entsprechend 
+dem vorherigen Beispiel in die Datenbank eingebracht werden. </p>
+<p>Wenn nun in <B>Smarty</B> Daten für eine Box gespeichert werden (wobei Smarty 
+den <B>Original</B>-Box-Namen (z.B. &quot;<B>box_ADMIN</B>&quot;) als 
+Identifizierungs-Schlüssel verwendet), wird der <B>Original</B>-Box-Name gegen 
+den zugeordneten <B>Positions</B>-Box-Namen (im Beispiel: '<B>box_r_03</B>') 
+ausgetauscht, so dass ansonsten keinerlei Änderungen für die Smarty- und 
+AJAX-Verarbeitung notwendig sind!</p>
+<p><font color="#FF0000"><B>Diese neue Flexibilität erfordert somit kaum 
+zusätzlichen Rechenaufwand!</b></font></p>
+
+<hr/>
+
+<table border="0" ID="table14" cellspacing="3" cellpadding="3">
+	<tr>
+		<td valign="top"><b><font color="#FF0000">ACHTUNG</font></b>:</td>
+		<td valign="top">Die im Folgenden beschriebene Funktion der Verwaltung 
+		des Bildschirm-Layouts ist <U><b><font color="#FF0000">nur</font></b></U> 
+		mit dem <font color="#0000FF"><B>Microsoft Internet Explorer</B></font> 
+		verwendbar!<p>Es ist dem Autor nicht gelungen, das für diese Funktion 
+		notwendige (und mit dem <font color="#0000FF"><B>Microsoft Internet 
+		Explorer</B></font> voll funktionierende) komplexe Javascript-Programm 
+		mit dem FireFox funktionsfähig zu machen. (<font color="#FF0000"><B>FireFox 
+		sucks!</b></font>)</p>
+		<p>Da es sich hierbei aber um eine rein <B>lokale Admin-Funktion</B> 
+		handelt, dürfte es kein großes Problem sein, dafür auch einen vernünftigen 
+		Browser zu verwenden.</td>
+	</tr>
+</table>
+<p>Die Verwaltung des Anzeigestatus' der Boxen, bzw. der Zuordnungen der Boxen 
+zum Navigationsbereich wird <B>sehr einfach</B> per "<font color="#FF0000"><B>Drag und Drop</B></font>" mit der Maus in einem neuen Skript vorgenommen.
+
+<p>Die &quot;Drag und Drop"-Änderung des Bildschirm-Layouts ist ein ziemlich komplizierter 
+Vorgang, da muss man doch ganz erheblich im "Document Object Model ("<B>DOM</B>") der dafür verwendeten Seite herum ändern.
+
+<p>Einen Eindruck, wie das funktioniert, kann man sich unter
+
+<p><b>
+<A TARGET="_blank" href="http://www.ol-commerce.de/olcommerceshop/ajax/downloads/bildschirm_layout.jpg">http://www.OL-Commerce .de/olcommerceshop/ajax/downloads/bildschirm_layout.jpg</A></b>
+
+<p>verschaffen.
+
+<p>Man sieht dort ein Bildschirm-Layout mit 2 Navigationsbereichen, in denen die Boxen zunächst nach dem Standard-Layout platziert sind.
+
+</p>
+<p>Boxen, die <font color="#FF0000"> <b>nicht dargestellt</b></font> werden, sind 
+<font style="color:Grey" color="#808080"><b>grau</b></font> hinterlegt.
+
+</p>
+<p>Die Box, die gerade per Drag/Drop platziert werden soll (&quot;<B>Drag</B>"-Phase&quot;) , hat einen <font style="color:Darkgoldenrod"><b>braun-farbigen</b></font> Hintergrund.
+
+</p>
+<p>Wenn sich die zu platzierende Box über einem Navigations-Bereich befindet,  erhält die Box, 
+<font color="#FF0000"> <b>vor</b></font> 
+der sie platziert würde, einen <font style="color:Lime"><b>grün-farbigen</b></font> Hintergrund.</p>
+<p>Befindet sie sich zum Zeitpunkt des "<b>Loslassens</b>" der Maus ("<B>Drop</B>"-Phase&quot;)
+<b>innerhalb</b> eines  Navigations-Bereichs, dann wird sie <b>vor</b> der Box eingeordnet, die einen <font style="color:Lime"><b>grün-farbigen</b></font> Hintergrund hat. 
+
+</p>
+<p>Andernfalls wird sie wieder an ihre <b>ursprüngliche Position</b> platziert.
+
+</p>
+
+<hr/>
+
+<br/>
+
+Nach Beendigung der Platzierung aller Boxen werden mit dem "<B>Aktualisieren</B>"-Button die neuen Daten an den Server übergeben, der dann die neue Zuordnung der "echten" Boxen zu den linken und rechten Positionsboxen des Templates aktualisiert. 
+Es ist dann auch ein Link verfügbar, über den man eine Vorschau des neuen 
+Layouts erhalten kann.<p>Es ist zulässig, <font color="#FF0000"> <b>nur</b></font> einen linken 
+<font color="#FF0000"> <b>oder</b></font> rechten Navigations-Bereich zu verwenden!</td>
+	</tr>
+	<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>67.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Besonders &quot;</font><font color="#FF0000">Leckeres</font><font color="#0000FF">&quot; 
+		Futter für Suchmaschinen</font></b></td>
+		<td valign="top" >
+Suchmaschinen-Spezialisten behaupten, dass Suchmaschinen solche Suchworte 
+besonders gut bewerten, die (mehrfach) in den HTML-Elementen &quot;<B>TITLE</B>&quot;, &quot;<B>METATAGS 
+Keywords</B>&quot;, &quot;<B>METATAGS Descriptions</B>&quot;, 
+&quot;<B>H1</B>&quot;, &quot;<B>H2</B>&quot;, &quot;<B>Links</B>&quot;, &quot;<B>Image</B>&quot;-Namen 
+und im Seiten-Text vorkommen.<p>
+Wenn man einer Suchmaschine also solch offenbar höchst &quot;<B>leckeres</B>&quot; 
+Futter 
+anbietet, kann(!?) das die Bewertung der Seite verbessern.</p>
+<p>
+<font color="#0000FF"><B>Und genau das geschieht mit dieser Funktion!</b></font></p>
+<p>Man kann im Admin-Bereich (&quot;<B>Admin/Konfiguration/Meta-Tags-Suchmaschinen/Anzahl 
+Produkte mit erweiterten Suchmaschinen-Daten</B>&quot; für wie viele Produkte (<font color="#FF0000"><B>nur(!)</b></font><b> beim Besuch einer 
+Suchmaschine</B>) solche Informationen in jede Seite eingebaut werden sollen. 
+(Der Standard-Wert ist 100. Ist der Wert <font color="#FF0000"><B>0</B></font>, 
+dann wird diese Funktion <font color="#FF0000"><B>nicht</B></font> ausgeführt.)</p>
+<p>Die dargestellten Produkte werden bei jedem Aufruf zufällig ausgewählt, so 
+dass eine möglichst große Auswahl erreicht wird. Es werden die META-TAGS und 
+Produktnamen des Shops verwendet.</p>
+<p>Damit man diesen Effekt auch als &quot;<b><font color="#FF0000">Nicht</font>-Suchmaschine</B>&quot; 
+sehen kann, wurde der Parameter &quot;<B>spider_visit</B>&quot; definiert.</p>
+<p>Beim Aufruf mit &quot;<B>index.php?spider_visit=true</B>&quot;, verhält sich 
+OL-Commerce &nbsp;
+so wie einer Suchmaschine gegenüber.</td>
+	</tr>	
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>68.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Produkt-Galerie</B></font></td>
+		<td valign="top" >
+Mit dieser Funktion wird dem Besucher eine schnelle Übersicht über alle Produkte 
+ermöglicht, indem die (Thumbnail-)Produkt-Bilder angezeigt werden, von wo aus 
+man dann zu der Produkt-Info verzweigen kann.<br/>
+<br/>
+Wenn man mit der Maus über ein Bild fährt, werden der Produktname und die 
+Kurzbeschreibung angezeigt.<p>Die Funktion wir aufgerufen über &quot;<B>Mehr 
+über.../Produkt-Galerie</B>&quot;. Die Anzeige dieses Links ist über die &quot;<B>Bildschirm-Layout</B>&quot;-Funktion 
+konfigurierbar.</p>
+<p>Die Anzahl der Produkte pro Seite kann man im Admin-Bereich konfigurieren. (&quot;<B>Admin/Konfigurieren/Mein 
+Shop/Anzahl Bilder pro Seite in der Produkt-Galerie</B>&quot;). 
+<p>Sind insgesamt mehr Bilder vorhanden, als auf einer Seite angezeigt werden 
+sollen, wird am unteren Seitenrand ein Navigationsbereich angezeigt, über den 
+man in den Seiten &quot;blättern&quot; kann.<p>Über eine <B>Auswahlbox </B>lässt sich der 
+Bereich der angezeigten Produkte eingrenzen. Es können entweder alle Produkte, 
+oder nur die Produkte einer bestimmten Produktkategorie angezeigt werden<B>.</b><p>Mit einem 
+&quot;<font color="#FF0000"><B>Klick</B></font>&quot; auf das <B>Produkt-Bild</B> wird die gewohnte Produkt-Information 
+angezeigt, man kann von dort aus auch ein Datenblatt im PDF-Format erstellen 
+lassen.<p>Mit einem &quot;<font color="#FF0000"><B>Klick</B></font>&quot; auf den <B>Produkt-Namen </B>wird der <B>Einkauf des 
+Produktes </B>gestartet. Dazu wird die &quot;Produkt-Info&quot; unter der Zeile, in der 
+sich das Produkt-Bild befindet, eingeblendet. Von dort aus kann das Produkt 
+dann, nach evtl. vorheriger Auswahl von Produkt-Optionen und/oder Stückzahlen, 
+in den Warenkorb gelegt werden.<p>Damit ist gewährleistet, das der Kunde auch 
+hier bei der Bestellung alle Informationen, die Gesetzgeber und Rechtsprechung 
+so vorschreiben, hat, und man als Anbieter nicht in eine Abmahnfalle läuft.</td>
+	</tr>	
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>69.</b></font></td><td valign="top">
+		<b>
+		<font color="#0000FF">&quot;</font><font color="#FF0000">Multi-Shop</font><font color="#0000FF">&quot;- 
+		und &quot;</font><font color="#FF0000">Multi-Datenbank</font><font color="#0000FF">&quot; 
+		Funktionen</font></b></td>
+		<td valign="top" >
+Häufig geäußerte Wünsche in Bezug auf Shop-Systeme sind, 
+<UL>
+	<LI>dass man mit einer 
+Installation <B>mehrere Shops</B> betreiben kann (&quot;<b><font color="#FF0000">Multi-Shop</font></b>&quot;)<br/>
+&nbsp;</LI>
+	<LI>und/oder die Daten auf mehrere Datenbanken zu verteilen (&quot;<b><font color="#FF0000">Multi-</font></b><font color="#FF0000"><B>Datenbank</B></font>&quot;).</LI>
+</UL>
+<p><font color="#FF0000"><B>Diese Wünsche sind nun auch 
+erfüllt! </b></font></p>
+<p><B>Näheres dazu findet man <A href="readme_multishop.html">hier</A>.</b></p></td>
+	</tr>
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>70.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Mindestabnahme</B></font></td>
+		<td valign="top" >
+Es ist oft wünschenswert, für Produkte, die nur mit einer <B>Mindestmenge</B> 
+verkauft werden sollen (z.B. 10 Stück, 100 Liter usw.) <b><font color="#FF0000">
+nicht</font> </B>den<B> Gesamtpreis</B>, sondern den (optisch günstigeren) <b>
+Einzelpreis</B> auszuweisen.<p>Da man aber nur mindesten diese <B>Mindestmenge</B> 
+erwerben kann, ist es dann erforderlich, dass man diese <font color="#0000FF">
+<B>Mindestabnahme</B></font> vom Shop-System dem Kunden <B>bei allen 
+Preisangaben </B>mitteilen, und diese <B>bei der Bestellung erzwingen </B>lassen 
+kann!</p>
+<p><font color="#FF0000"><B>Diese Funktion ist nun verfügbar.</b></font></p>
+<p>Bei der <B>Produkt-Definition</B> im Admin-Bereich kann eine solche <b>
+Mindestabnahme-Menge</B> für ein Produkt vereinbart werden, wobei dafür auch <b>
+eine eigene Verpackungseinheit (VPE)</b> festgelegt werden kann. </p>
+<p>(Die <B>Produkt</B>-VPE muss ja nicht notwendigerweise mit der <b>
+Mindestabnahme</B>-VPE übereinstimmen!</p>
+<p><B>Beispiel</B>: </p>
+<p>man verkauft ein Parfüm mit 10 ml Inhalt pro Flasche zu mindestens 5 
+Flaschen.</p>
+<p>Die <B>Produkt</B>-VPE ist dann &quot;<B>10 ml</B>&quot;, die <B>Mindestabnahme</B>-VPE 
+aber &quot;<B>5 Stück</B>&quot; (oder auch z.B. &quot;<B>5 Flaschen</B>&quot;, wenn man eine solche 
+VPE definiert hat).</p>
+<p>Diese <B>Mindestabnahme-Menge</B> (und der daraus (mindestens) resultierende
+<b><font color="#FF0000">Gesamtpreis(!) einer Bestellung</font></b>) wird in 
+allen vorhandenen <B>Produkt-Listen</B>, der <B>Produkt-Information</B>, dem <b>
+PDF-Datenblatt</B> und dem <B>PDF-Katalog </B>angezeigt (Beispiel: &quot;<font color="#0000FF"><B>Mindestabnahme: 
+5 Stück (7,50 EUR)</b></font>&quot;).</p>
+<p>Bei der Bestellung wird immer (mindestens) die Mindestabnahme-Menge
+<font color="#FF0000"><B>erzwungen</B></font>, auch wenn der Kunde (bei der 
+Bestellung über die <B>Produkt-Information</B>, oder der <B>Änderung des 
+Warenkorb-Inhalts</B>) geringere Mengen vorgibt.</td>
+	</tr>
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>71.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Lokale Überprüfung von Lagermengen</B></font></td>
+		<td valign="top" >
+Wenn die <B>Lagerüberwachung</B> aktiviert ist, wird (im AJAX-Modus) bei einer 
+Änderung im &quot;<B>Stückzahl-Feld</B>&quot; in der <B>Produkt-Info</B> oder dem <b>
+Warenkorb</B> , lokal (per Javascript) überprüft, ob die Stückzahl höchstens 
+gleich der (zum Zeitpunkt des Ladens der Seite) vorhandenen Menge ist.<p>Wenn 
+das nicht der Fall ist, wird dem Besteller angeboten, die vorhandene Menge in 
+den Warenkorb zu legen.</p>
+<p>Natürlich nur dann, wenn diese Menge größer, als eine evtl. bestehende <b>
+Mindestabnahmemenge</B> für den Artikel ist. Andernfalls kann der Artikel nicht 
+bestellt werden.</p>
+<p>Ein &quot;<B>Server-Roundtrip</B>&quot; ist dazu jetzt nicht mehr erforderlich!</p>
+<p>100%-ig sicher ist das Verfahren natürlich nicht, weil der Lagerbestand bis 
+zum Zeitpunkt des Absendens der Bestellung durch den Besteller ja durch eine 
+andere Bestellung verringert worden sein könnte, aber das würde dann immer noch, 
+wie bisher auch,&nbsp; auf dem Server festgestellt.</p>
+<p>In der weit überwiegenden Zahl der Fälle dürfte die lokale Überprüfung 
+allerdings völlig ausreichend sein.</td>
+	</tr>
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>72.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Anbindung an eBay</B></font></td>
+		<td valign="top" >
+OL-Commerce kann Produkte in Auktionen in eBay und/oder eBay-Express einstellen, 
+und erfolgreiche Auktionen bzw.&nbsp; Verkäufe aus eBay auslesen, und in die 
+OL-Commerce -Datenbank übernehmen.<p>Genaueres dazu finden Sie <b>
+<A TARGET="_blank" href="../OL-Commerce%20-eBay-Konnektor.html">hier</A></b>. </td>
+	</tr>		
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>73.</b></font></td><td valign="top">
+		<font color="#0000FF"><B>Mindestbestellwert</B></font></td>
+		<td valign="top" >
+Es kann festgelegt werden, ob eine Bestellung einen <font color="#FF0000"><b>
+Mindestwert</B></font> haben muss.<p>Man kann einen &quot;<B>Mindermengenzuschlag</B>&quot; 
+festlegen, der im Fall der Unterschreitung des Mindestbestellwerts zur 
+Bestellung hinzuaddiert wird.</p>
+<p>Ist jedoch der &quot;<B>Mindermengenzuschlag</B>&quot; gleich &quot;0&quot;, dann kann die 
+Bestellung im Fall der Unterschreitung des Mindestbestellwerts
+<font color="#FF0000"><B>nicht durchgeführt </b></font>werden!</p>
+<p>Weiterhin kann festgelegt werden, ob dieser Mindestbestellwert nur bei der <b>
+Erstbestellung</B> oder <B>immer</B> eingehalten werden muss.</p>
+<p>Diese Festlegungen werden in (&quot;<B>Admin/Konfiguration/Mein Geschäft</B>&quot;) vorgenommen.</td>
+	</tr>	
+	
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>74.</b></font></td><td valign="top">
+		<font color="#0000FF"><b>(Semi-)Automatische Anpassung der &quot;index.html&quot; 
+		an die AJAX-Erfordernisse</B></font></td>
+		<td valign="top" >
+Die Anpassung der Template-Datei &quot;<B>index.html</B>&quot; für AJAX ist für den 
+Normalanwender doch etwas komplex.<p>Daher wurde ein WINDOWS-Programm &quot;<font color="#FF0000"><B>olc_ajax_template_update.exe</B></font>&quot; 
+(Visual Basic) entwickelt, das diesen Prozess <B>weitestmöglich</B> 
+automatisisiert, bzw. detaillierte <B>Hinweise auf manuell nachzuarbeitende 
+Funktionen</B> gibt. </p>
+<p>Das Programm ist im Verzeichnis &quot;<B>templates</B>&quot; gespeichert.</p>
+<p>Es führt auch <B>notwendige Änderungen der Boxen-Namen </B>durch, und weist 
+darauf hin, wenn vom Programm bereit gestellte Boxen im Template <B>nicht 
+verwendet werden</B>.</p>
+<p>Nach dem Start kann man die zu konvertierende <B>index.html</B> auswählen, 
+der weitere Ablauf ist selbsterklärend.</p>
+<p>Sollten manuelle Nacharbeiten notwendig sein, wird ein Log angezeigt, und es 
+wird bei Bedarf auch die zugehörige Dokumentation aktiviert.</td>
+	</tr>
+	
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>75.</b></font></td><td valign="top">
+		<font color="#0000FF"><b>Unverbindliche Preisempfehlung</B></font></td>
+		<td valign="top" >
+Bei den Produkten kann ein Preis als &quot;unverbindliche Preisempfehlung&quot; hinterlegt werden.<p>Wenn die 
+&quot;UVP&quot; <font color="#FF0000"><b>höher als der aktuelle Preis(!)</b></font> ist, dann wird die UVP zusätzlich angezeigt.</td>
+	</tr>
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>76.</b></font></td><td valign="top">
+		<font color="#0000FF"><b>Restrukturierung des &quot;Checkout&quot;-Prozesses</b></font></td>
+		<td valign="top" >
+Was bei xxCommerce immer wieder bemängelt wurde, ist die <b>unübersichtliche Bedienerführung </b>
+beim &quot;<font color="#ff0000"><b>Checkout</b></font>&quot;, die sogar zu einem verstärkten Bestellabbruch 
+führen soll.<p>Es gibt zwar eine Statusanzeige, in welchem Bestellschritt man sich befindet und was 
+noch alles kommt, aber intelligenterweise wird diese Status-Anzeige erst am Ende der jeweiligen 
+Bestellseite angezeigt!</p>
+<p>Das wurde nun so geändert, wie man das in professionellen Shops meist findet: die <b>
+Status-Anzeige ist an den Seitenkopf</b> verlagert, und die einzelnen Schritte sind klar 
+dargestellt.</p>
+<p>
+<img border="0" src="checkout_steps.jpg" width="800" height="196"></p>
+<hr><br>
+Man kann auch eine <b><font color="#FF0000">graphische Variante </font></b>der Schritt-Darstellung 
+verwenden. 
+<p>Dazu werden <strong><font color="#FF0000">8</font> Bilder </strong>benötigt (für jeden Schritt 
+jeweils eine Variante als <strong>aktiver (&quot;</strong><font color="#FF0000"><b>high</b></font>&quot;), und 
+eine als <strong>inaktiver (&quot;</strong><font color="#FF0000"><b>normal</b></font>&quot;) Schritt!)</p>
+<p>Diese &quot;Schritt&quot;-Grafiken müssen folgende Namen haben:</p>
+order_steps_1_<b>normal</b>.gif<br>
+order_steps_1_<b>high</b>.gif<br>
+<br>
+order_steps_2_<b>normal</b>.gif<br>
+order_steps_2_<b>high</b>.gif<br>
+<br>
+order_steps_3_<b>normal</b>.gif<br>
+order_steps_3_<b>high</b>.gif<br>
+<br>
+order_steps_4_<b>normal</b>.gif<br>
+order_steps_4_<b>high</b>.gif<p>und im Verzeichnis &quot;templates/xxxxxx/img&quot; vorhanden sein.</p>
+<hr>
+<p>Es wurde auch eine logische Ungereimtheit im Ablauf des &quot;<b>Checkout</b>&quot; behoben:</p>
+<p>Bisher wurden die <b>AGB</b>n im Schritt &quot;<font color="#FF0000"><b>Bezahlung</b></font>&quot; 
+angezeigt, wo sie sicher nicht hingehören!</p>
+<p>Dieser Vorgang wurde in den <b><font color="#FF0000">3.</font></b> Schritt (&quot;<font color="#FF0000"><b>Bestellung</b></font>&quot;) 
+verlegt, so dass diese jetzt mit der Zusammenfassung der Bestellung angezeigt werden, bevor der 
+Besteller die Bestellung endgültig absendet.</p>
+<p>Man kann im &quot;Admin-Bereich&quot; weiterhin einstellen, <font color="#FF0000"><b>ob </b></font>der 
+AGB-Text auf der Seite (in einem &quot;iframe&quot;) dargestellt werden soll.</p>
+<p><font color="#FF0000"><b>Zwangsweise immer</b></font> werden zwei &quot;<b>Checkboxen</b>&quot; angezeigt, 
+über die der Besteller ausdrücklich seine <b><font color="#0000FF">Kenntnisnahme und Akzeptanz der 
+AGB</font></b>, und seine<b><font color="#0000FF"> Kenntnisnahme der Widerrufsbelehrung</font></b> 
+bestätigen muss.</p>
+<p><font color="#FF0000"><b>Ohne diese Bestätigung wird die Bestellung nicht abgeschlossen!</b></font></p>
+<p>Der Text dieser &quot;<b>Checkboxen</b>&quot; verweist (auch als Link) auf &quot;<font color="#FF0000"><b>PDF</b></font>&quot;-Versionen 
+der <b>AGB</b>n bzw. der <b>Widerrufsbelehrung</b>, da Gesetzgeber und Rechtsprechung fordern, dass 
+der Kunde die Möglichkeit haben muss, diese Dokumente einzusehen, und&nbsp; eine &quot;<b>unveränderbare(!?)</b>&quot; Kopie dieser Dokumente zu 
+bekommen. (Man kann also guten Gewissens und rechtlich gefahrlos auf die Anzeige der <b>AGB</b>n 
+direkt auf der Seite verzichten, was die Übersichtlichkeit des Bestellvorgangs weiter erhöht.)</p>
+<p>Die &quot;<font color="#FF0000"><b>PDF</b></font>&quot;-Versionen der Dokumente müssen als &quot;<font color="#FF0000"><b>agb.pdf</b></font>&quot; 
+bzw. &quot;<font color="#FF0000"><b>fernag.pdf</b></font>&quot; im Verzeichnis &quot;<b>lang/german</b>&quot; (bzw. &quot;<b>lang/english</b>&quot; 
+für eine englischsprachigen Version) vorliegen.</p>
+<p><font color="#0000FF"><b>(Zur Erinnerung: Diese beiden Dokumente werden auch als </font>
+<font color="#FF0000">Anhang</font><font color="#0000FF"> zu der Bestellbestätigungs-eMail 
+mitverschickt!)</font></b></td>
+	</tr>
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B>77.</b></font></td><td valign="top">
+		<font color="#0000FF"><b>Unverbindliche Preisempfehlung</B></font></td>
+		<td valign="top" >
+Moderne Shop-Designs verwenden (aus Platzgründen) <font color="#FF0000"><b>nicht</b></font> den 
+üblichen Warenkorb, in dem alle Produkte aufgelistet sind.<p>Vielmehr kommt dort eine <b>kurze 
+Variante</b> zum Einsatz, die nur die <b>Anzahl</b> der darin befindlichen Produkte und deren <b>
+Gesamtpreis</b>, <b>Buttons</b> zum Warenkorb und zur Kasse (sowie den unvermeidlichen 
+&quot;Preis-Disclaimer&quot;) enthält.</p>
+<p>Diese Möglichkeit wird jetzt auch in OL-Commerce verfügbar gemacht.</p>
+<p>Standardmäßig wird nur noch die <b>kurze Variante </b>des Warenkorbs angezeigt. (Das ist 
+allerdings über den &quot;Admin-Bereich&quot; konfigurierbar!)</p>
+<p>
+<img border="0" src="cart_closed.jpg" width="240" height="283"></p>
+<p>Da OL-Commerce/v4/AJAX den Anspruch hat, besser als andere System zu sein, geht es aber hier 
+weiter!</p>
+<p>Im <font color="#FF0000"><b>AJAX-Modus</b></font> wird zusätzlich der Button &quot;<b>Warenkorb-Details</b>&quot; 
+angezeigt, mit dessen Hilfe man dann (<font color="#FF0000"><b>lokal(!)</b></font> über Javascript) 
+auch den kompletten Warenkorb mit allen Produkten anzeigen (und wieder verbergen) lassen kann!</p>
+<p>
+<img border="0" src="cart_opened.jpg" width="236" height="588"></p>
+<p>Dieser gewählte Zustand gilt auch für den &quot;<b>Sticky-Cart</b>&quot;.</p>
+<p>Bei Aktualisierung des Warenkorbs vom Server bleibt der aktuelle Anzeigezustand (Details 
+angezeigt/verborgen) erhalten!</p>
+<p>Es ist zu bedenken, dass ein Warenkorb, der auch die Details anzeigen können soll,
+<font color="#FF0000"><b>sinnvoller weise nur im linken oder rechten Navigations-Bereich</b></font> 
+plaziert werden kann!</p>
+<p>Denn wenn die Details des Warenkorbs angezeigt werden, wird alles, was unter dem Warenkorb liegt,
+<font color="#FF0000"><b>nach unten verschoben</b></font>!</td>
+	</tr>
+<tr><td colspan="3"><hr/></td></tr>
+
+
+	<tr>
+		<td valign="top" align="right"><font color="#FF0000"><B><a name="78"></a>78.</b></font></td><td valign="top">
+		<font color="#0000FF"><b>AJAX-Slideshows</b></font></td>
+		<td valign="top" >
+OL-Commerce ist in der Lage, sog. &quot;Slideshows&quot; (Diashow) anzuzeigen. Normalerweise versteht man 
+darunter eine Reihe von (vorgeladenen) Bildern, die periodisch gewechselt werden.<p>Es gibt zwei 
+Nachteile dieser Vorgehensweise:</p>
+<ul>
+	<li>da alle Bilder der Slideshow im HTML-Code der Seite vorhanden sein müssen, ist man sehr 
+	limitiert in der Anzahl der Bilder, da es sonst sehr lange Seiten-Ladezeiten und einen großen 
+	Speicherbedarf gibt.<br>
+&nbsp;</li>
+	<li>Man kann nur Bilder anzeigen.</li>
+</ul>
+<p>Da OL-Commerce aber AJAX-Technologie verwendet, kann es aber darüber weit hinausgehen!</p>
+<p>Zum einen werden die &quot;Bilder&quot; jetzt einzeln vom Server nachgeladen, zum anderen können die 
+&quot;Bilder&quot; auch Produktseiten(!) sein!</p>
+<p>
+<img border="0" src="ajax_slideshow.jpg" width="900" height="306"><p>
+Auf der linken Seite befindet sie eine <font color="#FF0000"><b>Produkt</b></font>-Slideshow, auf 
+der rechten eine allgemeine <font color="#FF0000"><b>Bilder</b></font>-Slideshow.<p>
+Die <font color="#FF0000"><b>Produkt</b></font>-Slideshow rotiert Produktdarstellungen, wie sie auch 
+bei den Produkt-Listen angezeigt werden, mit der Möglichkeit weiterer Information und der 
+Bestellung. Die AJAX-<font color="#FF0000"><b>Produkt</b></font>-Slideshow wählt jedesmal ein 
+zufälliges aus allen vorhandenen Produkten, so dass es keine Limitierung der Anzahl gibt!<p>
+Die <font color="#FF0000"><b>Bilder</b></font>-Slideshow rotiert <font color="#FF0000"><b>
+beliebige(!)</b></font> Bilder, die im Verzeichnis &quot;<b>images/slideshow</b>&quot; abgelegt sind. (Nur 
+rein zufällig wurden hier Produktbilder verwendet.)<p>
+Die <b>Steuerung der anzuzeigenden Bilder</b> erfolgt über die Datei &quot;<b>slideshow.txt</b>&quot; im Verzeichnis 
+&quot;<b>images/slideshow</b>&quot;.<p>
+Darin befinden sich pro Bild 3 Einträge in einer Zeile (getrennt durch den senkrechten Strich &quot;<font color="#FF0000"><b>|</b></font>&quot;:<p>
+<b>Bild </b>| <b>Link </b>| <b>Text</b><p>
+<font color="#FF0000"><b>Beispiel:</b></font><p>
+<font color="#0000FF"><b>blackandwhite.jpg </font><font color="#FF0000">|</font><font color="#0000FF"> product_info.php?products_id=11
+</font><font color="#FF0000">| </font><font color="#0000FF">Black &amp; White~Klassischer Kontrast, klassischer Duft - Musk - 
+mit einer Extraportion Kakaobutter</font></b><p>
+Es wird hiermit das Bild &quot;<b>blackandwhite.jpg</b>&quot; angezeigt. Beim &quot;Klick&quot; auf das Bild wird der 
+Link &quot;<b>product_info.php?products_id=11</b>&quot; verwendet. Als &quot;Tool-Tip&quot;-Text wird &quot;<b>Black &amp; White</b><font color="#FF0000">~</font><b>Klassischer 
+Kontrast, klassischer Duft - Musk - mit einer Extraportion Kakaobutter</b>&quot; angezeigt. (Das &quot;<b>Tilde</b>&quot;-Zeichen 
+(&quot;<font color="#FF0000">~</font>&quot;) im Text steht hier für einen <b>Zeilenumbruch</b>!) Die 
+<font color="#FF0000"><b>Bilder</b></font>-Slideshow 
+wählt jedesmal ein zufälliges aus allen in der Datei &quot;<b>slideshow.txt</b>&quot; definierten Bildern, so 
+dass es keine Limitierung der Anzahl gibt!<p>
+Die <font color="#FF0000"><b>Produkt</b></font>-Slideshow wird über die &quot;<b>Smarty</b>&quot;-Variable &quot;<b>SLIDESHOW_0</b>&quot;, 
+die <font color="#FF0000"><b>Bilder</b></font>-Slideshow wird über die &quot;Smarty&quot;-Variable &quot;<b>SLIDESHOW_1</b>&quot; 
+in die &quot;<b>index.html</b>&quot; eingebunden. 
+<p>
+<b>Beispiel:</b> &quot;&lt;div id=&quot;<font color="#FF0000"><b>SLIDESHOW_0</b></font>&quot;&gt;<b>{<font color="#FF0000">$SLIDESHOW_0</font>}</b>&lt;/div&gt;&quot;<p>
+In der Slideshow-Konfiguration im Admin-Bereich (&quot;<b>Admin/System/Slideshows</b>&quot;) können die 
+Slideshows umfangreich konfiguriert werden:<p>
+<img border="0" src="ajax_slideshow_config.jpg" width="900" height="271"><p>
+So kann <b>Höhe</b> und <b>Breite</b> der Slideshow, und ihre <b>Wechselhäufigkeit</b> festgelegt 
+werden.<p>
+Für <b>beide </b>Slideshows zusätzlich, ob ein <b>Rahmen</b> um die Slideshow herum, und ob darunter
+<b>Steuerelemente</b> zum starten, anhalten, verlangsamen und beschleunigen der Slideshow angezeigt 
+werden sollen.<p>
+Für die <font color="#FF0000"><b>Bilder</b></font>-Slideshow zudem noch, ob der in der Datei 
+vorhandene Text (zusätzlich zum &quot;Tool-Tip&quot;) auch unter dem Bild dargestellt werden soll.<p>
+Mit diesen AJAX-basierten &quot;Slideshows&quot; hat man ein sehr schönes Instrument zur Hand, um seine 
+Besucher zu informieren, <b>ohne</b> dass dieser aktiv werden muss, oder ein Seitenwechsel 
+stattfindet.</td>
+	</tr>
+	<tr><td colspan="3">&nbsp;</td></tr>
+	<tr>
+		<td valign="top" align="right" colspan="3" height="32">&nbsp;</td>
+	</tr>
+	<tr><td colspan="3">&nbsp;</td></tr>
+
+
+	<tr>
+		<td valign="top" align="right" colspan="3" height="853">
+		<hr/>
+		<p align="center">
+		<b><font size="4" color="#FF0000">OL-Commerce v4/AJAX kann im </font>
+		<font size="4"><U>
+		<font color="#0000FF">AJAX-Modus</font></U><font color="#FF0000"> oder </font>
+		<U>
+		<font color="#0000FF">konventionell</font></U></font><font size="4" color="#FF0000"> 
+		arbeiten!</font></b></p><p align="left">Es ist <B>voll transparent</B>, und es ist nur die 
+		Pflege <font color="#FF0000"> <B>einer</B></font> Version für beide 
+		Betriebsarten notwendig!<p align="left">Beim Start von OL-Commerce wird 
+		geprüft, ob der Besucher in seinem Browser <B>Javascript</B> aktiviert hat (für 
+		den AJAX-Modus eine <B>zwingende Voraussetzung</B>.</p>
+		<p align="left">Falls ja, startet der Shop 
+		im AJAX-Modus, wenn nicht, erfolgt ein entsprechender Hinweis (Javascript 
+		doch einzuschalten). Der Shop kann, wenn trotzdem gewünscht, dann aber 
+		auch im 
+		konventionellen Modus gestartet werden.</p><p align="left">Da im Moment das Internet von allen großen Firmen 
+		(Microsoft, Google, IBM, YAHOO und viele, viele andere mehr) ganz 
+		AJAX-ifiziert wird, ist zu erwarten, dass die <B>Zahl der 
+		&quot;Javascript-Verweigerer&quot; drastisch abnimmt</B>, da man ohne Javascript 
+		nur noch ein sehr reduziertes Internet erleben wird. Zudem ist auch 
+		schon die bisherige Version von OL-Commerce ohne Javascript ziemlich 
+		gehandicapped. So kann man keine vergrößerten Bilder anzeigen, 
+		Bestellkopien drucken u.v.m.</p><p align="left">Wenn der Shop auch im <B>Https-Modus</B> arbeiten soll 
+		(was im konventionellen Modus i.d.R. beim Bestellvorgang erfolgt),
+		<font color="#FF0000"> <b>
+		muss</B></font> im AJAX-Modus der Shop <B>von Beginn an </B>im <B>Https-Modus</B> 
+		arbeiten, weil die für den AJAX-Verkehr verwendeten Browser-Funktionen 
+		es nicht zulassen, von <B>unsicheren</B> Seiten (<B>http://....</b>) aus sichere 
+		(<b><A href="http://...."><font color="#000000">https://....</font></A></b>) aufzurufen! (Diese 
+		Umschaltung wird im Rahmen der Javascript-Prüfung beim Programmstart 
+		<font color="#FF0000"><B>automatisch</B></font> erledigt, der Anwender 
+		muss dafür nichts tun.)</p><p align="left">Wenn man den Shop überhaupt nicht im AJAX-Modus 
+		betreiben will, kann man in der Datei &quot;<B>includes/configure.php</B>&quot; 
+		folgende Anweisung einfügen:</p><p align="left"><B>define('ENABLE_AJAX_MODE', false);</b></p><hr/>
+		<p align="left">Bei der Entwicklung neuer Module muss 
+		<font color="#FF0000"> <B>keinerlei(!)</b></font> 
+		Rücksicht auf AJAX genommen werden, <U><b> <font color="#FF0000">wenn</font><font color="#0000FF">(!)</font></b></U> 
+		der Entwickler nur die <B>OL-Commerce -Standard-Routinen </B>zum Aufbau von 
+		Formularen, Links, Feldern u.ä. verwendet! (&quot;<B>olc_draw_......</b>&quot;, &quot;<B>olc_href...</b>&quot;, 
+		usw.)</p><p align="left">Das neue <font color="#0000FF"> <B>OL-Commerce -AJAX-Framework</B></font> wickelt den AJAX- 
+		und konventionellen Betrieb serverseitig auf dieser Ebene 
+		<font color="#FF0000"> <B>transparent</B></font> 
+		ab, so dass anwenderseitig sonst <font color="#FF0000"> <B>keinerlei(!)</b></font> weitere besonderen 
+		Vorkehrungen notwendig sind.</p><p align="left">Auf der Klientenseite ist ein spezielles <font color="#0000FF"><B>Javascript-Framework</B></font> vorhanden, das den AJAX-Verkehr mit dem Server 
+		abwickelt.</p><p align="left">Das <font color="#FF0000"> <B>Hauptformular eines </b>
+		</font> <b><font color="#FF0000">Templates</font> </b>(&quot;<B>templates/xxxxxx/<font color="#FF0000">index.html</font></b>&quot;)<b>
+		</B>muss allerdings AJAX-kompatibel gemacht werden, damit AJAX die einzelnen Seitenbereiche identifizieren kann. 
+		(Was nicht sehr schwierig ist, da es nur um <B>HTML-Formalien</B>, und
+		<font color="#FF0000"><B>nicht</B></font> um das <B>Design</B> geht.) </p>
+		<p align="left">Zudem sind in einigen Templates weitere Änderungen 
+		notwendig, um die neuen lokalen Funktionen der Änderung von 
+		Produktdaten/-optionen im Warenkorb zu unterstützen.</p><p align="left"><font color="#FF0000">Näheres dazu finden Sie </font> <b>
+		<A href="ajax_aenderungen.html">
+		<font color="#FF0000">hier</font></A></b><font color="#FF0000">.</font></p><p align="left">In der Distribution ist eine AJAX-fähige Version des 
+		Templates &quot;<B>olc</B>&quot; enthalten. Andere Templates müssen 
+		angepasst werden.</td>
+	</tr>
+</table>
+<p align="left">&nbsp;&nbsp;&nbsp; </p>

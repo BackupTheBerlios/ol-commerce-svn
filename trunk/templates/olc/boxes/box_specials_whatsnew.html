@@ -1,0 +1,135 @@
+{olc_template_init use_template_language="true" section="boxes"}
+{php}
+if (!OL_COMMERCE)
+{
+	$sep='SHOW_MARQUEE';
+	if (!$this->_tpl_vars[$sep])
+	{
+		$this->_tpl_vars[$sep]=$show_marquee;
+	}
+	$sep='module_content';
+	if (!$this->_tpl_vars[$sep])
+	{
+		$this->_tpl_vars[$sep]=$this->_tpl_vars['box_content'];
+	}
+}
+$this->_tpl_vars['header_text']=$this->_config[0]['vars'][$this->_tpl_vars['heading_var']];
+$this->_tpl_vars['box_name']=$box_name;
+
+$max_rows=max(1,$this->_tpl_vars['entries_count']);
+$rows=min($max_rows,sizeof($this->_tpl_vars['module_content']));
+$row=0;
+$image=$this->_tpl_vars['tpl_path'].'img/img_box_sep_h.gif';
+if (file_exists($image))
+{
+	$sep='<img src="'.$image.'" align="middle">';
+}
+else
+{
+	$sep='<hr/>';
+}
+{/php}
+{if $language==''}
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+<table class="{$box_navigation_area} {$box_name}" align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><h3>{$header_text}</h3></td>
+  </tr>
+  <tr>
+	<td align="left" class="infoBox" valign="top">
+		{if $SHOW_MARQUEE}
+		<div align="center"><span style="font-size:10px">{#marquee_stop#}<br/><br/></span></div>
+		<MARQUEE behavior= "scroll" direction= "up" class="scroll_marquee" scrollamount= "2" scrolldelay= "70"
+			onmouseover='this.stop()' onmouseout='this.start()'>
+		{/if}
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				{foreach item=box_data from=$module_content}
+				<tr>
+					<td class="infoBoxContents" align="left">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td align="left" valign="top">
+						    	<img src="{$tpl_path}/img/bullet_c.gif" alt=""/>
+								</td>
+								<td align="left" valign="top">
+						    	<a href="{$box_data.PRODUCTS_LINK}"><span class="box_entry_name">{$box_data.PRODUCTS_NAME}</span></a>
+								</td>
+							</tr>
+						</table>
+			    	<br /><br />
+			    	<div style="padding-left:15px">
+				      {if $box_data.PRODUCTS_IMAGE!=''}
+				      <a href="{$box_data.PRODUCTS_PRODUCTS_LINK}">
+				      	<span class="box_image">{$box_data.PRODUCTS_IMAGE}</span>
+					    </a>
+			      	{if $OL_COMMERCE}
+			      	<span class="list_entry_products_vpe">
+							<br />{$box_data.PICTURE_DISCLAIMER}
+							{if $box_data.PRODUCTS_VPE}
+							<br />{$box_data.PRODUCTS_VPE}
+							{/if}
+							<br />
+							</span>
+			      	{/if}
+					    <br/>
+				      {/if}
+				      {if $box_data.PRODUCTS_SHORT_DESCRIPTION}
+				      <span class="box_entry_description">{$box_data.PRODUCTS_SHORT_DESCRIPTION}</span>
+				      {/if}
+				      <br/><br/>
+				  		<span class="price_list">{#text_only#}{$box_data.PRODUCTS_PRICE}</span><br />
+							{if $box_data.PRODUCTS_VPE}
+			      	{if !$OL_COMMERCE}
+							<span class="list_entry_products_vpe">{$box_data.PRODUCTS_VPE}</span><br />
+							{/if}
+				    	{/if}
+							<span class="list_entry_price_disclaimer">
+								{if $OL_COMMERCE}
+								{$box_data.PRICE_DISCLAIMER}
+								{else}
+								{$box_data.PRODUCTS_TAX_INFO}{#price_disclaimer_box#}
+								{/if}
+							</span>
+				    	{if $box_data.PRODUCTS_DATE_AVAILABLE}
+				    	<br/><span class="availabilityAnnouncement">{$box_data.PRODUCTS_DATE_AVAILABLE}</span>
+				    	{/if}
+						</div>
+					</td>
+				</tr>
+				{php}
+				$row++;
+				if ($row<$rows)
+				{
+					echo '
+				<tr>
+					<td class="box_sep_h">'.$sep.'</td>
+				</tr>
+';
+				}
+				else
+				{
+					break;
+				}
+				{/php}
+				{/foreach}
+				{if !$SHOW_MARQUEE}
+				{if $MORE_LINK}
+			  <tr>
+			    <td class="infoBoxContents" align="center">
+			    	<br/>
+						{if $bullet}{$bullet}&nbsp{/if};
+						<a href="{$MORE_LINK}"
+							title="{#text_more_products#}{$MORE_TYPE}">{#text_more_products#}{$MORE_TYPE}...</a>
+						{/if}
+					</td>
+				</tr>
+				{/if}
+			</table>
+			{if $SHOW_MARQUEE}
+			</MARQUEE>
+			{/if}
+		</td>
+	</tr>
+</table>
+

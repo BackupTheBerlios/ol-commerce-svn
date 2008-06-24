@@ -1,0 +1,600 @@
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+
+<BASE TARGET="_blank">
+
+<p align="center"><b><font size="5" color="#FF0000">OL-Commerce v5.0a/AJAX</font></b>
+(Beta)</p>
+<p align="center">Autor: Dipl.-Ing.(TH) Winfried Kaiser<br/>
+<br/>
+<A href="http://www.seifenparadies.de">http://www.seifenparadies.de</A><br/>
+<A href="mailto:w.kaiser@fortune.de">w.kaiser@fortune.de</A></p>
+<p align="center"><b>&copy; 2006 Dipl.-Ing.(TH) Winfried Kaiser, 24975 Husby</B></p>
+<hr/>
+<p align="center"><B>Diese Software basiert auf der Software &quot;<A TARGET="_blank" href="http://www.ol-commerce.de">OL-Commerce </A>
+v1.2.2.a&quot;, sie wird veröffentlicht auf Basis der &quot;<A TARGET="_blank" href="http://www.gnu.de/gpl-ger.html">GNU
+General Public License</A>&quot;.</b></p>
+<p align="center"><B>Es wird vom Autor <U><font color="#FF0000">keinerlei
+Gewährleistung</font></U> für die Software <font size="3" color="#0000FF">OL-Commerce v5.0a/AJAX</font></b>
+<B>übernommen!<br/>
+Eine Verpflichtung zur Behebung evtl. auftretender Fehler besteht nicht!</b></p>
+<p align="center"><U><b><font color="#FF0000">Der Einsatz dieser Software
+erfolgt </font><font color="#0000FF">ausschließlich(!)</font><font color="#FF0000">
+auf eigene Gefahr und Risiko des Anwenders!</font></b></U></p>
+<p align="center"><b><font color="#0000FF">Der Anwender hat dafür Sorge zu
+tragen, dass er seinen </font><font color="#FF0000"><U>aktuellen</U> Software-
+und Datenbestand vor Einsatz dieser Software </font><U><font color="#FF0000">
+sichert</font></U><font color="#008000">, <br/>
+</font><font color="#0000FF">so dass er im Fehlerfall jederzeit diesen Stand
+wieder rekonstruieren kann.</font></b></p>
+<hr/>
+<p align="center"><B>Eine Testversion ist
+<A href="http://www.seifenparadies.de/ajax/olc_original/index.php">
+hier</A> online zu sehen</B></p>
+<p align="center">Der Zugang als Administrator ist folgender:</p>
+<p align="center"><B>Benutzer:</b> test@test.com<br/>
+<B>Passwort:</b> testtest</p>
+<p align="center">(Diese Version ist noch im Teststadium, deshalb kann es
+passieren, dass nicht alles funktioniert.)</p>
+<hr/>
+<p align="left"><B>Überblick</B>:
+<A TARGET="_blank" href="../OL-Commerce%20_v5_ajax.html">OL-Commerce _v5_ajax.html</A></p>
+<p align="left"><B>Installationshinweise</B>:
+<A href="../readme.html">readme.html</A></p>
+<p align="left"><B>Daten-Import</B>:
+<A TARGET="_blank" href="automatischer_daten_import.html">
+automatischer_daten_import.html</A></p>
+<p align="left"><B>eBay_Konnektor</B>:
+<A TARGET="_blank" href="eBay-Konnektor.html">eBay-Konnektor.html</A></p>
+<p align="left"><b>&quot;Multi-Shop&quot;/&quot;Multi-Datenbank&quot;:</b>
+<A href="readme_multishop.html">readme_multishop.html</A></p>
+<hr/>
+<p>Obwohl die AJAX-Implementierung von OL-Commerce möglichst transparent gehalten wurde, gibt es
+Bereiche, die manuell zu ändern sind.</p>
+<p><font color="#FF0000"><b>(In allen geänderten Dateien (PHP-Programme, HTML-Templates) wurden die
+geänderten Bereiche mit &quot;W. Kaiser - AJAX&quot; gekennzeichnet.)</b></font></p>
+<p>Dies betrifft insbesondere das <B>Hauptformular </B>eines <B>Templates </b>(&quot;<B>templates/xxxxxx/index.html</B>&quot;).
+</p>
+<p>Wenn man sich die Grundfunktion von AJAX vor Augen führt, und mit den &quot;<B>Smarty</B>&quot;-Inhalten
+der &quot;<B>index.html</B>&quot; vergleicht, fällt auf, dass da eine sehr gute Übereinstimmung
+zwischen dem Bedarf der beiden Konzepte gibt:</p>
+<p>Für den &quot;Smarty&quot;-Bedarf sind dort nämlich Variable (Platzhalter) eingebaut,
+an deren Stelle &quot;Smarty&quot; dann am Ende eines Programmdurchlaufes den für diesen
+Platzhalter erstellten HTML-Code einbaut. <B>Und genau denselben HTML-Code benötigen wir
+auch, um über die AJAX-Technologie diesen Bereich zu modifizieren!</b></p>
+<p>Die für AJAX vorgenommenen Änderungen greifen im &quot;Smarty&quot;-Code genau an der
+Stelle ein, an der &quot;Smarty&quot; normalerweise beginnt, im Template &quot;index.html&quot; die
+Platzhalter mit dem dafür generierten Code auszutauschen (Funktion &quot;<B>fetch</B>&quot;
+im &quot;Smarty&quot;-Code, wenn das &quot;<B>fetch</B>&quot; auf das Template &quot;index.html&quot;
+angewandt wird). </p>
+<p>Im Normalbetrieb wird daraus dann die komplette neue Seite
+aufgebaut, und an den Browser gesendet. </p>
+<p>Im AJAX-Modus werden nur die für die
+Platzhalter vorgesehenen HTML-Daten (versehen mit Informationen, die es erlaubt,
+die zugehörigen Bereiche des Bildschirms zu identifizieren) an den Browser
+zurückgesendet. </p>
+<p>(Ein schöner Nebeneffekt dieses Verfahrens ist es auch, dass der Shop
+problemlos im <b><font color="#FF0000">AJAX-Modus </font>oder</B> im
+<font color="#FF0000"><B>Normalmodus</B></font> arbeiten kann! Wenn ein Besucher
+Javascript in seinem Browser ausgeschaltet hat, lässt man in der Funktion &quot;<B>fetch</B>&quot;
+im &quot;Smarty&quot;-Code einfach ganz normal die komplette &quot;index.html&quot;
+aufbauen. Der Besucher merkt davon nichts, außer dass sich der Bildschirmaufbau
+anders verhält. Man muss also <B>nicht </B>eine AJAX- und eine Normalversion
+pflegen, sondern derselbe Code deckt beide Betriebszustände ab.)</p>
+<p>(Die &quot;<B>Javascript-Verweigerer</B>&quot; dürften sehr schnell drastisch weniger
+werden, da derzeit alle &quot;Großen&quot; (Google, Microsoft, IBM, YAHOO, AOL uva.) dabei
+sind, ihre Internet-Anwendung auf AJAX-Basis zu stellen. Ohne
+Javascript wird man bald ein sehr limitiertes Internet erleben! Aber wie gesagt, OL-Commerce /AJAX stört das nicht!)</p>
+<p>Auf der Browserseite wird durch ein (mittlerweile recht
+umfangreiches (ca. 3.300 Zeilen)) Javascript-Programm der HTML-Code für jeden Bereich
+identifiziert, und über das durch den Browser angebotene &quot;<B>Document Object Model
+(DOM)</b>&quot; werden mit Hilfe der entsprechenden Funktionen diese Daten dann in dem
+betreffenden Teil des &quot;<B>DOM</B>&quot; ausgetauscht. (Wie man sieht, müsste das &quot;<font color="#FF0000"><B>X</B></font>&quot; in AJAX eigentlich ein &quot;<font color="#FF0000"><B>H</B></font>&quot; werden, da hier direkt der HTML-Code des Bereiches verwendet
+wird, und nicht ein XML-basierter Datenstrom. Es erscheint aber einigermaßen sinnlos,
+die schon fertig vorhandenen HTML-Daten noch einmal in ein XML-Format zu wandeln.
+Die 3.300 Zeilen Javascript-Code werden natürlich nur zum geringsten Teil für
+die AJAX-Unterstützung benötigt. Wesentlich umfangreicher sind mittlerweile die
+Teile für die Validierung, Browser Historie und all die anderen schönen lokal
+möglichen Funktionen.) </p>
+<p>(Das &quot;<B>Document Object Model</B>&quot; einer typischen OL-Commerce -Seite hat ca.
+1.500 bis 1.700 Objekte (mit jeweils vielen Attributen, Eigenschaften und
+Methoden), die der Browser zur Verfügung stellt. Was auf dem Bildschirm so
+simpel aussieht, ist in Wahrheit ein hochkomplexes Konstrukt, das mit Hilfe von
+Javascript lokal vollständig kontrolliert und manipuliert werden kann!)</p>
+<p><B>Nun zu den Änderungen im Template selbst:</b></p>
+<p>Die &quot;Smarty&quot;-Variablen haben folgendes Format &quot;{$VARIABLEN_NAME}&quot;, z.B. &quot;{$box_CART}&quot;.
+</p>
+<p>Im &quot;olc&quot;-Template sind in &quot;index.html&quot; folgende Variablen definiert:</p>
+<table border="0" width="100%" ID="table1">
+	<tr>
+		<td width="337" valign="top">{$navtrail}</td>
+		<td valign="top">Der Navigationsbereich</td>
+	</tr>
+	<tr>
+		<td width="337" valign="top">{$main_content}</td>
+		<td valign="top">Der &quot;Mittelbereich&quot;, der die Hauptinformation enthält</td>
+	</tr>
+	<tr>
+		<td width="337" valign="top">{$BANNER}</td>
+		<td valign="top">Der Banner-Bereich</td>
+	</tr>
+	<tr>
+		<td width="337" valign="top">{$box_ADD_QUICKIE}<br/>
+		{$box_ADMIN}<br/>
+		{$box_AFFILIATE}<br/>
+		{$box_BESTSELLERS}<br/>
+		{$box_CART}<br/>
+		{$box_CATEGORIES}<br/>
+		{$box_CONTENT}<br/>
+		{$box_CURRENCIES}<br/>
+		{$box_INFOBOX}<br/>
+		{$box_INFORMATION}<br/>
+		{$box_LANGUAGES}<br/>
+		{$box_LIVEHELP}<br/>
+		{$box_LOGIN}<br/>
+		{$box_MANUFACTURERS_INFO}<br/>
+		{$box_MANUFACTURERS}<br/>
+		{$box_NOTIFICATIONS}<br/>
+		{$box_ORDER_HISTORY}<br/>
+		{$box_REVIEWS}<br/>
+		{$box_SEARCH}<br/>
+		{$box_SPECIALS}<br/>
+		{$box_TELL_FRIEND}<br/>
+		{$box_WHATSNEW}</td>
+		<td valign="top">Die am linken und/oder rechten Rand plazierten Elemente
+		der Bedienoberfläche</td>
+	</tr>
+	</table>
+<p>Die Aufgabe ist es nun, das Template &quot;<B>index.html</B>&quot; so zu modifizieren,
+dass man über das &quot;<B>DOM</B>&quot; einen Bildschirm-Bereich direkt ansprechen kann. </p>
+<p>Das ist jedoch nicht sehr schwierig ist, das es nur um <B>HTML-Formalien</B>
+(und <font color="#FF0000"><B>nicht</B></font> um das <B>Design</B>) geht, damit AJAX die einzelnen Seitenbereiche
+identifizieren kann. </p>
+<p>Die notwendigen Änderungen werden im folgenden beschrieben</p>
+<p>HTML kennt den Tag &quot;<B>div</B>&quot;, mit dessen Hilfe man einen Bereich im
+HTML-Formular u.a. identifizieren kann.</p>
+<p><B>Format</B>:<b> &lt;div <font color="#FF0000">id</font>=&quot;<font color="#FF0000">div_name</font>&quot;&gt;Beliebiger
+HTML-Text&lt;/div&gt;</b></p>
+<p>Das bedeutet also, dass wir alle &quot;<B>Smarty</B>&quot;-Platzhalter-Variablen mit einem solchen &quot;<B>div</B>&quot;
+umschließen und mit einem &quot;<font color="#FF0000"><B>id</B></font>&quot; versehen
+müssen, um genau diesen Bereich des HTML-Formulars mit Javascript im &quot;DOM&quot; identifizieren zu
+können.</p>
+<p>Das AJAX-Javascript-Programm im Browser kann dann über folgende typische
+Code-Sequenz diesen Bereich modifizieren.</p>
+<UL>
+	<LI>Extrahiere den &quot;<B>HTML-Code des Bereichs</B>&quot; aus der vom
+	Server erhaltenen Nachricht.<br/>
+&nbsp;</LI>
+	<LI>Setze mit &quot;<B>document.getElementById(&quot;<font color="#FF0000">div_name</font>&quot;).innerHTML
+	= HTML-Code des Bereichs</B>&quot; den neuen Inhalt des betreffenden
+	Bereichs.</LI>
+</UL><hr/>
+<p>Allgemeine Bereiche:</p>
+<p>&lt;div id=&quot;BANNER&quot;&gt;{$BANNER}&lt;/div&gt;<br/>
+&lt;div id=&quot;navtrail&quot;&gt;{$navtrail}&lt;/div&gt;<br/>
+&lt;div id=&quot;main_content&quot;&gt;{$main_content}&lt;/div&gt;</p>
+<hr/>
+<p>Wenn Sie
+die im folgenden beschriebene Konzeption <b><font color="#FF0000">nicht</font></b>
+verwenden wollen (z.B., wenn Sie ein eigenes Template verwenden, dessen Umbau zu
+komplex ist, oder in dem die &quot;Boxen&quot; nicht nur am linken und rechten Rand
+definiert sind), dann setzen Sie in der &quot;<B>includes/configure.php</B>&quot; folgende
+Definition:</p><p><font color="#0000FF"><B>define('NO_BOX_LAYOUT', true);</b></font></p><hr/>
+<p><B>Wenn</B> das <b><A TARGET="_blank" href="../OL-Commerce%20_v5_ajax.html#66">konfigurierbare
+Bildschirm-Layout</A> (<A TARGET="_blank" href="../OL-Commerce%20_v5_ajax.html#66"><font color="#FF0000">bitte
+lesen!</font></A>) </B>verwendet werden soll (<font color="#FF0000"><B>empfohlen!!</b></font>),
+dann sind folgende Änderungen notwendig:</p><p>An der Stelle im Template, an der der <b><font color="#0000FF">linke</font>
+Navigationsbereich</B> definiert ist, die vorhandenen &quot;{box_XXXXXX}&quot;-Platzhalter
+ersetzen durch:</p><p>&lt;div class=&quot;main&quot; id=&quot;box_l_01&quot;&gt;{$box_l_01}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_02&quot;&gt;{$box_l_02}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_03&quot;&gt;{$box_l_03}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_04&quot;&gt;{$box_l_04}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_05&quot;&gt;{$box_l_05}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_06&quot;&gt;{$box_l_06}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_07&quot;&gt;{$box_l_07}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_08&quot;&gt;{$box_l_08}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_09&quot;&gt;{$box_l_09}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_10&quot;&gt;{$box_l_10}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_11&quot;&gt;{$box_l_11}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_12&quot;&gt;{$box_l_12}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_13&quot;&gt;{$box_l_13}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_14&quot;&gt;{$box_l_14}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_15&quot;&gt;{$box_l_15}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_16&quot;&gt;{$box_l_16}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_17&quot;&gt;{$box_l_17}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_18&quot;&gt;{$box_l_18}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_19&quot;&gt;{$box_l_19}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_20&quot;&gt;{$box_l_20}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_21&quot;&gt;{$box_l_21}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_22&quot;&gt;{$box_l_22}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_23&quot;&gt;{$box_l_23}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_24&quot;&gt;{$box_l_24}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_25&quot;&gt;{$box_l_25}&lt;/div&gt;</p><p>An der Stelle im Template, an der der <font color="#0000FF"><B>rechte</B></font><b>
+Navigationsbereich</B> definiert ist, die vorhandenen &quot;{box_XXXXXX}&quot;-Platzhalter
+ersetzen durch</p><p>&lt;div class=&quot;main&quot; id=&quot;box_r_01&quot;&gt;{$box_r_01}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_02&quot;&gt;{$box_r_02}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_03&quot;&gt;{$box_r_03}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_04&quot;&gt;{$box_r_04}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_05&quot;&gt;{$box_r_05}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_06&quot;&gt;{$box_r_06}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_07&quot;&gt;{$box_r_07}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_08&quot;&gt;{$box_r_08}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_09&quot;&gt;{$box_r_09}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_10&quot;&gt;{$box_r_10}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_11&quot;&gt;{$box_r_11}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_12&quot;&gt;{$box_r_12}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_13&quot;&gt;{$box_r_13}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_14&quot;&gt;{$box_r_14}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_15&quot;&gt;{$box_r_15}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_16&quot;&gt;{$box_r_16}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_17&quot;&gt;{$box_r_17}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_18&quot;&gt;{$box_r_18}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_19&quot;&gt;{$box_r_19}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_20&quot;&gt;{$box_r_20}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_21&quot;&gt;{$box_r_21}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_22&quot;&gt;{$box_r_22}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_23&quot;&gt;{$box_r_23}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_24&quot;&gt;{$box_r_24}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_25&quot;&gt;{$box_r_25}&lt;/div&gt;</p><p>(Es ist zulässig, <b><font color="#0000FF">nur</font></b> einen
+<font color="#0000FF"><B>linken</B></font> <font color="#FF0000"><B>oder</B></font>
+<font color="#0000FF"><B>rechten</B></font> <B>Navigationsbereich</B> zu
+definieren, daher die 25 Positions-Bereiche in jedem Navigationsbereich !)</p><hr/>
+<p><B>Wenn</B> das <b><A TARGET="_blank" href="../OL-Commerce%20_v5_ajax.html#66">konfigurierbare
+Bildschirm-Layout</A> (<A TARGET="_blank" href="../OL-Commerce%20_v5_ajax.html#66"><font color="#FF0000">bitte
+lesen!</font></A>) <U><font color="#0000FF">nicht</font></U> </B>verwendet
+werden soll (<b><U><font color="#0000FF">nicht</font></U></b><font color="#FF0000"><b>
+empfohlen!!</b></font>), dann sind folgende Änderungen notwendig:</p><p>Die o.g. &quot;Smarty&quot;-Variablen in der &quot;index.html&quot; sind zu ersetzen durch
+den folgenden Code:<br/>
+(Der Einfachheit halber verwenden wir als &quot;<font color="#FF0000"><B>id</B></font>&quot;
+den &quot;Smarty&quot;-Variablen-Namen.)</p><p>&lt;div class=&quot;main&quot; id=&quot;box_ADD_QUICKIE&quot;&gt;{$box_ADD_QUICKIE}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_ADMIN&quot;&gt;{$box_ADMIN}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_AFFILIATE&quot;&gt;{$box_AFFILIATE}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_BESTSELLERS&quot;&gt;{$box_BESTSELLERS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_CART&quot;&gt;{$box_CART}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_CATEGORIES&quot;&gt;{$box_CATEGORIES}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_CONTENT&quot;&gt;{$box_CONTENT}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_CURRENCIES&quot;&gt;{$box_CURRENCIES}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_INFOBOX&quot;&gt;{$box_INFOBOX}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_INFORMATION&quot;&gt;{$box_INFORMATION}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_LANGUAGES&quot;&gt;{$box_LANGUAGES}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_LIVEHELP&quot;&gt;{$box_LIVEHELP}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_LOGIN&quot;&gt;{$box_LOGIN}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_MANUFACTURERS_INFO&quot;&gt;{$box_MANUFACTURERS_INFO}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_MANUFACTURERS&quot;&gt;{$box_MANUFACTURERS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_NOTIFICATIONS&quot;&gt;{$box_NOTIFICATIONS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_ORDER_HISTORY&quot;&gt;{$box_ORDER_HISTORY}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_REVIEWS&quot;&gt;{$box_REVIEWS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_SEARCH&quot;&gt;{$box_SEARCH}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_SPECIALS&quot;&gt;{$box_SPECIALS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_TELL_FRIEND&quot;&gt;{$box_TELL_FRIEND}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_WHATSNEW&quot;&gt;{$box_WHATSNEW}&lt;/div&gt;</p><hr/>
+<p>Wenn man ein Template für<B> <font color="#FF0000">beide</font> Betriebsmodi</B>
+(die im Admin-Bereich konfigurierbar sind) vorbereiten will, kann man über die &quot;Smarty&quot;-Variable
+&quot;<B>NO_BOX_LAYOUT</B>&quot; das wie folgt berücksichtigen:</p><p><b><font color="#0000FF">Linker</font><font color="#FF0000">
+Navigations-Bereich:</font></b></p><p>{if $<B>NO_BOX_LAYOUT</B>}<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_CATEGORIES&quot;&gt;{$box_CATEGORIES}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_MANUFACTURERS&quot;&gt;{$box_MANUFACTURERS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_MANUFACTURERS_INFO&quot;&gt;{$box_MANUFACTURERS_INFO}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_SPECIALS&quot;&gt;{$box_SPECIALS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_TELL_FRIEND&quot;&gt;{$box_TELL_FRIEND}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_CONTENT&quot;&gt;{$box_CONTENT}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_INFORMATION&quot;&gt;{$box_INFORMATION}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_NOTIFICATIONS&quot;&gt;{$box_NOTIFICATIONS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_ORDER_HISTORY&quot;&gt;{$box_ORDER_HISTORY}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_NEWSLETTER&quot;&gt;{$box_NEWSLETTER}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_REVIEWS&quot;&gt;{$box_REVIEWS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_AFFILIATE&quot;&gt;{$box_AFFILIATE}&lt;/div&gt;<br/>
+{else}<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_01&quot;&gt;{$box_l_01}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_02&quot;&gt;{$box_l_02}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_03&quot;&gt;{$box_l_03}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_04&quot;&gt;{$box_l_04}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_05&quot;&gt;{$box_l_05}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_06&quot;&gt;{$box_l_06}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_07&quot;&gt;{$box_l_07}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_08&quot;&gt;{$box_l_08}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_09&quot;&gt;{$box_l_09}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_10&quot;&gt;{$box_l_10}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_11&quot;&gt;{$box_l_11}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_12&quot;&gt;{$box_l_12}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_13&quot;&gt;{$box_l_13}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_14&quot;&gt;{$box_l_14}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_15&quot;&gt;{$box_l_15}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_16&quot;&gt;{$box_l_16}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_17&quot;&gt;{$box_l_17}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_18&quot;&gt;{$box_l_18}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_19&quot;&gt;{$box_l_19}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_20&quot;&gt;{$box_l_20}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_21&quot;&gt;{$box_l_21}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_22&quot;&gt;{$box_l_22}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_23&quot;&gt;{$box_l_23}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_24&quot;&gt;{$box_l_24}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_l_25&quot;&gt;{$box_l_25}&lt;/div&gt;<br/>
+{/if}</p><p><font color="#0000FF"><B>Recht</B></font><b><font color="#0000FF">er</font><font color="#FF0000">
+Navigations-Bereich:</font></b></p><p>{if $<B>NO_BOX_LAYOUT</B>}<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_CART&quot;&gt;{$box_CART}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_LOGIN&quot;&gt;{$box_LOGIN}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_ADMIN&quot;&gt;{$box_ADMIN}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_LIVEHELP&quot;&gt;{$box_LIVEHELP}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_WHATSNEW&quot;&gt;{$box_WHATSNEW}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_ADD_A_QUICKIE&quot;&gt;{$box_ADD_A_QUICKIE}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_SEARCH&quot;&gt;{$box_SEARCH}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_BESTSELLERS&quot;&gt;{$box_BESTSELLERS}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_INFOBOX&quot;&gt;{$box_INFOBOX}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_LAST_VIEWED&quot;&gt;{$box_LAST_VIEWED}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_LANGUAGES&quot;&gt;{$box_LANGUAGES}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_CURRENCIES&quot;&gt;{$box_CURRENCIES}&lt;/div&gt;<br/>
+{else}<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_01&quot;&gt;{$box_r_01}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_02&quot;&gt;{$box_r_02}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_03&quot;&gt;{$box_r_03}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_04&quot;&gt;{$box_r_04}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_05&quot;&gt;{$box_r_05}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_06&quot;&gt;{$box_r_06}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_07&quot;&gt;{$box_r_07}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_08&quot;&gt;{$box_r_08}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_09&quot;&gt;{$box_r_09}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_10&quot;&gt;{$box_r_10}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_11&quot;&gt;{$box_r_11}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_12&quot;&gt;{$box_r_12}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_13&quot;&gt;{$box_r_13}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_14&quot;&gt;{$box_r_14}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_15&quot;&gt;{$box_r_15}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_16&quot;&gt;{$box_r_16}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_17&quot;&gt;{$box_r_17}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_18&quot;&gt;{$box_r_18}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_19&quot;&gt;{$box_r_19}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_20&quot;&gt;{$box_r_20}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_21&quot;&gt;{$box_r_21}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_22&quot;&gt;{$box_r_22}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_23&quot;&gt;{$box_r_23}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_24&quot;&gt;{$box_r_24}&lt;/div&gt;<br/>
+&lt;div class=&quot;main&quot; id=&quot;box_r_25&quot;&gt;{$box_r_25}&lt;/div&gt;<br/>
+{/if}</p>
+<p>Wenn man die <b>&quot;<font color="#FF0000">Tab</font>&quot;-Navigation</B> (&quot;<font color="#FF0000"><B>Reiternavigation</B></font>&quot;) verwenden will, sollt man
+im <B>mittleren</B> Bereich (<font color="#FF0000"><B>vor</B></font> &quot;<B>main_content</B>&quot;) folgenden Code ersetzen:</p>
+<pRE>
+&lt;td valign="top" colspan="2"&gt;
+  &lt;table width="98%" border="0" align="center" cellpadding="0" cellspacing="0"&gt;
+    &lt;tr&gt;
+  &lt;td align="left" valign="top"&gt;
+    {if $<B>NO_BOX_LAYOUT</B>}
+    &lt;div class="main" id="box_TAB_NAVIGATION"&gt;{$box_TAB_NAVIGATION}&lt;/div&gt;
+    {else}
+    &lt;div class="main" id="box_m_01"&gt;{$box_m_01}&lt;/div&gt;
+    {/if}
+    &lt;div class="main" id="main_content"&gt;{$main_content}&lt;/div&gt;
+  &lt;/td&gt;
+  &lt;/table&gt;
+&lt;/td&gt;</pRE><hr/>
+<p>An die gewünschte Stelle (z.B. vor die erste &quot;box&quot; im linken
+Navigationsbereich) plazieren wir den
+folgenden Code:</p><p>&lt;div id=&quot;CHANGE_SKIN&quot;&gt;{$CHANGE_SKIN}&lt;/div&gt;</p><p>(Das bindet den Code für die Umschaltung der Templates ein. Kann man auch weg
+lassen, wenn man das nicht anbieten will.)</p><p>Der Code:</p><hr/>
+<pRE>
+&lt;tr&gt;
+&nbsp; &lt;td style="border-top: 1px solid; border-bottom: 1px solid; border-color: #C5C5C5;" height="10" colDIV="3"&gt;&lt;table width="100%"&nbsp; border="0" cellpadding="2" cellspacing="0"&gt;
+&nbsp;&nbsp;&nbsp; &lt;tr&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td class="main"&gt;{$navtrail}&lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td class="main"&gt;&lt;div align="right"&gt;{if $account}{php} if (isset($_SESSION['customer_id'])) { {/php}&lt;a href="{$logoff}"&gt;{#link_logoff#}&lt;/a&gt; | {php} } {/php}{/if}{if $account}&lt;a href="{$account}"&gt;{#link_account#}&lt;/a&gt; | {/if}&lt;a href="{$cart}"&gt;{#link_cart#}&lt;/a&gt; | &lt;a href="{$checkout}"&gt;{#link_checkout#}&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&nbsp;&nbsp;&nbsp; &lt;/tr&gt;
+&nbsp; &lt;/table&gt;&lt;/td&gt;
+&lt;/tr&gt;</pRE><hr/>
+<p>ziemlich am Beginn des Templates, ist zu ersetzen durch:</p><hr/>
+<pRE>
+&lt;!-- W. Kaiser - AJAX --&gt;
+&lt;tr&gt;
+&nbsp; &lt;td height="10" colDIV="3"&gt;
+&nbsp;&nbsp;&nbsp; &lt;table width="100%"&nbsp; border="0" cellpadding="2" cellspacing="0"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;tr&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td class="main"&gt;&lt;div id="navtrail"&gt;{$navtrail}&lt;/div&gt;&lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td class="main" align="right"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	&lt;div id="box_NAVIGATION"&gt;{$box_NAVIGATION}&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;
+&nbsp;&nbsp;&nbsp; &lt;/table&gt;
+&nbsp; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;!-- W. Kaiser - AJAX --&gt;</pRE><hr/>
+<p>Der Grund dafür ist wie folgt:</p><p>Da die &quot;<B>index.html</B>&quot; im AJAX-Modus <B>nur beim Programmstart
+</B>komplett
+erstellt und übertragen wird, hat man das Problem, dass der über den HTML-Code</p><hr/>
+<pRE>
+&lt;td class="main"&gt;
+	&lt;div align="right"&gt;
+	{if $account}{php} if (isset($_SESSION['customer_id'])) { {/php}&lt;a href="{$logoff}"&gt;{#link_logoff#}&lt;/a&gt; |
+	{php} } {/php}{/if}
+	{if $account}&lt;a href="{$account}"&gt;{#link_account#}&lt;/a&gt; | {/if}
+	&lt;a href="{$cart}"&gt;{#link_cart#}&lt;/a&gt; | &lt;a href="{$checkout}"&gt;{#link_checkout#}&lt;/a&gt;
+	&lt;/div&gt;
+&lt;/td&gt;</pRE><hr/>
+<p>gebildete Navigationsbereich, der abhängig vom <b>&quot;Login&quot;-Zustand
+</B>des Besuchers
+ist, dann anders berechnet werden muss, wofür der Bereich </p>
+<p><b>&lt;div id="navigation"&gt;{$navigation}&lt;/div&gt;</b></p><p>neu definiert wurde.</p><p>Dann ist noch der Code</p><hr/>
+<pRE>
+{config_load file="$language/lang_$language.conf" section="index"}
+&lt;table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"&gt;</pRE><hr/>
+<p><B>am Anfang </B>des Templates zu ersetzen durch</p><hr/>
+<pRE>
+{config_load file="$language/lang_$language.conf" section="index"}
+&lt;!-- W. Kaiser - AJAX --&gt;
+{if $language==''}
+&lt;!-- Binde Stylesheet im Design-Modus ein! --&gt;
+&lt;!-- Damit sieht man auch im Design-Modus das wirkliche Layout! --&gt;
+&lt;link rel="stylesheet" type="text/css" href="stylesheet.css"&gt;
+{/if}
+{$TOP_DIVS}
+&lt;div ID="container"&gt;
+&lt;div ID="content"&gt;
+&lt;table border="0" width="100%"&gt;
+&lt;!-- W. Kaiser - AJAX --&gt;</pRE><hr/>
+<p>Und schließlich ist noch der Code:</p><hr/>
+<pRE>
+&lt;/body&gt;
+&lt;table width="100" border="0" align="center" cellpadding="0" cellspacing="0"&gt;
+	&lt;tr&gt;
+		&lt;td&gt;{$BANNER}&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/html&gt;</pRE><hr/>
+<p><B>am Ende</B> des Templates zu ersetzen durch</p><hr/>
+<pRE>
+&lt;!-- W. Kaiser - AJAX --&gt;
+{if $BANNER != ''}
+&lt;table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"&gt;
+	&lt;tr&gt;
+		&lt;td&gt;{$BANNER}&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+{/if}
+&lt;/div&gt;
+&lt;/div&gt;
+{$BOTTOM_DIVS}
+&lt;!-- W. Kaiser - AJAX --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pRE><hr/>
+<p><B>So weit zu den notwendigen Änderungen an der &quot;index.html&quot; der Templates.
+<br/>
+</b>(Die Distribution enthält entsprechend modifizierte Template-Dateien.)</p><p><font color="#FF0000"><B>Um diesen Prozess zu vereinfachen, wurde
+mittlerweile ein Programm (</b>&quot;</font><font color="#0000FF"><B>olc_ajax_template_update.exe</B></font><font color="#FF0000">&quot;</font><b><font color="#FF0000">)
+entwickelt, das die meisten dieser Änderungen </font><font color="#0000FF">
+automatisch</font><font color="#FF0000">(!) in einem Formular vornimmt, und
+Hinweise gibt, was evtl. noch manuell zu ändern ist!</font></b></p><p>Lesen Sie dazu auch noch <b><A href="übernahme_eines_templates.htm">
+übernahme_eines_templates.htm</A></b>!</p><hr/>
+<p>Im Formular wird eine <b><font color="#FF0000">AJAX-Aktivitätsanzeige</font> </b>
+angezeigt, um den Anwender zu signalisieren, wann eine Kommunikation mit dem
+Server stattfindet. Es handelt sich dabei um nichts anderes als eine <b>
+animierte GIF-Grafik</B>, die beim Start der Kommunikation angezeigt, und am
+Ende wieder ausgeblendet wird.</p><p>Die Grafik &quot;<B>ajax_activity.gif</B>&quot; <font color="#FF0000"><B>muss</B></font> im &quot;<B>img</B>&quot;-Verzeichnis
+des Templates vorhanden sein!</p><p>Wenn man eine <font color="#FF0000"><B>andere(!)</b></font>, als die
+Standard-<b><font color="#FF0000">AJAX-Aktivitätsanzeige</font></b> verwenden
+will (diese wird automatisch eingebunden!), kann man eine andere Grafik in die &quot;index.html&quot; einbinden
+(am besten an den Anfang des linken (oder rechten) Navigationsbereichs).</p><p>Das geschieht z.B. mit dem folgenden HTML-Code </p>
+<pRE>
+&lt;div class="main" <b><font color="#FF0000">id="ajax_active_indicator"</font></b> align="right"
+	style="<B>position:absolute;display:none;top:-500</B>;<b><font color="#0000FF">width</font><font color="#FF0000">:145px;</font><font color="#0000FF">height</font><font color="#FF0000">:15px</font></b>;"&gt;
+	&lt;img border="0" src="{$tpl_path}img/ajax_activity.gif" alt=""&gt;
+&lt;/div&gt;</pRE><table border="0" ID="table2" cellspacing="5" cellpadding="5">
+	<tr>
+		<td valign="top"><b><font color="#FF0000">WICHTIG:</font></b> </td>
+		<td>Sie müssen im Text<p>&quot;<b><font color="#0000FF">width</font>:<font color="#FF0000">145</font>px;<font color="#0000FF">height</font>:<font color="#FF0000">15</font>px&quot;<br/>
+		<br/>
+		<font color="#FF0000">unbedingt </font></B>die für die neue Grafik
+		geltenden Werte für &quot;<font color="#0000FF"><B>width</B></font>&quot; und &quot;<font color="#0000FF"><B>height</B></font>&quot;
+		eingeben,<br/>
+		sonst wird diese Grafik evtl. nicht richtig angezeigt!</td></tr></table><p>(Wenn man mit Google nach &quot;<B>AJAX animated gif</B>&quot; sucht, findet man viele
+solcher Grafiken.)</p><hr/>
+<hr/>
+<p><b><font color="#FF0000">Wenn</font> </B>die vielen Entwickler von OL-Commerce
+so diszipliniert gewesen wären, bei der <B>Programmierung</B> nur die vorhandenen
+<B>olc-Basisroutinen</B> für die Erstellung von HTML-Elementen zu verwenden (das
+sind alle die Programme im Verzeichnis &quot;<B>inc</B>&quot; die mit &quot;<B>olc_</B>&quot;
+beginnen), <B>und</B> in den
+<B>Templates</B> auch durchgängig konsistent
+zu arbeiten,<b> <font color="#0000FF">müsste man an den Programmen und Templates gar nichts mehr
+ändern</font></b>, da man die Unterschiede zwischen dem AJAX- und dem Normalmodus
+transparent in diesen <B>olc-Basisroutinen</B> abhandeln könnte.</p><p><font color="#FF0000"><B>Aber leider ist dem nicht so!</b></font></p><p>Statt bei der Erstellung von HTML-Elementen immer Routinen wie z.B. </p>
+<p align="left">olc_draw_form<br/>
+olc_draw_input_field<br/>
+olc_draw_pull_down_menu<br/>
+olc_draw_radio_field<br/>
+olc_draw_selection_field<br/>
+olc_href_link</p><p align="left">zu verwenden, wird leider immer wieder <B>direkt der entsprechende
+HTML-Code in den Programmen erzeugt.</b></p><p align="left">Auch in den Templates gibt es Inkonsistenzen (vor allem in der
+Definition von Formularen).</p><p align="left">Dafür wird meist die &quot;Smarty&quot;-Variable &quot;<b>{$FORM_ACTION}</b>&quot;
+verwendet. Leider wird aber teilweise darunter <B>nur der Code für das Ziel des
+Formulars</B> verstanden, teilweise aber auch die <B>komplette
+Formulardefinition</B>.</p><p align="left"><b><font color="#FF0000">Warum ist das problematisch, und muss vereinheitlicht werden?</font></b></p><p align="left">Um das oberste Entwicklungs-Ziel zu erreichen, mit <B>demselben
+Programm </B>sowohl im AJAX- als auch im Normalmodus arbeiten zu können, müssen die
+notwendigen Unterschiede der beiden Betriebsarten an zentraler Stelle
+berücksichtigt werden (wenn man nicht jedes Programm-Modul anpassen will).</p><p align="left">Im wesentlichen betrifft das die Definition von &quot;<B>Links</B>&quot; und
+<B>Formularen</B>, für die Validierung auch <B>Eingabefelder</B>, <b>
+Auswahlfelder</B> und <B>Auswahlboxen</B>.</p><p align="left">Um den Browser im AJAX-Modus daran zu hindern einen Link direkt
+anzusteuern, <b><font color="#FF0000">muss</font> </B>jeder Link dann ein &quot;<B>onclick</B>&quot;-Event
+enthalten, in dem der Link in einer Javascript-Routine ausgewertet, und über den
+AJAX-Transportmechanismus statt über das normale Browser-Verfahren an den Server
+gesendet wird. Daher müssen alle Links mit Hilfe der &quot;<B>olc_href_link</B>&quot;-Routine
+erstellt werden, die die notwendigen Unterschiede berücksichtigt.</p><p align="left">Ein weiterer Problembereich sind die <B>Formulare</B>. Da man im AJAX-Modus den Browser, der normalerweise die Inhalte des Formulars beim
+Absenden eines Formulars automatisch über sein Verfahren an den Server sendet,
+genau daran hindern will, <font color="#FF0000"><B>muss</B></font> jedes
+Formular ein &quot;<B>onsubmit</B>&quot;-Event enthalten, in dem das Formular in einer
+Javascript-Routine ausgewertet, und über den AJAX-Transportmechanismus statt
+über das normale Browser-Verfahren an den Server gesendet wird. Daher müssen
+alle Links mit Hilfe der &quot;<B>olc_draw_form</B>&quot;-Routine erstellt werden, die die
+notwendigen Unterschiede berücksichtigt. (Kompliziert wird das Problem noch
+dadurch, dass einige Formulare schon &quot;<B>onsubmit</B>&quot;-Events für die
+formale Validierung der Eingabefelder definiert haben, so dass die
+Besonderheiten des AJAX-Betriebs in diesen Javascript-Routinen berücksichtigt
+werden müssen.)</p><p align="left"><B>Eingabefelder</B>, <B>Auswahlfelder</B> und <B>Auswahlboxen</B>
+benötigen für die <B>Validierung</B> u.U. &quot;<B>onclick</B>&quot;- oder &quot;<B>onblur</B>&quot;-
+oder &quot;<B>onchange</B>&quot;- Events.</p><p align="left"><B>Übrigens</B>: </p>
+<p align="left">Formulare stellen im AJAX-Modus ein <B>großes</B> Problem dar! Da das
+normale Browser-Verhalten unterbunden wird, werden auch die Formular-Variablen
+nicht mehr vom Browser ausgelesen, und die &quot;<B>onsubmit</B>&quot;-Routine muss das selbst machen!
+Wie kompliziert das ist, sieht man daran, dass einige AJAX-Dokumentationen
+kategorisch feststellen, dass man mit AJAX keine Formulardaten senden kann! Aber
+natürlich geht das, sonst hätte man das Ganze vergessen können.</p><p align="left">Ähnlich problematisch ist, dass im AJAX-Modus normalerweise die
+Browser &quot;<B>Vorwärts</B>&quot;- und &quot;<B>Zurück</B>&quot;-Buttons nicht mehr funktionieren,
+da der Verkehr mit dem Server am Browser vorbei läuft, und er gar nicht mehr
+mitbekommt, was ihm da so geschieht. Auch hier behaupten viele
+AJAX-Dokumentationen kategorisch, dass man mit AJAX die Browser-Buttons nicht
+verwenden kann. Aber natürlich kann man das mit AJAX auch ermöglichen,
+allerdings muss man das alles selbst machen. (Und dann wird das aber auch wieder viel
+schöner, als im Normalmodus, in dem der Browser auch dann wieder auf den Server
+zurückgreift. Im AJAX-Modus hingegen ist die Historie lokal gespeichert, und
+beim Navigieren mit den Browser-Buttons sofort da! )</p><p align="left">Es war deshalb noch <B>viel Arbeit </B>notwendig, um OL-Commerce
+im oben genannten Sinn so konsistent zu machen, dass man die Unterschiede
+zwischen dem AJAX- und dem
+Normalmodus an diesen zentralen Stellen berücksichtigen kann.</p><p align="left">
+In den Programmen und dem olc-Template der Distribution haben wir das schon
+erledigt.</p><p align="left">Wenn allerdings Erweiterungen und/oder andere
+Templates verwendet werden, so muss das bestehende OL-Commerce daraufhin
+untersucht werden, dass </p>
+<hr/>
+<p align="left"><B>Links</B> durchgängig <font color="#0000FF"> <B>immer</B></font> wie folgt definiert
+werden:</p><p align="left"><b>'&lt;a href=&quot;' .<font color="#FF0000"> olc_href_link</font>(.....</b></p><p align="left"><B>Formulare</B> durchgängig <font color="#0000FF"> <B>immer</B></font> wie folgt definiert
+werden:</p><p align="left"><b>$smarty-&gt;assign('FORM_ACTION',<font color="#FF0000">olc_draw_form</font>(......</b></p><p align="left">In den Templates Formulare <font color="#0000FF"> <B>immer</B></font> wie folgt definiert
+werden:</p><p align="left"><b>{$FORM_ACTION} </b>(<font color="#FF0000"><B>nicht</B></font>
+<b>&lt;form action=&quot;{$FORM_ACTION}&quot;.......<font color="#FF0000">!!!!</font>)</b></p><hr/>
+<p align="left">Das Verzeichnis &quot;<B>inc</B>&quot; der olc/AJAX-Distribution
+<B>muss</B>
+übernommen werden, da dort die <B>olc-Basisroutinen</B> liegen.</p><p align="left">Wenn das <B>nicht</B> gewährleistet ist, kann der AJAX-Modus <b>
+nicht </B>durchgängig richtig funktionieren!</p><p align="left">Die in dem Standard-OL-Commerce -Programm durchgeführten
+Änderungen müssen eingebaut werden.</p><p align="left">Zur Erinnerung:</p><p><font color="#FF0000"><b>(In allen geänderten Dateien (PHP-Programme, HTML-Templates) wurden die
+geänderten Bereiche mit &quot;W. Kaiser - AJAX&quot; gekennzeichnet.)</b></font></p><p>Das ist kein leichtes Unterfangen, da (wegen der zuvor erwähnten mangelnden
+Entwickler-Disziplin) letztendlich doch ca. <font color="#0000FF"><B>170
+Dateien(!)</b></font> geändert werden mussten.</p><p>Wer also eine bestehende OL-Commerce -Installation AJAX-ifizieren will
+benötigt:</p><UL>
+	<LI>Gute PHP- und HTML-Kenntnisse<br/>
+&nbsp;</LI>
+	<LI>Professionelle Entwickler Tools<br/>
+&nbsp;</LI>
+	<LI>Gute Nerven, Disziplin und viel Selbstvertrauen</LI></UL><p><font color="#FF0000"><B>Der &quot;normale&quot; Anwender ist damit sicher überfordert!</b></font></p><hr/>
+<p><U><font color="#0000FF"><B>Was muss ich bei der Entwicklung neuer
+OL-Commerce -Module beachten, damit diese AJAX-fähig sind?</b></font></U></p><p><b><font color="#FF0000">Nichts, <U>wenn</U> </font>man ausschließlich die
+<font color="#0000FF">OL-Commerce -Basisroutinen</font> für den Aufbau von
+HTML-Elementen verwendet!</b></p><p>(Wenn man in die &quot;index.html&quot; neue Bereiche einbaut, muss man diese immer mit
+dem &quot;<B>div</B>&quot;-Tag definieren.)</p><p>Es konnte erreicht werden, dass die Unterschiede zwischen dem AJAX- und dem
+Normalmodus in den <B>OL-Commerce -Basisroutinen <font color="#FF0000">und </font>
+&quot;Smarty&quot; <font color="#FF0000">zentral</font></b>
+abgehandelt werden! Der Programm-Ablauf selbst ist davon nicht berührt.</p><p><B>Zu bedenken ist auch, dass &quot;nur&quot; der kundenorientierte Bereich von
+OL-Commerce &quot;AJAX-ifiziert&quot; wurde, nicht der Admin-Bereich (außer der
+AJAX-basierten Produkt-Optionsverwaltung).</b></p><hr/>
+<p align="left">Es ist im AJAX-Modus auch notwendig, <B>bestimmte Menüs und
+Tastenkombinationen zu unterdrücken</B>, die ein <B>Neu-Laden</B> der Seite zur
+Folge haben, weil damit der gesamte Kontext verloren geht.</p><p align="left">Aus diesem Grunde stellt auch das Bezahlen über externe
+Dienstleister (PayPal, WorldPay usw.) ein großes Problem dar. In OL-Commerce ist
+das nämlich so realisiert, dass beim Bestellen der notwendige Inhalt für den
+Bezahlvorgang in einem Formular an die entsprechende URL des Dienstleisters
+gesendet wird.</p><p align="left">Das ist insofern problematisch, als das &quot;XMLHttpRequest&quot;-Objekt
+(das den AJAX-Verkehr mit dem Server abwickelt) nur Zugriffe auf den Server
+erlaubt, von dem das System gestartet wurde! (Aus Sicherheitsgründen. Es wäre
+schlimm, wenn man über AJAX Daten von beliebigen Servern abrufen könnte!)</p><p align="left">Andererseits kann man auch nicht einfach an der Stelle den
+AJAX-Betrieb ausschalten, und &quot;normale&quot; URLs als Formular-Ziel angeben, weil man
+damit wieder aus dem AJAX-Modus herausfällt.</p><p align="left">Dieses (große) Problem wurde schließlich so gelöst, dass man
+diese &quot;Payment&quot; Formular-Daten auf ein lokales &quot;<B>AJAX-Payment-Proxy</B>&quot;-Programm
+umleitet, das die Daten übernimmt und dann den Datenverkehr zwischen dem
+Anwendungs-Server mit dem Payment-Server abwickelt.</p>

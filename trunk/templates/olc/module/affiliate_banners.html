@@ -1,0 +1,34 @@
+{olc_template_init affiliate='true' title="#heading_title#" section="affiliate_banners"}
+<table>
+  <tr>
+	<td><table width="100%" border="0" cellspacing="0" cellpadding="2">
+          <tr>
+            <td class="main" colspan=2>{#text_information#}</td>
+          </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
+          <tr>
+            <td class="infoBoxHeading" align="center">{#text_affiliate_individuel_banner#}&nbsp;{$affiliate_banners_title}</td>
+          </tr>
+          <tr>
+            <td class="smallText" align="center">{#text_affiliate_individual_banner_info#}&nbsp;&nbsp;{$FORM_ACTION}{$INPUT_BANNER_ID}&nbsp;&nbsp;{$BUTTON_SUBMIT}{$FORM_END}</td>
+          </tr>
+          {if $TEXTAREA_AFFILIATE_BANNER1 neq ''}
+          <tr>
+            <td class="smallText" align="center"><br/>{$link}</td>
+          </tr>
+          <tr>
+            <td class="smallText" align="center">{#text_affiliate_info#}</td>
+          </tr>
+          <tr>
+            <td align="center">{$TEXTAREA_AFFILIATE_BANNER1}</td>
+          </tr>
+          {/if}
+     </table></td>
+   </tr>
+   {if $banner_table_content neq ''}
+	 {$banner_table_content}
+   {/if}
+</table>

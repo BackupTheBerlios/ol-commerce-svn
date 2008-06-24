@@ -1,0 +1,124 @@
+{olc_template_init section="index" finalize="true"} 
+<!-- {$PROJECT_VERSION}-->
+{if $language==''} 
+{/if} 
+{$TOP_DIVS}
+<div id="headercenter"></div>
+<div id="headerbottom">
+<div id="pathway">{$navtrail}</div>
+<div id="search">
+<div class="search"></div>
+</div>
+<div id="headerlinks">{$box_NAVIGATION}</div>
+</div>
+<div id="main">
+<div id="modleft"><a name="menu" id="menu"></a>
+<div class="module">
+<div>
+<div>
+<div>{if $USE_LAYOUT_DEFINITION}
+<div class="main" id="box_l_01">{$box_l_01}</div>
+<div class="main" id="box_l_02">{$box_l_02}</div>
+<div class="main" id="box_l_03">{$box_l_03}</div>
+<div class="main" id="box_l_04">{$box_l_04}</div>
+<div class="main" id="box_l_05">{$box_l_05}</div>
+<div class="main" id="box_l_06">{$box_l_06}</div>
+<div class="main" id="box_l_07">{$box_l_07}</div>
+<div class="main" id="box_l_08">{$box_l_08}</div>
+<div class="main" id="box_l_09">{$box_l_09}</div>
+<div class="main" id="box_l_10">{$box_l_10}</div>
+<div class="main" id="box_l_11">{$box_l_11}</div>
+<div class="main" id="box_l_12">{$box_l_12}</div>
+<div class="main" id="box_l_13">{$box_l_13}</div>
+<div class="main" id="box_l_14">{$box_l_14}</div>
+<div class="main" id="box_l_15">{$box_l_15}</div>
+<div class="main" id="box_l_16">{$box_l_16}</div>
+<div class="main" id="box_l_17">{$box_l_17}</div>
+<div class="main" id="box_l_18">{$box_l_18}</div>
+<div class="main" id="box_l_19">{$box_l_19}</div>
+<div class="main" id="box_l_20">{$box_l_20}</div>
+<div class="main" id="box_l_21">{$box_l_21}</div>
+<div class="main" id="box_l_22">{$box_l_22}</div>
+<div class="main" id="box_l_23">{$box_l_23}</div>
+<div class="main" id="box_l_24">{$box_l_24}</div>
+<div class="main" id="box_l_25">{$box_l_25}</div>
+{else}
+<div class="main" id="box_CATEGORIES">{$box_CATEGORIES}</div>
+<div class="main" id="box_MANUFACTURERS">{$box_MANUFACTURERS}</div>
+<div class="main" id="box_MANUFACTURERS_INFO">{$box_MANUFACTURERS_INFO}</div>
+<div class="main" id="box_SPECIALS">{$box_SPECIALS}</div>
+<div class="main" id="box_TELL_FRIEND">{$box_TELL_FRIEND}</div>
+<div class="main" id="box_CONTENT">{$box_CONTENT}</div>
+<div class="main" id="box_INFORMATION">{$box_INFORMATION}</div>
+<div class="main" id="box_NOTIFICATIONS">{$box_NOTIFICATIONS}</div>
+<div class="main" id="box_ORDER_HISTORY">{$box_ORDER_HISTORY}</div>
+<div class="main" id="box_NEWSLETTER">{$box_NEWSLETTER}</div>
+<div class="main" id="box_REVIEWS">{$box_REVIEWS}</div>
+<div class="main" id="box_AFFILIATE">{$box_AFFILIATE}</div>
+{/if}</div>
+</div>
+</div>
+</div>
+</div>
+<div id="maincontent">
+<div class="clr"></div>
+    <div class="content" id="main_content">
+        {$main_content}
+</div>
+</div>
+<div id="modright">
+<div class="module">
+<div>
+<div>
+<div>{if $USE_LAYOUT_DEFINITION}
+<div class="main" id="box_r_01">{$box_r_01}</div>
+<div class="main" id="box_r_02">{$box_r_02}</div>
+<div class="main" id="box_r_03">{$box_r_03}</div>
+<div class="main" id="box_r_04">{$box_r_04}</div>
+<div class="main" id="box_r_05">{$box_r_05}</div>
+<div class="main" id="box_r_06">{$box_r_06}</div>
+<div class="main" id="box_r_07">{$box_r_07}</div>
+<div class="main" id="box_r_08">{$box_r_08}</div>
+<div class="main" id="box_r_09">{$box_r_09}</div>
+<div class="main" id="box_r_10">{$box_r_10}</div>
+<div class="main" id="box_r_11">{$box_r_11}</div>
+<div class="main" id="box_r_12">{$box_r_12}</div>
+<div class="main" id="box_r_13">{$box_r_13}</div>
+<div class="main" id="box_r_14">{$box_r_14}</div>
+<div class="main" id="box_r_15">{$box_r_15}</div>
+<div class="main" id="box_r_16">{$box_r_16}</div>
+<div class="main" id="box_r_17">{$box_r_17}</div>
+<div class="main" id="box_r_18">{$box_r_18}</div>
+<div class="main" id="box_r_19">{$box_r_19}</div>
+<div class="main" id="box_r_20">{$box_r_20}</div>
+<div class="main" id="box_r_21">{$box_r_21}</div>
+<div class="main" id="box_r_22">{$box_r_22}</div>
+<div class="main" id="box_r_23">{$box_r_23}</div>
+<div class="main" id="box_r_24">{$box_r_24}</div>
+<div class="main" id="box_r_25">{$box_r_25}</div>
+{else}
+<div class="main" id="box_CART">{$box_CART}</div>
+<div class="main" id="box_LOGIN">{$box_LOGIN}</div>
+<div class="main" id="box_ADMIN">{$box_ADMIN}</div>
+<div class="main" id="box_LIVEHELP">{$box_LIVEHELP}</div>
+<div class="main" id="box_WHATSNEW">{$box_WHATSNEW}</div>
+<div class="main" id="box_ADD_A_QUICKIE">{$box_ADD_A_QUICKIE}</div>
+<!-- <div class="main" id="box_SEARCH">{$box_SEARCH}</div>  -->
+<div class="main" id="box_BESTSELLERS">{$box_BESTSELLERS}</div>
+<div class="main" id="box_INFOBOX">{$box_INFOBOX}</div>
+<div class="main" id="box_LAST_VIEWED">{$box_LAST_VIEWED}</div>
+<div class="main" id="box_LANGUAGES">{$box_LANGUAGES}</div>
+<div class="main" id="box_CURRENCIES">{$box_CURRENCIES}</div>
+{/if}</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clr"></div>
+<div id="footer">
+<div align="center"><b>{$text_footer}</b></div>
+<div align="center"></div>
+</div>
+{$BOTTOM_DIVS}
+</body>
+</html>

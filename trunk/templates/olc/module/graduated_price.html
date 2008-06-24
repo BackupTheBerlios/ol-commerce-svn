@@ -1,0 +1,10 @@
+{olc_template_init title="#heading_text#" section="graduated_price"} 
+<table width="100%" border="0">
+	{foreach name=aussen item=module_data from=$module_content} 
+	<tr> 
+		<td class="main" nowrap="nowrap">{$module_data.QUANTITY} {#unit#}</td>
+		<td class="main" nowrap="nowrap">{#pieces#} {$module_data.PRICE}</td>
+	</tr>
+	{/foreach}
+</table>
+

@@ -1,0 +1,98 @@
+{olc_template_init title="#heading_address#" section="checkout_shipping_address"}
+{$FORM_ACTION}
+	{if $ORDER_STEPS}
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>{$ORDER_STEPS}</td>
+		</tr>
+	</table>
+	{/if}
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="subcategory"><b>{#title_current_address#}</b> </td>
+		</tr>
+		<tr>
+			<td class="main_border_top">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="main" width="50%" valign="top">{#text_current_address#}<br/> <br/>
+						</td>
+						<td class="main_border_right" valign="top">
+							<table width="100%" border="0" cellspacing="0" cellpadding="4">
+								<tr>
+									<td align="right" valign="top" nowrap="nowrap" class="main" align="center">
+										<strong>{#title_current_address#} </strong><br/>
+										<img src="{$tpl_path}img/arrow_south_east.gif">&nbsp;
+									</td>
+									<td nowrap="nowrap" class="main_grey" valign="top">
+										{$ADDRESS_LABEL}
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="5" alt="" style="display: block;"></td>
+		</tr>
+	</table>
+
+	{if $BLOCK_ADDRESS}
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="main"><b>{#title_old_addresses#}</b> </td>
+		</tr>
+		<tr>
+			<td class="main_border_top">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="main" width="100%">{#text_old_addresses#}<br/>
+						<br/>
+						{$BLOCK_ADDRESS}<br/> <br/> </td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="5" alt="" style="display: block;"></td>
+		</tr>
+	</table>
+
+	{/if}
+	{if $MODULE_new_address}
+	<br/>
+	{$MODULE_new_address}
+	{/if}
+	<br/>
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="main"><b>{#title_continue#}</b> </td>
+		</tr>
+		<tr>
+			<td class="main_border_top">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="main_border_right" width="100%">{#text_continue#} <br/>
+						<br/>
+						<div align="right">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td>{$BUTTON_BACK}</td>
+									<td><div align="right">{$BUTTON_CONTINUE}</div></td>
+								</tr>
+							</table>
+						</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td><img src="{$tpl_path}img/pixel_trans.gif" width="100%" height="20" alt="" style="display: block;"></td>
+		</tr>
+	</table>
+{$FORM_END}

@@ -1,0 +1,126 @@
+{olc_template_init title=$heading_tell_a_friend section="tell_a_friend"}
+{if $language==''}
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+{/if}
+{if $action !='send'}
+	{$FORM_ACTION}<strong>{#title_yours#}</strong>
+	<br/>
+	<table border="0" cellspacing="2" cellpadding="0">
+	<tr> 
+		<td valign="top" align="left">
+			<table border="0" cellspacing="0" cellpadding="0" width="395" height="38">
+				<tr>
+					<td class="main" width="395" height="38"> 
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr> 
+								<td class="main">{#text_name#}&nbsp;</td>
+								<td class="main" >{$INPUT_NAME}&nbsp;</td>
+								<td class="main" >
+								<font color="#FF0000">{$INPUT_NAME_ERROR}</font>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="main" >{#text_email#}&nbsp;</td>
+								<td class="main" >{$INPUT_EMAIL}&nbsp;</td>
+								<td class="main" >
+								<font color="#FF0000">{$INPUT_EMAIL_ERROR}</font>&nbsp;</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+	<br/><hr/>
+	<br/>
+	<strong>{#title_friend#}<br/>&nbsp;</strong>
+	<table border="0" cellspacing="2" cellpadding="0">
+		<tr> 
+			<td valign="top">
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr> 
+						<td class="main" width="100%"> 
+							<table border="0" cellspacing="2" cellpadding="0">
+								<tr> 
+									<td class="main" align="left" valign="top" >
+									{#text_friendname#}&nbsp;</td>
+									<td class="main" align="left" valign="top" >{$INPUT_FRIENDNAME}&nbsp;</td>
+									<td class="main" align="left" valign="top" >
+									<font color="#FF0000">{$INPUT_FRIENDNAME_ERROR}</font>&nbsp;</td>
+								</tr>
+								<tr> 
+									<td class="main" align="left" valign="top" >{#text_friendemail#}&nbsp;</td>
+									<td class="main" align="left" valign="top" >{$INPUT_FRIENDEMAIL}&nbsp;</td>
+									<td class="main" align="left" valign="top" >
+									<font color="#FF0000">{$INPUT_FRIENDEMAIL_ERROR}</font>&nbsp;</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<br/><hr/>
+	<p class="main">
+		Da <B>unfreundliche Zeitgenossen</B> diese bequeme 
+		Informationsmöglichkeit nutzen könnten, 
+		automatisch <b>Massen-SPAM-eMails</b> über unseren Server zu 
+		versenden, müssen wir Sie zu dessen Vermeidung um die 
+		Eingabe eines <B>Sicherheitscodes</B> bitten.</p>
+<p class="main">
+		<B>Tragen Sie bitte den angezeigten Code in 
+		das darunter liegende Eingabefeld ein.</b></p>
+<p class="main">
+		Wir bitten um Ihr Verständnis für diese kleine Unbequemlichkeit!</p>
+	<table border="0" cellspacing="2" cellpadding="0">
+	<tr> 
+		<td class="main" valign="top" align="left">
+		{#text_sec_code#}&nbsp;</td>
+		<td class="main" valign="top" align="left" >{$VVIMG}</td>
+		<td class="main" valign="top" align="left">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td class="main" valign="top" align="left" >
+			{#text_inp_code#}&nbsp;
+		</td>
+		<td class="main" valign="top" align="left">
+		{$INPUT_CODE}&nbsp;</td>
+		<td class="main" valign="top" align="left">
+		<font color="#FF0000">{$INPUT_CODE_ERROR}</font>&nbsp;</td>
+	</tr>
+	</table>
+	<br/>
+&nbsp;<hr/>
+	<p>
+	
+	<strong>{#title_recomend#}</strong> 
+	
+	</p>
+	
+	<table border="0" cellpadding="0" width="100%">
+		<tr> 
+			<td class="main" width="100%">
+				{$INPUT_MESSAGE}
+			</td>
+		</tr>
+	</table>
+	<br/>
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td class="main">{$BUTTON_BACK}</td>
+		<td class="main" align="right">{$BUTTON_SUBMIT}</td>
+	</tr>
+	</table>
+	{$FORM_END}
+
+{else}
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+		<tr> 
+			<td class="main">{$message}</td>
+		</tr>
+		<tr>
+			<td class="main"><br/>{$BUTTON_CONTINUE}</td>
+		</tr>
+	</table>
+{/if}

@@ -1,0 +1,9 @@
+.tabcol { background-color: #d1d8e2 }
+.tabcol0 { background-color: #e4d2d2 }
+.tabcol1 { background-color: #97ffb4 }
+.tabcol2 { background-color: #cb8dff }
+.tabcol3 { background-color: #ff8d95 }
+.tabcol4 { background-color: #dbff8d }
+
+a.sublink { font-weight:bold;}
+a.sublink:hover { text-decoration: underline; }

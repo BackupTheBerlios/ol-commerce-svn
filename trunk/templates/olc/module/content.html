@@ -1,0 +1,21 @@
+{olc_template_init title=$CONTACT_HEADING section="contact_us"}
+<div class="category">{$CONTENT_HEADING}</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="main">
+		{if $file}
+		{$file}
+
+		{else}
+
+		{$CONTENT_BODY}
+		{/if}
+		</td>
+	</tr>
+	<tr>
+		<td><div align="right"><br/>
+		{$BUTTON_CONTINUE} </div></td>
+	</tr>
+</table>
+

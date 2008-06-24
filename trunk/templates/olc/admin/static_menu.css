@@ -1,0 +1,104 @@
+#menu{
+position:absolute;
+top:100px;
+left:5px;
+padding:1px;
+z-index:2;
+width:182px;
+}
+
+#
+#	Note: The following "pseudo_columnLeft" style-definition	m u s t  match the
+#				"columnLeft" style-definition in "template/xxxxx/admin/stylesheet.css",
+#				however with a "width"-parameter like that of the preceding "menu" definition!
+#
+
+.pseudo_columnLeft {
+	background: #FFE9CC;
+	font-color: Black;
+	border: 1px solid; */
+	vertical-align: top;
+	width: 180px;
+}
+
+#menu a, #menu h2{
+display:block;
+font:bold 11px/16px arial,helvetica,sans-serif;
+border-top:1px solid #ccc;
+border-left:1px solid #bbb;
+border-right:1px solid #888;
+border-bottom:1px solid #555;
+white-space:nowrap;
+text-indent:2px;
+width:180px;
+}
+
+#menu a{
+background:#edeef6 url(images/tile.gif) repeat-x;
+text-decoration:none;
+}
+
+#menu a, #menu a:visited{
+color:#494c59;
+}
+
+#menu a:hover{
+color:#000;
+background:#e2e2ec url(images/tile-over.gif) repeat-x;
+}
+
+#menu a:active{
+color:#060;
+background:#e2e2ec url(images/tile-on.gif) repeat-x;
+}
+
+#menu h2{
+font:bold 10px/16px tahoma,helvetica,sans-serif;
+color:#fff;
+background:#369 url(images/tile-h2.gif) repeat-x;
+text-transform:uppercase;
+margin:0;
+padding:0;
+width:180px;
+}
+
+#menu li{
+list-style-type:none;
+}
+
+#menu ul li{
+position:relative;
+}
+
+#menu li ul{
+position:absolute;
+top:0;
+left:20px;
+display:inline;
+}
+
+div#menu ul, #menu ul ul, div#menu ul ul ul{
+margin:0;
+padding:0;
+list-style-image:none;
+width:180px;
+}
+
+/* Styling for Expand */
+
+#menu a.x, #menu a.x:visited{
+font-weight:bold;
+text-indent:2px;
+color:#494c59;
+background:#edeef6 url(images/tile-x.gif) repeat-x;
+}
+
+#menu a.x:hover{
+color:#000;
+background:#edeef6 url(images/tile-over.gif) repeat-x;
+}
+
+#menu a.x:active{
+color:#060;
+background:#e2e2ec url(images/tile-on.gif) repeat-x;
+}

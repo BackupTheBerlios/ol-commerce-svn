@@ -1,0 +1,63 @@
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="{$style_path}">
+{/if}
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td valign="top" align="right">
+	    <table class="standard" align="right" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td valign="top" align="left">
+		        <font size="2">
+				      <p>
+			        	<a target="_blank" title="{$STORE_NAME}"
+					        alt="{$STORE_NAME}" href="{$HOME_LINK}"><img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}"></a>
+				      </p>
+			        <p>{$STORE_NAME_ADDRESS}</p>
+			        <p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		        </font>
+		       </td>
+	      </tr>
+	    </table>
+	    <br />
+		</td>
+  </tr>
+  <tr>
+    <td height="485">
+    	<font size="2">
+		    <p>
+		      Hallo {$to_name},</p>
+			<p>
+			<b>{$from_name}</b> hat Ihnen eine <font size="2">
+			E-Mail-</font>Information zu unserem Internet-Shop '<b>{$shop_name}</b>' gesendet.</p>{if $message <>''}<br/>
+&nbsp;<hr/>
+			<b><br/>
+			Hier ist die Nachricht:
+			</b>
+			<p>{$message}<br/>
+&nbsp;</p>
+			<hr/>
+			{/if}
+			{if $PRODUCTS_LINK != ''}
+			<p>
+			Um die Information über '<b>{$products_name}</b>' anzusehen,
+			klicken Sie bitte auf den folgenden <B>Link</B>, oder kopieren diesen, und fügen Sie ihn in der
+			Adress-Zeile Ihres Browsers ein:</p>
+			<p><b>{$PRODUCTS_LINK}</b></p>
+			{/if}
+			<hr>
+			<p>
+				Diese E-Mail wurde von <font size="2"><b>{$from_name}</b>(
+					<a href="mailto:{$from_email}?subject=Deine Empfehlung für '{$shop_name}'">{$from_email}</A></font>) versendet, und durch
+    			  '<b>{$shop_name}</b>' lediglich übermittelt.
+    	<p>Wenn Sie Fragen haben, senden Sie uns eine Nachricht an: <b>
+			<a href="mailto:{$shop_email}?subject=Ich habe eine Frage">{$shop_email}</a></b></font></font>
+		</td>
+  </tr>
+</table>
+</body>
+{if $MAIL_IMPRESSUM}
+{$MAIL_IMPRESSUM}
+{/if}

@@ -1,0 +1,80 @@
+{if $language==''}
+<!-- Binde Stylesheet im Design-Modus ein! -->
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+{else}
+<link rel="stylesheet" type="text/css" href="{$style_path}">
+{/if}
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td valign="top" align="right">
+	    <table class="standard" align="right" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td valign="top" align="left">
+		        <font size="2">
+				      <p>
+			        	<a target="_blank" title="{$STORE_NAME}"
+					        alt="{$STORE_NAME}" href="{$HOME_LINK}"><img src="{$logo_path}" border="0" align="middle" alt="{$STORE_NAME}"></a>
+				      </p>
+			        <p>{$STORE_NAME_ADDRESS}</p>
+			        <p><b>{$STORE_EMAIL_TEXT}</b>: <a href="mailto:{$STORE_EMAIL}">{$STORE_EMAIL}</a></p>
+		        </font>
+		       </td>
+	      </tr>
+	    </table>
+	    <br />
+		</td>
+  </tr>
+  <tr>
+    <td>
+			<font size="2"><b>Sehr geehrter Kunde,</b><br/>
+    	<br/>Sie haben soeben Ihr Kundenkonto erfolgreich erstellt.</font><p>
+			<font size="2">
+	Als <b>registrierter</b> Kunde haben sie folgende Vorteile in unserem Shop.</font></p>
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr>
+			<td valign="top">
+			<font size="2">-
+			<b>Kundenwarenkorb</b></b></font></td>
+			<td width="905" valign="top">
+			<font size="2">
+			Jeder Artikel bleibt registriert bis Sie zur Kasse gehen, oder die
+			Artikel aus dem Warenkorb entfernen.</font></td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<font size="2">
+			<b>- Adressbuch</b></font></td>
+			<td width="905" valign="top">
+			<font size="2">
+			Wir können jetzt die Artikel direkt zu der von Ihnen ausgesuchten
+			Adresse senden. Der perfekte Weg ein Geburtstagsgeschenk zu
+			versenden.</font></td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<font size="2">
+			<b>- Bestellübersicht</b></font></td>
+			<td width="905" valign="top">
+			<font size="2">
+			Sie können jederzeit Ihre vorherigen Bestellungen überprüfen.</font></td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<font size="2">
+			<b>- Meinungen über Produkte</b></font></td>
+			<td width="905" valign="top">
+			<font size="2">
+			Teilen Sie Ihre Meinung zu unseren Produkten mit anderen Kunden.<br/>
+      &nbsp;</font></td>
+		</tr>
+	</table>
+	<p>
+	<font size="2">Falls Sie Fragen zu unserem Kundenservice haben, wenden Sie sich bitte an:
+      {MAIL_REPLY_ADDRESS}. <br/>
+    Achtung: Diese eMail-Adresse wurde uns von einem Kunden bekannt gegeben. Falls Sie sich nicht angemeldet haben, senden Sie bitte eine eMail an
+    {MAIL_REPLY_ADDRESS}. </font></td>
+  </tr>
+</table>
+{if $MAIL_IMPRESSUM}
+{$MAIL_IMPRESSUM}
+{/if}

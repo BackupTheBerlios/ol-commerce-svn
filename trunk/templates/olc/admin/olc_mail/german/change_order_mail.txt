@@ -1,0 +1,20 @@
+Ihre Bestellung Nr. {$ORDER_NR} vom {$ORDER_DATE}.
+
+Hallo {$NAME},
+
+{if $ORDER_STATUS == 'Versendet'}Ihre Bestellung wurde am {$SHIP_DATE} versendet.
+{if $TRACK_URL}
+Den Weg Ihrer Sendung können Sie <a href="{$TRACK_URL}">hier</a> verfolgen.
+{/if}{else}Die Bearbeitung Ihrer Bestellung wurde am {$SHIP_DATE} begonnen.
+{/if}
+
+{if $NOTIFY_COMMENTS}Anmerkungen und Kommentare zu Ihrer Bestellung:
+
+{$NOTIFY_COMMENTS}{/if}{if $ORDER_LINK}
+
+Ihre Bestellung können Sie <a href="{$ORDER_LINK}">hier</a> einsehen.
+{/if}
+Bei Fragen zu Ihrer Bestellung antworten Sie bitte auf diese eMail.
+{if $MAIL_IMPRESSUM_TEXT}
+{$MAIL_IMPRESSUM_TEXT}
+{/if}
