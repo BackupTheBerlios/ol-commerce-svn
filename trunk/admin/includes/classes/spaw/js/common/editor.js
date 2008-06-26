@@ -993,7 +993,7 @@ SpawEditor.prototype.flash2img = function()
     if (flashs[i].attributes.getNamedItem('src') != null /*&& flashs[i].attributes.getNamedItem('src').nodeValue.indexOf(".swf") != -1*/)
     {
   	  var flash = pdoc.createElement("IMG");
-  	  flash.setAttribute('src', SpawEngine.spaw_dir + 'img/spacer100.gif?imgtype=flash&src='+flashs[i].getAttribute("src"));
+  	  flash.setAttribute('src', SpawEngine.spaw_dir + 'images/spacer100.gif?imgtype=flash&src='+flashs[i].getAttribute("src"));
     	if (flashs[i].style.cssText != '') // save original style
     	{
         flash.setAttribute("__spaw_style", flashs[i].style.cssText);
@@ -1018,7 +1018,7 @@ SpawEditor.prototype.flash2img = function()
           flash.setAttribute(attr.nodeName.toLowerCase(), attrval);
         }
       }
-  	  flash.style.cssText = "border: 1px solid #000000; background: url(" + SpawEngine.spaw_dir + "img/flash.gif);";
+  	  flash.style.cssText = "border: 1px solid #000000; background: url(" + SpawEngine.spaw_dir + "images/flash.gif);";
 
       flashs[i].parentNode.replaceChild(flash, flashs[i]);
     }

@@ -71,7 +71,7 @@ class SPAW_TB_Image extends SPAW_TB_Item
     
     if (!empty($this->name))
     {
-      $buf = '<img id="SPAW_'.$this->editor.'_tb_'.$this->name.'" alt="'.$this->lang->m('title',$this->name).'" src="'.$spaw_dir.'lib/themes/'.$this->theme.'/img/tb_'.$this->name.'.gif" '.(isset($this->attributes)?$this->attributes:'').' unselectable="on">';
+      $buf = '<img id="SPAW_'.$this->editor.'_tb_'.$this->name.'" alt="'.$this->lang->m('title',$this->name).'" src="'.$spaw_dir.'lib/themes/'.$this->theme.'/images/tb_'.$this->name.'.gif" '.(isset($this->attributes)?$this->attributes:'').' unselectable="on">';
       return $buf;
     }
   }
@@ -87,7 +87,7 @@ class SPAW_TB_Button extends SPAW_TB_Item
     
     if (!empty($this->name))
     {
-      $buf = '<img id="SPAW_'.$this->editor.'_tb_'.$this->name.'" alt="'.$this->lang->m('title',$this->name).'" title="'.$this->lang->m('title',$this->name).'" src="'.$spaw_dir.'lib/themes/'.$this->theme.'/img/tb_'.$this->name.'.gif" onclick="javascript:SPAW_'.$this->name.'_click(\''.$this->editor.'\',this)" class="SPAW_'.$this->theme.'_tb_out" onMouseOver="SPAW_'.$this->theme.'_bt_over(this)" onMouseOut="SPAW_'.$this->theme.'_bt_out(this)" onMouseDown="SPAW_'.$this->theme.'_bt_down(this)" onMouseUp="SPAW_'.$this->theme.'_bt_up(this)"  '.(isset($this->attributes)?$this->attributes:'').' unselectable="on">';
+      $buf = '<img id="SPAW_'.$this->editor.'_tb_'.$this->name.'" alt="'.$this->lang->m('title',$this->name).'" title="'.$this->lang->m('title',$this->name).'" src="'.$spaw_dir.'lib/themes/'.$this->theme.'/images/tb_'.$this->name.'.gif" onclick="javascript:SPAW_'.$this->name.'_click(\''.$this->editor.'\',this)" class="SPAW_'.$this->theme.'_tb_out" onMouseOver="SPAW_'.$this->theme.'_bt_over(this)" onMouseOut="SPAW_'.$this->theme.'_bt_out(this)" onMouseDown="SPAW_'.$this->theme.'_bt_down(this)" onMouseUp="SPAW_'.$this->theme.'_bt_up(this)"  '.(isset($this->attributes)?$this->attributes:'').' unselectable="on">';
       return $buf;
     }
   }

@@ -79,13 +79,13 @@ $request_uri = urldecode($SPAW_Util->getPOSTVar('request_uri',$SPAW_Util->getGET
   {
   <?php if (BROWSER_IS_GECKO) { ?>
 
-    var wnd = window.open('<?php echo $spaw_dir?>dialogs/img_library.php?lang=<?php echo $_GET["lang"]?>&theme=<?php echo $_GET["theme"]?>&editor=<?php echo $_GET["editor"]?>&callback=showImgPicker_callback',
+    var wnd = window.open('<?php echo $spaw_dir?>dialogs/images_library.php?lang=<?php echo $_GET["lang"]?>&theme=<?php echo $_GET["theme"]?>&editor=<?php echo $_GET["editor"]?>&callback=showImgPicker_callback',
       "img_library", 
       'status=no,modal=yes,width=420,height=420'); 
 
   <?php }else{ ?>
 
-    var imgSrc = showModalDialog('<?php echo $spaw_dir?>dialogs/img_library.php?theme=<?php echo $theme?>&lang=<?php echo $l->lang?>&request_uri=<?php echo $request_uri?>', '', 
+    var imgSrc = showModalDialog('<?php echo $spaw_dir?>dialogs/images_library.php?theme=<?php echo $theme?>&lang=<?php echo $l->lang?>&request_uri=<?php echo $request_uri?>', '', 
       'dialogHeight:420px; dialogWidth:420px; resizable:no; status:no');
     
     if(imgSrc != null)
@@ -280,10 +280,10 @@ $request_uri = urldecode($SPAW_Util->getPOSTVar('request_uri',$SPAW_Util->getGET
     		document.getElementById('tcpad').disabled = true;
     		document.getElementById('tcspc').disabled = true;
     		document.getElementById('tbgcolor').disabled = true;
-    		document.getElementById('tcolorpicker').src = '<?php echo $theme_path.'img/'?>tb_colorpicker_off.gif';
+    		document.getElementById('tcolorpicker').src = '<?php echo $theme_path.'images/'?>tb_colorpicker_off.gif';
     		document.getElementById('tcolorpicker').disabled = true;
     		document.getElementById('tbackground').disabled = true;
-    		document.getElementById('timg_picker').src = '<?php echo $theme_path.'img/'?>tb_image_insert_off.gif';
+    		document.getElementById('timg_picker').src = '<?php echo $theme_path.'images/'?>tb_image_insert_off.gif';
     		document.getElementById('timg_picker').disabled = true;
     	}
     	else
@@ -297,10 +297,10 @@ $request_uri = urldecode($SPAW_Util->getPOSTVar('request_uri',$SPAW_Util->getGET
     		document.getElementById('tcpad').disabled = false;
     		document.getElementById('tcspc').disabled = false;
     		document.getElementById('tbgcolor').disabled = false;
-    		document.getElementById('tcolorpicker').src = '<?php echo $theme_path.'img/'?>tb_colorpicker.gif';
+    		document.getElementById('tcolorpicker').src = '<?php echo $theme_path.'images/'?>tb_colorpicker.gif';
     		document.getElementById('tcolorpicker').disabled = false;
     		document.getElementById('tbackground').disabled = false;
-    		document.getElementById('timg_picker').src = '<?php echo $theme_path.'img/'?>tb_image_insert.gif';
+    		document.getElementById('timg_picker').src = '<?php echo $theme_path.'images/'?>tb_image_insert.gif';
     		document.getElementById('timg_picker').disabled = false;
     	}
     }
@@ -362,12 +362,12 @@ $request_uri = urldecode($SPAW_Util->getPOSTVar('request_uri',$SPAW_Util->getGET
 </tr>
 <tr>
   <td colspan="4"><?php echo $l->m('bg_color')?>: <img src="spacer.gif" id="color_sample" border="1" width="30" height="18" align="absbottom">&nbsp;<input type="text" name="tbgcolor" id="tbgcolor" size="7" maxlenght="7" class="input_color" onKeyUp="setSample()">&nbsp;
-  <img id="tcolorpicker" src="<?php echo $theme_path.'img/'?>tb_colorpicker.gif" border="0" onclick="javascript:showColorPicker(tbgcolor.value)" align="absbottom">
+  <img id="tcolorpicker" src="<?php echo $theme_path.'images/'?>tb_colorpicker.gif" border="0" onclick="javascript:showColorPicker(tbgcolor.value)" align="absbottom">
   </td>
 </tr>
 <tr>
   <td colspan="4">
-	<?php echo $l->m('background')?>: <input type="text" name="tbackground" id="tbackground" size="20" class="input" >&nbsp;<img id="timg_picker" src="<?php echo $theme_path.'img/'?>tb_image_insert.gif" border="0" onclick="javascript:showImgPicker();" align="absbottom">	
+	<?php echo $l->m('background')?>: <input type="text" name="tbackground" id="tbackground" size="20" class="input" >&nbsp;<img id="timg_picker" src="<?php echo $theme_path.'images/'?>tb_image_insert.gif" border="0" onclick="javascript:showImgPicker();" align="absbottom">	
   </td>
 </tr>
 <tr>

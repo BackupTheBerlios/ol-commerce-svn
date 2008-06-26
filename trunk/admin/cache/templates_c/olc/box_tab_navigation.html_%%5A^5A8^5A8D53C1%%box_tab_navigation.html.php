@@ -67,7 +67,7 @@ $this->_sections['data']['last']       = ($this->_sections['data']['iteration'] 
 					<td class="<?php echo $this->_tpl_vars['content']['main'][$this->_sections['data']['index']]['CSS']; ?>
 ">
 						<img src="<?php echo $this->_tpl_vars['tpl_path']; ?>
-img/tab_left.gif" border="0" alt="">
+images/tab_left.gif" border="0" alt="">
 					</td>
 					<td nowrap="nowrap" class="<?php echo $this->_tpl_vars['content']['main'][$this->_sections['data']['index']]['CSS']; ?>
 ">
@@ -93,7 +93,7 @@ img/tab_left.gif" border="0" alt="">
 					<td class="<?php echo $this->_tpl_vars['content']['main'][$this->_sections['data']['index']]['CSS']; ?>
 ">
 						<img src="<?php echo $this->_tpl_vars['tpl_path']; ?>
-img/tab_right.gif" border="0" alt="">&nbsp;
+images/tab_right.gif" border="0" alt="">&nbsp;
 					</td>
 					<?php endfor; endif; ?>
 				</tr>

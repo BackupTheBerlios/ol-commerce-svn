@@ -2020,7 +2020,7 @@ function OrderUpdate ()
           $smarty->compile_dir=DIR_FS_CATALOG.'cache/templates_c';
           $smarty->config_dir=DIR_FS_CATALOG.'lang';
           $smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
-          $smarty->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+          $smarty->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/images/');
           $smarty->assign('NAME',$check_status['customers_name']);
           $smarty->assign('ORDER_NR',$oID);
           $smarty->assign('ORDER_LINK',olc_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL'));
@@ -2203,7 +2203,7 @@ function CustomersUpdate ()
     $smarty->compile_dir=DIR_FS_CATALOG.'cache/templates_c';
     $smarty->config_dir=DIR_FS_CATALOG.'lang';
     $smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
-    $smarty->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+    $smarty->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/images/');
     $smarty->assign('NAME',$sql_customers_data_array['customers_lastname'] . ' ' . $sql_customers_data_array['customers_firstname']);
     $smarty->assign('EMAIL',$sql_customers_data_array['customers_email_address']);
     $smarty->assign('PASSWORD',$pw);

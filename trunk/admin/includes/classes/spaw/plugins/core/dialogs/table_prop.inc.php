@@ -71,7 +71,7 @@ echo 'spawErrorMessages["error_cellspacing_nan"] = "' . $lang->m('error_cellspac
   <td><input type="text" name="tcspc" id="tcspc" size="3" maxlenght="3" class="input3chars"></td>
 </tr>
 <tr>
-  <td colspan="4"><?php echo $lang->m('bg_color')?>: <img src="img/spacer.gif" id="color_sample" border="1" width="30" height="18" align="absmiddle">&nbsp;<input type="text" name="tbgcolor" id="tbgcolor" size="7" maxlenght="7" class="input7chars" onKeyUp="setSample()" align="absmiddle">
+  <td colspan="4"><?php echo $lang->m('bg_color')?>: <img src="images/spacer.gif" id="color_sample" border="1" width="30" height="18" align="absmiddle">&nbsp;<input type="text" name="tbgcolor" id="tbgcolor" size="7" maxlenght="7" class="input7chars" onKeyUp="setSample()" align="absmiddle">
   <input type="button" id="tcolorpicker" border="0" onClick="SpawTablePropDialog.showColorPicker(tbgcolor.value)" align="absbottom" value="..." class="bt" align="absmiddle">
   </td>
 </tr>

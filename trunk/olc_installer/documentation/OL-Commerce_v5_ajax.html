@@ -1331,7 +1331,7 @@ verwendet werden!</p><p>Um die Verwendung des dynamischen Menüs zu Aktivieren, m
 &quot;<B>includes/configure.php</B>&quot; folgender Code eingefügt werden:<p><b>
 define('USE_COOL_MENU',true)</b><p>Ist dieser Eintrag nicht vorhanden, oder 
 JavaScript nicht aktiv, wird die Standard-OL-Commerce Kategorienauswahl 
-verwendet.<p>Wenn in &quot;<B>templates/mytemplate/img</B>&quot; die Datei &quot;<B>bullet.gif</B>&quot; 
+verwendet.<p>Wenn in &quot;<B>templates/mytemplate/images</B>&quot; die Datei &quot;<B>bullet.gif</B>&quot; 
 vorhanden ist, wird diese vor dem Kategorien-Text angezeigt.<p>Am Ende der &quot;<B>stylesheet.css</B>&quot; 
 des Templates sind die CSS-Definitionen für das &quot;Cool-Menu&quot; vorhanden.<p>Bei dieser 
 Funktion handelt es sich um eine an Smarty/AJAX angepasste Variante einer 
@@ -1510,7 +1510,7 @@ diese Adressen zusätzlich ausgegeben.</p><table border="1" ID="table8">
 		<td align="left" width="200"><B>Bestellbestätigung</B></td>
 		<td align="center" width="200">Kunden-Anschrift</td>
 		<td align="center" width="200">Rechnungs-Anschrift</td>
-		<td align="center" width="200">Liefer-Anschrift</td></tr></table>&nbsp;<p>Aus den Shop-Daten wird ein Impressum erstellt, die Datei &quot;<B>templates/xxxx/img/invoice_logo.jpg</B>&quot; 
+		<td align="center" width="200">Liefer-Anschrift</td></tr></table>&nbsp;<p>Aus den Shop-Daten wird ein Impressum erstellt, die Datei &quot;<B>templates/xxxx/images/invoice_logo.jpg</B>&quot; 
 wird (soweit vorhanden) als Logo dargestellt.</p><p>Es wird ein <B>Seitenfuß</B> erstellt, der <B>vorgeschriebene Informationen</B> 
 und die <B>Bankverbindung</B> enthält.</p><p>Die <B>Anzahl der möglichen Produkte </B>in der Rechnungstabelle in der 
 Konfigurationsdatei ist so ausgelegt, dass die Produkt-Infomation und der 
@@ -1550,7 +1550,7 @@ in die &quot;<B>index.html</B>&quot; eingebunden:<br/>
 <pRE>
 &lt;div class="main" id="ajax_active_indicator" align="right" 
 	style="visibility:hidden"&gt;
-	&lt;IMG border="0" SRC="{$tpl_path}img/ajax_activity.gif"&gt;
+	&lt;IMG border="0" SRC="{$tpl_path}images/ajax_activity.gif"&gt;
 &lt;/div&gt;</pRE>
 <p>Die Grafik &quot;<B>ajax_activity.gif</B>&quot; muss im &quot;<B>img</B>&quot;-Verzeichnis des 
 Templates vorhanden sein.</p>
@@ -2699,7 +2699,7 @@ order_steps_3_<b>normal</b>.gif<br>
 order_steps_3_<b>high</b>.gif<br>
 <br>
 order_steps_4_<b>normal</b>.gif<br>
-order_steps_4_<b>high</b>.gif<p>und im Verzeichnis &quot;templates/xxxxxx/img&quot; vorhanden sein.</p>
+order_steps_4_<b>high</b>.gif<p>und im Verzeichnis &quot;templates/xxxxxx/images&quot; vorhanden sein.</p>
 <hr>
 <p>Es wurde auch eine logische Ungereimtheit im Ablauf des &quot;<b>Checkout</b>&quot; behoben:</p>
 <p>Bisher wurden die <b>AGB</b>n im Schritt &quot;<font color="#FF0000"><b>Bezahlung</b></font>&quot; 

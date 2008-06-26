@@ -106,7 +106,7 @@ if (defined('STORE_REGISTER_NR') && STORE_REGISTER_NR<>EMPTY_STRING)
 $s=HTTP_SERVER.DIR_WS_CATALOG.FULL_CURRENT_TEMPLATE;
 $smarty->assign('style_path',$s.'stylesheet.css');
 
-$s.='img/logo.gif';
+$s.='images/logo.gif';
 $mailer_smarty->assign('logo_path',$s);
 $smarty->assign('logo_path',$s);
 

@@ -7,11 +7,11 @@
     <table border="0" cellpadding="0" cellspacing="0">
     <tr>
       <td style="vertical-align: middle; padding: 5px 5px 5px 5px;">
-        <img id="hs_marker" src="<?php echo SpawConfig::getStaticConfigValue('SPAW_DIR') ?>plugins/core/dialogs/img/crosshair.gif" border="0" style="width: 9px; height: 9px; z-index: 50; position: absolute; left: 100; top: 100; visibility: hidden; cursor: crosshair;" unselectable="on" />
-        <img id="hs_grid" src="<?php echo SpawConfig::getStaticConfigValue('SPAW_DIR') ?>plugins/core/dialogs/img/huesaturation.jpg" border="0" style="border: 1px solid black; width: 180px; height: 202px; cursor: crosshair;" onclick="SpawColorPicker.hsClick(event, this);" /></td>
+        <img id="hs_marker" src="<?php echo SpawConfig::getStaticConfigValue('SPAW_DIR') ?>plugins/core/dialogs/images/crosshair.gif" border="0" style="width: 9px; height: 9px; z-index: 50; position: absolute; left: 100; top: 100; visibility: hidden; cursor: crosshair;" unselectable="on" />
+        <img id="hs_grid" src="<?php echo SpawConfig::getStaticConfigValue('SPAW_DIR') ?>plugins/core/dialogs/images/huesaturation.jpg" border="0" style="border: 1px solid black; width: 180px; height: 202px; cursor: crosshair;" onclick="SpawColorPicker.hsClick(event, this);" /></td>
       <td id="brightness_control_placeholder" style="vertical-align: middle; padding: 5px 5px 5px 5px; width: 25px;">&nbsp;</td>
       <td style="vertical-align: middle; padding: 0px 5px 0px 5px; width: 25px;">&nbsp;
-        <img id="b_marker" src="<?php echo SpawConfig::getStaticConfigValue('SPAW_DIR') ?>plugins/core/dialogs/img/leftarrow.gif" border="0" style="width: 8px; height: 9px; z-index: 50; position: absolute; left: 100; top: 100; visibility: hidden;" unselectable="on" />
+        <img id="b_marker" src="<?php echo SpawConfig::getStaticConfigValue('SPAW_DIR') ?>plugins/core/dialogs/images/leftarrow.gif" border="0" style="width: 8px; height: 9px; z-index: 50; position: absolute; left: 100; top: 100; visibility: hidden;" unselectable="on" />
       </td>
     </tr>
     </table>

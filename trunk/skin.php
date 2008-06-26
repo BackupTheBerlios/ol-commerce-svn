@@ -23,7 +23,7 @@ This routine will collect information on all available templates
 If more than the current template are available, a list is displayed
 for selection.
 
-If an image named "template_name.gif" is available in directory "templates/template/img",
+If an image named "template_name.gif" is available in directory "templates/template/images",
 this is also displayed (template preview)
 ---------------------------------------------------------------------------------------*/
 
@@ -65,7 +65,7 @@ else
 
 	$content_body=EMPTY_STRING;
 	$templates_entry0=olc_draw_radio_field($templates_dir,HASH,true).'&nbsp;<b><font size="3">#</font></b>';
-	$templates_image_file='templates/#/img/#.gif';
+	$templates_image_file='templates/#/images/#.gif';
 	$templates_image="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".
 	olc_image($templates_image_file,"Shop-Design '#'",EMPTY_STRING,EMPTY_STRING,'align="middle"');
 

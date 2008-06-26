@@ -63,7 +63,7 @@ body
 	font-weight: bold;
 	border : 1px outset #f2f2f2;
 	background: #D7D7D7;
-  background-image: url(../img/btbg.gif);
+  background-image: url(../images/btbg.gif);
   background-repeat: repeat-x;
   vertical-align: absmiddle;
 }
@@ -90,11 +90,11 @@ a, a:hover, a:active, a:visited
   font-size: 10px; 
   height: 19px; 
   vertical-align: middle; 
-  background: url(../img/atab_bg.gif);
+  background: url(../images/atab_bg.gif);
   white-space: nowrap;
 }
 .spaw2contentbody
 {
-  background: url(../img/bg_pattern.jpg);
+  background: url(../images/bg_pattern.jpg);
   padding: 10px 10px 10px 10px; 
 }

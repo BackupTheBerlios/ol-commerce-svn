@@ -77,7 +77,7 @@ class SpawFm
   function getFileThumbnail($filename)
   {
     $icons = SpawFm::getFileIconsDefinition($filename);
-    return '../plugins/spawfm/img/'.$icons['icon_big'];
+    return '../plugins/spawfm/images/'.$icons['icon_big'];
   }
   
   function getFileSize($file)
@@ -236,8 +236,8 @@ class SpawFm
         'size'      => $this->getFileSize($file),
         'date'      => $this->getFileDate($file),
         'fdescr'    => $fdescr,
-        'icon'      => '../plugins/spawfm/img/'.$this->getFileIcon($file),
-        'icon_big'  => '../plugins/spawfm/img/'.$this->getFileIconBig($file),
+        'icon'      => '../plugins/spawfm/images/'.$this->getFileIcon($file),
+        'icon_big'  => '../plugins/spawfm/images/'.$this->getFileIconBig($file),
         'thumb'     => $this->getFileThumbnail($file),
         'other'     => $other
       );
@@ -277,8 +277,8 @@ class SpawFm
         'date'      => $this->getFileDate($file),
         'size'      => $this->getFileSize($file),
         'descr'     => $lang->m('file_folder', 'file_details'),
-        'icon'      => '../plugins/spawfm/img/'.$config->getConfigValueElement('PG_SPAWFM_FILETYPES_ICON_FOLDER', 'icon'),
-        'icon_big'  => '../plugins/spawfm/img/'.$config->getConfigValueElement('PG_SPAWFM_FILETYPES_ICON_FOLDER', 'icon_big'),
+        'icon'      => '../plugins/spawfm/images/'.$config->getConfigValueElement('PG_SPAWFM_FILETYPES_ICON_FOLDER', 'icon'),
+        'icon_big'  => '../plugins/spawfm/images/'.$config->getConfigValueElement('PG_SPAWFM_FILETYPES_ICON_FOLDER', 'icon_big'),
         'thumb'     => $this->getFileThumbnail($file),
         'other'     => ''
       );

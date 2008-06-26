@@ -36,7 +36,7 @@ define(DIR_WS_MULTI_SHOP_TEXT,MULTI_SHOP_DIRECTORY);
 define('DIR_FS_MULTI_SHOP_TEXT','DIR_FS_MULTI_SHOP');
 define(DIR_FS_MULTI_SHOP_TEXT,$document_root.MULTI_SHOP_DIRECTORY);
 /*
-$pictures_dirs=array('/images/','/img/','/buttons/','/Icons/');
+$pictures_dirs=array('/images/','/images/','/buttons/','/Icons/');
 for ($i=0,$n=sizeof($pictures_dirs);$i<$n;$i++)
 {
 	if (strpos($file_path,$pictures_dirs[$i])!==false)

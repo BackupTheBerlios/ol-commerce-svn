@@ -17,7 +17,7 @@ $dir_list = $config->getConfigValue('PG_SPAWFM_DIRECTORIES');
 $doc_root = $config->getConfigValue('DOCUMENT_ROOT');
 if (preg_match('|[\\/]$|', $doc_root))
   $doc_root = substr($doc_root, 0, -1);
-$imgdir = $config->getConfigValue('SPAW_DIR').'plugins/spawfm/lib/theme/'.$theme->name.'/img/';
+$imgdir = $config->getConfigValue('SPAW_DIR').'plugins/spawfm/lib/theme/'.$theme->name.'/images/';
 
 require_once($config->getConfigValue('SPAW_ROOT').'plugins/spawfm/class/spawfm.class.php');
 $spawfm = new SpawFm();
@@ -564,16 +564,16 @@ SpawFm.onloadSelectFile = <?php echo $onload_select; ?>;
       <td valign="middle" nowrap="nowrap">
         <?php
         if (!empty($curr_dir_subdir)) {
-          echo '<input type="image" onclick="SpawFm.goUpClick();" src="../plugins/spawfm/img/btn_up.gif" title="'.$lang->m('go_up', 'buttons').'" class="bt" style="width: 24px; height: 24px; margin: 1px;" />';
+          echo '<input type="image" onclick="SpawFm.goUpClick();" src="../plugins/spawfm/images/btn_up.gif" title="'.$lang->m('go_up', 'buttons').'" class="bt" style="width: 24px; height: 24px; margin: 1px;" />';
         } else {
-          echo '<input type="image" src="../plugins/spawfm/img/btn_up_off.gif" title="'.$lang->m('go_up', 'buttons').'" class="bt" style="width: 24px; height: 24px; margin: 1px;" disabled="disabled" />';
+          echo '<input type="image" src="../plugins/spawfm/images/btn_up_off.gif" title="'.$lang->m('go_up', 'buttons').'" class="bt" style="width: 24px; height: 24px; margin: 1px;" disabled="disabled" />';
         }
         if (!$spawfm->getCurrentDirSetting('recursive') or 
             !$spawfm->getCurrentDirSetting('allow_create_subdirectories')) 
         {
-          echo '<input type="image" src="../plugins/spawfm/img/btn_new_folder_off.gif" title="'.$lang->m('create_directory', 'buttons').'" class="bt" style="width: 24px; height: 24px; margin: 1px;" disabled="disabled" />';
+          echo '<input type="image" src="../plugins/spawfm/images/btn_new_folder_off.gif" title="'.$lang->m('create_directory', 'buttons').'" class="bt" style="width: 24px; height: 24px; margin: 1px;" disabled="disabled" />';
         } else {
-          echo '<input type="image" onclick="SpawFm.createDirectoryClick();" src="../plugins/spawfm/img/btn_new_folder.gif" title="'.$lang->m('create_directory', 'buttons').'" class="bt" style="width: 24px; height: 24px; margin: 1px;" />';
+          echo '<input type="image" onclick="SpawFm.createDirectoryClick();" src="../plugins/spawfm/images/btn_new_folder.gif" title="'.$lang->m('create_directory', 'buttons').'" class="bt" style="width: 24px; height: 24px; margin: 1px;" />';
         }
         ?>
       </td>

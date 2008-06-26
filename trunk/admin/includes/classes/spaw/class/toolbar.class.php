@@ -313,7 +313,7 @@ class SpawToolbar
             case "spawtbimage":
             {
               $js_res .= $prefix.'_obj.addToolbarItem(new SpawTbImage("'.$obj->module.'","'.$obj->name.'","'.$id.'"),"'.$this->name.'");';
-              $html_res .= '<img id="'.$id.'" src="'.$pgdir.$obj->module.'/lib/theme/'.$theme->name.'/img/tb_'.$obj->name.'.gif"';
+              $html_res .= '<img id="'.$id.'" src="'.$pgdir.$obj->module.'/lib/theme/'.$theme->name.'/images/tb_'.$obj->name.'.gif"';
               if ($theme->isCustomStyleTbi($obj->name))
                 $html_res .= ' style="' . $theme->getCustomTbiStyle($obj->name) . '"';
               elseif ($theme->getDefaultTbImageStyle())
@@ -328,11 +328,11 @@ class SpawToolbar
             }
             case "spawtbbutton":
             {
-              $img_src = $obj->module.'/lib/theme/'.$theme->name.'/img/tb_'.$obj->name.'.gif';
+              $img_src = $obj->module.'/lib/theme/'.$theme->name.'/images/tb_'.$obj->name.'.gif';
               if (!file_exists(SpawConfig::getStaticConfigValue("SPAW_ROOT").'plugins/'.$img_src))
               {
                 // use default plugin button
-                $img_src = 'core/lib/theme/'.$theme->name.'/img/tb__plugin.gif';
+                $img_src = 'core/lib/theme/'.$theme->name.'/images/tb__plugin.gif';
               } 
               
               $js_res .= $prefix.'_obj.addToolbarItem(new SpawTbButton("'.$obj->module.'","'.$obj->name.'","'.$id.'","'.$obj->on_enabled_check.'","'.$obj->on_pushed_check.'","'.$obj->on_click.'","'.$pgdir.$img_src.'",'.($obj->show_in_context_menu?"true":"false").'),"'.$this->name.'");';

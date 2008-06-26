@@ -90,7 +90,7 @@ else
 		define('CURRENT_TEMPLATE_MODULE',$current_template.$module);
 		define('CURRENT_TEMPLATE_IMG',FULL_CURRENT_TEMPLATE.'img'.SLASH);
 		$template_path=ADMIN_PATH_PREFIX.TEMPLATE_PATH.CURRENT_TEMPLATE.SLASH;
-		$file='img/bullet.gif';
+		$file='images/bullet.gif';
 		if (file_exists($template_path.$file))
 		{
 			$file=olc_image($template_path.$file,EMPTY_STRING,EMPTY_STRING,EMPTY_STRING,'align="top"');

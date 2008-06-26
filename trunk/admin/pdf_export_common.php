@@ -374,7 +374,7 @@ class PDF extends FPDF
 		$left=$this->wc[0];
 		$link=olc_href_link('index.php',$this->language_parameter,NONSSL,false,true,false,true);
 		$link=str_replace(strtolower(HTTPS),strtolower(HTTP),$link);
-		$image=FULL_CURRENT_TEMPLATE."img/logo.jpg";
+		$image=FULL_CURRENT_TEMPLATE."images/logo.jpg";
 		if (file_exists($image))
 		{
 			$top=$this->tMargin;

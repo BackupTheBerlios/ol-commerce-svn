@@ -66,7 +66,7 @@ SpawFlashPropDialog.okClick = function() {
     if (iProps == null)
     {
       iProps = pdoc.createElement("img");
-  	  iProps.style.cssText = "border: 1px solid #000000; background: url(" + SpawEngine.spaw_dir + "img/flash.gif);";
+  	  iProps.style.cssText = "border: 1px solid #000000; background: url(" + SpawEngine.spaw_dir + "images/flash.gif);";
     }
     iProps.width = (document.getElementById('cwidth').value)?(document.getElementById('cwidth').value):'';
     if (!iProps.width || iProps.width == '')
@@ -74,7 +74,7 @@ SpawFlashPropDialog.okClick = function() {
     iProps.height = (document.getElementById('cheight').value)?(document.getElementById('cheight').value):'';
     if (!iProps.height || iProps.height == '')
       iProps.removeAttribute("height"); 
-    iProps.src = (document.getElementById('csrc').value)?(SpawEngine.spaw_dir + 'img/spacer100.gif?imgtype=flash&src=' + document.getElementById('csrc').value):'';
+    iProps.src = (document.getElementById('csrc').value)?(SpawEngine.spaw_dir + 'images/spacer100.gif?imgtype=flash&src=' + document.getElementById('csrc').value):'';
     if (!iProps.src || iProps.src == '')
       iProps.removeAttribute("src"); 
 

@@ -1055,13 +1055,13 @@ echo $lang->m('target');</code></pre>
     <p>
         However you need to provide graphics for your toolbar buttons. Each theme should
         include empty button images so you can easily add your image over it to get a fine
-        looking button. You can find these images in <em>plugins/core/lib/theme/&lt;themename&gt;/img/</em>.
+        looking button. You can find these images in <em>plugins/core/lib/theme/&lt;themename&gt;/images/</em>.
         The files should be named <em>tb__empty*.gif</em>. There could be different variants
         for each button. For example default "spaw2" theme has 4 variants for each button:
         <em>tb__empty.gif, tb__empty_down.gif, tb__empty_off.gif, tb__empty_over.gif</em>
         representing normal, pushed, disabled and hovered buttons respectively. You should
         create your own buttons from these and save them to files named <em>tb_&lt;youritemname&gt;[_variant].gif</em>
-        in your plugins <em>lib/theme/&lt;themename&gt;/img</em> subdirectory</p>
+        in your plugins <em>lib/theme/&lt;themename&gt;/images</em> subdirectory</p>
     <p>
         The engine includes a fallback mechanism displaying special default plugin button
         in case your plugin doesn't have it's own button for current theme. However you

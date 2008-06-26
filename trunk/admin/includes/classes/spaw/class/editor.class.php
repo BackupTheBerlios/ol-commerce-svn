@@ -731,7 +731,7 @@ class SpawEditor
           // modestrip placeholder found
           if ($this->isResizingGripVisible() && $this->config->getConfigValue('resizing_directions') != 'none')
           {
-            $grip = '<img src="'.SpawConfig::getStaticConfigValue("SPAW_DIR").'plugins/core/lib/theme/'.$this->theme->name.'/img/sizing_grip.gif" border="0" style="cursor: se-resize;"';
+            $grip = '<img src="'.SpawConfig::getStaticConfigValue("SPAW_DIR").'plugins/core/lib/theme/'.$this->theme->name.'/images/sizing_grip.gif" border="0" style="cursor: se-resize;"';
             $grip .= ' onmousedown="'.$objname.'.resizingGripMouseDown(event);"';
             $grip .= ' unselectable="on"';
             $grip .= ' />';

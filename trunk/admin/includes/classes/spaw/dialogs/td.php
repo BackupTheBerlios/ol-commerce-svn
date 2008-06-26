@@ -78,13 +78,13 @@ $request_uri = urldecode($SPAW_Util->getPOSTVar('request_uri',$SPAW_Util->getGET
   {
   <?php if (BROWSER_IS_GECKO) { ?>
 
-    var wnd = window.open('<?php echo $spaw_dir?>dialogs/img_library.php?lang=<?php echo $_GET["lang"]?>&theme=<?php echo $_GET["theme"]?>&editor=<?php echo $_GET["editor"]?>&callback=showImgPicker_callback',
+    var wnd = window.open('<?php echo $spaw_dir?>dialogs/images_library.php?lang=<?php echo $_GET["lang"]?>&theme=<?php echo $_GET["theme"]?>&editor=<?php echo $_GET["editor"]?>&callback=showImgPicker_callback',
       "img_library", 
       'status=no,modal=yes,width=420,height=420'); 
 
   <?php }else{ ?>
 
-    var imgSrc = showModalDialog('<?php echo $spaw_dir?>dialogs/img_library.php?theme=<?php echo $theme?>&lang=<?php echo $l->lang?>&request_uri=<?php echo $request_uri?>', '', 
+    var imgSrc = showModalDialog('<?php echo $spaw_dir?>dialogs/images_library.php?theme=<?php echo $theme?>&lang=<?php echo $l->lang?>&request_uri=<?php echo $request_uri?>', '', 
       'dialogHeight:420px; dialogWidth:420px; resizable:no; status:no');
     
     if(imgSrc != null)
@@ -306,24 +306,24 @@ $request_uri = urldecode($SPAW_Util->getPOSTVar('request_uri',$SPAW_Util->getGET
         document.getElementById('chunits').disabled = true;
         document.getElementById('cnowrap').disabled = true;
         document.getElementById('cbgcolor').disabled = true;
-        document.getElementById('ha_left').src = '<?php echo $theme_path.'img/'?>tb_left_off.gif';
+        document.getElementById('ha_left').src = '<?php echo $theme_path.'images/'?>tb_left_off.gif';
         document.getElementById('ha_left').disabled = true;
-        document.getElementById('ha_center').src = '<?php echo $theme_path.'img/'?>tb_center_off.gif';
+        document.getElementById('ha_center').src = '<?php echo $theme_path.'images/'?>tb_center_off.gif';
         document.getElementById('ha_center').disabled = true;
-        document.getElementById('ha_right').src = '<?php echo $theme_path.'img/'?>tb_right_off.gif';
+        document.getElementById('ha_right').src = '<?php echo $theme_path.'images/'?>tb_right_off.gif';
         document.getElementById('ha_right').disabled = true;
-        document.getElementById('ha_top').src = '<?php echo $theme_path.'img/'?>tb_top_off.gif';
+        document.getElementById('ha_top').src = '<?php echo $theme_path.'images/'?>tb_top_off.gif';
         document.getElementById('ha_top').disabled = true;
-        document.getElementById('ha_middle').src = '<?php echo $theme_path.'img/'?>tb_middle_off.gif';
+        document.getElementById('ha_middle').src = '<?php echo $theme_path.'images/'?>tb_middle_off.gif';
         document.getElementById('ha_middle').disabled = true;
-        document.getElementById('ha_bottom').src = '<?php echo $theme_path.'img/'?>tb_bottom_off.gif';
+        document.getElementById('ha_bottom').src = '<?php echo $theme_path.'images/'?>tb_bottom_off.gif';
         document.getElementById('ha_bottom').disabled = true;
-        document.getElementById('ha_baseline').src = '<?php echo $theme_path.'img/'?>tb_baseline_off.gif';
+        document.getElementById('ha_baseline').src = '<?php echo $theme_path.'images/'?>tb_baseline_off.gif';
         document.getElementById('ha_baseline').disabled = true;
-        document.getElementById('ccolorpicker').src = '<?php echo $theme_path.'img/'?>tb_colorpicker_off.gif';
+        document.getElementById('ccolorpicker').src = '<?php echo $theme_path.'images/'?>tb_colorpicker_off.gif';
         document.getElementById('ccolorpicker').disabled = true;
         document.getElementById('cbackground').disabled = true;
-        document.getElementById('cimg_picker').src = '<?php echo $theme_path.'img/'?>tb_image_insert_off.gif';
+        document.getElementById('cimg_picker').src = '<?php echo $theme_path.'images/'?>tb_image_insert_off.gif';
         document.getElementById('cimg_picker').disabled = true;
       }
       else
@@ -335,24 +335,24 @@ $request_uri = urldecode($SPAW_Util->getPOSTVar('request_uri',$SPAW_Util->getGET
         document.getElementById('chunits').disabled = false;
         document.getElementById('cnowrap').disabled = false;
         document.getElementById('cbgcolor').disabled = false;
-        document.getElementById('ha_left').src = '<?php echo $theme_path.'img/'?>tb_left.gif';
+        document.getElementById('ha_left').src = '<?php echo $theme_path.'images/'?>tb_left.gif';
         document.getElementById('ha_left').disabled = false;
-        document.getElementById('ha_center').src = '<?php echo $theme_path.'img/'?>tb_center.gif';
+        document.getElementById('ha_center').src = '<?php echo $theme_path.'images/'?>tb_center.gif';
         document.getElementById('ha_center').disabled = false;
-        document.getElementById('ha_right').src = '<?php echo $theme_path.'img/'?>tb_right.gif';
+        document.getElementById('ha_right').src = '<?php echo $theme_path.'images/'?>tb_right.gif';
         document.getElementById('ha_right').disabled = false;
-        document.getElementById('ha_top').src = '<?php echo $theme_path.'img/'?>tb_top.gif';
+        document.getElementById('ha_top').src = '<?php echo $theme_path.'images/'?>tb_top.gif';
         document.getElementById('ha_top').disabled = false;
-        document.getElementById('ha_middle').src = '<?php echo $theme_path.'img/'?>tb_middle.gif';
+        document.getElementById('ha_middle').src = '<?php echo $theme_path.'images/'?>tb_middle.gif';
         document.getElementById('ha_middle').disabled = false;
-        document.getElementById('ha_bottom').src = '<?php echo $theme_path.'img/'?>tb_bottom.gif';
+        document.getElementById('ha_bottom').src = '<?php echo $theme_path.'images/'?>tb_bottom.gif';
         document.getElementById('ha_bottom').disabled = false;
-        document.getElementById('ha_baseline').src = '<?php echo $theme_path.'img/'?>tb_baseline.gif';
+        document.getElementById('ha_baseline').src = '<?php echo $theme_path.'images/'?>tb_baseline.gif';
         document.getElementById('ha_baseline').disabled = false;
-        document.getElementById('ccolorpicker').src = '<?php echo $theme_path.'img/'?>tb_colorpicker.gif';
+        document.getElementById('ccolorpicker').src = '<?php echo $theme_path.'images/'?>tb_colorpicker.gif';
         document.getElementById('ccolorpicker').disabled = false;
         document.getElementById('cbackground').disabled = false;
-        document.getElementById('cimg_picker').src = '<?php echo $theme_path.'img/'?>tb_image_insert.gif';
+        document.getElementById('cimg_picker').src = '<?php echo $theme_path.'images/'?>tb_image_insert.gif';
         document.getElementById('cimg_picker').disabled = false;
       }
     }
@@ -380,18 +380,18 @@ $request_uri = urldecode($SPAW_Util->getPOSTVar('request_uri',$SPAW_Util->getGET
 <tr>
   <td colspan="2"><?php echo $l->m('horizontal_align')?>:</td>
   <td colspan="2" align="right"><input type="hidden" name="chalign" id="chalign">
-  <img id="ha_left" src="<?php echo $theme_path.'img/'?>tb_left.gif" class="align_off" onclick="javascript:setHAlign('left');" alt="<?php echo $l->m('left')?>">
-  <img id="ha_center" src="<?php echo $theme_path.'img/'?>tb_center.gif" class="align_off" onclick="javascript:setHAlign('center');" alt="<?php echo $l->m('center')?>">
-  <img id="ha_right" src="<?php echo $theme_path.'img/'?>tb_right.gif" class="align_off" onclick="javascript:setHAlign('right');" alt="<?php echo $l->m('right')?>">
+  <img id="ha_left" src="<?php echo $theme_path.'images/'?>tb_left.gif" class="align_off" onclick="javascript:setHAlign('left');" alt="<?php echo $l->m('left')?>">
+  <img id="ha_center" src="<?php echo $theme_path.'images/'?>tb_center.gif" class="align_off" onclick="javascript:setHAlign('center');" alt="<?php echo $l->m('center')?>">
+  <img id="ha_right" src="<?php echo $theme_path.'images/'?>tb_right.gif" class="align_off" onclick="javascript:setHAlign('right');" alt="<?php echo $l->m('right')?>">
   </td>
 </tr>
 <tr>
   <td colspan="2"><?php echo $l->m('vertical_align')?>:</td>
   <td colspan="2" align="right"><input type="hidden" name="cvalign" id="cvalign">
-  <img id="ha_top" src="<?php echo $theme_path.'img/'?>tb_top.gif" class="align_off" onclick="javascript:setVAlign('top');" alt="<?php echo $l->m('top')?>">
-  <img id="ha_middle" src="<?php echo $theme_path.'img/'?>tb_middle.gif" class="align_off" onclick="javascript:setVAlign('middle');" alt="<?php echo $l->m('middle')?>">
-  <img id="ha_bottom" src="<?php echo $theme_path.'img/'?>tb_bottom.gif" class="align_off" onclick="javascript:setVAlign('bottom');" alt="<?php echo $l->m('bottom')?>">
-  <img id="ha_baseline" src="<?php echo $theme_path.'img/'?>tb_baseline.gif" class="align_off" onclick="javascript:setVAlign('baseline');" alt="<?php echo $l->m('baseline')?>">
+  <img id="ha_top" src="<?php echo $theme_path.'images/'?>tb_top.gif" class="align_off" onclick="javascript:setVAlign('top');" alt="<?php echo $l->m('top')?>">
+  <img id="ha_middle" src="<?php echo $theme_path.'images/'?>tb_middle.gif" class="align_off" onclick="javascript:setVAlign('middle');" alt="<?php echo $l->m('middle')?>">
+  <img id="ha_bottom" src="<?php echo $theme_path.'images/'?>tb_bottom.gif" class="align_off" onclick="javascript:setVAlign('bottom');" alt="<?php echo $l->m('bottom')?>">
+  <img id="ha_baseline" src="<?php echo $theme_path.'images/'?>tb_baseline.gif" class="align_off" onclick="javascript:setVAlign('baseline');" alt="<?php echo $l->m('baseline')?>">
   </td>
 </tr>
 <tr>
@@ -421,12 +421,12 @@ $request_uri = urldecode($SPAW_Util->getPOSTVar('request_uri',$SPAW_Util->getGET
 </tr>
 <tr>
   <td colspan="4"><?php echo $l->m('bg_color')?>: <img src="spacer.gif" id="color_sample" border="1" width="30" height="18" align="absbottom">&nbsp;<input type="text" name="cbgcolor" id="cbgcolor" size="7" maxlength="7" class="input_color" onKeyUp="setSample()">&nbsp;
-  <img id="ccolorpicker" src="<?php echo $theme_path.'img/'?>tb_colorpicker.gif" border="0" onclick="javascript:showColorPicker(cbgcolor.value)" align="absbottom">
+  <img id="ccolorpicker" src="<?php echo $theme_path.'images/'?>tb_colorpicker.gif" border="0" onclick="javascript:showColorPicker(cbgcolor.value)" align="absbottom">
   </td>
 </tr>
 <tr>
   <td colspan="4">
-	<?php echo $l->m('background')?>: <input type="text" name="cbackground" id="cbackground" size="20" class="input" >&nbsp;<img id="cimg_picker" src="<?php echo $theme_path.'img/'?>tb_image_insert.gif" border="0" onclick="javascript:showImgPicker();" align="absbottom">	
+	<?php echo $l->m('background')?>: <input type="text" name="cbackground" id="cbackground" size="20" class="input" >&nbsp;<img id="cimg_picker" src="<?php echo $theme_path.'images/'?>tb_image_insert.gif" border="0" onclick="javascript:showImgPicker();" align="absbottom">	
   </td>
 </tr>
 <tr>

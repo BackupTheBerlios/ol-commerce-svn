@@ -110,7 +110,7 @@
 }
 td.spaw2frame
 {
-  background: url(../img/bg_pattern.jpg);
+  background: url(../images/bg_pattern.jpg);
   padding: 4px 4px 4px 4px;   
 }
 .spaw2editor
@@ -122,7 +122,7 @@ td.spaw2frame
   font-size: 10px; 
   height: 19px; 
   vertical-align: middle; 
-  background: url(../img/atab_bg.gif);
+  background: url(../images/atab_bg.gif);
   white-space: nowrap;
 }
 .spaw2tab
@@ -130,7 +130,7 @@ td.spaw2frame
   font-size: 10px; 
   height: 19px; 
   vertical-align: middle; 
-  background: url(../img/tab_bg.gif);
+  background: url(../images/tab_bg.gif);
   white-space: nowrap;
 }
 .spaw2status
@@ -146,7 +146,7 @@ td.spaw2frame
 
 .spaw2contextmenu
 {
-  background: url(../img/bg_pattern.jpg);
+  background: url(../images/bg_pattern.jpg);
   border: 1px solid #b2b2b2;
   font-family: Verdana, Tahoma, Arial, Helvetica, Sans-serif;
   font-size: 12px;

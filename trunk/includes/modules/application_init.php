@@ -856,7 +856,7 @@ if ($not_update_whois)
 		}
 		// W. Kaiser EOF: Down for Maintenance
 		$template_path=ADMIN_PATH_PREFIX.TEMPLATE_PATH.CURRENT_TEMPLATE.SLASH;
-		$file='img/bullet.gif';
+		$file='images/bullet.gif';
 		if (file_exists($template_path.$file))
 		{
 			$file=olc_image($template_path.$file,EMPTY_STRING,EMPTY_STRING,EMPTY_STRING,'align="top"');

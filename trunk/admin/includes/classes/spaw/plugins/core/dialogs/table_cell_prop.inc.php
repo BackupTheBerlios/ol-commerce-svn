@@ -32,18 +32,18 @@ echo 'spawErrorMessages["error_height_nan"] = "' . $lang->m('error_height_nan') 
 <tr>
   <td colspan="2"><?php echo $lang->m('horizontal_align')?>:</td>
   <td colspan="2" align="right"><input type="hidden" name="chalign" id="chalign">
-  <img id="ha_left" src="<?php echo $theme_path.'img/'?>tb_justifyleft.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setHAlign('left');" alt="<?php echo $lang->m('left')?>">
-  <img id="ha_center" src="<?php echo $theme_path.'img/'?>tb_justifycenter.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setHAlign('center');" alt="<?php echo $lang->m('center')?>">
-  <img id="ha_right" src="<?php echo $theme_path.'img/'?>tb_justifyright.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setHAlign('right');" alt="<?php echo $lang->m('right')?>">
+  <img id="ha_left" src="<?php echo $theme_path.'images/'?>tb_justifyleft.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setHAlign('left');" alt="<?php echo $lang->m('left')?>">
+  <img id="ha_center" src="<?php echo $theme_path.'images/'?>tb_justifycenter.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setHAlign('center');" alt="<?php echo $lang->m('center')?>">
+  <img id="ha_right" src="<?php echo $theme_path.'images/'?>tb_justifyright.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setHAlign('right');" alt="<?php echo $lang->m('right')?>">
   </td>
 </tr>
 <tr>
   <td colspan="2"><?php echo $lang->m('vertical_align')?>:</td>
   <td colspan="2" align="right"><input type="hidden" name="cvalign" id="cvalign">
-  <img id="ha_top" src="<?php echo $theme_path.'img/'?>tb_top.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setVAlign('top');" alt="<?php echo $lang->m('top')?>">
-  <img id="ha_middle" src="<?php echo $theme_path.'img/'?>tb_middle.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setVAlign('middle');" alt="<?php echo $lang->m('middle')?>">
-  <img id="ha_bottom" src="<?php echo $theme_path.'img/'?>tb_bottom.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setVAlign('bottom');" alt="<?php echo $lang->m('bottom')?>">
-  <img id="ha_baseline" src="<?php echo $theme_path.'img/'?>tb_baseline.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setVAlign('baseline');" alt="<?php echo $lang->m('baseline')?>">
+  <img id="ha_top" src="<?php echo $theme_path.'images/'?>tb_top.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setVAlign('top');" alt="<?php echo $lang->m('top')?>">
+  <img id="ha_middle" src="<?php echo $theme_path.'images/'?>tb_middle.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setVAlign('middle');" alt="<?php echo $lang->m('middle')?>">
+  <img id="ha_bottom" src="<?php echo $theme_path.'images/'?>tb_bottom.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setVAlign('bottom');" alt="<?php echo $lang->m('bottom')?>">
+  <img id="ha_baseline" src="<?php echo $theme_path.'images/'?>tb_baseline.gif" class="buttonOff" onClick="SpawTableCellPropDialog.setVAlign('baseline');" alt="<?php echo $lang->m('baseline')?>">
   </td>
 </tr>
 <tr>
@@ -72,7 +72,7 @@ echo 'spawErrorMessages["error_height_nan"] = "' . $lang->m('error_height_nan') 
   <td colspan="2">&nbsp;</td>
 </tr>
 <tr>
-  <td colspan="4"><?php echo $lang->m('bg_color')?>: <img src="img/spacer.gif" id="color_sample" border="1" width="30" height="18" align="absbottom">&nbsp;<input type="text" name="cbgcolor" id="cbgcolor" size="7" maxlength="7" class="input7chars" onKeyUp="SpawTableCellPropDialog.setSample()">&nbsp;
+  <td colspan="4"><?php echo $lang->m('bg_color')?>: <img src="images/spacer.gif" id="color_sample" border="1" width="30" height="18" align="absbottom">&nbsp;<input type="text" name="cbgcolor" id="cbgcolor" size="7" maxlength="7" class="input7chars" onKeyUp="SpawTableCellPropDialog.setSample()">&nbsp;
   <input type="button" id="ccolorpicker" onClick="SpawTableCellPropDialog.showColorPicker(cbgcolor.value)" align="absbottom" value="..." class="bt" />
   </td>
 </tr>

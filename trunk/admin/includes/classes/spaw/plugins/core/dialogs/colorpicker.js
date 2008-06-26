@@ -96,7 +96,7 @@ SpawColorPicker.drawBrightnessControl = function()
     bcbar.style.background = curcolor.getHtmlColor();
     curcolor.setHSB(curcolor.hue, curcolor.saturation, 100-i);
     bcbar.style.padding = "0px";
-    bcbar.innerHTML = '<img src="' + SpawEngine.spaw_dir + 'plugins/core/dialogs/img/spacer.gif" style="width: 1px; height: 1px;" />';
+    bcbar.innerHTML = '<img src="' + SpawEngine.spaw_dir + 'plugins/core/dialogs/images/spacer.gif" style="width: 1px; height: 1px;" />';
     bcbar.style.border = "0";
     bcbar.onclick = new Function("SpawColorPicker.bClick("+(100-i)+");");
     bcrow.appendChild(bcbar);

@@ -545,7 +545,7 @@
   
   function SPAW_image_insert_click(editor, sender)
   {
-    var wnd = window.open('<?php echo $spaw_dir?>dialogs/img_library.php?lang=' 
+    var wnd = window.open('<?php echo $spaw_dir?>dialogs/images_library.php?lang=' 
       + document.getElementById('SPAW_'+editor+'_lang').value + '&theme=' 
       + document.getElementById('SPAW_'+editor+'_theme').value
       + '&editor=' + editor + '&callback=SPAW_image_insert_click_callback' +'&request_uri='+escape(window.location.href), "img_library", 
@@ -618,7 +618,7 @@
           iProps.height = (im.style.height)?im.style.height:im.height;
       }
 
-      var wnd = window.open('<?php echo $spaw_dir?>dialogs/img.php?lang=' 
+      var wnd = window.open('<?php echo $spaw_dir?>dialogs/images.php?lang=' 
         + document.getElementById('SPAW_'+editor+'_lang').value + '&theme=' 
         + document.getElementById('SPAW_'+editor+'_theme').value
         + '&editor=' + editor + '&callback=SPAW_image_prop_click_callback' +'&request_uri='+escape(window.location.href), "img_prop", 
@@ -696,7 +696,7 @@
 
   function SPAW_image_popup_click(editor, sender)
   {
-    var wnd = window.open('<?php echo $spaw_dir?>dialogs/img_library.php?lang=' 
+    var wnd = window.open('<?php echo $spaw_dir?>dialogs/images_library.php?lang=' 
       + document.getElementById('SPAW_'+editor+'_lang').value + '&theme=' 
       + document.getElementById('SPAW_'+editor+'_theme').value
       + '&editor=' + editor + '&callback=SPAW_image_popup_click_callback'+'&request_uri='+escape(window.location.href), "img_library", 

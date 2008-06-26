@@ -126,7 +126,7 @@ class product {
 			$data_reviews = array ();
 			while ($reviews = olc_db_fetch_array($reviews_query, true)) {
 				$row ++;
-				$data_reviews[] = array ('AUTHOR' => $reviews['customers_name'], 'DATE' => olc_date_short($reviews['date_added']), 'RATING' => olc_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])), 'TEXT' => $reviews['reviews_text']);
+				$data_reviews[] = array ('AUTHOR' => $reviews['customers_name'], 'DATE' => olc_date_short($reviews['date_added']), 'RATING' => olc_image('templates/'.CURRENT_TEMPLATE.'/images/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])), 'TEXT' => $reviews['reviews_text']);
 				if ($row == PRODUCT_REVIEWS_VIEW)
 				break;
 			}

@@ -453,7 +453,7 @@
   {
     window.frames[editor+'_rEdit'].focus();     
 
-    var imgSrc = showModalDialog('<?php echo $spaw_dir?>dialogs/img_library.php?lang=' + document.all['SPAW_'+editor+'_lang'].value + '&theme=' + document.all['SPAW_'+editor+'_theme'].value+'&request_uri='+escape(window.location.href), '', 
+    var imgSrc = showModalDialog('<?php echo $spaw_dir?>dialogs/images_library.php?lang=' + document.all['SPAW_'+editor+'_lang'].value + '&theme=' + document.all['SPAW_'+editor+'_theme'].value+'&request_uri='+escape(window.location.href), '', 
       'dialogHeight:420px; dialogWidth:420px; resizable:no; status:no');
     
     if(imgSrc != null)
@@ -519,7 +519,7 @@
           iProps.height = (im.style.height)?im.style.height:im.height;
       }
   
-      var niProps = showModalDialog('<?php echo $spaw_dir?>dialogs/img.php?lang=' + document.all['SPAW_'+editor+'_lang'].value + '&theme=' + document.all['SPAW_'+editor+'_theme'].value+'&request_uri='+escape(window.location.href), iProps, 
+      var niProps = showModalDialog('<?php echo $spaw_dir?>dialogs/images.php?lang=' + document.all['SPAW_'+editor+'_lang'].value + '&theme=' + document.all['SPAW_'+editor+'_theme'].value+'&request_uri='+escape(window.location.href), iProps, 
         'dialogHeight:200px; dialogWidth:366px; resizable:no; status:no');  
       
       if (niProps)  
@@ -588,7 +588,7 @@
 	
   	var a = SPAW_getA(editor);
 
-    var imgSrc = showModalDialog('<?php echo $spaw_dir?>dialogs/img_library.php?lang=' + document.all['SPAW_'+editor+'_lang'].value + '&theme=' + document.all['SPAW_'+editor+'_theme'].value+'&request_uri='+escape(window.location.href), '', 
+    var imgSrc = showModalDialog('<?php echo $spaw_dir?>dialogs/images_library.php?lang=' + document.all['SPAW_'+editor+'_lang'].value + '&theme=' + document.all['SPAW_'+editor+'_theme'].value+'&request_uri='+escape(window.location.href), '', 
       'dialogHeight:420px; dialogWidth:420px; resizable:no; status:no');
     
     if(imgSrc != null)    
@@ -2311,7 +2311,7 @@
       	  flash.setAttribute('height',imgs[i].height);
     	  
         imgs[i].parentNode.replaceChild(flash, imgs[i]); 
-    	  //imgs[i].outerHTML = flash.outerHTML;
+    	  //imagess[i].outerHTML = flash.outerHTML;
     	  
       }
     }

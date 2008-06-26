@@ -24,7 +24,7 @@ $this->_tpl_vars['box_name']=$box_name;
 $max_rows=max(1,$this->_tpl_vars['entries_count']);
 $rows=min($max_rows,sizeof($this->_tpl_vars['module_content']));
 $row=0;
-$image=$this->_tpl_vars['tpl_path'].'img/img_box_sep_h.gif';
+$image=$this->_tpl_vars['tpl_path'].'images/images_box_sep_h.gif';
 if (file_exists($image))
 {
 	$sep='<img src="'.$image.'" align="middle">';
@@ -62,7 +62,7 @@ else
 							<tr>
 								<td align="left" valign="top">
 						    	<img src="<?php echo $this->_tpl_vars['tpl_path']; ?>
-/img/bullet_c.gif" alt=""/>
+/images/bullet_c.gif" alt=""/>
 								</td>
 								<td align="left" valign="top">
 						    	<a href="<?php echo $this->_tpl_vars['box_data']['PRODUCTS_LINK']; ?>

@@ -25,7 +25,7 @@ function CarpConfReset() {
 	'cacheinterval'=>60,
 	'cacheerrorwait'=>30,
 	'cachetime'=>'',
-	'descriptiontags'=>'b|/b|i|/i|br|p|/p|hr|span|/span|font|/font|img|/img|a|/a',
+	'descriptiontags'=>'b|/b|i|/i|br|p|/p|hr|span|/span|font|/font|img|/images|a|/a',
 	'proxyauth'=>'',
 	'basicauth'=>'',
 	'filterin'=>'',

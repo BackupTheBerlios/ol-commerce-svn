@@ -120,7 +120,7 @@ class PDF extends FPDF
 			// Store Logo
 			// BOF Mod for correct imagesize & type
 			// Get the data of this picture
-			$image=FULL_CURRENT_TEMPLATE."img/logo.jpg";
+			$image=FULL_CURRENT_TEMPLATE."images/logo.jpg";
 			$img =getimagesize($image);
 			$w=$img[0];
 			$h=$img[1];
@@ -146,7 +146,7 @@ class PDF extends FPDF
 					break;
 			}
 			$link=olc_href_link('index.php',$this->language_parameter,NONSSL,false,true,false,true);
-			$image=FULL_CURRENT_TEMPLATE."img/logo.jpg";
+			$image=FULL_CURRENT_TEMPLATE."images/logo.jpg";
 			$this->Image($image,$this->lMargin,$this->tMargin,$w/$this->k,$h/$this->k,EMPTY_STRING,$link);
 			// EOF Mod for correct imagesize & type
 		}

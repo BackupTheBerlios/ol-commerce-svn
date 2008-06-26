@@ -21,7 +21,7 @@ echo 'spawErrorMessages["error_vspace_nan"] = "' . $lang->m('error_vspace_nan') 
 <tr>
   <td rowspan="8" id="img_preview_box" valign="top" align="center" class="groupbox" width="210">
     <div id="img_preview_placeholder" style="padding: 0px 1px 0px 0px; margin: 0px; visibility: hidden; white-space:nowrap;">
-      <img id="img_preview_sizer" src="img/spacer.gif" width="1px" alt="" /><img id="img_preview" src="img/spacer.gif" width="200" height="100" alt="" />
+      <img id="img_preview_sizer" src="images/spacer.gif" width="1px" alt="" /><img id="img_preview" src="images/spacer.gif" width="200" height="100" alt="" />
     </div>
     <div id="img_data" class="info_message" style="visibility: hidden;">
       <b><?php echo $lang->m('dimensions')?>:</b><br />

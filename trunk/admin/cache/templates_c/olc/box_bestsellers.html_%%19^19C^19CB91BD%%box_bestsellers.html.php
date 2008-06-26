@@ -19,7 +19,7 @@ if (!OL_COMMERCE)
 $max_rows=max(1,$this->_tpl_vars['entries_count']);
 $rows=min($max_rows,sizeof($this->_tpl_vars['box_content']));
 $row=0;
-$image=$this->_tpl_vars['tpl_path'].'img/img_box_sep_h.gif';
+$image=$this->_tpl_vars['tpl_path'].'images/images_box_sep_h.gif';
 if (file_exists($image))
 {
 	$sep='<img src="'.$image.'" align="middle">';
@@ -54,7 +54,7 @@ if ($this->_foreach['aussen']['total'] > 0):
 								<tr>
 									<td align="left" valign="top">
 							    	<img src="<?php echo $this->_tpl_vars['tpl_path']; ?>
-/img/bullet_c.gif" alt=""/>
+/images/bullet_c.gif" alt=""/>
 									</td>
 									<td align="left" valign="top">
 							    	<a href="<?php echo $this->_tpl_vars['box_data']['LINK']; ?>
@@ -140,7 +140,7 @@ if ($this->_foreach['aussen']['total'] > 0):
 . </td>
 					<td class="main" valign="middle" align="center">
 						<img src="<?php echo $this->_tpl_vars['tpl_path']; ?>
-img/bullet.gif" border="0" alt="" width="9" height="9" align="absmiddle">
+images/bullet.gif" border="0" alt="" width="9" height="9" align="absmiddle">
 					</td>
 					<td class="main" valign="top">
 						<a href="<?php echo $this->_tpl_vars['data']['LINK']; ?>

@@ -98,7 +98,7 @@ else
 		if ($not_isset_picture)
 		{
 			$is_picture=false;
-			$pictures_dirs=array('/images/','/img/','/buttons/','/Icons/');
+			$pictures_dirs=array('/images/','/images/','/buttons/','/Icons/');
 			for ($i=0,$n=sizeof($pictures_dirs);$i<$n;$i++)
 			{
 				if (strpos($file_path,$pictures_dirs[$i])!==false)
