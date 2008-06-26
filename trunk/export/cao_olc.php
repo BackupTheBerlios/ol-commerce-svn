@@ -98,6 +98,7 @@
 *  - 25.09.2007 SM Anpassung an OLC/AJAX Version 5.x                                       *
 *******************************************************************************************/
 
+error_reporting(0);
 define('ADMIN_PATH_PREFIX', '/var/www/html/olc/');
 define('SET_TIME_LIMIT',1);   // use set_time_limit(0);
 define('CHARSET', 'ISO-8859-1');
