@@ -1,11 +1,11 @@
 <?php
 /* --------------------------------------------------------------
-$Id: accounting.php,v 1.1.1.1.2.1 2007/04/08 07:16:23 gswkaiser Exp $
+$Id: accounting.php,v 1.1.1.1.2.1 2007/04/08 07:16:23 
 
-OL-Commerce Version 5.x/AJAX
-http://www.ol-commerce.com, http://www.seifenparadies.de
+OL-Commerce Version/AJAX
+http://www.ol-commerce.de
 
-Copyright (c) 2004 OL-Commerce , 2006 Dipl.-Ing.(TH) Winfried Kaiser (w.kaiser@fortune.de, info@seifenparadies.de)
+Copyright (c) 2004 OL-Commerce
 --------------------------------------------------------------
 based on:
 (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
