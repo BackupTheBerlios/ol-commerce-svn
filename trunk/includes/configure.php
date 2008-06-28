@@ -17,15 +17,14 @@ based on:
 
 Released under the GNU General Public License
 --------------------------------------------------------------*/
-// $_SERVER[DOCUMENT_ROOT]='/var/www/html/olc/';
-date_default_timezone_set('Europe/Berlin');
+
+date_default_timezone_set('Europe/Berlin'); //für PHP5 benötigt
 //Include external config data (multi-store capability)
 if (!isset($level))
 {
 	$level='';
 }
-// include($level.'inc/olc_get_external_config_data.inc.php');
-include('/var/www/html/olc/inc/olc_get_external_config_data.inc.php');
+include($level.'inc/olc_get_external_config_data.inc.php');
 //Include external config data (multi-store capability)
 
 //
@@ -43,9 +42,8 @@ define('ENABLE_SSL',false); 											// secure webserver for checkout procedur
 define('ENABLE_SSL_CATALOG', ENABLE_SSL); 							// secure webserver for catalog module
 
 define('DIR_WS_CATALOG', '/olc/'); 								// absolute path required
-// define('DIR_FS_DOCUMENT_ROOT', '/var/www/html/olc/');
+define('DIR_FS_DOCUMENT_ROOT', '/var/www/html/olc/');
 define('DIR_FS_CATALOG', DIR_FS_DOCUMENT_ROOT);
-define('DIR_FS_CATALOG', '/var/www/html/olc/');
 define('DIR_WS_IMAGES', 'images/');
 define('DIR_WS_PRODUCT_IMAGES', DIR_WS_IMAGES . 'product_images/');
 define('DIR_WS_ORIGINAL_IMAGES', DIR_WS_PRODUCT_IMAGES . 'original_images/');
