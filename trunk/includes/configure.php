@@ -17,8 +17,9 @@ based on:
 
 Released under the GNU General Public License
 --------------------------------------------------------------*/
-
-date_default_timezone_set('Europe/Berlin'); //für PHP5 benötigt
+if (function_exists('date_default_timezone_set')) {
+   date_default_timezone_set('Europe/Berlin');
+}  
 //Include external config data (multi-store capability)
 if (!isset($level))
 {
