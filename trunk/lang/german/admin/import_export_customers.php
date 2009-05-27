@@ -43,7 +43,7 @@ define('BUTTON_IMPORT','Importieren');
 define('BUTTON_EXPORT','Exportieren');
 define('BUTTON_SAVE','Speichern');
 define('TEXT_ERROR_FILE','Fehler in Import-Datei "%s": %s');
-define('EMAIL_ALREADY_USED','Verwendet in Zeile(n): ';
+define('EMAIL_ALREADY_USED','Verwendet in Zeile(n): ');
 define('TEXT_FILE_NO_DATA','Keine Daten');
 define('TEXT_FILE_ERROR_OPEN','Kann nicht geöffnet werden');
 define('TEXT_MAIL_SUBJECT','Unser neuer Onlineshop');

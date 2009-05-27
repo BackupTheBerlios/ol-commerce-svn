@@ -99,7 +99,7 @@ $spaw_lang_data = array(
     'pixels' => '$B%T%/%;%k(J',
     'cellpadding' => '$B%;%kFbM>Gr(J',
     'cellspacing' => '$B%;%kFb4V3V(J',
-    'bg_color' => '$BGX7J?'(J',
+    'bg_color' => '$BGX7J?\'(J',
     'error' => '$B%(%i!<(J',
     'error_rows_nan' => '$B9T$rF~NO$7$F2<$5$$(J',
     'error_columns_nan' => '$BNs$rF~NO$7$F2<$5$$(J',
@@ -117,7 +117,7 @@ $spaw_lang_data = array(
     'height' => '$B9b$5(J',
     'css_class' => 'CSS $B%/%i%9(J',
     'no_wrap' => '$B@^$jJV$5$J$$(J',
-    'bg_color' => '$BGX7J?'(J',
+    'bg_color' => '$BGX7J?\'(J',
     'ok' => '    OK    ',
     'cancel' => '$B%-%c%s%;%k(J',
     'left' => '$B:8(J',
@@ -198,10 +198,10 @@ $spaw_lang_data = array(
     'title' => '$B1&B7$((J'
   ),
   'fore_color' => array(
-    'title' => '$BJ8;z?'(J'
+    'title' => '$BJ8;z?\'(J'
   ),
   'bg_color' => array(
-    'title' => '$BGX7J?'(J'
+    'title' => '$BGX7J?\'(J'
   ),
   'design_tab' => array(
     'title' => 'WYSIWYG ($B%G%6%$%s(J) $B%b!<%I$X(J'
@@ -238,7 +238,7 @@ $spaw_lang_data = array(
     'vertical_align' => '$B=DB7$((J',
     'css_class' => 'CSS $B%/%i%9(J',
     'no_wrap' => '$B@^$jJV$5$J$$(J',
-    'bg_color' => '$BGX7J?'(J',
+    'bg_color' => '$BGX7J?\'(J',
     'ok' => '    OK    ',
     'cancel' => '$B%-%c%s%;%k(J',
     'left' => '$B:8(J',
@@ -262,11 +262,11 @@ $spaw_lang_data = array(
     'title_tag' => '$B%?%$%H%k(J',
     'charset' => '$BJ8;z%3!<%I(J',
     'background' => '$BGX7J%$%a!<%8(J',
-    'bgcolor' => '$BGX7J?'(J',
-    'text' => '$BJ8;z?'(J',
-    'link' => '$B%j%s%/?'(J',
-    'vlink' => '$BK,Ld:Q$_%j%s%/?'(J',
-    'alink' => '$B%"%/%F%#%V%j%s%/?'(J',
+    'bgcolor' => '$BGX7J?\'(J',
+    'text' => '$BJ8;z?\'(J',
+    'link' => '$B%j%s%/?\'(J',
+    'vlink' => '$BK,Ld:Q$_%j%s%/?\'(J',
+    'alink' => '$B%"%/%F%#%V%j%s%/?\'(J',
     'leftmargin' => '$B:8%^!<%8%s(J',
     'topmargin' => '$B>e%^!<%8%s(J',
     'css_class' => 'CSS $B%/%i%9(J',
